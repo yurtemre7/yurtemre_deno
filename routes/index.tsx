@@ -3,8 +3,8 @@ import { h } from "preact";
 import { tw } from "@twind";
 
 import About from "../islands/About.tsx";
-import Divider from "../components/Divider.tsx";
-import MyFooter from "../components/MyFooter.tsx";
+import Divider from "../islands/Divider.tsx";
+import MyFooter from "../islands/MyFooter.tsx";
 import Welcome from "../islands/Welcome.tsx";
 
 export default function Home() {
