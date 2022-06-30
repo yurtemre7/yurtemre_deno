@@ -5,7 +5,7 @@ import { tw } from "@twind";
 import About from "../islands/About.tsx";
 import Divider from "../components/Divider.tsx";
 import MyFooter from "../components/MyFooter.tsx";
-import Welcome from "../components/Welcome.tsx";
+import Welcome from "../islands/Welcome.tsx";
 
 export default function Home() {
   // On page load or when changing themes, best to add inline in `head` to avoid FOUC
