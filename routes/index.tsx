@@ -17,7 +17,7 @@ export default function Home() {
           <title>yurtemre.de</title>
         </head>
 
-        <Welcome />
+        
 
         <Divider />
 
