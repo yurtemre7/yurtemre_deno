@@ -43,7 +43,7 @@ export default function Welcome() {
           </p>
           <div class={tw`m-5`} />
           <p
-            class={tw`text-xl rounded-lg hover:ring-2`}
+            class={tw`text-xl`}
           >
             {joke}
           </p>
