@@ -4,5 +4,5 @@ export * from "twind"
 export const config: Configuration = {
   darkMode: "media",
   mode: "silent",
-};
+}
 if (IS_BROWSER) setup(config)

@@ -1,7 +1,7 @@
 /** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
-import Counter from "../islands/Counter.tsx";
+import { h } from "preact"
+import { tw } from "@twind"
+import Counter from "../islands/Counter.tsx"
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  );
+  )
   /*return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
       <img
