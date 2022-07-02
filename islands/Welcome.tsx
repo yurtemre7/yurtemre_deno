@@ -51,7 +51,7 @@ export default function Welcome(joke: PageProps<string>) {
           <p
             class={tw`text-xl`}
           >
-            {joke}
+            {joke.data}
           </p>
         </div>
       </div>
