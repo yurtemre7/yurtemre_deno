@@ -1,11 +1,8 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "@twind";
-import { Handlers, PageProps } from "$fresh/server.ts";
 
-
-export default function Welcome({joke} : string) {
-  // Jokes courtesy of https://punsandoneliners.com/randomness/programmer-jokes/
+export default function Welcome({ joke }: string) {
   return (
     <div class={tw`dark:bg-black m-10`}>
       <div

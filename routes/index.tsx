@@ -3,15 +3,14 @@ import { h } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 
-import About from "../islands/About.tsx";
-import Divider from "../islands/Divider.tsx";
-import MyFooter from "../islands/MyFooter.tsx";
-import Welcome from "../islands/Welcome.tsx";
-
-
+import About from "../components/About.tsx";
+import Divider from "../components/Divider.tsx";
+import MyFooter from "../components/MyFooter.tsx";
+import Welcome from "../components/Welcome.tsx";
 
 export const handler: Handlers<string> = {
   GET(_req, ctx) {
+    // Jokes courtesy of https://punsandoneliners.com/randomness/programmer-jokes/
     const JOKES = [
       "Why do Java developers often wear glasses? They can't C#.",
       "A SQL query walks into a bar, goes up to two tables and says “can I join you?”",
