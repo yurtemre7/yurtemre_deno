@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "@twind";
-import { Handlers } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 
 export const handler: Handlers<string> = {
   async GET(_req, ctx) {
@@ -28,7 +28,7 @@ export const handler: Handlers<string> = {
   },
 };
 
-export default function Welcome(joke: string) {
+export default function Welcome(joke: PageProps<string>) {
   // Jokes courtesy of https://punsandoneliners.com/randomness/programmer-jokes/
   return (
     <div class={tw`dark:bg-black m-10`}>
