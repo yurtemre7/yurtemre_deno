@@ -31,7 +31,6 @@ export const handler: Handlers<string> = {
     ];
 
     const joke = JOKES[new Date().getDate() % JOKES.length];
-    console.log(joke);
     return ctx.render(joke);
   },
 };
