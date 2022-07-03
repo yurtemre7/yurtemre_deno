@@ -4,7 +4,7 @@ import { tw } from "@twind";
 
 export default function Impressum() {
   return (
-    <div class={tw`dark:bg-black h-screen items-center`}>
+    <div class={tw`dark:bg-black h-screen text-center flex items-center justify-center`}>
       <div class={tw`p-5 dark:text-white`}>
         <head>
           <title>yurtemre.de | Impressum</title>
