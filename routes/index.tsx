@@ -7,8 +7,6 @@ import Divider from "./_Divider.tsx";
 import MyFooter from "./_MyFooter.tsx";
 import Welcome from "./_Welcome.tsx";
 
-
-
 export const handler: Handlers<string> = {
   GET(_req, ctx) {
     // Jokes courtesy of https://punsandoneliners.com/randomness/programmer-jokes/
