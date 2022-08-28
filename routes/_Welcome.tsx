@@ -2,7 +2,11 @@
 import { h } from "preact";
 import { tw } from "@twind";
 
-export default function Welcome({ joke }: string) {
+interface JokeProp {
+  joke: string;
+}
+
+export default function Welcome({ joke }: JokeProp) {
   return (
     <div class={tw`dark:bg-black m-10`}>
       <div
