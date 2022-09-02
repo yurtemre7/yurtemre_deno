@@ -2,10 +2,12 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import About from "./_About.tsx";
-import Divider from "./_Divider.tsx";
-import MyFooter from "./_MyFooter.tsx";
-import Welcome from "./_Welcome.tsx";
+import Welcome from "../components/Welcome.tsx";
+import Divider from "../components/Divider.tsx";
+import About from "../components/About.tsx";
+import MyFooter from "../components/MyFooter.tsx";
+
+
 
 export const handler: Handlers<string> = {
   GET(_req, ctx) {
