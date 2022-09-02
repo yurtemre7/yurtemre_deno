@@ -6,11 +6,16 @@ import Welcome from "../components/Welcome.tsx";
 import Divider from "../components/Divider.tsx";
 import About from "../components/About.tsx";
 import MyFooter from "../components/MyFooter.tsx";
+import { Repositories } from "../components/classes/Github.ts";
+import MeineProjekte from "../components/MeineProjekte.tsx";
 
+interface InitialData {
+  joke: string;
+  repositories: Repositories;
+}
 
-
-export const handler: Handlers<string> = {
-  GET(_req, ctx) {
+export const handler: Handlers<InitialData> = {
+  async GET(_req, ctx) {
     const JOKES = [
       "Why do Java developers often wear glasses? They can't C#.",
       "A SQL query walks into a bar, goes up to two tables and says “can I join you?”",
@@ -30,11 +35,26 @@ export const handler: Handlers<string> = {
     ];
 
     const joke = JOKES[new Date().getDate() % JOKES.length];
-    return ctx.render(joke);
+    const repositories = await fetch(
+      "https://api.github.com/users/yurtemre7/repos",
+    );
+    const json = await repositories.json();
+    if (json.message.includes("API rate limit exceeded")) {
+      const data: InitialData = {
+        joke,
+        repositories: [],
+      };
+      return ctx.render(data);
+    }
+    const data: InitialData = {
+      joke,
+      repositories: await repositories.json(),
+    };
+    return ctx.render(data);
   },
 };
 
-export default function Home({ data }: PageProps<string>) {
+export default function Home({ data }: PageProps<InitialData>) {
   return (
     <html class={tw`dark:bg-black h-full w-full`}>
       <div class={tw`dark:bg-black h-full w-full`}>
@@ -42,11 +62,15 @@ export default function Home({ data }: PageProps<string>) {
           <title>yurtemre.de</title>
         </head>
 
-        <Welcome joke={data} />
+        <Welcome joke={data.joke} />
 
         <Divider />
 
         <About />
+
+        <Divider />
+
+        <MeineProjekte repos={data.repositories} />
 
         <MyFooter />
       </div>
