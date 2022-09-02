@@ -39,7 +39,7 @@ export const handler: Handlers<InitialData> = {
       "https://api.github.com/users/yurtemre7/repos",
     );
     const json = await repositories.json();
-    if (json.message.includes("API rate limit exceeded")) {
+    if (json.message !== undefined) {
       const data: InitialData = {
         joke,
         repositories: [],
