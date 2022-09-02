@@ -4,14 +4,12 @@
 
 import * as $0 from "./routes/impressum.tsx";
 import * as $1 from "./routes/index.tsx";
-import * as $2 from "./routes/video.tsx";
 import * as $$0 from "./islands/Counter.tsx";
 
 const manifest = {
   routes: {
     "./routes/impressum.tsx": $0,
     "./routes/index.tsx": $1,
-    "./routes/video.tsx": $2,
   },
   islands: {
     "./islands/Counter.tsx": $$0,
