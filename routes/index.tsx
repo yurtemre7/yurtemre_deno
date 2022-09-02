@@ -48,7 +48,7 @@ export const handler: Handlers<InitialData> = {
     }
     const data: InitialData = {
       joke,
-      repositories: await repositories.json(),
+      repositories: json,
     };
     return ctx.render(data);
   },
