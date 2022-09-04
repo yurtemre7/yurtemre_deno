@@ -14,6 +14,9 @@ interface InitialData {
   repositories: Repositories;
 }
 
+let reps: Repositories = [];
+let lastFetch = Date.parse("2020-01-01");
+
 export const handler: Handlers<InitialData> = {
   async GET(_req, ctx) {
     const JOKES = [
@@ -35,20 +38,26 @@ export const handler: Handlers<InitialData> = {
     ];
 
     const joke = JOKES[new Date().getDate() % JOKES.length];
-    const repositories = await fetch(
-      "https://api.github.com/users/yurtemre7/repos",
-    );
-    const json = await repositories.json();
-    if (json.message !== undefined) {
-      const data: InitialData = {
-        joke,
-        repositories: [],
-      };
-      return ctx.render(data);
+    if (Date.now() - lastFetch > 1000 * 60 * 5) {
+      const repositories = await fetch(
+        "https://api.github.com/users/yurtemre7/repos",
+      );
+      const fetched = await repositories.json();
+      if (fetched.message !== undefined) {
+        const data: InitialData = {
+          joke,
+          repositories: [],
+        };
+        return ctx.render(data);
+      }
+      reps = fetched;
+      lastFetch = Date.now();
     }
+    
+
     const data: InitialData = {
       joke,
-      repositories: json,
+      repositories: reps,
     };
     return ctx.render(data);
   },
