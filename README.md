@@ -1,5 +1,7 @@
 # yurtemre fresh project
 
+[![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
+
 ### Development
 
 Start the project in dev mode:
