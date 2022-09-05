@@ -25,26 +25,36 @@ export const handler: Handlers<InitialData> = {
 
   async POST(_req, ctx) {
     const formData = await _req.formData();
-    const file = formData.get("file") as File;
+    const ifile = formData.get("ifile") as File;
+    const afile = formData.get("afile") as File;
     const input = formData.get("input") as string;
     const code = formData.get("code") as string;
 
-    if (file) {
+    if (ifile) {
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        inputCode = "" + fileReader.result;
+      };
+      // fileReader.readAsText(ifile, "UTF-8");
+    } else if (afile) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         savedCode = "" + fileReader.result;
       };
-      // fileReader.readAsText(file, "UTF-8");
-    } else if (code) {
+      // fileReader.readAsText(afile, "UTF-8");
+    } else {
       savedCode = code;
+      inputCode = input;
     }
-    inputCode = input;
 
     if (code) {
       console.log("Code:\n" + code);
     }
-    if (file) {
-      console.log("Datei:\n" + file);
+    if (ifile) {
+      console.log("Datei (input):\n" + ifile);
+    }
+    if (afile) {
+      console.log("Datei (assembly):\n" + afile);
     }
     console.log("Extrahierter Code:\n" + savedCode);
 

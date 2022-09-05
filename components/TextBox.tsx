@@ -116,22 +116,32 @@ export default function TextBox({ code, output, input }: InitialData) {
             <div class={tw`m-2`} />
 
             <div
-              class={tw`flex justify-between items-center py-2 px-3 border-t dark:border-gray-600`}
+              class={tw`flex w-full justify-between items-center py-2 px-3 border-t dark:border-gray-600`}
             >
+              <div class={tw`flex pl-0 space-x-1 sm:pl-2`}>
+                <label class={tw`text-white`}>Input file</label>
+                <input
+                  id="dropzone-file"
+                  name="ifile"
+                  type="file"
+                  class={tw``}
+                />
+              </div>
+              <div class={tw`flex pl-0 space-x-1 sm:pl-2`}>
+                <label class={tw`text-white`}>Assembly file</label>
+                <input
+                  id="dropzone-file"
+                  name="afile"
+                  type="file"
+                  class={tw``}
+                />
+              </div>
               <button
                 type="submit"
                 class={tw`inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800`}
               >
                 Run Code
               </button>
-              <div class={tw`flex pl-0 space-x-1 sm:pl-2`}>
-                <input
-                  id="dropzone-file"
-                  name="file"
-                  type="file"
-                  class={tw``}
-                />
-              </div>
             </div>
             {output.length > 0
               ? (
