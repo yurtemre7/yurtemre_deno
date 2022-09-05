@@ -8,6 +8,7 @@ import About from "../components/About.tsx";
 import MyFooter from "../components/MyFooter.tsx";
 import { Repositories } from "../components/classes/Github.ts";
 import MeineProjekte from "../components/MeineProjekte.tsx";
+import Header from "../components/Header.tsx";
 
 interface InitialData {
   joke: string;
@@ -53,7 +54,6 @@ export const handler: Handlers<InitialData> = {
       reps = fetched;
       lastFetch = Date.now();
     }
-    
 
     const data: InitialData = {
       joke,
@@ -70,6 +70,8 @@ export default function Home({ data }: PageProps<InitialData>) {
         <head>
           <title>yurtemre.de</title>
         </head>
+
+        <Header />
 
         <Welcome joke={data.joke} />
 
