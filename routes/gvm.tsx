@@ -36,16 +36,18 @@ export const handler: Handlers<InitialData> = {
         inputCode = "" + fileReader.result;
       };
       // fileReader.readAsText(ifile, "UTF-8");
-    } else if (afile) {
+    }
+
+    if (afile) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         savedCode = "" + fileReader.result;
       };
       // fileReader.readAsText(afile, "UTF-8");
-    } else {
-      savedCode = code;
-      inputCode = input;
     }
+
+    savedCode = code;
+    inputCode = input;
 
     if (code) {
       console.log("Code:\n" + code);
