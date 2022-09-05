@@ -65,7 +65,8 @@ export const handler: Handlers<InitialData> = {
     if (savedCode.length > 0) {
       // execute shell on server
       const p = Deno.run({
-        cmd: ["cmd", "/c", "echo", savedCode, input],
+        // cmd: ["cmd", "/c", "echo", "Hello World"], windows
+        cmd: [ "echo", savedCode, input], // linux
         stdout: "piped",
       });
 
