@@ -130,6 +130,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                   Input file
                 </label>
                 <input
+                  preload={"auto"}
                   id="dropzone-file"
                   name="ifile"
                   type="file"
@@ -154,6 +155,7 @@ export default function TextBox({ code, output, input }: InitialData) {
               <div class={tw`flex-auto space-x-1 sm:pl-2`}>
                 <label class={tw`text-white`}>Assembly file</label>
                 <input
+                  preload={"auto"}
                   id="dropzone-file"
                   name="afile"
                   type="file"
