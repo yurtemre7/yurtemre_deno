@@ -4,8 +4,6 @@ import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Divider from "../components/Divider.tsx";
 import MyFooter from "../components/MyFooter.tsx";
-import { domSheet } from "https://esm.sh/v86/twind@0.16.17/sheets/sheets.d.ts";
-import { exec } from "https://deno.land/x/exec@0.0.5/mod.ts";
 import TextBox from "../islands/TextBox.tsx";
 interface InitialData {
   code: string;
@@ -25,38 +23,13 @@ export const handler: Handlers<InitialData> = {
 
   async POST(_req, ctx) {
     const formData = await _req.formData();
-    const ifile = formData.get("ifile") as File;
-    const afile = formData.get("afile") as File;
     const input = formData.get("input") as string;
-    const code = formData.get("code") as string;
-
-    if (ifile) {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        inputCode = "" + fileReader.result;
-      };
-      // fileReader.readAsText(ifile, "UTF-8");
-    }
-
-    if (afile) {
-      const fileReader = new FileReader();
-      fileReader.onload = () => {
-        savedCode = "" + fileReader.result;
-      };
-      // fileReader.readAsText(afile, "UTF-8");
-    }
-
-    savedCode = code;
+    const assembly = formData.get("assembly") as string;
+    savedCode = assembly;
     inputCode = input;
 
-    if (code) {
-      console.log("Code:\n" + code);
-    }
-    if (ifile) {
-      console.log("Datei (input):\n" + ifile);
-    }
-    if (afile) {
-      console.log("Datei (assembly):\n" + afile);
+    if (assembly) {
+      console.log("Code:\n" + assembly);
     }
     console.log("Extrahierter Code:\n" + savedCode);
 
@@ -67,6 +40,7 @@ export const handler: Handlers<InitialData> = {
       const p = Deno.run({
         // cmd: ["cmd", "/c", "echo", "Hello World"], windows
         cmd: ["echo", savedCode, input], // linux
+        // cmd: ["gvm", "j++", "otf", savedCode, input], // joshua = bottleneck
         stdout: "piped",
       });
 
