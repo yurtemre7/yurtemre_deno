@@ -184,7 +184,7 @@ export default function TextBox({ code, output, input }: InitialData) {
               Run Code
             </button>
             <div class={tw`m-4`} />
-            {output.length > 0
+            {outputText.length > 0
               ? (
                 <div
                   class={tw`flex-auto w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600`}
