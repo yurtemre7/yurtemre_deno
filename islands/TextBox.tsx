@@ -10,6 +10,10 @@ interface InitialData {
 }
 
 export default function TextBox({ code, output, input }: InitialData) {
+  const [codeText, setCodeText] = useState(code);
+  const [outputText, setOutputText] = useState(output);
+  const [inputText, setInputText] = useState(input);
+
   return (
     <div class={tw`dark:bg-black m-10`}>
       <div class={tw`flex flex-row items-center content-between`}>
@@ -81,16 +85,16 @@ export default function TextBox({ code, output, input }: InitialData) {
                     name="input"
                     rows={20}
                     scrolling={"yes"}
-                    style="font-size: 1.5rem; line-height: 2rem;"
-                    class={tw`resize-none px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400`}
-                    placeholder={"1 2 3\n4 5 9\n7 8 15"}
+                    style="font-size: 1.5rem; line-height: 2rem; min-width: 20vw;"
+                    class={tw`resize-x px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400`}
+                    placeholder={' "Reverse" 81238 '}
                     required={false}
-                    value={input}
+                    value={inputText}
                   />
                 </div>
               </div>
 
-              <div class={tw`mx-10`}></div>
+              <div class={tw`mx-5`}></div>
 
               {/* Input 2 */}
               <div
@@ -101,49 +105,85 @@ export default function TextBox({ code, output, input }: InitialData) {
                   class={tw`py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800`}
                 >
                   <textarea
-                    name="code"
+                    name="assembly"
                     rows={20}
                     scrolling={"yes"}
-                    style="font-size: 1.5rem; line-height: 2rem;"
-                    class={tw`resize-none px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400`}
+                    style="font-size: 1.5rem; line-height: 2rem; min-width: 40vw;"
+                    class={tw`resize-x px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400`}
                     placeholder={":main" + "\n" + "jmp main"}
                     required={false}
-                    value={code}
+                    value={codeText}
                   />
                 </div>
               </div>
             </div>
 
-            <div class={tw`m-2`} />
+            <div class={tw`m-4`} />
 
             <div
-              class={tw`flex w-full justify-between items-center py-2 px-3 border-t dark:border-gray-600`}
+              class={tw`w-full flex flex-row items-center content-between`}
             >
-              <div class={tw`flex pl-0 space-x-1 sm:pl-2`}>
-                <label class={tw`text-white`}>Input file</label>
+              <div class={tw`flex-auto space-x-1 sm:pl-2`}>
+                <label
+                  class={tw`text-white`}
+                >
+                  Input file
+                </label>
                 <input
                   id="dropzone-file"
                   name="ifile"
                   type="file"
                   class={tw``}
+                  onChange={(e) => {
+                    console.log("Changed input");
+                    // get the file object
+                    const htmlInputElem = e.target as HTMLInputElement;
+                    const fileList = htmlInputElem.files;
+                    if (fileList) {
+                      const file = fileList[0];
+                      const reader = new FileReader();
+                      reader.onload = (ev) => {
+                        const text = ev.target?.result as string;
+                        setInputText(text);
+                      };
+                      reader.readAsText(file);
+                    }
+                  }}
                 />
               </div>
-              <div class={tw`flex pl-0 space-x-1 sm:pl-2`}>
+              <div class={tw`flex-auto space-x-1 sm:pl-2`}>
                 <label class={tw`text-white`}>Assembly file</label>
                 <input
                   id="dropzone-file"
                   name="afile"
                   type="file"
                   class={tw``}
+                  onChange={(e) => {
+                    console.log("Changed assembly");
+                    // get the file object
+                    const htmlInputElem = e.target as HTMLInputElement;
+                    const fileList = htmlInputElem.files;
+                    if (fileList) {
+                      const file = fileList[0];
+                      const reader = new FileReader();
+                      reader.onload = (ev) => {
+                        const text = ev.target?.result as string;
+                        setCodeText(text);
+                      };
+                      reader.readAsText(file);
+                    }
+                  }}
                 />
               </div>
-              <button
-                type="submit"
-                class={tw`inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800`}
-              >
-                Run Code
-              </button>
             </div>
+            <div class={tw`m-4`} />
+            <button
+              type="submit"
+              class={tw`inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800`}
+            >
+              Run Code
+            </button>
+            <div class={tw`m-4`} />
             {output.length > 0
               ? (
                 <div
@@ -158,7 +198,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                       style="font-size: 1.5rem;"
                       class={tw`px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400`}
                     >
-                      {output}
+                      {outputText}
                     </p>
                     <div class={tw`m-2`}></div>
                   </div>
