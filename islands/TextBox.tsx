@@ -214,4 +214,4 @@ export default function TextBox({ code, output, input }: InitialData) {
   );
 }
 
-export const load = "eager";
+export const load = "interaction";
