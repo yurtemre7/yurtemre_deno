@@ -213,3 +213,5 @@ export default function TextBox({ code, output, input }: InitialData) {
     </div>
   );
 }
+
+export const load = "eager";
