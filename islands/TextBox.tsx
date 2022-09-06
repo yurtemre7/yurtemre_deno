@@ -195,7 +195,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                   >
                     <div class={tw`m-2`}></div>
                     <p
-                      style="font-size: 1.5rem;"
+                      style="font-size: 1.5rem; line-height: 2rem; max-width: 80vw;"
                       class={tw`px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400`}
                     >
                       {outputText}
