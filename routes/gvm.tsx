@@ -7,16 +7,16 @@ import MyFooter from "../components/MyFooter.tsx";
 import TextBox from "../islands/TextBox.tsx";
 interface InitialData {
   code: string;
+  output: string;
+  input: string;
 }
-
-let savedCode = "";
-let output = "";
-let inputCode = "";
 
 export const handler: Handlers<InitialData> = {
   GET(_req, ctx) {
     const data: InitialData = {
-      code: savedCode,
+      code: "",
+      output: "",
+      input: "",
     };
     return ctx.render(data);
   },
@@ -25,22 +25,16 @@ export const handler: Handlers<InitialData> = {
     const formData = await _req.formData();
     const input = formData.get("input") as string;
     const assembly = formData.get("assembly") as string;
-    savedCode = assembly;
-    inputCode = input;
-
-    if (assembly) {
-      console.log("Code:\n" + assembly);
-    }
-    console.log("Extrahierter Code:\n" + savedCode);
+    let result = "";
 
     let succeed = false;
 
-    if (savedCode.length > 0) {
+    if (assembly.length > 0) {
       // execute shell on server
       const p = Deno.run({
-        // cmd: ["cmd", "/c", "echo", "Hello World"], windows
-        cmd: ["echo", savedCode, input], // linux
-        // cmd: ["gvm", "j++", "otf", savedCode, input], // joshua = bottleneck
+        // cmd: ["cmd", "/c", "EML", assembly], // windows
+        cmd: ["echo", assembly, input], // linux
+        // cmd: ["gvm", "j++", "otf", assembly, input], // joshua = bottleneck
         stdout: "piped",
       });
 
@@ -56,13 +50,15 @@ export const handler: Handlers<InitialData> = {
 
       p.close();
       const txt = new TextDecoder().decode(stdout);
-      console.log("result", txt);
+      // console.log("result", txt);
 
-      output = txt;
+      result = txt;
     }
 
     const data: InitialData = {
-      code: savedCode,
+      code: assembly,
+      output: result,
+      input: input,
     };
     return ctx.render(data);
   },
@@ -76,7 +72,7 @@ export default function Home({ data }: PageProps<InitialData>) {
           <title>yurtemre.de | GVM by DeveloperX19</title>
         </head>
 
-        <TextBox code={data.code} output={output} input={inputCode} />
+        <TextBox code={data.code} output={data.output} input={data.input} />
 
         <Divider />
 
