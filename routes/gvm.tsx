@@ -4,9 +4,9 @@ import { tw } from "@twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Divider from "../components/Divider.tsx";
 import MyFooter from "../components/MyFooter.tsx";
-import TextBox from "../components/TextBox.tsx";
 import { domSheet } from "https://esm.sh/v86/twind@0.16.17/sheets/sheets.d.ts";
 import { exec } from "https://deno.land/x/exec@0.0.5/mod.ts";
+import TextBox from "../islands/TextBox.tsx";
 interface InitialData {
   code: string;
 }
@@ -18,7 +18,7 @@ let inputCode = "";
 export const handler: Handlers<InitialData> = {
   GET(_req, ctx) {
     const data: InitialData = {
-      code: "",
+      code: savedCode,
     };
     return ctx.render(data);
   },
@@ -66,7 +66,7 @@ export const handler: Handlers<InitialData> = {
       // execute shell on server
       const p = Deno.run({
         // cmd: ["cmd", "/c", "echo", "Hello World"], windows
-        cmd: [ "echo", savedCode, input], // linux
+        cmd: ["echo", savedCode, input], // linux
         stdout: "piped",
       });
 
