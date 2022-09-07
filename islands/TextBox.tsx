@@ -134,7 +134,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                   name="ifile"
                   type="file"
                   class={tw``}
-                  onDrop={(e) => {
+                  onChange={(e) => {
                     console.log("Changed input");
 
                     // get the file object
@@ -160,7 +160,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                   name="afile"
                   type="file"
                   class={tw``}
-                  onDrop={(e) => {
+                  onChange={(e) => {
                     console.log("Changed assembly");
 
                     // get the file object
