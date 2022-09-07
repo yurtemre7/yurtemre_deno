@@ -134,13 +134,14 @@ export default function TextBox({ code, output, input }: InitialData) {
                   name="ifile"
                   type="file"
                   class={tw``}
-                  onChange={(e) => {
-                    e.preventDefault();
+                  onDrop={(e) => {
                     console.log("Changed input");
+
                     // get the file object
                     const htmlInputElem = e.target as HTMLInputElement;
+
                     const fileList = htmlInputElem.files;
-                    if (fileList) {
+                    if (fileList && fileList.length > 0) {
                       const file = fileList[0];
                       const reader = new FileReader();
                       reader.onload = (ev) => {
@@ -159,13 +160,14 @@ export default function TextBox({ code, output, input }: InitialData) {
                   name="afile"
                   type="file"
                   class={tw``}
-                  onChange={(e) => {
-                    e.preventDefault();
+                  onDrop={(e) => {
                     console.log("Changed assembly");
+
                     // get the file object
                     const htmlInputElem = e.target as HTMLInputElement;
+
                     const fileList = htmlInputElem.files;
-                    if (fileList) {
+                    if (fileList && fileList.length > 0) {
                       const file = fileList[0];
                       const reader = new FileReader();
                       reader.onload = (ev) => {
