@@ -76,7 +76,7 @@ export default function TextBox({ code, output, input }: InitialData) {
               <div
                 class={tw`flex-auto px-4 pb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600`}
               >
-                <label class={tw``}>Input</label>
+                <label class={tw`text-white`}>Input</label>
 
                 <div
                   class={tw`flex-auto py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800`}
@@ -191,7 +191,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                 <div
                   class={tw`flex-auto w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600`}
                 >
-                  <label class={tw``}>Output</label>
+                  <label class={tw`text-white`}>Output</label>
                   <div
                     class={tw`flex-auto py-4 px-4 bg-white rounded-t-lg dark:bg-gray-800`}
                   >
@@ -213,5 +213,3 @@ export default function TextBox({ code, output, input }: InitialData) {
     </div>
   );
 }
-
-export const load = "eager";
