@@ -1,6 +1,4 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
+import { tw } from "twind";
 
 export default function About() {
   const diff = new Date().getTime() - new Date("2020-10-01").getTime();

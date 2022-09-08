@@ -1,6 +1,4 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Divider from "../components/Divider.tsx";
 import MyFooter from "../components/MyFooter.tsx";
