@@ -1,4 +1,3 @@
-import { tw } from "twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Divider from "../components/Divider.tsx";
 import MyFooter from "../components/MyFooter.tsx";
@@ -60,8 +59,8 @@ export const handler: Handlers<InitialData> = {
 
 export default function Home({ data }: PageProps<InitialData>) {
   return (
-    <html class={tw`dark:bg-black h-full w-full`}>
-      <div class={tw`dark:bg-black h-full w-full`}>
+    <html class="dark:bg-black h-full w-full">
+      <div class="dark:bg-black h-full w-full">
         <head>
           <title>yurtemre.de | GVM by DeveloperX19</title>
         </head>

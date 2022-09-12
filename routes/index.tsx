@@ -1,4 +1,3 @@
-import { tw } from "twind";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import Welcome from "../components/Welcome.tsx";
 import Divider from "../components/Divider.tsx";
@@ -63,8 +62,8 @@ export const handler: Handlers<InitialData> = {
 
 export default function Home({ data }: PageProps<InitialData>) {
   return (
-    <html class={tw`dark:bg-black h-full w-full`}>
-      <div class={tw`dark:bg-black h-full w-full`}>
+    <html class="dark:bg-black h-full w-full">
+      <div class="dark:bg-black h-full w-full">
         <head>
           <title>yurtemre.de</title>
         </head>
