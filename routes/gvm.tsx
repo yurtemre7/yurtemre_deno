@@ -37,6 +37,7 @@ export const handler: Handlers<InitialData> = {
           result = "Error: " + err;
           return err;
         });
+        console.log(res)
         // check if res is of type Response
         if (res instanceof Response) {
           result = await res.text();
