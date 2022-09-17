@@ -25,13 +25,13 @@ export const handler: Handlers<InitialData> = {
     let result = "";
 
     if (assembly.length > 0) {
-      const body = new FormData();
-      body.append("assembly", assembly);
-      body.append("input", input);
       try {
         const res = await fetch("http://server.yurtemre.de:6060/gvm", {
           method: "POST",
-          body,
+          headers: {
+            'assembly': assembly,
+            'input': input,
+          }
         }).catch((err) => {
           console.log(err);
           result = "Error: " + err;
