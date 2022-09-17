@@ -30,16 +30,16 @@ export const handler: Handlers<InitialData> = {
       try {
         const res = await fetch("http://server.yurtemre.de:6060/gvm", {
           method: "POST",
-          headers: {
-            'assembly': assembly,
-            'input': input,
-          }
+          body: JSON.stringify({
+            input: input,
+            assembly: assembly,
+          }),
         }).catch((err) => {
           console.log(err);
           result = "Error: " + err;
           return err;
         });
-        console.log(res)
+        console.log(res);
         // check if res is of type Response
         if (res instanceof Response) {
           result = await res.text();
