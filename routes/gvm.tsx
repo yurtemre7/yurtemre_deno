@@ -23,6 +23,8 @@ export const handler: Handlers<InitialData> = {
     const input = formData.get("input") as string;
     const assembly = formData.get("assembly") as string;
     let result = "";
+    console.log("input: ", input);
+    console.log("assembly: ", assembly);
 
     if (assembly.length > 0) {
       try {
