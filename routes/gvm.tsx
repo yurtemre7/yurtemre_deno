@@ -46,13 +46,12 @@ export const handler: Handlers<InitialData> = {
       }
     }
 
-    console.log(result);
-
     const data: InitialData = {
       code: assembly,
       output: result,
       input: input,
     };
+
     return ctx.render(data);
   },
 };
