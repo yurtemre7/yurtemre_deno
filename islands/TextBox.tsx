@@ -6,17 +6,48 @@ interface InitialData {
   input: string;
 }
 
+const exampleCode1 = "# inp = tx0\n" +
+  "# size = ti0\n" +
+  "# tmp = tr0\n" +
+  "# iter = ti1\n" +
+  "jmp mainloop\n" +
+  "\n" +
+  "// write the result of (tmp * tmp) to tmp\n" +
+  ": square\n" +
+  "muli tmp tmp tmp\n" +
+  "ret\n" +
+  "\n" +
+  ": mainloop\n" +
+  "mov tmp inp[iter]\n" +
+  "call square\n" +
+  "mov inp[iter] tmp\n" +
+  "addi iter 1 iter\n" +
+  "lti iter size tmp\n" +
+  "cjmp mainloop tmp\n" +
+  "ret\n";
+
+const exampleInput1 = "2 -4 9\n132\n100";
+
 export default function TextBox({ code, output, input }: InitialData) {
   const [codeText, setCodeText] = useState(code);
   const [outputText, setOutputText] = useState(output);
   const [inputText, setInputText] = useState(input);
 
+  
+
   function stringToHTMLWithLineBreaks(str: string) {
-    return <div>
-      {str.split("\n").map((item, key) => {
-        return <span key={key}>{item}<br /></span>
-      })}
-    </div>
+    return (
+      <div>
+        {str.split("\n").map((item, key) => {
+          return (
+            <span key={key}>
+              {item}
+              <br />
+            </span>
+          );
+        })}
+      </div>
+    );
   }
 
   return (
@@ -84,7 +115,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                     scrolling={"yes"}
                     style="font-size: 1.5rem; line-height: 2rem; min-width: 20vw;"
                     class="resize-x px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                    placeholder={' "Reverse" 81238 '}
+                    placeholder={exampleInput1}
                     required={false}
                     value={inputText}
                   />
@@ -103,7 +134,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                     scrolling={"yes"}
                     style="font-size: 1.5rem; line-height: 2rem; min-width: 40vw;"
                     class="resize-x px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                    placeholder={":main" + "\n" + "jmp main"}
+                    placeholder={exampleCode1}
                     required={false}
                     value={codeText}
                   />
@@ -187,14 +218,13 @@ export default function TextBox({ code, output, input }: InitialData) {
                       style="font-size: 1.5rem; line-height: 2rem;"
                       class="px-0 text-sm text-white border-0 dark:bg-gray-800 dark:text-white"
                     >
-                     {stringToHTMLWithLineBreaks(outputText)}
+                      {stringToHTMLWithLineBreaks(outputText)}
                     </div>
                     <div class="m-2"></div>
                   </div>
                 </div>
               )
               : ""}
-              
           </form>
         </div>
       </div>
