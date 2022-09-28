@@ -6,7 +6,6 @@ import MyFooter from "../components/MyFooter.tsx";
 import { Repositories } from "../components/classes/Github.ts";
 import MeineProjekte from "../components/MeineProjekte.tsx";
 import Header from "../components/Header.tsx";
-import { render } from "https://deno.land/x/fresh@1.1.0/src/server/render.ts";
 
 interface InitialData {
   joke: string;
@@ -17,9 +16,15 @@ let reps: Repositories = [];
 let lastFetch = Date.parse("2020-01-01");
 
 export const handler: Handlers<InitialData> = {
-  async HEAD(_req, ctx) {
+  HEAD(_req, ctx) {
     // head response
-    let resp = await ctx.render(undefined);
+    let resp = new Response("", {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html",
+      },
+      statusText: "OK",
+    });
     return resp;
     return {
       status: 200,
