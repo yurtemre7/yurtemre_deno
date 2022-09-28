@@ -6,6 +6,7 @@ import MyFooter from "../components/MyFooter.tsx";
 import { Repositories } from "../components/classes/Github.ts";
 import MeineProjekte from "../components/MeineProjekte.tsx";
 import Header from "../components/Header.tsx";
+import { render } from "https://deno.land/x/fresh@1.1.0/src/server/render.ts";
 
 interface InitialData {
   joke: string;
@@ -16,6 +17,36 @@ let reps: Repositories = [];
 let lastFetch = Date.parse("2020-01-01");
 
 export const handler: Handlers<InitialData> = {
+  async HEAD(_req, ctx) {
+    // head response
+    let resp = await ctx.render(undefined);
+    return resp;
+    return {
+      status: 200,
+      headers: {
+        "content-type": "text/html",
+        "append": () => {},
+        "delete": () => {},
+        "forEach": () => {},
+        "get": (head) => "head",
+        "has": (a) => !!a,
+        "set": (a) => {},
+      },
+      body: "",
+      statusText: "OK",
+      ok: true,
+      redirected: false,
+      type: "basic",
+      url: _req.url,
+      clone: () => ctx,
+      bodyUsed: false,
+      arrayBuffer: () => new ArrayBuffer(0),
+      blob: () => new Blob(),
+      formData: () => new FormData(),
+      json: () => ({}),
+      text: () => "",
+    };
+  },
   async GET(_req, ctx) {
     const JOKES = [
       "Why do Java developers often wear glasses? They can't C#.",
