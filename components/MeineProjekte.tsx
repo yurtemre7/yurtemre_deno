@@ -15,7 +15,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
           {repos.length == 0
             ? <p class="p-12">Github Time Out Fehler xD</p>
             : ""}
-          <div class="p-12 grid grid-cols-4 gap-4">
+          <div class="p-12 flex flex-wrap items-center justify-around gap-4">
             {repos.length != 0
               ? repos.map((repo) => (
                 <div class="group">
