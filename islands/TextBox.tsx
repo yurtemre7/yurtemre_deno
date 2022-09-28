@@ -30,10 +30,8 @@ const exampleInput1 = "2 -4 9\n132\n100";
 
 export default function TextBox({ code, output, input }: InitialData) {
   const [codeText, setCodeText] = useState(code);
-  const [outputText, setOutputText] = useState(output);
+  const [outputText, _] = useState(output);
   const [inputText, setInputText] = useState(input);
-
-  
 
   function stringToHTMLWithLineBreaks(str: string) {
     return (
@@ -52,7 +50,7 @@ export default function TextBox({ code, output, input }: InitialData) {
 
   return (
     <div class="dark:bg-black m-10">
-      <div class="flex flex-row items-center content-between">
+      <div class="mx-auto text-center flex-row flex items-center justify-center">
         <a href="/" class="text-blue-500 flex-auto">
           <svg
             class="w-6 h-6"
@@ -72,11 +70,11 @@ export default function TextBox({ code, output, input }: InitialData) {
             </path>
           </svg>
         </a>
-        <div class="dark:bg-black text-white">
+        <div class="dark:bg-black dark:text-white text-black">
           <h1 class="text-4xl font-bold text-center">GVM</h1>
           <h2 class="text-2xl font-bold text-center">by DeveloperX19</h2>
         </div>
-        <div class="text-black flex-auto">
+        <div class="dark:text-black text-white flex-auto">
           <svg
             class="w-6 h-6"
             fill="none"
@@ -96,17 +94,17 @@ export default function TextBox({ code, output, input }: InitialData) {
           </svg>
         </div>
       </div>
-
-      <div class="h-screen text-center flex-col flex items-center justify-center dark:text-gray-500">
-        <div class="flex flex-row items-center content-between">
+      <div class="m-4" />
+      <div class="text-center flex-col flex items-center justify-center dark:text-gray-500">
+        <div class="flex flex-wrap items-center content-between">
           <form
             method="POST"
             class="flex flex-col items-center"
           >
-            <div class="flex flex-row items-center content-between">
+            <div class="flex flex-wrap items-center content-between">
               {/* Input 1 */}
-              <div class="flex-auto px-4 pb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-                <label class="text-white">Input</label>
+              <div class="flex-auto px-4 pb-4 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <label class="dark:text-white">Input</label>
 
                 <div class="flex-auto py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
                   <textarea
@@ -114,7 +112,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                     rows={20}
                     scrolling={"yes"}
                     style="font-size: 1.5rem; line-height: 2rem; min-width: 20vw;"
-                    class="resize-x px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                    class="resize-y px-0 text-sm dark:text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:placeholder-gray-400"
                     placeholder={exampleInput1}
                     required={false}
                     value={inputText}
@@ -125,15 +123,15 @@ export default function TextBox({ code, output, input }: InitialData) {
               <div class="mx-5"></div>
 
               {/* Input 2 */}
-              <div class="flex-auto px-4 pb-4 w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-                <label class="text-white">Assembly</label>
+              <div class="flex-auto px-4 pb-4 bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+                <label class="dark:text-white">Assembly</label>
                 <div class="py-2 px-4 bg-white rounded-t-lg dark:bg-gray-800">
                   <textarea
                     name="assembly"
                     rows={20}
                     scrolling={"yes"}
                     style="font-size: 1.5rem; line-height: 2rem; min-width: 40vw;"
-                    class="resize-x px-0 w-full text-5xl text-sm text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                    class="resize-y px-0 text-5xl text-sm dark:text-white bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
                     placeholder={exampleCode1}
                     required={false}
                     value={codeText}
@@ -144,9 +142,9 @@ export default function TextBox({ code, output, input }: InitialData) {
 
             <div class="m-4" />
 
-            <div class="w-full flex flex-row items-center content-between">
+            <div class="flex flex-wrap items-center content-between">
               <div class="flex-auto space-x-1 sm:pl-2">
-                <label class="text-white">
+                <label class="dark:text-white">
                   Input file
                 </label>
                 <input
@@ -174,7 +172,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                 />
               </div>
               <div class="flex-auto space-x-1 sm:pl-2">
-                <label class="text-white">Assembly file</label>
+                <label class="dark:text-white">Assembly file</label>
                 <input
                   id="dropzone-file"
                   name="afile"
@@ -207,26 +205,28 @@ export default function TextBox({ code, output, input }: InitialData) {
             >
               Run Code
             </button>
-            <div class="m-4" />
-            {outputText.length > 0
-              ? (
-                <div class="flex-auto w-full bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-                  <label class="text-white">Output</label>
-                  <div class="flex-auto py-4 px-4 bg-white rounded-t-lg dark:bg-gray-800">
-                    <div class="m-2"></div>
-                    <div
-                      style="font-size: 1.5rem; line-height: 2rem;"
-                      class="px-0 text-sm text-white border-0 dark:bg-gray-800 dark:text-white"
-                    >
-                      {stringToHTMLWithLineBreaks(outputText)}
-                    </div>
-                    <div class="m-2"></div>
-                  </div>
-                </div>
-              )
-              : ""}
           </form>
         </div>
+      </div>
+      <div class="m-4" />
+      <div class="mx-auto text-center flex-col flex items-center justify-center dark:text-gray-500">
+        {outputText.length > 0
+          ? (
+            <div class="flex-auto bg-gray-50 rounded-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+              <label class="dark:text-white">Output</label>
+              <div class="flex-auto py-4 px-4 bg-white rounded-t-lg dark:bg-gray-800">
+                <div class="m-2"></div>
+                <div
+                  style="font-size: 1.5rem; line-height: 2rem;"
+                  class="px-0 text-sm dark:text-white border-0 dark:bg-gray-800"
+                >
+                  {stringToHTMLWithLineBreaks(outputText)}
+                </div>
+                <div class="m-2"></div>
+              </div>
+            </div>
+          )
+          : ""}
       </div>
     </div>
   );
