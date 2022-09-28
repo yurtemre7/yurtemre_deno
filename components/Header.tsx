@@ -17,9 +17,9 @@ export default function Header() {
         <h1 class="text-4xl font-bold text-center">yurtemre.de</h1>
         <p class="text-xl font-bold text-center">by Emre Yurtseven</p>
       </div>
-      <div class="text-black flex-auto">
+      <div class="flex-auto">
         <svg
-          class="w-6 h-6"
+          class="w-6 h-6 dark:text-black text-white"
           fill="none"
           width="36"
           height="36"
