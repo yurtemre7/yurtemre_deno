@@ -1,7 +1,8 @@
 {
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
-    "run": "deno run -A main.ts"
+    "run": "deno run -A main.ts",
+    "update": "deno run -A -r https://fresh.deno.dev/update ."
   },
   "importMap": "./import_map.json",
   "compilerOptions": {
