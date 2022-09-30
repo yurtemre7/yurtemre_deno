@@ -10,35 +10,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
 
   function onHover(repo: Repository, i: number) {
     console.log("enter");
-    console.log(repo.url);
-    console.log(i);
-
-    // insert an i frame with the repo url next to the repo
-    let iframe = document.createElement("iframe");
-    iframe.src = repo.url;
-    iframe.style.width = "100%";
-    iframe.style.height = "100%";
-    iframe.style.position = "absolute";
-    iframe.style.top = "0";
-    iframe.style.left = "0";
-    iframe.style.zIndex = "100";
-    iframe.style.border = "none";
-    iframe.style.borderRadius = "10px";
-    iframe.style.boxShadow = "0 0 10px 0 rgba(0,0,0,0.5)";
-    iframe.style.transition = "all 0.5s ease-in-out";
-    iframe.style.opacity = "0";
-    iframe.style.pointerEvents = "none";
-    iframe.style.transform = "scale(0.5)";
-    iframe.style.transformOrigin = "top left";
-    iframe.style.backgroundColor = "white";
-    iframe.style.overflow = "hidden";
-    iframe.style.padding = "0";
-    iframe.style.margin = "0";
-    iframe.style.display = "block";
-  }
-
-  function onLeave() {
-    console.log("leave");
+    console.log(repo.html_url);
   }
 
   return (
@@ -60,7 +32,6 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                     onMouseEnter={() => {
                       onHover(repo, index);
                     }}
-                    onMouseLeave={onLeave}
                   >
                     <a
                       href={repo.html_url}
