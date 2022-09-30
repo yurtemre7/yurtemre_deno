@@ -35,12 +35,9 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                       {repo.description}
                     </p>
                     {/* latest commit */}
-                    <a
-                      href={repo.commits_url}
-                      class="text-sm dark:group-hover:text-white group-hover:text-blue-500"
-                    >
-                      {repo.commits_url}
-                    </a>
+                    <p class="text-sm dark:group-hover:text-white group-hover:text-blue-500">
+                      {repo.language}
+                    </p>
                   </div>
                 </div>
               ))
