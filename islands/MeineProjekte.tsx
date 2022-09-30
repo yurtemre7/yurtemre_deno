@@ -7,6 +7,7 @@ interface RepositoryProps {
 export default function MeineProjekte({ repos }: RepositoryProps) {
   // shuffle the repos
   repos = repos.sort(() => 0.5 - Math.random());
+  console.log(repos.at(0));
 
   return (
     <div class="dark:bg-black m-10">
@@ -33,11 +34,13 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                     <p class="text-sm dark:group-hover:text-white group-hover:text-blue-500">
                       {repo.description}
                     </p>
-                    <iframe
-                      class="group-hover:opacity-100 opacity-0 group-hover:h-1/4 w-auto"
-                      src={repo.contents_url}
+                    {/* latest commit */}
+                    <a
+                      href={repo.commits_url}
+                      class="text-sm dark:group-hover:text-white group-hover:text-blue-500"
                     >
-                    </iframe>
+                      {repo.commits_url}
+                    </a>
                   </div>
                 </div>
               ))
