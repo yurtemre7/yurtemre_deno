@@ -8,11 +8,6 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
   // shuffle the repos
   repos = repos.sort(() => 0.5 - Math.random());
 
-  function onHover(repo: Repository, i: number) {
-    console.log("enter");
-    console.log(repo.html_url);
-  }
-
   return (
     <div class="dark:bg-black m-10">
       <div class="h-full text-center flex items-center justify-center">
@@ -27,12 +22,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
             {repos.length != 0
               ? repos.map((repo, index) => (
                 <div>
-                  <div
-                    class="group border rounded-2xl border-4 hover:border-blue-500 dark:hover:border-white dark:border-gray-500 p-4"
-                    onMouseEnter={() => {
-                      onHover(repo, index);
-                    }}
-                  >
+                  <div class="group border rounded-2xl border-4 hover:border-blue-500 dark:hover:border-white dark:border-gray-500 p-4">
                     <a
                       href={repo.html_url}
                       target="_blank"
@@ -45,7 +35,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                     </p>
                     <iframe
                       class="group-hover:opacity-100 opacity-0 group-hover:h-1/4 w-auto"
-                      src={repo.html_url}
+                      src={repo.contents_url}
                     >
                     </iframe>
                   </div>
