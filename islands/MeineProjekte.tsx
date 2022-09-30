@@ -73,10 +73,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                       {repo.description}
                     </p>
                     <iframe
-                      class="group-hover:opacity-100 opacity-0"
-                      id={`${index}`}
-                      width={200}
-                      height={300}
+                      class="group-hover:opacity-100 opacity-0 group-hover:h-1/4 w-auto"
                       src={repo.html_url}
                     >
                     </iframe>
