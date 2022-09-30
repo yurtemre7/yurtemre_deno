@@ -4,7 +4,7 @@ import Divider from "../components/Divider.tsx";
 import About from "../components/About.tsx";
 import MyFooter from "../components/MyFooter.tsx";
 import { Repositories } from "../components/classes/Github.ts";
-import MeineProjekte from "../islands/MeineProjekte.tsx";
+import MeineProjekte from "../components/MeineProjekte.tsx";
 import Header from "../components/Header.tsx";
 
 interface InitialData {
