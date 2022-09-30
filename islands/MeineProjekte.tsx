@@ -77,7 +77,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                       id={`${index}`}
                       width={200}
                       height={300}
-                      src={repo.url}
+                      src={repo.html_url}
                     >
                     </iframe>
                   </div>
