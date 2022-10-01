@@ -9,7 +9,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
   repos = repos.sort(() => 0.5 - Math.random());
 
   // get avatar url from first repo
-  let avatarUrl = repos.at(0)?.owner.avatar_url || "";
+  const avatarUrl = repos.at(0)?.owner.avatar_url || "";
 
   return (
     <div class="dark:bg-black m-10">
