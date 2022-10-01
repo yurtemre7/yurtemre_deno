@@ -26,31 +26,6 @@ export const handler: Handlers<InitialData> = {
       statusText: "OK",
     });
     return resp;
-    return {
-      status: 200,
-      headers: {
-        "content-type": "text/html",
-        "append": () => {},
-        "delete": () => {},
-        "forEach": () => {},
-        "get": (head) => "head",
-        "has": (a) => !!a,
-        "set": (a) => {},
-      },
-      body: "",
-      statusText: "OK",
-      ok: true,
-      redirected: false,
-      type: "basic",
-      url: _req.url,
-      clone: () => ctx,
-      bodyUsed: false,
-      arrayBuffer: () => new ArrayBuffer(0),
-      blob: () => new Blob(),
-      formData: () => new FormData(),
-      json: () => ({}),
-      text: () => "",
-    };
   },
   async GET(_req, ctx) {
     const JOKES = [
