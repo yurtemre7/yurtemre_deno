@@ -5,6 +5,7 @@ export default function MyFooter() {
         <p class="text-center">
           <a
             href="https://t.me/emredev"
+            target="_blank"
             class="text-blue-500 hover:underline"
           >
             Telegram
@@ -16,6 +17,7 @@ export default function MyFooter() {
         <p class="text-center">
           <a
             href="https://github.com/yurtemre7"
+            target="_blank"
             class="text-blue-500 hover:underline"
           >
             GitHub
@@ -42,7 +44,22 @@ export default function MyFooter() {
         <div class="m-4" />
 
         <p class="text-center text-gray-500">
-          made with `fresh` @ Deno
+          made with{" "}
+          <a
+            class="text-blue-500 hover:underline"
+            href="https://fresh.deno.dev/"
+            target="_blank"
+          >
+            fresh
+          </a>{" "}
+          @{" "}
+          <a
+            class="text-blue-500 hover:underline"
+            href="https://deno.land/"
+            target="_blank"
+          >
+            Deno
+          </a>
         </p>
         <div class="ml-4" />
         <img
