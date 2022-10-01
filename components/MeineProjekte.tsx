@@ -23,7 +23,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
             <image class="w-20 mx-auto" src={avatarUrl} />
           </a>
           <div class="m-8" />
-          <p class="text-xl">
+          <p class="text-xl p-10">
             Hier findest du eine Liste meiner Projekte, die ich in meiner
             Freizeit entwickelt habe und weiter entwickle.
           </p>
