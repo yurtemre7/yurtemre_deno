@@ -1,6 +1,6 @@
 export default function Impressum() {
   return (
-    <div class="dark:bg-black h-screen text-center flex items-center">
+    <div class="dark:bg-black h-screen w-screen text-center flex flex-wrap items-center">
       <head>
         <title>yurtemre.de | Impressum</title>
       </head>
