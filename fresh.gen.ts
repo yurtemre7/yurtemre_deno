@@ -3,16 +3,18 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import config from "./deno.json" assert { type: "json" };
-import * as $0 from "./routes/gvm.tsx";
-import * as $1 from "./routes/impressum.tsx";
-import * as $2 from "./routes/index.tsx";
+import * as $0 from "./routes/datenschutz.tsx";
+import * as $1 from "./routes/gvm.tsx";
+import * as $2 from "./routes/impressum.tsx";
+import * as $3 from "./routes/index.tsx";
 import * as $$0 from "./islands/TextBox.tsx";
 
 const manifest = {
   routes: {
-    "./routes/gvm.tsx": $0,
-    "./routes/impressum.tsx": $1,
-    "./routes/index.tsx": $2,
+    "./routes/datenschutz.tsx": $0,
+    "./routes/gvm.tsx": $1,
+    "./routes/impressum.tsx": $2,
+    "./routes/index.tsx": $3,
   },
   islands: {
     "./islands/TextBox.tsx": $$0,

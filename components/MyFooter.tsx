@@ -37,6 +37,17 @@ export default function MyFooter() {
 
         <div class="m-4" />
 
+        <p class="text-center">
+          <a
+            href="datenschutz"
+            class="text-blue-500 hover:underline"
+          >
+            Datenschutz
+          </a>
+        </p>
+
+        <div class="m-4" />
+
         <p class="text-center text-gray-500">
           © {new Date().getFullYear()} Emre Yurtseven
         </p>
