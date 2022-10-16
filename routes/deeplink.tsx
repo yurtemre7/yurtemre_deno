@@ -63,7 +63,7 @@ export default function Deeplink(props: PageProps) {
 
       <div class="p-5 dark:text-white h-screen mx-auto items-center justify-center flex-col flex dark:bg-black">
         <p class="text-xl font-bold">
-          Ein Standort wird mit dir geteilt
+          Ein Standort wird mit dir geteilt:
         </p>
         
         <div class="m-5"></div>
