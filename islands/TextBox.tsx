@@ -153,8 +153,6 @@ export default function TextBox({ code, output, input }: InitialData) {
                   type="file"
                   class=""
                   onChange={(e) => {
-                    console.log("Changed input");
-
                     // get the file object
                     const htmlInputElem = e.target as HTMLInputElement;
 
