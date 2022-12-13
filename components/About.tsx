@@ -25,13 +25,6 @@ export default function About() {
               href="https://flutter.dev"
             >
               Flutter
-            </a>{" "}
-            am{" "}
-            <a
-              class="text-blue-500 hover:underline"
-              href="https://www.appmelder.de"
-            >
-              Appmelder
             </a>.
           </p>
         </div>

@@ -65,7 +65,7 @@ export default function Deeplink(props: PageProps) {
         <p class="text-xl font-bold">
           Ein Standort wird mit dir geteilt:
         </p>
-        
+
         <div class="m-5"></div>
 
         <DeeplinkButton title={pTitle} lat={pLat} long={pLong} />
