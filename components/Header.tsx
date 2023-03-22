@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <div class="flex flex-row items-center content-between m-10">
-      <a href="/gvm" class="text-blue-500 flex-auto">
+      <a href="/gvm" class="text-blue-500 w-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="36"
@@ -17,24 +17,10 @@ export default function Header() {
         <h1 class="text-4xl font-bold text-center">yurtemre.de</h1>
         <p class="text-xl font-bold text-center">by Emre Yurtseven</p>
       </div>
-      <div class="flex-auto">
-        <svg
-          class="w-6 h-6 dark:text-black text-white"
-          fill="none"
-          width="36"
-          height="36"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-          >
-          </path>
-        </svg>
+      <div>
+        <a href="/elsword" class="dark:text-blue-500 text-black">
+          Elsword
+        </a>
       </div>
     </div>
   );
