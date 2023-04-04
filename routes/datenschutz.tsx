@@ -1,11 +1,11 @@
 export default function Datenschutz() {
   return (
-    <div class="dark:bg-black h-full w-full dark:text-white text-left p-10 items-center">
+    <div class="h-full w-full text-left p-10 items-center text-white bg-gradient-to-r from-indigo-600 to-blue-600">
       <h1>Datenschutzerklärung</h1>
       <p>Stand: 14. Oktober 2022</p>
       <div class="m-10" />
       <h2>Inhaltsübersicht</h2>{" "}
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <a class="" href="#m14">Einleitung</a>
         </li>
@@ -62,7 +62,12 @@ export default function Datenschutz() {
       </p>
       E-Mail-Adresse:{" "}
       <p>
-        <a href="mailto:emreyurtseven18@gmail.com">emreyurtseven18@gmail.com</a>
+        <a
+          href="mailto:emreyurtseven18@gmail.com"
+          class="font-bold hover:underline"
+        >
+          emreyurtseven18@gmail.com
+        </a>
       </p>
       Impressum:{" "}
       <p>
@@ -79,7 +84,7 @@ export default function Datenschutz() {
         Personen.
       </p>
       <h3>Arten der verarbeiteten Daten</h3>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>Bestandsdaten.</li>
         <li>Zahlungsdaten.</li>
         <li>Kontaktdaten.</li>
@@ -88,13 +93,13 @@ export default function Datenschutz() {
         <li>Meta-/Kommunikationsdaten.</li>
       </ul>
       <h3>Kategorien betroffener Personen</h3>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>Kunden.</li>
         <li>Interessenten.</li>
         <li>Geschäfts- und Vertragspartner.</li>
       </ul>
       <h3>Zwecke der Verarbeitung</h3>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>Erbringung vertraglicher Leistungen und Kundenservice.</li>
         <li>Kontaktanfragen und Kommunikation.</li>
         <li>Sicherheitsmaßnahmen.</li>
@@ -112,7 +117,7 @@ export default function Datenschutz() {
         können. Sollten ferner im Einzelfall speziellere Rechtsgrundlagen
         maßgeblich sein, teilen wir Ihnen diese in der Datenschutzerklärung mit.
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>
             Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1
@@ -125,14 +130,14 @@ export default function Datenschutz() {
         </li>
         <li>
           <strong>
-            Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c) DSGVO)
+            Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c) DSGVO
           </strong>{" "}
           - Die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung
           erforderlich, der der Verantwortliche unterliegt.
         </li>
         <li>
           <strong>
-            Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)
+            Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO
           </strong>{" "}
           - Die Verarbeitung ist zur Wahrung der berechtigten Interessen des
           Verantwortlichen oder eines Dritten erforderlich, sofern nicht die
@@ -297,8 +302,8 @@ export default function Datenschutz() {
         <li>
           <strong>Rechtsgrundlagen:</strong>{" "}
           Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1
-          lit. b) DSGVO); Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c)
-          DSGVO); Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO).
+          lit. b) DSGVO; Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c)
+          DSGVO; Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO.
         </li>
       </ul>
       <p>
@@ -306,7 +311,7 @@ export default function Datenschutz() {
           Weitere Hinweise zu Verarbeitungsprozessen, Verfahren und Diensten:
         </strong>
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>Kundenkonto:</strong>{" "}
           Vertragspartner können innerhalb unseres Onlineangebotes ein Konto
@@ -372,7 +377,7 @@ export default function Datenschutz() {
         Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die
         sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>
             Widerspruchsrecht: Sie haben das Recht, aus Gründen, die sich aus
@@ -443,7 +448,7 @@ export default function Datenschutz() {
         Erläuterungen sollen dagegen vor allem dem Verständnis dienen. Die
         Begriffe sind alphabetisch sortiert.
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside text-gray-500 dark:text-gray-400 m-4">
+      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>Personenbezogene Daten:</strong>{" "}
           "Personenbezogene Daten“ sind alle Informationen, die sich auf eine

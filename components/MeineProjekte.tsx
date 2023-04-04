@@ -12,49 +12,59 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
   const avatarUrl = repos.at(0)?.owner.avatar_url || "";
 
   return (
-    <div class="dark:bg-black m-10">
+    <div class="p-16">
       <div class="h-full text-center flex items-center justify-center">
-        <div class="dark:text-gray-500">
+        <div>
           <p class="text-5xl font-bold hover:underline">
             Meine Projekte
           </p>
-          <div class="m-8" />
+          <div class="pt-8" />
           <a href="https://github.com/yurtemre7" target="_blank">
-            <image class="w-20 mx-auto" src={avatarUrl} />
+            <image
+              class="w-20 h-20 mx-auto"
+              src={avatarUrl}
+              alt="Github profile picture"
+            />
           </a>
-          <div class="m-8" />
-          <p class="text-xl p-10">
+          <p class="text-xl py-5">
             Hier findest du eine Liste meiner Projekte, die ich in meiner
             Freizeit entwickelt habe und weiter entwickle.
           </p>
-
-          <div class="p-12 flex flex-wrap items-center justify-around gap-4">
+          <div class="flex flex-wrap gap-4 place-content-center">
             {repos.length != 0
               ? repos.map((repo, index) => (
                 <div>
-                  <div class="group border rounded-2xl border-4 hover:border-blue-500 dark:hover:border-white dark:border-gray-500 p-4">
+                  <div class="group rounded-2xl border-4 hover:border-black p-4">
                     <a
                       href={repo.html_url}
                       target="_blank"
-                      class="text-xl group-hover:underline dark:group-hover:text-white group-hover:text-blue-500"
+                      class="text-xl group-hover:underline"
                     >
                       {repo.name}
                     </a>
                     {repo.description?.length ?? 0 > 0
                       ? (
-                        <p class="text-sm dark:group-hover:text-white group-hover:text-blue-500">
+                        <p class="text-sm truncate">
                           {repo.description}
                         </p>
                       )
-                      : ""}
+                      : (
+                        <p class="text-sm">
+                          Keine Beschreibung vorhanden
+                        </p>
+                      )}
 
                     {repo.language?.length ?? 0 > 0
                       ? (
-                        <p class="text-sm dark:group-hover:text-white group-hover:text-blue-500">
+                        <p class="text-sm">
                           mit {repo.language}
                         </p>
                       )
-                      : ""}
+                      : (
+                        <p class="text-sm">
+                          Keine Programmiersprache angegeben
+                        </p>
+                      )}
                   </div>
                 </div>
               ))

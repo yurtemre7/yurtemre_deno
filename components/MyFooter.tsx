@@ -48,13 +48,13 @@ export default function MyFooter() {
 
         <div class="m-4" />
 
-        <p class="text-center text-gray-800">
+        <p class="text-center">
           © {new Date().getFullYear()} Emre Yurtseven
         </p>
 
         <div class="m-4" />
 
-        <p class="text-center text-gray-800">
+        <p class="text-center">
           made with{" "}
           <a
             class="font-bold hover:underline"
