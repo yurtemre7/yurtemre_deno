@@ -4,9 +4,9 @@ export default function About() {
   const semester = Math.ceil(days / (30 * 6));
 
   return (
-    <div class="dark:bg-black">
+    <div class="p-4">
       <div class="h-screen text-center flex items-center justify-center">
-        <div class="dark:text-gray-500">
+        <div>
           <p class="text-5xl font-bold hover:underline">
             Wer ist'n das? 🤷‍♂️
           </p>
@@ -14,14 +14,14 @@ export default function About() {
           <p class="text-xl">
             Emre ist ein Informatik Student im {semester}. Semester an der{"  "}
             <a
-              class="text-blue-500 hover:underline"
+              class="hover:underline font-bold"
               href="https://www.tu.berlin/"
             >
               TU Berlin
             </a>{" "}
             und arbeitet in der Cross-Platform App-Entwicklung mit{"  "}
             <a
-              class="text-blue-500 hover:underline"
+              class="hover:underline font-bold"
               href="https://flutter.dev"
             >
               Flutter

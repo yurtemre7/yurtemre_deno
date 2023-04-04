@@ -6,7 +6,7 @@ export default function MyFooter() {
           <a
             href="https://t.me/emredev"
             target="_blank"
-            class="text-blue-500 hover:underline"
+            class="font-bold hover:underline"
           >
             Telegram
           </a>
@@ -18,7 +18,7 @@ export default function MyFooter() {
           <a
             href="https://github.com/yurtemre7"
             target="_blank"
-            class="text-blue-500 hover:underline"
+            class="font-bold hover:underline"
           >
             GitHub
           </a>
@@ -29,7 +29,7 @@ export default function MyFooter() {
         <p class="text-center">
           <a
             href="impressum"
-            class="text-blue-500 hover:underline"
+            class="font-bold hover:underline"
           >
             Impressum
           </a>
@@ -40,7 +40,7 @@ export default function MyFooter() {
         <p class="text-center">
           <a
             href="datenschutz"
-            class="text-blue-500 hover:underline"
+            class="font-bold hover:underline"
           >
             Datenschutz
           </a>
@@ -48,16 +48,16 @@ export default function MyFooter() {
 
         <div class="m-4" />
 
-        <p class="text-center text-gray-500">
+        <p class="text-center text-gray-800">
           © {new Date().getFullYear()} Emre Yurtseven
         </p>
 
         <div class="m-4" />
 
-        <p class="text-center text-gray-500">
+        <p class="text-center text-gray-800">
           made with{" "}
           <a
-            class="text-blue-500 hover:underline"
+            class="font-bold hover:underline"
             href="https://fresh.deno.dev/"
             target="_blank"
           >
@@ -65,7 +65,7 @@ export default function MyFooter() {
           </a>{" "}
           @{" "}
           <a
-            class="text-blue-500 hover:underline"
+            class="font-bold hover:underline"
             href="https://deno.land/"
             target="_blank"
           >
