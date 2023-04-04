@@ -30,11 +30,11 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
             Hier findest du eine Liste meiner Projekte, die ich in meiner
             Freizeit entwickelt habe und weiter entwickle.
           </p>
-          <div class="m-8 flex-wrap place-content-center">
+          <div class="grid grid-cols-1 flex-wrap gap-16 m-16">
             {repos.length != 0
               ? repos.map((repo, index) => (
                 <div>
-                  <div class="group rounded-2xl border-4 hover:border-black p-4 n-4">
+                  <div class="group rounded-2xl border-4 p-4">
                     <a
                       href={repo.html_url}
                       target="_blank"
