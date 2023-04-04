@@ -12,8 +12,8 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
   const avatarUrl = repos.at(0)?.owner.avatar_url || "";
 
   return (
-    <div class="p-16">
-      <div class="h-full text-center flex items-center justify-center">
+    <div class="p-4">
+      <div class="h-full w-full text-center flex items-center justify-center">
         <div>
           <p class="text-5xl font-bold hover:underline">
             Meine Projekte
@@ -26,11 +26,11 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
               alt="Github profile picture"
             />
           </a>
-          <p class="text-xl py-5">
+          <p class="text-xl p-12">
             Hier findest du eine Liste meiner Projekte, die ich in meiner
             Freizeit entwickelt habe und weiter entwickle.
           </p>
-          <div class="flex flex-wrap gap-4 place-content-center">
+          <div class="m-8 flex flex-wrap place-content-center">
             {repos.length != 0
               ? repos.map((repo, index) => (
                 <div>

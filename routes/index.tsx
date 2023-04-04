@@ -74,7 +74,7 @@ export const handler: Handlers<InitialData> = {
 export default function Home({ data }: PageProps<InitialData>) {
   return (
     <html class="bg-gradient-to-r from-indigo-600 to-blue-600 h-full w-full">
-      <div class="h-full w-full text-white">
+      <div class="text-white">
         <head>
           <title>yurtemre.de</title>
         </head>
