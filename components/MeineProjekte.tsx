@@ -30,7 +30,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
             Hier findest du eine Liste meiner Projekte, die ich in meiner
             Freizeit entwickelt habe und weiter entwickle.
           </p>
-          <div class="grid grid-cols-1 flex-wrap gap-16 m-16">
+          <div class="grid grid-cols-1 lg:flex lg:flex-wrap flex-wrap gap-16 m-4">
             {repos.length != 0
               ? repos.map((repo, index) => (
                 <div>
@@ -38,7 +38,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                     <a
                       href={repo.html_url}
                       target="_blank"
-                      class="text-xl group-hover:underline"
+                      class="text-xl group-hover:underline truncate"
                     >
                       {repo.name}
                     </a>
@@ -49,19 +49,19 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                         </p>
                       )
                       : (
-                        <p class="text-sm">
+                        <p class="text-sm truncate">
                           Keine Beschreibung vorhanden
                         </p>
                       )}
 
                     {repo.language?.length ?? 0 > 0
                       ? (
-                        <p class="text-sm">
+                        <p class="text-sm truncate">
                           mit {repo.language}
                         </p>
                       )
                       : (
-                        <p class="text-sm">
+                        <p class="text-sm truncate">
                           Keine Programmiersprache angegeben
                         </p>
                       )}
