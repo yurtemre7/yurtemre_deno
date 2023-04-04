@@ -130,17 +130,6 @@ export default function Home(props: PageProps<ElswordData>) {
               <a class="text-blue-500" href={newsItem.link}>Link</a>
             </div>
           );
-
-          return (
-            <div class="align-baseline m-16">
-              <h2>{newsItem.title}</h2>
-              <p>{newsItem.description}</p>
-              <p>{newsItem.pubDate}</p>
-              <a class="text-blue-500" href={newsItem.link}>
-                Link
-              </a>
-            </div>
-          );
         })}
       </div>
     </div>
