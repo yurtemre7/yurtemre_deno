@@ -42,7 +42,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                     >
                       {repo.name}
                     </a>
-                    {repo.description?.length ?? 0 > 0
+                    {(repo.description?.length ?? 0) > 0
                       ? (
                         <p class="text-sm truncate">
                           {repo.description}
@@ -54,7 +54,7 @@ export default function MeineProjekte({ repos }: RepositoryProps) {
                         </p>
                       )}
 
-                    {repo.language?.length ?? 0 > 0
+                    {(repo.language?.length ?? 0) > 0
                       ? (
                         <p class="text-sm truncate">
                           mit {repo.language}
