@@ -19,7 +19,15 @@ export default function About() {
             >
               TU Berlin
             </a>{" "}
-            und arbeitet in der Cross-Platform App-Entwicklung mit{"  "}
+            und arbeitet bei{" "}
+            <a
+              class="hover:underline font-bold"
+              href="https://www.deinerstertag.de/"
+            >
+              Dein erster Tag
+            </a>{" "}
+            als Junior Frontend Entwickler, spezifischer in der Cross-Platform
+            App-Entwicklung mit{"  "}
             <a
               class="hover:underline font-bold"
               href="https://flutter.dev"
