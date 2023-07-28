@@ -18,14 +18,13 @@ let lastFetch = Date.parse("2020-01-01");
 export const handler: Handlers<InitialData> = {
   HEAD(_req, ctx) {
     // head response
-    const resp = new Response("", {
+    return new Response("", {
       status: 200,
       headers: {
         "Content-Type": "text/html",
       },
       statusText: "OK",
     });
-    return resp;
   },
   async GET(_req, ctx) {
     const JOKES = [
