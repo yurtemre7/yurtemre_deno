@@ -2,23 +2,27 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/datenschutz.tsx";
-import * as $1 from "./routes/deeplink.tsx";
-import * as $2 from "./routes/elsword.tsx";
-import * as $3 from "./routes/gvm.tsx";
-import * as $4 from "./routes/impressum.tsx";
-import * as $5 from "./routes/index.tsx";
+import * as $0 from "./routes/_404.tsx";
+import * as $1 from "./routes/_app.tsx";
+import * as $2 from "./routes/datenschutz.tsx";
+import * as $3 from "./routes/deeplink.tsx";
+import * as $4 from "./routes/elsword.tsx";
+import * as $5 from "./routes/gvm.tsx";
+import * as $6 from "./routes/impressum.tsx";
+import * as $7 from "./routes/index.tsx";
 import * as $$0 from "./islands/DeeplinkButton.tsx";
 import * as $$1 from "./islands/TextBox.tsx";
 
 const manifest = {
   routes: {
-    "./routes/datenschutz.tsx": $0,
-    "./routes/deeplink.tsx": $1,
-    "./routes/elsword.tsx": $2,
-    "./routes/gvm.tsx": $3,
-    "./routes/impressum.tsx": $4,
-    "./routes/index.tsx": $5,
+    "./routes/_404.tsx": $0,
+    "./routes/_app.tsx": $1,
+    "./routes/datenschutz.tsx": $2,
+    "./routes/deeplink.tsx": $3,
+    "./routes/elsword.tsx": $4,
+    "./routes/gvm.tsx": $5,
+    "./routes/impressum.tsx": $6,
+    "./routes/index.tsx": $7,
   },
   islands: {
     "./islands/DeeplinkButton.tsx": $$0,
