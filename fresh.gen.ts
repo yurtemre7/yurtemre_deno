@@ -10,8 +10,10 @@ import * as $4 from "./routes/elsword.tsx";
 import * as $5 from "./routes/gvm.tsx";
 import * as $6 from "./routes/impressum.tsx";
 import * as $7 from "./routes/index.tsx";
+import * as $8 from "./routes/sync.tsx";
 import * as $$0 from "./islands/DeeplinkButton.tsx";
-import * as $$1 from "./islands/TextBox.tsx";
+import * as $$1 from "./islands/SyncButton.tsx";
+import * as $$2 from "./islands/TextBox.tsx";
 
 const manifest = {
   routes: {
@@ -23,10 +25,12 @@ const manifest = {
     "./routes/gvm.tsx": $5,
     "./routes/impressum.tsx": $6,
     "./routes/index.tsx": $7,
+    "./routes/sync.tsx": $8,
   },
   islands: {
     "./islands/DeeplinkButton.tsx": $$0,
-    "./islands/TextBox.tsx": $$1,
+    "./islands/SyncButton.tsx": $$1,
+    "./islands/TextBox.tsx": $$2,
   },
   baseUrl: import.meta.url,
 };
