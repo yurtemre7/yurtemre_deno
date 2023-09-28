@@ -1,7 +1,7 @@
 export default function About() {
   const diff = new Date().getTime() - new Date("2020-10-01").getTime();
   const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-  const semester = Math.ceil(days / (30 * 6));
+  const semester = Math.ceil(days / (365/2));
 
   return (
     <div class="p-4">
