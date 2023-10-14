@@ -8,8 +8,8 @@ export default function Header() {
       </div>
       <div class="flex-grow" />
       <div>
-        <a href="/elsword" class="font-bold text-xl hover:underline">
-          Elsword
+        <a href="/elsrift" class="font-bold text-xl hover:underline">
+          Elsrift
         </a>
       </div>
     </div>
