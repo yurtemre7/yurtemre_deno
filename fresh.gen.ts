@@ -6,11 +6,12 @@ import * as $0 from "./routes/_404.tsx";
 import * as $1 from "./routes/_app.tsx";
 import * as $2 from "./routes/datenschutz.tsx";
 import * as $3 from "./routes/deeplink.tsx";
-import * as $4 from "./routes/elsword.tsx";
-import * as $5 from "./routes/gvm.tsx";
-import * as $6 from "./routes/impressum.tsx";
-import * as $7 from "./routes/index.tsx";
-import * as $8 from "./routes/sync.tsx";
+import * as $4 from "./routes/elsrift.tsx";
+import * as $5 from "./routes/elsword.tsx";
+import * as $6 from "./routes/gvm.tsx";
+import * as $7 from "./routes/impressum.tsx";
+import * as $8 from "./routes/index.tsx";
+import * as $9 from "./routes/sync.tsx";
 import * as $$0 from "./islands/DeeplinkButton.tsx";
 import * as $$1 from "./islands/SyncButton.tsx";
 import * as $$2 from "./islands/TextBox.tsx";
@@ -21,11 +22,12 @@ const manifest = {
     "./routes/_app.tsx": $1,
     "./routes/datenschutz.tsx": $2,
     "./routes/deeplink.tsx": $3,
-    "./routes/elsword.tsx": $4,
-    "./routes/gvm.tsx": $5,
-    "./routes/impressum.tsx": $6,
-    "./routes/index.tsx": $7,
-    "./routes/sync.tsx": $8,
+    "./routes/elsrift.tsx": $4,
+    "./routes/elsword.tsx": $5,
+    "./routes/gvm.tsx": $6,
+    "./routes/impressum.tsx": $7,
+    "./routes/index.tsx": $8,
+    "./routes/sync.tsx": $9,
   },
   islands: {
     "./islands/DeeplinkButton.tsx": $$0,
