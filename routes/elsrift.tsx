@@ -34,6 +34,8 @@ export default function Home(props: PageProps<ElswordData>) {
   // console.log(props.data);
   // convert the number count to human readable string with . to separate thousands
   const count = props.data.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  // format the date to be more readable
+  const date = new Date(props.data.date).toLocaleString("en-GB", { timeZone: "Europe/London" });
   return (
     <html class="bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
       <div class="h-screen text-center flex items-center justify-center">
@@ -41,8 +43,8 @@ export default function Home(props: PageProps<ElswordData>) {
         <h2 class="text-3xl font-bold text-center mt-10">Elsrift Souls Count</h2>
         <div class="grid grid-cols-1 gap-16 m-16">
             <div class="text-center">
-                <p class="text-4xl font-bold text-center mt-10">{count} Seelen</p>
-                <p class="text font-bold text-center mt-10">Stand: {props.data.date}</p>
+                <p class="text-4xl font-bold text-center mt-10">{count} Souls</p>
+                <p class="text font-bold text-center mt-10">Last updated: {date}</p>
             </div>
         </div>
       </div>
