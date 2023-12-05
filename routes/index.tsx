@@ -5,7 +5,7 @@ import About from "../components/About.tsx";
 import MyFooter from "../components/MyFooter.tsx";
 import { Repositories } from "../components/classes/Github.ts";
 import MeineProjekte from "../components/MeineProjekte.tsx";
-import Header from "../components/Header.tsx";
+import FavoriteGames from "../islands/FavoriteGames.tsx";
 
 interface InitialData {
   joke: string;
@@ -83,6 +83,10 @@ export default function Home({ data }: PageProps<InitialData>) {
         <Divider />
 
         <About />
+
+        <Divider />
+
+        <FavoriteGames />
 
         <Divider />
 
