@@ -2,39 +2,40 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $0 from "./routes/_404.tsx";
-import * as $1 from "./routes/_app.tsx";
-import * as $2 from "./routes/datenschutz.tsx";
-import * as $3 from "./routes/deeplink.tsx";
-import * as $4 from "./routes/elsrift.tsx";
-import * as $5 from "./routes/elsword.tsx";
-import * as $6 from "./routes/gvm.tsx";
-import * as $7 from "./routes/impressum.tsx";
-import * as $8 from "./routes/index.tsx";
-import * as $9 from "./routes/sync.tsx";
-import * as $$0 from "./islands/DeeplinkButton.tsx";
-import * as $$1 from "./islands/SyncButton.tsx";
-import * as $$2 from "./islands/TextBox.tsx";
+import * as $_404 from "./routes/_404.tsx";
+import * as $_app from "./routes/_app.tsx";
+import * as $datenschutz from "./routes/datenschutz.tsx";
+import * as $deeplink from "./routes/deeplink.tsx";
+import * as $elsrift from "./routes/elsrift.tsx";
+import * as $elsword from "./routes/elsword.tsx";
+import * as $gvm from "./routes/gvm.tsx";
+import * as $impressum from "./routes/impressum.tsx";
+import * as $index from "./routes/index.tsx";
+import * as $sync from "./routes/sync.tsx";
+import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
+import * as $SyncButton from "./islands/SyncButton.tsx";
+import * as $TextBox from "./islands/TextBox.tsx";
+import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_404.tsx": $0,
-    "./routes/_app.tsx": $1,
-    "./routes/datenschutz.tsx": $2,
-    "./routes/deeplink.tsx": $3,
-    "./routes/elsrift.tsx": $4,
-    "./routes/elsword.tsx": $5,
-    "./routes/gvm.tsx": $6,
-    "./routes/impressum.tsx": $7,
-    "./routes/index.tsx": $8,
-    "./routes/sync.tsx": $9,
+    "./routes/_404.tsx": $_404,
+    "./routes/_app.tsx": $_app,
+    "./routes/datenschutz.tsx": $datenschutz,
+    "./routes/deeplink.tsx": $deeplink,
+    "./routes/elsrift.tsx": $elsrift,
+    "./routes/elsword.tsx": $elsword,
+    "./routes/gvm.tsx": $gvm,
+    "./routes/impressum.tsx": $impressum,
+    "./routes/index.tsx": $index,
+    "./routes/sync.tsx": $sync,
   },
   islands: {
-    "./islands/DeeplinkButton.tsx": $$0,
-    "./islands/SyncButton.tsx": $$1,
-    "./islands/TextBox.tsx": $$2,
+    "./islands/DeeplinkButton.tsx": $DeeplinkButton,
+    "./islands/SyncButton.tsx": $SyncButton,
+    "./islands/TextBox.tsx": $TextBox,
   },
   baseUrl: import.meta.url,
-};
+} satisfies Manifest;
 
 export default manifest;

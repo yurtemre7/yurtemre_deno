@@ -73,12 +73,10 @@ export const handler: Handlers<InitialData> = {
 export default function Home({ data }: PageProps<InitialData>) {
   return (
     <html class="bg-gradient-to-r from-indigo-600 to-blue-600 h-full w-full">
-      <div class="text-white">
+      <div class="text-white ml-40 mr-40">
         <head>
           <title>yurtemre.de</title>
         </head>
-
-        <Header />
 
         <Welcome joke={data.joke} />
 
