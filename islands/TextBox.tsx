@@ -86,7 +86,7 @@ export default function TextBox({ code, output, input }: InitialData) {
                     rows={20}
                     scrolling={"yes"}
                     style="font-size: 1.5rem; line-height: 2rem; min-width: 40vw;"
-                    class="resize-y px-0 text-5xl text-sm text-white border-0 bg-gray-800 focus:ring-0 placeholder-gray-400"
+                    class="resize-y px-0 text-sm text-white border-0 bg-gray-800 focus:ring-0 placeholder-gray-400"
                     placeholder={exampleCode1}
                     required={false}
                     value={codeText}

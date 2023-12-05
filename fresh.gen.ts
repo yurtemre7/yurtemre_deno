@@ -14,6 +14,7 @@ import * as $index from "./routes/index.tsx";
 import * as $sync from "./routes/sync.tsx";
 import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
 import * as $FavoriteGames from "./islands/FavoriteGames.tsx";
+import * as $NewYear from "./islands/NewYear.tsx";
 import * as $SyncButton from "./islands/SyncButton.tsx";
 import * as $TextBox from "./islands/TextBox.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -34,6 +35,7 @@ const manifest = {
   islands: {
     "./islands/DeeplinkButton.tsx": $DeeplinkButton,
     "./islands/FavoriteGames.tsx": $FavoriteGames,
+    "./islands/NewYear.tsx": $NewYear,
     "./islands/SyncButton.tsx": $SyncButton,
     "./islands/TextBox.tsx": $TextBox,
   },

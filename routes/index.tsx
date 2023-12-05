@@ -6,6 +6,7 @@ import MyFooter from "../components/MyFooter.tsx";
 import { Repositories } from "../components/classes/Github.ts";
 import MeineProjekte from "../components/MeineProjekte.tsx";
 import FavoriteGames from "../islands/FavoriteGames.tsx";
+import NewYearCountdown from "../islands/NewYear.tsx";
 
 interface InitialData {
   joke: string;
@@ -79,6 +80,10 @@ export default function Home({ data }: PageProps<InitialData>) {
         </head>
 
         <Welcome joke={data.joke} />
+
+        <Divider />
+
+        <NewYearCountdown />
 
         <Divider />
 
