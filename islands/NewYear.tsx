@@ -19,16 +19,16 @@ export default function NewYearCountdown() {
 
   function calculateTimeLeft() {
     const now = new Date();
-    const targetDate = new Date(Date.UTC(2023, 11, 31, 23, 59)); // December is month 11 in JavaScript
+    const targetDate = new Date(2023, 11, 31, 23, 59); // December is month 11 in JavaScript
     const difference = targetDate.getTime() - now.getTime();
-
+  
     let timeLeft: TimeLeft = {
       days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
     };
-
+  
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -37,9 +37,7 @@ export default function NewYearCountdown() {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
-
-    console.log(timeLeft);
-
+  
     return timeLeft;
   }
 
