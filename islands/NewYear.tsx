@@ -19,8 +19,10 @@ export default function NewYearCountdown() {
 
   function calculateTimeLeft() {
     const now = new Date();
+    console.log(now);
     const year = now.getUTCFullYear();
     const difference = Date.UTC(year + 1, 0, 1) - now.getTime();
+    console.log(difference);
     let timeLeft: TimeLeft = {
       days: 0,
       hours: 0,
@@ -36,6 +38,8 @@ export default function NewYearCountdown() {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
+
+    console.log(timeLeft);
 
     return timeLeft;
   }
