@@ -19,10 +19,9 @@ export default function NewYearCountdown() {
 
   function calculateTimeLeft() {
     const now = new Date();
-    const year = now.getFullYear();
-    const nextYear = new Date(Date.UTC(year + 1, 0, 1));
-    const difference = nextYear.getTime() - now.getTime();
-    
+    const targetDate = new Date(Date.UTC(2023, 11, 31, 23, 59)); // December is month 11 in JavaScript
+    const difference = targetDate.getTime() - now.getTime();
+
     let timeLeft: TimeLeft = {
       days: 0,
       hours: 0,
