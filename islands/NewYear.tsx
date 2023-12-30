@@ -18,8 +18,9 @@ export default function NewYearCountdown() {
   });
 
   function calculateTimeLeft() {
-    const year = new Date().getFullYear();
-    const difference = +new Date(`${year + 1}-01-01`) - +new Date();
+    const now = new Date();
+    const year = now.getUTCFullYear();
+    const difference = Date.UTC(year + 1, 0, 1) - now.getTime();
     let timeLeft: TimeLeft = {
       days: 0,
       hours: 0,
@@ -46,7 +47,9 @@ export default function NewYearCountdown() {
       <h1 className="text-4xl mb-8">Zeit bis zum Neujahr</h1>
       <div className="relative w-64 h-64">
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-2xl">
-        {currentYear >= 2024 ? 'Frohes neues Jahr 🎆' : `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
+          {currentYear >= 2024
+            ? "Frohes neues Jahr 🎆"
+            : `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </div>
       </div>
     </div>
