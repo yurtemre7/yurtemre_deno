@@ -48,7 +48,7 @@ export default function NewYearCountdown() {
       <h1 className="text-4xl mb-8">Zeit bis zum Neujahr 2025</h1>
       <div className="relative w-64 h-64">
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-2xl">
-          {currentYear >= 2024
+          {currentYear >= 2025
             ? "Frohes neues Jahr 🎆"
             : `${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
         </div>
