@@ -19,7 +19,7 @@ export default function NewYearCountdown() {
 
   function calculateTimeLeft() {
     const now = new Date();
-    const targetDate = new Date(2023, 11, 31, 23, 59); // December is month 11 in JavaScript
+    const targetDate = new Date(2024, 11, 31, 23, 59); // December is month 11 in JavaScript
     const difference = targetDate.getTime() - now.getTime();
   
     let timeLeft: TimeLeft = {
@@ -45,7 +45,7 @@ export default function NewYearCountdown() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl mb-8">Zeit bis zum Neujahr</h1>
+      <h1 className="text-4xl mb-8">Zeit bis zum Neujahr 2025</h1>
       <div className="relative w-64 h-64">
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-2xl">
           {currentYear >= 2024
