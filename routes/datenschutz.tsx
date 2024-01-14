@@ -1,6 +1,6 @@
 export default function Datenschutz() {
   return (
-    <div class="h-full w-full text-left p-10 items-center text-white bg-gradient-to-r from-indigo-600 to-blue-600">
+    <div class="h-full w-full text-left p-10 items-center text-white bg-blue-600">
       <h1>Datenschutzerklärung</h1>
       <p>Stand: 14. Oktober 2022</p>
       <div class="m-10" />

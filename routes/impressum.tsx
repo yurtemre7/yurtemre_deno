@@ -1,6 +1,6 @@
 export default function Impressum() {
   return (
-    <div class="h-screen w-screen bg-gradient-to-r from-indigo-600 to-blue-600 text-white grid place-content-center">
+    <div class="h-screen w-screen bg-blue-600 text-white grid place-content-center">
       <head>
         <title>yurtemre.de | Impressum</title>
       </head>
@@ -21,15 +21,15 @@ export default function Impressum() {
             Kontakt
           </p>
           <p>
-            Telefon: +49 177 921 43 52
+            Telefon: +49 1779214352
           </p>
           <p>
             E-Mail:
             <a
-              href="mailto:emreyurtseven18@gmail.com"
+              href="mailto:yurtemre7@icloud.com"
               class="font-bold hover:underline"
             >
-              {" emreyurtseven18@gmail.com"}
+              {" yurtemre7@icloud.com"}
             </a>
           </p>
         </div>

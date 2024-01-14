@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.overflow-x-scroll {
+    overflow-x: scroll;
+    cursor: grab;
+}
+
+.overflow-x-scroll:active {
+    cursor: grabbing;
+}

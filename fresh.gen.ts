@@ -5,18 +5,10 @@
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $datenschutz from "./routes/datenschutz.tsx";
-import * as $deeplink from "./routes/deeplink.tsx";
-import * as $elsrift from "./routes/elsrift.tsx";
-import * as $elsword from "./routes/elsword.tsx";
-import * as $gvm from "./routes/gvm.tsx";
 import * as $impressum from "./routes/impressum.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $sync from "./routes/sync.tsx";
-import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
-import * as $FavoriteGames from "./islands/FavoriteGames.tsx";
 import * as $NewYear from "./islands/NewYear.tsx";
-import * as $SyncButton from "./islands/SyncButton.tsx";
-import * as $TextBox from "./islands/TextBox.tsx";
+import * as $about from "./islands/about.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -24,20 +16,12 @@ const manifest = {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/datenschutz.tsx": $datenschutz,
-    "./routes/deeplink.tsx": $deeplink,
-    "./routes/elsrift.tsx": $elsrift,
-    "./routes/elsword.tsx": $elsword,
-    "./routes/gvm.tsx": $gvm,
     "./routes/impressum.tsx": $impressum,
     "./routes/index.tsx": $index,
-    "./routes/sync.tsx": $sync,
   },
   islands: {
-    "./islands/DeeplinkButton.tsx": $DeeplinkButton,
-    "./islands/FavoriteGames.tsx": $FavoriteGames,
     "./islands/NewYear.tsx": $NewYear,
-    "./islands/SyncButton.tsx": $SyncButton,
-    "./islands/TextBox.tsx": $TextBox,
+    "./islands/about.tsx": $about,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

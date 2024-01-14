@@ -3,7 +3,7 @@
   "deno.lint": true,
   "editor.defaultFormatter": "denoland.vscode-deno",
   "[typescriptreact]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
@@ -13,5 +13,11 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "css.customData": [
+    ".vscode/tailwind.json"
+  ],
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
   }
 }
