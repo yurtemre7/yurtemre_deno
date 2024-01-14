@@ -36,6 +36,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
       <footer className="bg-blue-800 text-white py-4 px-6">
         <div className="flex justify-between items-center">
           <div>
