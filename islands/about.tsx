@@ -49,7 +49,7 @@ export default function AboutMe() {
                 </p>
                 <div className="flex justify-center">
                     <div className="w-1/2">
-                        <h3 className="text-3xl font-bold text-white mb-4">My Best Apps</h3>
+                        <h3 className="text-3xl font-bold text-white mb-4">Best Apps</h3>
                         <ul>
                             {apps.map(app => (
                                 <li key={app.id} className="text-white underline hover:text-blue-200 cursor-pointer" onClick={() => selectedApp.value = app}>{app.name}</li>
