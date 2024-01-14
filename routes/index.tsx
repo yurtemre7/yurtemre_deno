@@ -7,9 +7,12 @@ export default function Home() {
     <>
       <div className="min-h-screen flex items-center justify-center bg-blue-500">
         <div className="text-center pb-8 pt-8">
-          <h1 className="text-6xl font-bold text-white mb-4">Selam und Willkommen bei yurtemre.de</h1>
-          <p className="text-white text-2xl">Die wirklich krasseste Website auf der Erde</p>
-          <div className="mt-16">
+          <h1 className="text-6xl font-bold text-white mb-4">yurtemre.de</h1>
+          <blockquote class="text-white text-xl italic font-semibold">
+            <p>"Die wirklich krasseste Website der Erde"</p>
+          </blockquote>
+          <p className="text-white text-2xl"></p>
+          <div className="mt-12">
             <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
               href="#contact-me"
             >
@@ -18,7 +21,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
       <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
         <AboutMe />
       </div>
@@ -31,7 +34,6 @@ export default function Home() {
         <div className="text-center">
           <h2 className="text-4xl font-bold text-white mb-4">Du findest mich hier 👇</h2>
           <div className="flex justify-center mt-6">
-            <a href="https://github.com/yurtemre7" className="text-white underline hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">GitHub</a>
             <a href="https://t.me/emredev" className="text-white underline hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Telegram</a>
             <a href="mailto:yurtemre7@icloud.com" className="text-white underline hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Email</a>
           </div>

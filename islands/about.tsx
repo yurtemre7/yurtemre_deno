@@ -22,7 +22,7 @@ export default function AboutMe() {
     return (
         <div className="min-h-screen flex items-center justify-cente">
             <div className="text-center">
-                <h2 className="text-4xl font-bold mb-4">Wer bin ich?</h2>
+                <h2 className="text-4xl font-bold mb-4">Über mich</h2>
                 <p class="text-2xl mb-8 ml-32 mr-32">
                     Emre ist ein Informatik Student im {semester}. Semester an der{"  "}
                     <a
@@ -47,6 +47,16 @@ export default function AboutMe() {
                         Flutter
                     </a>.
                 </p>
+                <p className="text-xl">
+                    Hier findest du all meine Projekte:{" "}
+                    <a
+                        className="hover:underline font-bold"
+                        href="https://github.com/yurtemre7"
+                    >
+                        GitHub
+                    </a>
+                </p>
+                <div className="mt-12" />
                 <div className="flex justify-center">
                     <div className="w-1/2">
                         <h3 className="text-3xl font-bold mb-4">Best Apps</h3>
