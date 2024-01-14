@@ -1,4 +1,5 @@
 import { type PageProps } from "$fresh/server.ts";
+import { Head } from "$fresh/runtime.ts";
 export default function App({ Component }: PageProps) {
   return (
     <html>
@@ -8,6 +9,9 @@ export default function App({ Component }: PageProps) {
         <title>yurtemre.de</title>
         <link rel="stylesheet" href="/styles.css" />
       </head>
+      <Head>
+        <link rel="stylesheet" href="/styles.css" />
+      </Head>
       <body>
         <Component />
       </body>
