@@ -20,10 +20,10 @@ export default function AboutMe() {
     ];
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-blue-600">
+        <div className="min-h-screen flex items-center justify-cente">
             <div className="text-center">
-                <h2 className="text-4xl font-bold text-white mb-4">Wer bin ich?</h2>
-                <p class="text-white text-2xl mb-8 ml-32 mr-32">
+                <h2 className="text-4xl font-bold mb-4">Wer bin ich?</h2>
+                <p class="text-2xl mb-8 ml-32 mr-32">
                     Emre ist ein Informatik Student im {semester}. Semester an der{"  "}
                     <a
                         class="hover:underline font-bold"
@@ -49,18 +49,18 @@ export default function AboutMe() {
                 </p>
                 <div className="flex justify-center">
                     <div className="w-1/2">
-                        <h3 className="text-3xl font-bold text-white mb-4">Best Apps</h3>
+                        <h3 className="text-3xl font-bold mb-4">Best Apps</h3>
                         <ul>
                             {apps.map(app => (
-                                <li key={app.id} className="text-white underline hover:text-blue-200 cursor-pointer" onClick={() => selectedApp.value = app}>{app.name}</li>
+                                <li key={app.id} className="underline hover:text-blue-200 cursor-pointer" onClick={() => selectedApp.value = app}>{app.name}</li>
                             ))}
                         </ul>
                     </div>
                     <div className="w-1/2">
                         {selectedApp.value && (
                             <>
-                                <h3 className="text-3xl font-bold text-white mb-4">{selectedApp.value.name}</h3>
-                                <p className="text-white">{selectedApp.value.description}</p>
+                                <h3 className="text-3xl font-bold  mb-4">{selectedApp.value.name}</h3>
+                                <p className="">{selectedApp.value.description}</p>
                             </>
                         )}
                     </div>

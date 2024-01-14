@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-blue-500">
-        <div className="text-center">
+        <div className="text-center pb-8 pt-8">
           <h1 className="text-6xl font-bold text-white mb-4">Selam und Willkommen bei yurtemre.de</h1>
           <p className="text-white text-2xl">Die wirklich krasseste Website auf der Erde</p>
-          <div className="mt-8">
+          <div className="mt-16">
             <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
               href="#contact-me"
             >
@@ -19,7 +19,7 @@ export default function Home() {
         </div>
       </div>
       
-      <div id="about-me">
+      <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
         <AboutMe />
       </div>
 
