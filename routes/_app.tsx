@@ -9,9 +9,6 @@ export default function App({ Component }: PageProps) {
         <title>yurtemre.de</title>
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <Head>
-        <link rel="stylesheet" href="/styles.css" />
-      </Head>
       <body>
         <Component />
       </body>
