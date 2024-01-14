@@ -8,7 +8,7 @@ export default function Home() {
       <div className="min-h-screen flex items-center justify-center bg-blue-500">
         <div className="text-center pb-8 pt-8">
           <h1 className="text-6xl font-bold text-white mb-4">yurtemre.de</h1>
-          <blockquote class="text-white text-xl italic font-semibold">
+          <blockquote className="text-white text-xl italic font-semibold">
             <p>"Die wirklich krasseste Website der Erde"</p>
           </blockquote>
           <p className="text-white text-2xl"></p>
@@ -21,6 +21,53 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-blue-800">
+        <figure className="items-center justify-center py-4 bg-blue-800 text-white">
+          <svg className="w-10 h-10 mx-auto mb-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
+            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+          </svg>
+          <blockquote>
+            <p className="text-2xl italic font-medium text-gray-900 text-center dark:text-white">"zzZ... zzZ... zzZ..."</p>
+          </blockquote>
+          <figcaption className="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+            <div className="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-400">
+              <cite className="pe-3 font-medium text-gray-900 dark:text-white">Teoman W.</cite>
+              <cite className="ps-3 text-sm text-white">Informatik Student</cite>
+            </div>
+          </figcaption>
+        </figure>
+        <figure className="items-center justify-center py-4 bg-blue-800 text-white">
+          <svg className="w-10 h-10 mx-auto mb-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
+            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+          </svg>
+          <blockquote>
+            <p className="text-2xl italic font-medium text-gray-900 text-center dark:text-white">"Sieht gut aus für'n Anfänger."</p>
+          </blockquote>
+          <figcaption className="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+            <div className="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-400">
+              <cite className="pe-3 font-medium text-gray-900 dark:text-white">Jason C.</cite>
+              <cite className="ps-3 text-sm text-white">Elektrotechnik Student</cite>
+            </div>
+          </figcaption>
+        </figure>
+        <figure className="items-center justify-center py-4 bg-blue-800 text-white">
+          <svg className="w-10 h-10 mx-auto mb-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">
+            <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+          </svg>
+          <blockquote>
+            <p className="text-2xl italic font-medium text-gray-900 text-center dark:text-white">"iiiiiiieeeeeehhh Javascript !!!"</p>
+          </blockquote>
+          <figcaption className="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+            <div className="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-400">
+              <cite className="pe-3 font-medium text-gray-900 dark:text-white">Joshua S.</cite>
+              <cite className="ps-3 text-sm text-white">Developer of J.dev, Ex-developer of SNP👍🏼</cite>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+
+
 
       <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
         <AboutMe />
@@ -47,7 +94,7 @@ export default function Home() {
             {/* row */}
             <div className="flex mt-1">
               <p>Made with fresh</p>
-              <div class="ml-2" />
+              <div className="ml-2" />
               <img
                 src="/logo.svg"
                 height="22px"
