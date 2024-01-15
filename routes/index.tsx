@@ -28,11 +28,11 @@ export default function Home() {
             <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
           </svg>
           <blockquote>
-            <p className="text-2xl italic font-medium text-gray-900 text-center dark:text-white">"zzZ... zzZ... zzZ..."</p>
+            <p className="text-2xl italic font-medium  text-center text-white">"zzZ... zzZ... zzZ..."</p>
           </blockquote>
           <figcaption className="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
             <div className="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-400">
-              <cite className="pe-3 font-medium text-gray-900 dark:text-white">Teoman W.</cite>
+              <cite className="pe-3 font-medium text-white">Teoman W.</cite>
               <cite className="ps-3 text-sm text-white">Informatik Student</cite>
             </div>
           </figcaption>
@@ -42,11 +42,11 @@ export default function Home() {
             <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
           </svg>
           <blockquote>
-            <p className="text-2xl italic font-medium text-gray-900 text-center dark:text-white">"Sieht gut aus für'n Anfänger."</p>
+            <p className="text-2xl italic font-medium text-center text-white">"Sieht gut aus für'n Anfänger."</p>
           </blockquote>
           <figcaption className="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
             <div className="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-400">
-              <cite className="pe-3 font-medium text-gray-900 dark:text-white">Jason C.</cite>
+              <cite className="pe-3 font-medium text-white">Jason C.</cite>
               <cite className="ps-3 text-sm text-white">Elektrotechnik Student</cite>
             </div>
           </figcaption>
@@ -56,11 +56,11 @@ export default function Home() {
             <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
           </svg>
           <blockquote>
-            <p className="text-2xl italic font-medium text-gray-900 text-center dark:text-white">"iiiiiiieeeeeehhh Javascript !!!"</p>
+            <p className="text-2xl italic font-medium text-centertext-white">"iiiiiiieeeeeehhh Javascript !!!"</p>
           </blockquote>
           <figcaption className="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
             <div className="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-400">
-              <cite className="pe-3 font-medium text-gray-900 dark:text-white">Joshua S.</cite>
+              <cite className="pe-3 font-medium text-white">Joshua S.</cite>
               <cite className="ps-3 text-sm text-white">Developer of J.dev, Ex-developer of SNP👍🏼</cite>
             </div>
           </figcaption>

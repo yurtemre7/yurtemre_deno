@@ -44,7 +44,7 @@ export default function NewYearCountdown() {
   const currentYear = new Date().getFullYear();
 
   return ( 
-    <div className="flex flex-row items-center justify-center py-4 bg-blue-800 text-white">
+    <div className="flex flex-row items-center justify-center py-4 bg-blue-800 text-white pl-8 pr-8">
       <h1 className="text-2xl mr-4">Zeit bis zum Neujahr 2025:</h1>
       <div className="relative w-64 h-16">
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-2xl">
