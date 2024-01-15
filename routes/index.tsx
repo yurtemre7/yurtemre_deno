@@ -82,7 +82,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-white mb-4">Du findest mich hier 👇</h2>
           <div className="flex justify-center mt-6">
             <a href="https://t.me/emredev" className="text-white underline hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Telegram</a>
-            <a href="mailto:yurtemre7@icloud.com" className="text-white underline hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Email</a>
+            <a href="mailto:info@yurtemre.de" className="text-white underline hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Email</a>
           </div>
         </div>
       </div>

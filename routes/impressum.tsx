@@ -26,10 +26,10 @@ export default function Impressum() {
           <p>
             E-Mail:
             <a
-              href="mailto:yurtemre7@icloud.com"
+              href="mailto:info@yurtemre.de"
               class="font-bold hover:underline"
             >
-              {" yurtemre7@icloud.com"}
+              {" info@yurtemre.de"}
             </a>
           </p>
         </div>
