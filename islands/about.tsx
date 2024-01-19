@@ -20,7 +20,7 @@ export default function AboutMe() {
     ];
 
     return (
-        <div className="min-h-screen items-center justify-cente">
+        <div className="min-h-screen flex items-center justify-center">
             <div className="text-center">
                 <h2 className="text-4xl font-bold mb-4">Über mich</h2>
                 <p class="text-2xl mb-8 ml-32 mr-32">
