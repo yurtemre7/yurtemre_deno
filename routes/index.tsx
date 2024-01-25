@@ -1,5 +1,6 @@
 import NewYearCountdown from "../islands/NewYear.tsx";
 import AboutMe from "../islands/about.tsx";
+// import ChatScreen from "../islands/ai_chat.tsx";
 
 
 export default function Home() {
@@ -67,7 +68,9 @@ export default function Home() {
         </figure>
       </div>
 
-
+      {/* <div id="ai-chat" className="pt-8 pb-8 bg-blue-300 text-white">
+        <ChatScreen />
+      </div> */}
 
       <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
         <AboutMe />
