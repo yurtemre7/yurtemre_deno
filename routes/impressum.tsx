@@ -14,7 +14,7 @@ export default function Impressum() {
             Emre Yurtseven
           </p>
           <p>
-            Gradestraße 30, <br /> 12347 Berlin, Deutschland
+            Innsbrucker Straße 47A, <br /> 10825 Berlin, Deutschland
           </p>
           <div class="m-4" />
           <p class="text-xl font-bold">
