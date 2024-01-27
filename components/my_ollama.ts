@@ -1,5 +1,3 @@
-import re from "https://esm.sh/v135/preact-render-to-string@6.3.1/X-ZS8q/denonext/preact-render-to-string.mjs";
-
 class MyLlama {
   constructor() {
     console.log("MyLlama was created!");
@@ -10,6 +8,8 @@ class MyLlama {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        // cors
+        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({
         model: "llama2:7b",
