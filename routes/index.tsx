@@ -1,9 +1,37 @@
 import NewYearCountdown from "../islands/NewYear.tsx";
 import AboutMe from "../islands/about.tsx";
+import WordOfTheDay from "../components/word_of_day.tsx";
 // import ChatScreen from "../islands/ai_chat.tsx";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { WOTD } from '../components/classes/WOTD.ts';
+import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts";
 
 
-export default function Home() {
+export const handler: Handlers<WOTD> = {
+  async GET(_req, ctx) {
+    const url = 'https://www.duden.de'
+    const resp = await fetch(url)
+    const data = await resp.text()
+    const doc = new DOMParser().parseFromString(data, 'text/html')
+    if (doc === null) {
+      return ctx.render({ word: '', link: '' });
+    }
+    const word = doc.querySelector('#block-wordoftheday a.scene__title-link');
+    if (word === null) {
+      return ctx.render({ word: '', link: '' });
+    }
+    const link = word!.getAttribute('href');
+    const textContent = link?.split('/').reverse()[0] || '';
+    const wotd = {
+      word: textContent,
+      link: url + link,
+    };
+
+    return ctx.render(wotd as WOTD);
+  },
+};
+
+export default function Home({ data }: PageProps<WOTD>) {
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-blue-500">
@@ -13,12 +41,15 @@ export default function Home() {
             <p>"Die wirklich krasseste Website der Erde"</p>
           </blockquote>
           <p className="text-white text-2xl"></p>
-          <div className="mt-12">
+          <div className="mt-12 mb-12">
             <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
               href="#contact-me"
             >
               Kontaktiere mich hier
             </a></button>
+          </div>
+          <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
+            <WordOfTheDay word={data.word} link={data.link} />
           </div>
         </div>
       </div>
@@ -71,6 +102,10 @@ export default function Home() {
       {/* <div id="ai-chat" className="pt-8 pb-8 bg-blue-300 text-white">
         <ChatScreen />
       </div> */}
+
+
+
+
 
       <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
         <AboutMe />
