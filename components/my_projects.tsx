@@ -29,7 +29,7 @@ export default function MyProjects({ repos }: RepositoryProps) {
                     Hier findest du eine Liste meiner Projekte, die ich in meiner Freizeit
                     entwickelt habe und weiter entwickle.
                 </p>
-                <div className="grid grid-cols-1 sm:flex sm:flex-wrap sm:place-content-center flex-wrap gap-6 m">
+                <div className="grid grid-cols-1 sm:flex sm:flex-wrap sm:place-content-center flex-wrap gap-6 m-20">
                     {repos.length != 0
                         ? repos.map((repo, index) => (
                             <div>
