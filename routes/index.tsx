@@ -5,33 +5,72 @@ import WordOfTheDay from "../components/word_of_day.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { WOTD } from '../components/classes/WOTD.ts';
 import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts";
+import { Repositories } from "../components/classes/Github.ts";
+import MyProjects from "../components/my_projects.tsx";
 
+interface InitialData {
+  wotd: WOTD;
+  repositories: Repositories;
+}
 
-export const handler: Handlers<WOTD> = {
+let reps: Repositories = [];
+let lastFetch = Date.parse("2020-01-01");
+
+export const handler: Handlers<InitialData> = {
+  HEAD(_req, ctx) {
+    // head response
+    return new Response("", {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html",
+      },
+      statusText: "OK",
+    });
+  },
   async GET(_req, ctx) {
     const url = 'https://www.duden.de'
     const resp = await fetch(url)
-    const data = await resp.text()
-    const doc = new DOMParser().parseFromString(data, 'text/html')
-    if (doc === null) {
-      return ctx.render({ word: '', link: '' });
+    const html_data = await resp.text()
+    const doc = new DOMParser().parseFromString(html_data, 'text/html')
+    let wotd: WOTD = { word: '', link: '' };
+    if (doc !== null) {
+      const word = doc.querySelector('#block-wordoftheday a.scene__title-link');
+      if (word !== null) {
+        const link = word!.getAttribute('href');
+        const textContent = link?.split('/').reverse()[0] || '';
+        wotd = {
+          word: textContent,
+          link: url + link,
+        };
+      }
     }
-    const word = doc.querySelector('#block-wordoftheday a.scene__title-link');
-    if (word === null) {
-      return ctx.render({ word: '', link: '' });
+
+    if (Date.now() - lastFetch > 1000 * 60 * 5) {
+      const repositories = await fetch(
+        "https://api.github.com/users/yurtemre7/repos",
+      );
+      const fetched = await repositories.json();
+      if (fetched.message !== undefined) {
+        const data: InitialData = {
+          wotd: wotd,
+          repositories: [],
+        };
+        return ctx.render(data);
+      }
+      reps = fetched;
+      lastFetch = Date.now();
     }
-    const link = word!.getAttribute('href');
-    const textContent = link?.split('/').reverse()[0] || '';
-    const wotd = {
-      word: textContent,
-      link: url + link,
+
+    const data: InitialData = {
+      wotd: wotd,
+      repositories: reps,
     };
 
-    return ctx.render(wotd as WOTD);
+    return ctx.render(data);
   },
 };
 
-export default function Home({ data }: PageProps<WOTD>) {
+export default function Home({ data }: PageProps<InitialData>) {
   return (
     <>
       <div className="min-h-screen flex items-center justify-center bg-blue-500">
@@ -49,7 +88,7 @@ export default function Home({ data }: PageProps<WOTD>) {
             </a></button>
           </div>
           <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
-            <WordOfTheDay word={data.word} link={data.link} />
+            <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
           </div>
         </div>
       </div>
@@ -109,6 +148,9 @@ export default function Home({ data }: PageProps<WOTD>) {
 
       <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
         <AboutMe />
+      </div>
+      <div className="pt-8 pb-8 bg-blue-700 text-white">
+        <MyProjects repos={data.repositories} />
       </div>
 
       <div id="new-year">

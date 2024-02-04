@@ -1,47 +1,47 @@
 export default function Datenschutz() {
   return (
-    <div class="h-full w-full text-left p-10 items-center text-white bg-blue-600">
+    <div className="h-full w-full text-left p-10 items-center text-white bg-blue-600">
       <h1>Datenschutzerklärung</h1>
       <p>Stand: 14. Oktober 2022</p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2>Inhaltsübersicht</h2>{" "}
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
-          <a class="" href="#m14">Einleitung</a>
+          <a className="" href="#m14">Einleitung</a>
         </li>
         <li>
-          <a class="" href="#m3">Verantwortlicher</a>
+          <a className="" href="#m3">Verantwortlicher</a>
         </li>
         <li>
-          <a class="" href="#mOverview">Übersicht der Verarbeitungen</a>
+          <a className="" href="#mOverview">Übersicht der Verarbeitungen</a>
         </li>
         <li>
-          <a class="" href="#m13">Maßgebliche Rechtsgrundlagen</a>
+          <a className="" href="#m13">Maßgebliche Rechtsgrundlagen</a>
         </li>
         <li>
-          <a class="" href="#m27">Sicherheitsmaßnahmen</a>
+          <a className="" href="#m27">Sicherheitsmaßnahmen</a>
         </li>
         <li>
-          <a class="" href="#m12">Löschung von Daten</a>
+          <a className="" href="#m12">Löschung von Daten</a>
         </li>
         <li>
-          <a class="" href="#m317">Geschäftliche Leistungen</a>
+          <a className="" href="#m317">Geschäftliche Leistungen</a>
         </li>
         <li>
-          <a class="" href="#m15">
+          <a className="" href="#m15">
             Änderung und Aktualisierung der Datenschutzerklärung
           </a>
         </li>
         <li>
-          <a class="" href="#m10">Rechte der betroffenen Personen</a>
+          <a className="" href="#m10">Rechte der betroffenen Personen</a>
         </li>
         <li>
-          <a class="" href="#m42">Begriffsdefinitionen</a>
+          <a className="" href="#m42">Begriffsdefinitionen</a>
         </li>
       </ul>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m14">Einleitung</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Mit der folgenden Datenschutzerklärung möchten wir Sie darüber
         aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch
@@ -53,9 +53,9 @@ export default function Datenschutz() {
         Onlinepräsenzen, wie z.B. unserer Social-Media-Profile (nachfolgend
         zusammenfassend bezeichnet als "Onlineangebot“).
       </p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m3">Verantwortlicher</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Emre Yurtseven, App WoAuto,<br />Gradestraße 30,{" "}
         <br />12347 Berlin, Deutschland
@@ -64,7 +64,7 @@ export default function Datenschutz() {
       <p>
         <a
           href="mailto:emreyurtseven18@gmail.com"
-          class="font-bold hover:underline"
+          className="font-bold hover:underline"
         >
           emreyurtseven18@gmail.com
         </a>
@@ -75,16 +75,16 @@ export default function Datenschutz() {
           https://www.yurtemre.de/impressum
         </a>
       </p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und
         die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen
         Personen.
       </p>
       <h3>Arten der verarbeiteten Daten</h3>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>Bestandsdaten.</li>
         <li>Zahlungsdaten.</li>
         <li>Kontaktdaten.</li>
@@ -93,22 +93,22 @@ export default function Datenschutz() {
         <li>Meta-/Kommunikationsdaten.</li>
       </ul>
       <h3>Kategorien betroffener Personen</h3>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>Kunden.</li>
         <li>Interessenten.</li>
         <li>Geschäfts- und Vertragspartner.</li>
       </ul>
       <h3>Zwecke der Verarbeitung</h3>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>Erbringung vertraglicher Leistungen und Kundenservice.</li>
         <li>Kontaktanfragen und Kommunikation.</li>
         <li>Sicherheitsmaßnahmen.</li>
         <li>Büro- und Organisationsverfahren.</li>
         <li>Verwaltung und Beantwortung von Anfragen.</li>
       </ul>
-      <div class="m-10" />
+      <div className="m-10" />
       <h3 id="m13">Maßgebliche Rechtsgrundlagen</h3>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO,
         auf deren Basis wir personenbezogene Daten verarbeiten. Bitte nehmen Sie
@@ -117,7 +117,7 @@ export default function Datenschutz() {
         können. Sollten ferner im Einzelfall speziellere Rechtsgrundlagen
         maßgeblich sein, teilen wir Ihnen diese in der Datenschutzerklärung mit.
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>
             Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1
@@ -162,9 +162,9 @@ export default function Datenschutz() {
         Ferner können Landesdatenschutzgesetze der einzelnen Bundesländer zur
         Anwendung gelangen.
       </p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m27">Sicherheitsmaßnahmen</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter
         Berücksichtigung des Stands der Technik, der Implementierungskosten und
@@ -193,9 +193,9 @@ export default function Datenschutz() {
         Sie erkennen derart verschlüsselte Verbindungen an dem Präfix https://
         in der Adresszeile Ihres Browsers.
       </p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m12">Löschung von Daten</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Die von uns verarbeiteten Daten werden nach Maßgabe der gesetzlichen
         Vorgaben gelöscht, sobald deren zur Verarbeitung erlaubten
@@ -216,9 +216,9 @@ export default function Datenschutz() {
         Aufbewahrung und Löschung von Daten beinhalten, die für die jeweiligen
         Verarbeitungen vorrangig gelten.
       </p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m317">Geschäftliche Leistungen</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Wir verarbeiten Daten unserer Vertrags- und Geschäftspartner, z.B.
         Kunden und Interessenten (zusammenfassend bezeichnet als
@@ -279,7 +279,7 @@ export default function Datenschutz() {
         Anbietern die Geschäftsbedingungen und Datenschutzhinweise der
         jeweiligen Drittanbieter oder Plattformen.
       </p>
-      <ul class="">
+      <ul className="">
         <li>
           <strong>Verarbeitete Datenarten:</strong>{" "}
           Bestandsdaten (z.B. Namen, Adressen); Zahlungsdaten (z.B.
@@ -311,7 +311,7 @@ export default function Datenschutz() {
           Weitere Hinweise zu Verarbeitungsprozessen, Verfahren und Diensten:
         </strong>
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>Kundenkonto:</strong>{" "}
           Vertragspartner können innerhalb unseres Onlineangebotes ein Konto
@@ -353,9 +353,9 @@ export default function Datenschutz() {
           lit. b) DSGVO).
         </li>
       </ul>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m15">Änderung und Aktualisierung der Datenschutzerklärung</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Wir bitten Sie, sich regelmäßig über den Inhalt unserer
         Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung
@@ -370,14 +370,14 @@ export default function Datenschutz() {
         wir zu beachten, dass die Adressen sich über die Zeit ändern können und
         bitten die Angaben vor Kontaktaufnahme zu prüfen.
       </p>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m10">Rechte der betroffenen Personen</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die
         sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>
             Widerspruchsrecht: Sie haben das Recht, aus Gründen, die sich aus
@@ -437,9 +437,9 @@ export default function Datenschutz() {
           verstößt.
         </li>
       </ul>
-      <div class="m-10" />
+      <div className="m-10" />
       <h2 id="m42">Begriffsdefinitionen</h2>
-      <div class="m-4" />
+      <div className="m-4" />
       <p>
         In diesem Abschnitt erhalten Sie eine Übersicht über die in dieser
         Datenschutzerklärung verwendeten Begrifflichkeiten. Viele der Begriffe
@@ -448,7 +448,7 @@ export default function Datenschutz() {
         Erläuterungen sollen dagegen vor allem dem Verständnis dienen. Die
         Begriffe sind alphabetisch sortiert.
       </p>
-      <ul class="space-y-1 max-w-md list-disc list-inside m-4">
+      <ul className="space-y-1 max-w-md list-disc list-inside m-4">
         <li>
           <strong>Personenbezogene Daten:</strong>{" "}
           "Personenbezogene Daten“ sind alle Informationen, die sich auf eine

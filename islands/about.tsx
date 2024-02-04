@@ -23,17 +23,17 @@ export default function AboutMe() {
         <div className="min-h-screen flex items-center justify-center">
             <div className="text-center">
                 <h2 className="text-4xl font-bold mb-4">Über mich</h2>
-                <p class="text-2xl mb-8 ml-32 mr-32">
+                <p className="text-2xl mb-8 ml-32 mr-32">
                     Emre ist ein Informatik Student im {semester}. Semester an der{"  "}
                     <a
-                        class="hover:underline font-bold"
+                        className="hover:underline font-bold"
                         href="https://www.tu.berlin/"
                     >
                         TU Berlin
                     </a>{" "}
                     und arbeitet bei{" "}
                     <a
-                        class="hover:underline font-bold"
+                        className="hover:underline font-bold"
                         href="https://www.deinerstertag.de/"
                     >
                         Dein erster Tag
@@ -41,13 +41,13 @@ export default function AboutMe() {
                     als Junior Frontend Entwickler, spezifischer in der Cross-Platform
                     App-Entwicklung mit{"  "}
                     <a
-                        class="hover:underline font-bold"
+                        className="hover:underline font-bold"
                         href="https://flutter.dev"
                     >
                         Flutter
                     </a>.
                 </p>
-                <p className="text-xl">
+                {/* <p className="text-xl">
                     Hier findest du all meine Projekte:{" "}
                     <a
                         className="hover:underline font-bold"
@@ -55,7 +55,7 @@ export default function AboutMe() {
                     >
                         GitHub
                     </a>
-                </p>
+                </p> */}
                 <div className="mt-12" />
                 <div className="flex justify-center">
                     <div className="w-1/2">
