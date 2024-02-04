@@ -8,8 +8,10 @@ import * as $datenschutz from "./routes/datenschutz.tsx";
 import * as $deeplink from "./routes/deeplink.tsx";
 import * as $impressum from "./routes/impressum.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $sync from "./routes/sync.tsx";
 import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
 import * as $NewYear from "./islands/NewYear.tsx";
+import * as $SyncButton from "./islands/SyncButton.tsx";
 import * as $about from "./islands/about.tsx";
 import * as $ai_chat from "./islands/ai_chat.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -22,10 +24,12 @@ const manifest = {
     "./routes/deeplink.tsx": $deeplink,
     "./routes/impressum.tsx": $impressum,
     "./routes/index.tsx": $index,
+    "./routes/sync.tsx": $sync,
   },
   islands: {
     "./islands/DeeplinkButton.tsx": $DeeplinkButton,
     "./islands/NewYear.tsx": $NewYear,
+    "./islands/SyncButton.tsx": $SyncButton,
     "./islands/about.tsx": $about,
     "./islands/ai_chat.tsx": $ai_chat,
   },
