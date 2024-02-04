@@ -1,4 +1,4 @@
-import { Repositories, Repository } from "./classes/Github.ts";
+import { Repositories } from "./classes/Github.ts";
 
 interface RepositoryProps {
     repos: Repositories;

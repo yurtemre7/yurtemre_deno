@@ -1,4 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
+import MyFooter from "../components/my_footer.tsx";
 import DeeplinkButton from "../islands/DeeplinkButton.tsx";
 
 export default function Deeplink(props: PageProps) {
@@ -29,6 +30,7 @@ export default function Deeplink(props: PageProps) {
           <DeeplinkButton title={pTitle} lat={pLat} long={pLong} />
         </div>
       </div>
+      <MyFooter />
     </html>
   );
 }

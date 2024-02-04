@@ -24,21 +24,20 @@ export default function AboutMe() {
             <div className="text-center">
                 <h2 className="text-4xl font-bold mb-4">Über mich</h2>
                 <p className="text-2xl mb-8 ml-32 mr-32">
-                    Emre ist ein Informatik Student im {semester}. Semester an der{"  "}
-                    <a
+                    Ich habe 2024 meinen Bachelor in Informatik an der <a
                         className="hover:underline font-bold"
                         href="https://www.tu.berlin/"
                     >
                         TU Berlin
-                    </a>{" "}
-                    und arbeitet bei{" "}
+                    </a>{" "} absolviert (heute wäre ich im {semester}. Semester)
+                    und arbeite zurzeit bei{" "}
                     <a
                         className="hover:underline font-bold"
                         href="https://www.deinerstertag.de/"
                     >
                         Dein erster Tag
                     </a>{" "}
-                    als Junior Frontend Entwickler, spezifischer in der Cross-Platform
+                    als Junior Frontend Entwickler in der Cross-Platform
                     App-Entwicklung mit{"  "}
                     <a
                         className="hover:underline font-bold"

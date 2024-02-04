@@ -1,4 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
+import MyFooter from "../components/my_footer.tsx";
 import SyncButton from "../islands/SyncButton.tsx";
 
 export default function Deeplink(props: PageProps) {
@@ -29,6 +30,7 @@ export default function Deeplink(props: PageProps) {
           <SyncButton id={pId} view={pView} name={pName} />
         </div>
       </div>
+      <MyFooter />
     </html>
   );
 }
