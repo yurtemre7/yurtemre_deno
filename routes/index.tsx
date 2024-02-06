@@ -30,22 +30,24 @@ export const handler: Handlers<InitialData> = {
     });
   },
   async GET(_req, ctx) {
-    const url = 'https://www.duden.de'
-    const resp = await fetch(url)
-    const html_data = await resp.text()
-    const doc = new DOMParser().parseFromString(html_data, 'text/html')
     let wotd: WOTD = { word: '', link: '' };
-    if (doc !== null) {
-      const word = doc.querySelector('#block-wordoftheday a.scene__title-link');
-      if (word !== null) {
-        const link = word!.getAttribute('href');
-        const textContent = link?.split('/').reverse()[0] || '';
-        wotd = {
-          word: textContent,
-          link: url + link,
-        };
-      }
-    }
+
+    // const url = 'https://www.duden.de'
+    // const resp = await fetch(url)
+    // const html_data = await resp.text()
+    // const doc = new DOMParser().parseFromString(html_data, 'text/html')
+    
+    // if (doc !== null) {
+    //   const word = doc.querySelector('#block-wordoftheday a.scene__title-link');
+    //   if (word !== null) {
+    //     const link = word!.getAttribute('href');
+    //     const textContent = link?.split('/').reverse()[0] || '';
+    //     wotd = {
+    //       word: textContent,
+    //       link: url + link,
+    //     };
+    //   }
+    // }
 
     if (Date.now() - lastFetch > 1000 * 60 * 5) {
       const repositories = await fetch(
