@@ -20,7 +20,6 @@ let lastFetch = Date.parse("2020-01-01");
 
 export const handler: Handlers<InitialData> = {
   HEAD(_req, ctx) {
-    // head response
     return new Response("", {
       status: 200,
       headers: {
