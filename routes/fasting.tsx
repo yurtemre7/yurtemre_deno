@@ -4,8 +4,8 @@ import { useEffect, useState } from "preact/hooks";
 
 // map of key date -> (begin, end)
 interface FastingDates {
-    begin: Date;
-    end: Date;
+    begin: number;
+    end: number;
 }
 
 export default function Fasting() {
@@ -26,34 +26,48 @@ export default function Fasting() {
         const [beginHH, beginMM] = begin.split(":");
         const [endHH, endMM] = end.split(":");
 
-        const beginDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(beginHH), parseInt(beginMM));
-        const endDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(endHH), parseInt(endMM));
+        const beginDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(beginHH), parseInt(beginMM)).getTime();
+        const endDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(endHH), parseInt(endMM)).getTime();
 
         fastingDates.set(keyStr, { begin: beginDate, end: endDate });
     }
 
-    // console.log(fastingDates);
+    console.log(fastingDates);
 
     const today = Date.now();
     let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    const todayString = formatterToday.format(today);
+    let todayString = formatterToday.format(today);
+    // todayString = "12.03.2024"
+    // console.log(todayString);
 
     const fastingDate = fastingDates.get(todayString) || fastingDates.get("11.03.2024");
     formatterToday = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
     const fastingStr = formatterToday.format(fastingDate?.end || new Date());
 
-    timeLeft.value = (fastingDate?.end.getTime() || today) - today;
+    timeLeft.value = (fastingDate?.end || today) - today;
+
+    
 
     let progress = 0;
-    const duration = (fastingDate?.end.getTime() || today) - (fastingDate?.begin.getTime() || today);
+    const duration = (fastingDate?.end || today) - (fastingDate?.begin || today);
 
     progress = 100 - (timeLeft.value / duration) * 100;
 
+    if (progress > 100) {
+        progress = 100;
+    }
+
+    if (progress < 0) {
+        progress = 0;
+    }
+
     const getHours = () => {
+        if (timeLeft.value < 0) return 0;
         return Math.floor(timeLeft.value / 1000 / 60 / 60);
     }
 
     const getMinutes = () => {
+        if (timeLeft.value < 0) return 0;
         return Math.floor(timeLeft.value / 1000 / 60) - getHours() * 60;
     }
 
@@ -79,19 +93,27 @@ export default function Fasting() {
                 <h2 className="text-2xl font-bold text-center">fasting ⚡</h2>
                 <div className="p-5 h-screen mx-auto items-center justify-center flex-col flex">
                     <p className="text-2xl font-bold">
-                        Fasten endet heute um {fastingStr}.
+                        Fasten endet heute um {fastingStr} Uhr.
                     </p>
 
-                    <p className="text-xl">
-                        Noch {getHours()} Stunden und {getMinutes()} Minuten.
-                    </p>
+                    <div className="mt-1"></div>
 
-                    <div className="m-5">
+                    {timeLeft.value < 0 ? (
+                        <p className="text-xl font-bold">
+                            Fasten ist für heute vorbei, frohes Mahl! 🍽️
+                        </p>
+                    ) : (
+                        <p className="text-xl">
+                            Noch {getHours()} Stunden und {getMinutes()} Minuten.
+                        </p>
+                    )}
+
+                    <div className="m-10">
                         <div className="relative pt-1">
                             <div className="flex mb-2 items-center justify-between">
                                 <div>
                                     <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">
-                                        Progress
+                                        {progress == 100 ? "Done" : "Progress"}
                                     </span>
                                 </div>
 
@@ -107,7 +129,7 @@ export default function Fasting() {
                         </div>
                     </div>
 
-                    <div className="m-5"></div>
+                    
 
                     {/* map over daysAfterFasting.value and display in short underneath */}
 
@@ -115,10 +137,10 @@ export default function Fasting() {
                     <p className="text-xl">
                         Die nächsten Tage:
                     </p>
-                    <div className="m-5"></div>
+                    <div className="mt-5"></div>
                     <div className="text-center">
                         {daysAfterFasting.value.map((day) => (
-                            <p className="text-l">{day}</p>
+                            <p className="text-l">{day} Uhr</p>
                         ))}
 
                     </div>
