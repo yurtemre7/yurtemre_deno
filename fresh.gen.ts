@@ -6,6 +6,7 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $datenschutz from "./routes/datenschutz.tsx";
 import * as $deeplink from "./routes/deeplink.tsx";
+import * as $fasting from "./routes/fasting.tsx";
 import * as $impressum from "./routes/impressum.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $sync from "./routes/sync.tsx";
@@ -22,6 +23,7 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/datenschutz.tsx": $datenschutz,
     "./routes/deeplink.tsx": $deeplink,
+    "./routes/fasting.tsx": $fasting,
     "./routes/impressum.tsx": $impressum,
     "./routes/index.tsx": $index,
     "./routes/sync.tsx": $sync,
