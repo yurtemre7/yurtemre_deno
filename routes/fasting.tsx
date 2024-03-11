@@ -34,7 +34,7 @@ export default function Fasting() {
 
     // console.log(fastingDates);
 
-    const today = new Date();
+    const today = Date.now();
     let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const todayString = formatterToday.format(today);
 
@@ -42,10 +42,10 @@ export default function Fasting() {
     formatterToday = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
     const fastingStr = formatterToday.format(fastingDate?.end || new Date());
 
-    timeLeft.value = (fastingDate?.end.getTime() || today.getTime()) - today.getTime();
+    timeLeft.value = (fastingDate?.end.getTime() || today) - today;
 
     let progress = 0;
-    const duration = (fastingDate?.end.getTime() || today.getTime()) - (fastingDate?.begin.getTime() || today.getTime());
+    const duration = (fastingDate?.end.getTime() || today) - (fastingDate?.begin.getTime() || today);
 
     progress = 100 - (timeLeft.value / duration) * 100;
 
@@ -62,15 +62,15 @@ export default function Fasting() {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + i);
         let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
-        const fasting = fastingDates.get(formatterToday.format(tomorrow))?.end || new Date();
+        const fasting = fastingDates.get(formatterToday.format(tomorrow))?.end || Date.now();
         formatterToday = new Intl.DateTimeFormat('de-DE', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'});
-        const fastingStr = formatterToday.format(fasting || new Date());
+        const fastingStr = formatterToday.format(fasting || Date.now());
         daysAfterFasting.value.push(fastingStr);
     }
     // console.log(daysAfterFasting.value);
 
     return (
-        <html className="bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+        <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
             <div className="text-center p-10 items-center">
                 <head>
                     <title>yurtemre.de | Deeplink</title>
