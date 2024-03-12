@@ -87,7 +87,7 @@ export default function Fasting() {
                             <div className="group flex flex-col">
                                 <img
                                     className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
-                                    src='./mosque.png'
+                                    src="./mosque.png"
                                     alt="A mosque in the background."
                                 />
                                 <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
