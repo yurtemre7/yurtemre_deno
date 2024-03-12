@@ -42,7 +42,7 @@ export default function Fasting() {
         console.log("adjusted hours");
     }
 
-    today.setHours(today.getHours() - adjustedHours);
+    today.setHours(today.getHours() + adjustedHours);
 
     let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const todayString = formatterToday.format(today.getTime());
