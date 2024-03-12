@@ -4,8 +4,8 @@ import { useEffect, useState } from "preact/hooks";
 
 // map of key date -> (begin, end)
 interface FastingDates {
-    begin: number;
-    end: number;
+    begin: Date;
+    end: Date;
 }
 
 export default function Fasting() {
@@ -26,30 +26,27 @@ export default function Fasting() {
         const [beginHH, beginMM] = begin.split(":");
         const [endHH, endMM] = end.split(":");
 
-        const beginDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(beginHH), parseInt(beginMM)).getTime();
-        const endDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(endHH), parseInt(endMM)).getTime();
+        const beginDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(beginHH), parseInt(beginMM));
+        const endDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(endHH), parseInt(endMM));
 
         fastingDates.set(keyStr, { begin: beginDate, end: endDate });
     }
 
-    console.log(fastingDates);
+    // console.log(fastingDates);
 
-    const today = Date.now();
+    const today = new Date();
     let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    let todayString = formatterToday.format(today);
-    // todayString = "12.03.2024"
+    const todayString = formatterToday.format(today.getTime());
     // console.log(todayString);
 
     const fastingDate = fastingDates.get(todayString) || fastingDates.get("11.03.2024");
     formatterToday = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
     const fastingStr = formatterToday.format(fastingDate?.end || new Date());
 
-    timeLeft.value = (fastingDate?.end || today) - today;
-
-    
+    timeLeft.value = (fastingDate?.end.getTime() || today.getTime()) - today.getTime();
 
     let progress = 0;
-    const duration = (fastingDate?.end || today) - (fastingDate?.begin || today);
+    const duration = (fastingDate?.end.getTime() || today.getTime()) - (fastingDate?.begin.getTime() || today.getTime());
 
     progress = 100 - (timeLeft.value / duration) * 100;
 
@@ -78,7 +75,7 @@ export default function Fasting() {
         let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
         const fasting = fastingDates.get(formatterToday.format(tomorrow))?.end || Date.now();
         formatterToday = new Intl.DateTimeFormat('de-DE', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'});
-        const fastingStr = formatterToday.format(fasting || Date.now());
+        const fastingStr = formatterToday.format(fasting);
         daysAfterFasting.value.push(fastingStr);
     }
     // console.log(daysAfterFasting.value);
