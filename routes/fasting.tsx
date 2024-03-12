@@ -30,7 +30,6 @@ export default function Fasting() {
 
         fastingDates.set(keyStr, { begin: beginDate, end: endDate });
     }
-
     // console.log(fastingDates);
 
     const today = new Date();
