@@ -9,7 +9,6 @@ interface FastingDates {
 }
 
 export default function Fasting() {
-    const timeLeft = useSignal(0);
     // map of key date -> FastingDates
     const fastingDates: Map<string, FastingDates> = new Map();
 
@@ -35,9 +34,10 @@ export default function Fasting() {
     // console.log(fastingDates);
 
     const today = new Date();
+    const zeitVerschiebung = new Date(today.getFullYear(), 2, 31);
     let adjustedHours = 1;
 
-    if (today.getDate() == 31) {
+    if (today > zeitVerschiebung) {
         adjustedHours = 2;
         console.log("adjusted hours");
     }
@@ -49,12 +49,13 @@ export default function Fasting() {
 
     const fastingDate = fastingDates.get(todayString) || fastingDates.get("11.03.2024");
     const fastingFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
-    const fastingStr = fastingFormatter.format(fastingDate?.end || new Date());
+    const fastingStrBegin = fastingFormatter.format(fastingDate?.begin || new Date());
+    const fastingStrEnd = fastingFormatter.format(fastingDate?.end || new Date());
 
     const duration = (fastingDate?.end.getTime() || today.getTime()) - (fastingDate?.begin.getTime() || today.getTime());
 
     const daysAfterFasting = useSignal([] as string[]);
-    for (let i = 1; i < 3; i++) {
+    for (let i = 1; i < 4; i++) {
         if (i >= fastingDates.size - 1) {
             break;
         }
@@ -68,28 +69,41 @@ export default function Fasting() {
 
     return (
         <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
-            <div className="text-center p-10 items-center">
+            <div className="text-center p-10 items-center bg-center bg-cover" style={{ backgroundImage: "url('/static/mosque.png')" }}>
                 <head>
                     <title>yurtemre.de | fasting</title>
                 </head>
 
-                <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
-                <div className="p-5 h-screen mx-auto items-center justify-center flex-col flex">
-                    <p className="text-3xl font-bold">
-                        Fasten endet heute um {fastingStr} Uhr.
-                    </p>
+                <div>
+                    <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
+                    <div className="p-5 h-screen mx-auto items-center justify-center flex-col flex">
+                        <div className="mt-10" />
+                        <p className="text-3xl font-bold">
+                            Fasten heute von:<br />{fastingStrBegin} Uhr - {fastingStrEnd} Uhr
+                        </p>
+                        <div className="mt-10" />
+                        <FastingCountdown end={fastingDate?.end.getTime() || Date.now()} duration={duration} />
+                        <p className="text-xl">
+                            Die nächsten Tage:
+                        </p>
+                        <div className="mt-5" />
+                        <div className="text-center overflow-auto">
+                            {daysAfterFasting.value.map((day) => (
+                                <p className="text-l">{day} Uhr</p>
+                            ))}
+                        </div>
+                        <div className="mt-5" />
+                        <div className="group h-1/2 mx-auto">
+                            <img
+                                className="h-1/2 rounded-xl shadow-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
+                                src='./mosque.png'
+                                alt="A mosque in the background."
+                            />
+                            <p className="duration-500 ease-in-out transform group-hover:translate-y-3 group-hover:scale-110">
+                                Image by <a className="hover:underline hover:text-blue-200 mr-4" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="hover:underline hover:text-blue-200 mr-4" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
+                            </p>
+                        </div>
 
-                    <FastingCountdown end={fastingDate?.end.getTime() || Date.now()} duration={duration} />
-
-                    <div className="mt-10"></div>
-                    <p className="text-xl">
-                        Die nächsten Tage:
-                    </p>
-                    <div className="mt-5"></div>
-                    <div className="text-center">
-                        {daysAfterFasting.value.map((day) => (
-                            <p className="text-l">{day} Uhr</p>
-                        ))}
                     </div>
                 </div>
             </div>

@@ -31,6 +31,11 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         now.setHours(now.getHours() + adjustedHours);
 
         const difference = end - now.getTime();
+        
+        if (difference < 0) {
+            progress.value = 100;
+            return;
+        }
 
         progress.value = 100 - (difference / duration) * 100;
 
@@ -60,7 +65,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                     </p>
                 ) : (
                     <p className="text-2xl">
-                        Noch {hours.value} Stunden und {minutes.value} Minuten und {seconds.value} Sekunden.
+                        Noch {hours.value} Stunde{hours.value == 1 ? '' : 'n'}, {minutes.value} Minute{hours.value == 1 ? '' : 'n'}, {seconds.value} Sekunde{hours.value == 1 ? '' : 'n'}.
                     </p>
                 )}
             </div>
