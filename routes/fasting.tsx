@@ -93,7 +93,7 @@ export default function Fasting() {
                             ))}
                         </div>
                         <div className="mt-5" />
-                        <div className="group h-1/2 mx-auto">
+                        <div className="group h-1/2 mx-auto items-center justify-center flex flex-col">
                             <img
                                 className="h-1/2 rounded-xl shadow-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
                                 src='./mosque.png'
