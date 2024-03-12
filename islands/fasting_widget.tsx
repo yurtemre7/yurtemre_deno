@@ -77,7 +77,6 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                                 {progress.value == 100 ? "Done" : "Progress"}
                             </span>
                         </div>
-
                         <div className="text-right">
                             <span className="text-sm font-semibold inline-block ml-4">
                                 {progress.value.toFixed(3)}%
