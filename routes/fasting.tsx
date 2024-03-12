@@ -101,9 +101,11 @@ export default function Fasting() {
                         </p>
                         <div className="mt-5" />
                         <div className="text-center overflow-auto h-96 px-6 divide-y-2 divide-opacity-20 divide-white">
-                            {daysAfterFasting.value.map((day) => (
-                                <p className="text-l py-2 hover:underline">{day}</p>
-                            ))}
+                            {
+                                daysAfterFasting.value.map((day) => (
+                                    <p className="text-l py-2 hover:underline">{day}</p>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
