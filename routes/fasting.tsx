@@ -35,6 +35,15 @@ export default function Fasting() {
     // console.log(fastingDates);
 
     const today = new Date();
+    let adjustedHours = 1;
+
+    if (today.getDate() == 31) {
+        adjustedHours = 2;
+        console.log("adjusted hours");
+    }
+
+    today.setHours(today.getHours() - adjustedHours);
+
     let formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const todayString = formatterToday.format(today.getTime());
     // console.log(todayString);
