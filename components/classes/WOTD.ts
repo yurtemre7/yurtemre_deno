@@ -1,4 +1,4 @@
 export interface WOTD {
-    word: string;
-    link: string;
+  word: string;
+  link: string;
 }

@@ -3,7 +3,7 @@ class MyLlama {
     console.log("MyLlama was created!");
   }
 
-  async generateMsg(prompt: string) : Promise<string | null> {
+  async generateMsg(prompt: string): Promise<string | null> {
     await fetch("https://server.yurtemre.de:11434/api/generate", {
       method: "POST",
       headers: {
@@ -18,13 +18,13 @@ class MyLlama {
     })
       .then((response) => {
         if (!response.ok) {
-          return 'An error occured.'
+          return "An error occured.";
         }
         if (response.status !== 200) {
-          return 'An error occured. Status code: ' + response.status
+          return "An error occured. Status code: " + response.status;
         }
         if (!response.body) {
-            return 'An error occured. No response body.'
+          return "An error occured. No response body.";
         }
         const reader = response.body!.getReader();
         return new ReadableStream({
@@ -57,9 +57,9 @@ class MyLlama {
         return null;
       });
 
-      return new Promise((resolve, reject) => {
-        resolve("An error occured. Please try again later.");
-      });
+    return new Promise((resolve, reject) => {
+      resolve("An error occured. Please try again later.");
+    });
   }
 }
 
