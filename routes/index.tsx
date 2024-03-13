@@ -35,7 +35,7 @@ export const handler: Handlers<InitialData> = {
     // const resp = await fetch(url)
     // const html_data = await resp.text()
     // const doc = new DOMParser().parseFromString(html_data, 'text/html')
-    
+
     // if (doc !== null) {
     //   const word = doc.querySelector('#block-wordoftheday a.scene__title-link');
     //   if (word !== null) {
@@ -83,11 +83,17 @@ export default function Home({ data }: PageProps<InitialData>) {
             <p>"Die wirklich krasseste Website der Erde"</p>
           </blockquote>
           <p className="text-white text-2xl"></p>
-          <div className="mt-12 mb-12">
+          <div className="mt-12 mb-12 flex flex-row justify-center items-center">
             <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
               href="#contact-me"
             >
-              Kontaktiere mich hier
+              Kontakt 📬
+            </a></button>
+            <div className="mx-4"></div>
+            <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
+              href="/fasting"
+            >
+              Zum fasting ⚡
             </a></button>
           </div>
           <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
@@ -97,7 +103,7 @@ export default function Home({ data }: PageProps<InitialData>) {
       </div>
 
       <div id="rezensionen">
-        <Rezensionen/>
+        <Rezensionen />
       </div>
 
       {/* <div id="ai-chat" className="pt-8 pb-8 bg-blue-300 text-white">
