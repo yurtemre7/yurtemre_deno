@@ -6,6 +6,7 @@ import FastingCountdown from "../islands/fasting_widget.tsx";
 interface FastingDates {
     begin: Date;
     end: Date;
+    index: number;
 }
 
 export default function Fasting() {
@@ -15,6 +16,8 @@ export default function Fasting() {
     // add from static fasting.csv file
     const fastingCSV = Deno.readTextFileSync("./static/fasting.csv");
     const fastingLines = fastingCSV.split("\n");
+
+    let index = 0;
 
     for (const line of fastingLines) {
         const [key, begin, end] = line.split(",");
@@ -28,7 +31,7 @@ export default function Fasting() {
         const beginDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(beginHH), parseInt(beginMM));
         const endDate = new Date(parseInt(yyyy), parseInt(mm) - 1, parseInt(dd), parseInt(endHH), parseInt(endMM));
 
-        fastingDates.set(keyStr, { begin: beginDate, end: endDate });
+        fastingDates.set(keyStr, { begin: beginDate, end: endDate, index: index++ });
     }
     // console.log(fastingDates);
 
@@ -46,19 +49,59 @@ export default function Fasting() {
     const formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const todayString = formatterToday.format(today.getTime());
 
-    const fastingDate = fastingDates.get(todayString) || fastingDates.get("11.03.2024");
-    const fastingFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
-    const fastingStrBegin = fastingFormatter.format(fastingDate?.begin || new Date());
-    const fastingStrEnd = fastingFormatter.format(fastingDate?.end || new Date());
+    const fastingDate = fastingDates.get(todayString);
+    if (fastingDate === undefined) {
+        return (
+            <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+                <div className="text-center p-10 items-center">
+                    <head>
+                        <title>yurtemre.de | fasting</title>
+                    </head>
 
-    const duration = (fastingDate?.end.getTime() || today.getTime()) - (fastingDate?.begin.getTime() || today.getTime());
+                    <div>
+                        <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
+                        <div className="p-5 mx-auto items-center justify-center flex-col flex">
+                            <div className="mt-10" />
+                            <p className="text-3xl font-bold">
+                                Fasten ist vorbei! 🎉
+                            </p>
+                            <div className="mt-5" />
+                            {/* Next fasting countdown */}
+                            {/* <FastingCountdown end={fastingDate?.end.getTime() || Date.now()} duration={duration} /> */}
+
+                            <div className="mt-5" />
+                            <div className="items-center justify-center flex">
+                                <div className="group flex flex-col">
+                                    <img
+                                        className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
+                                        src="./mosque.png"
+                                        alt="A mosque in the background."
+                                    />
+                                    <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
+                                        Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="mt-5" />
+                        </div>
+                    </div>
+                </div>
+                <MyFooter />
+            </html>
+        );
+    }
+    const fastingFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
+    const fastingStrBegin = fastingFormatter.format(fastingDate!.begin || new Date());
+    const fastingStrEnd = fastingFormatter.format(fastingDate!.end || new Date());
+
+    const duration = (fastingDate!.end.getTime() || today.getTime()) - (fastingDate!.begin.getTime() || today.getTime());
 
     const daysAfterFasting = useSignal([] as string[]);
-    for (let i = 1; i < fastingDates.size - 1; i++) {
+    for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + i);
-        const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))?.begin || Date.now();
-        const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))?.end || Date.now();
+        const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
+        const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
         const longFormatter = new Intl.DateTimeFormat('de-DE', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         const shortFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
         const fastingStr = longFormatter.format(fastingBegin) + ' Uhr - ' + shortFormatter.format(fastingEnd) + ' Uhr';
@@ -80,7 +123,7 @@ export default function Fasting() {
                             Fasten heute von:<br />{fastingStrBegin} Uhr - {fastingStrEnd} Uhr
                         </p>
                         <div className="mt-5" />
-                        <FastingCountdown end={fastingDate?.end.getTime() || Date.now()} duration={duration} />
+                        <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
 
                         <div className="mt-5" />
                         <div className="items-center justify-center flex">
