@@ -65,7 +65,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                     </p>
                 ) : (
                     <p className="text-2xl">
-                        Noch {hours.value} Stunde{hours.value == 1 ? '' : 'n'}, {minutes.value} Minute{hours.value == 1 ? '' : 'n'}, {seconds.value} Sekunde{hours.value == 1 ? '' : 'n'}.
+                        Noch {hours.value} Stunde{hours.value == 1 ? '' : 'n'}, {minutes.value} Minute{minutes.value == 1 ? '' : 'n'}, {seconds.value} Sekunde{seconds.value == 1 ? '' : 'n'}.
                     </p>
                 )}
             </div>
