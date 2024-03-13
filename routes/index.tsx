@@ -4,7 +4,6 @@ import WordOfTheDay from "../components/word_of_day.tsx";
 // import ChatScreen from "../islands/ai_chat.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { WOTD } from '../components/classes/WOTD.ts';
-import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts";
 import { Repositories } from "../components/classes/Github.ts";
 import MyProjects from "../components/my_projects.tsx";
 import Rezensionen from "../components/rezensionen.tsx";

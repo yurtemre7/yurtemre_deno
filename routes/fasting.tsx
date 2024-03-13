@@ -124,7 +124,6 @@ export default function Fasting() {
                         </p>
                         <div className="mt-5" />
                         <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
-
                         <div className="mt-5" />
                         <div className="items-center justify-center flex">
                             <div className="group flex flex-col">
