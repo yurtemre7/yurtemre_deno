@@ -13,6 +13,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
     const progress = useSignal(0);
 
     useEffect(() => {
+        calculateTimeLeft();
         const timer = setTimeout(() => {
             calculateTimeLeft();
         }, 1000);
@@ -31,9 +32,14 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         now.setHours(now.getHours() + adjustedHours);
 
         const difference = end - now.getTime();
-        
+
         if (difference < 0) {
             progress.value = 100;
+            return;
+        }
+
+        if (duration == 0) {
+            progress.value = 0;
             return;
         }
 
@@ -54,20 +60,21 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         seconds.value = Math.floor(difference / 1000) - hours.value * 60 * 60 - minutes.value * 60;
     }
 
-    calculateTimeLeft();
-
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="flex flex-row items-center justify-center rounded-xl">
-                {progress.value == 100 ? (
-                    <p className="text-2xl font-bold">
-                        Fasten ist für heute vorbei, frohes Mahl! 🍽️
-                    </p>
-                ) : (
-                    <p className="text-2xl">
-                        Noch {hours.value} Stunde{hours.value == 1 ? '' : 'n'} {minutes.value} Minute{minutes.value == 1 ? '' : 'n'} {seconds.value} Sekunde{seconds.value == 1 ? '' : 'n'}
-                    </p>
-                )}
+                {
+                    progress.value == 100 ?
+                        (
+                            <p className="text-2xl font-bold">
+                                Fasten ist für heute vorbei, frohes Mahl! 🍽️
+                            </p>
+                        ) : (
+                            <p className="text-2xl">
+                                Noch {hours.value} Stunde{hours.value == 1 ? '' : 'n'} {minutes.value} Minute{minutes.value == 1 ? '' : 'n'} {seconds.value} Sekunde{seconds.value == 1 ? '' : 'n'}
+                            </p>
+                        )
+                }
             </div>
             <div className="m-10">
                 <div className="relative pt-1">
