@@ -36,7 +36,7 @@ export default function Fasting() {
     // console.log(fastingDates);
 
     const today = new Date();
-    const zeitVerschiebung = new Date(today.getFullYear(), 2, 31, 2);
+    const zeitVerschiebung = new Date(today.getFullYear(), 2, 31);
     let adjustedHours = 1;
 
     if (today > zeitVerschiebung) {
@@ -99,7 +99,6 @@ export default function Fasting() {
     const daysAfterFasting = useSignal([] as string[]);
     for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
         const tomorrow = new Date();
-        tomorrow.setHours(tomorrow.getHours() + adjustedHours);
         tomorrow.setDate(tomorrow.getDate() + i);
         const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
         const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
