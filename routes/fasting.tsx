@@ -114,7 +114,6 @@ export default function Fasting() {
                 <head>
                     <title>yurtemre.de | fasting</title>
                 </head>
-
                 <div>
                     <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
                     <div className="p-5 mx-auto items-center justify-center flex-col flex">
