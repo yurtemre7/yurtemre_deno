@@ -119,8 +119,12 @@ export default function Fasting() {
                     <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
                     <div className="p-5 mx-auto items-center justify-center flex-col flex">
                         <div className="mt-10" />
-                        <p className="text-3xl font-bold">
-                            Fasten heute von:<br />{fastingStrBegin} Uhr - {fastingStrEnd} Uhr
+                        <p className="text-2xl font-bold">
+                            Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan:
+                        </p>
+                        <div className="mt-5" />
+                        <p className="text-3xl font-bold text-center">
+                        {fastingStrBegin} Uhr - {fastingStrEnd} Uhr
                         </p>
                         <div className="mt-5" />
                         <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
@@ -139,14 +143,14 @@ export default function Fasting() {
                         </div>
                         <div className="mt-10" />
                         <p className="text-xl">
-                            Die restlichen Tage:
+                            Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
                         </p>
                         <div className="mt-5" />
                         <div className="text-center overflow-auto h-96 px-6 divide-y-2 divide-opacity-20 divide-white">
                             {
                                 daysAfterFasting.value.map(
-                                    (day) => (
-                                        <p className="text-l py-2 hover:underline">{day}</p>
+                                    (day, i) => (
+                                        <p className="text-l py-2 hover:underline">{i+1}: {day}</p>
                                     )
                                 )
                             }
