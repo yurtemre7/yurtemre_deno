@@ -23,6 +23,15 @@ export default function FastingCountdown({ end, duration }: InitialData) {
     function calculateTimeLeft() {
         const now = new Date();
 
+        let adjustedHours = 1;
+        const zeitVerschiebung = new Date(now.getFullYear(), 2, 31);
+        if (now > zeitVerschiebung) {
+            adjustedHours = 2;
+            console.log("adjusted hours");
+        }
+
+        now.setHours(now.getHours() + adjustedHours);
+
         const difference = end - now.getTime();
 
         if (difference < 0) {
