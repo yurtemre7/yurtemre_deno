@@ -23,13 +23,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
     function calculateTimeLeft() {
         const now = new Date();
 
-        let adjustedHours = 1;
-        if (now.getDate() == 31) {
-            adjustedHours = 2;
-            console.log("adjusted hours");
-        }
-
-        now.setHours(now.getHours() + adjustedHours);
+        now.setHours(now.getHours() + 1);
 
         const difference = end - now.getTime();
 
