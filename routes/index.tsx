@@ -1,4 +1,4 @@
-import NewYearCountdown from "../islands/NewYear.tsx";
+import DateCountdown from "../islands/DateCountdown.tsx";
 import AboutMe from "../islands/about.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
 // import ChatScreen from "../islands/ai_chat.tsx";
@@ -73,64 +73,68 @@ export const handler: Handlers<InitialData> = {
 };
 
 export default function Home({ data }: PageProps<InitialData>) {
+  const newYear = new Date(2024, 11, 31, 23, 59);
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-blue-500">
-        <div className="text-center pb-8 pt-8">
-          <h1 className="text-6xl font-bold text-white mb-4">yurtemre.de</h1>
-          <blockquote className="text-white text-xl italic font-semibold">
-            <p>"Die wirklich krasseste Website der Erde"</p>
-          </blockquote>
-          <p className="text-white text-2xl"></p>
-          <div className="mt-12 mb-12 flex flex-row justify-center items-center">
-            <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
-              href="#contact-me"
-            >
-              Kontakt 📬
-            </a></button>
-            <div className="mx-4"></div>
-            <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
-              href="/fasting"
-            >
-              Zum fasting ⚡
-            </a></button>
-          </div>
-          <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
-            <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
+    <html>
+      <body>
+        <div className="min-h-screen flex items-center justify-center bg-blue-500">
+          <div className="text-center pb-8 pt-8">
+            <h1 className="text-6xl font-bold text-white mb-4">yurtemre.de</h1>
+            <blockquote className="text-white text-xl italic font-semibold">
+              <p>"Die wirklich krasseste Website der Erde"</p>
+            </blockquote>
+            <p className="text-white text-2xl"></p>
+            <div className="mt-12 mb-12 flex flex-row justify-center items-center">
+              <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
+                href="#contact-me"
+              >
+                Kontakt 📬
+              </a></button>
+              <div className="mx-4"></div>
+              <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
+                href="/fasting"
+              >
+                Zum fasting ⚡
+              </a></button>
+            </div>
+            <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
+              <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="rezensionen">
-        <Rezensionen />
-      </div>
+        <div id="rezensionen">
+          <Rezensionen />
+        </div>
 
-      {/* <div id="ai-chat" className="pt-8 pb-8 bg-blue-300 text-white">
+        {/* <div id="ai-chat" className="pt-8 pb-8 bg-blue-300 text-white">
         <ChatScreen />
       </div> */}
 
-      <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
-        <AboutMe />
-      </div>
-      <div id="my-projects" className="pt-8 pb-8 bg-blue-700 text-white">
-        <MyProjects repos={data.repositories} />
-      </div>
+        <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
+          <AboutMe />
+        </div>
+        <div id="my-projects" className="pt-8 pb-8 bg-blue-700 text-white">
+          <MyProjects repos={data.repositories} />
+        </div>
 
-      <div id="new-year">
-        <NewYearCountdown />
-      </div>
+        <div id="new-year">
+          <DateCountdown date={newYear.getTime()} endTitle="Frohes neues Jahr! 🎆" title="Zeit bis zum Neujahr 2025:" />
+        </div>
 
-      <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-700">
-        <div className="text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Du findest mich hier 👇</h2>
-          <div className="flex justify-center mt-6">
-            <a href="https://t.me/emredev" className="text-white hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Telegram</a>
-            <a href="mailto:info@yurtemre.de" className="text-white hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">E-Mail</a>
+        <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-700">
+          <div className="text-center">
+            <h2 className="text-4xl font-bold text-white mb-4">Du findest mich hier 👇</h2>
+            <div className="flex justify-center mt-6">
+              <a href="https://t.me/emredev" className="text-white hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Telegram</a>
+              <a href="mailto:info@yurtemre.de" className="text-white hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">E-Mail</a>
+            </div>
           </div>
         </div>
-      </div>
 
+
+      </body>
       <MyFooter />
-    </>
+    </html>
   );
 }

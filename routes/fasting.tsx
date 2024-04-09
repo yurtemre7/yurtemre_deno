@@ -1,6 +1,7 @@
 import { useSignal } from "@preact/signals";
 import MyFooter from "../components/my_footer.tsx";
 import FastingCountdown from "../islands/fasting_widget.tsx";
+import DateCountdown from "../islands/DateCountdown.tsx";
 
 // map of key date -> (begin, end)
 interface FastingDates {
@@ -41,7 +42,7 @@ export default function Fasting() {
 
     if (today > zeitVerschiebung) {
         adjustedHours = 2;
-        console.log("adjusted hours");
+        // console.log("adjusted hours");
     }
 
     today.setHours(today.getHours() + adjustedHours);
@@ -50,42 +51,41 @@ export default function Fasting() {
     const todayString = formatterToday.format(today.getTime());
 
     const fastingDate = fastingDates.get(todayString);
+
+    const ramdan2025 = new Date(2025, 1, 28, 23, 59);
+
+
     if (fastingDate === undefined) {
         return (
             <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
-                <div className="text-center p-10 items-center">
-                    <head>
-                        <title>yurtemre.de | fasting</title>
-                    </head>
-
-                    <div>
-                        <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
-                        <div className="p-5 mx-auto items-center justify-center flex-col flex">
-                            <div className="mt-10" />
-                            <p className="text-3xl font-bold">
-                                Fasten ist vorbei! 🎉
-                            </p>
-                            <div className="mt-5" />
-                            {/* Next fasting countdown */}
-                            {/* <FastingCountdown end={fastingDate?.end.getTime() || Date.now()} duration={duration} /> */}
-
-                            <div className="mt-5" />
-                            <div className="items-center justify-center flex">
-                                <div className="group flex flex-col">
-                                    <img
-                                        className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
-                                        src="./mosque.png"
-                                        alt="A mosque in the background."
-                                    />
-                                    <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
-                                        Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
-                                    </p>
+                <head>
+                    <title>yurtemre.de | fasting</title>
+                </head>
+                <body>
+                    <div className="text-center p-10 items-center">
+                        <div>
+                            <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
+                            <div className="p-5 mx-auto items-center justify-center flex-col flex">
+                                <div className="mt-10" />
+                                <DateCountdown date={ramdan2025.getTime()} title="Ramadan 2025" endTitle="Ramadan ist endlich da!" />
+                                <div className="mt-10" />
+                                <div className="items-center justify-center flex">
+                                    <div className="group flex flex-col">
+                                        <img
+                                            className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
+                                            src="./mosque.png"
+                                            alt="A mosque in the background."
+                                        />
+                                        <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
+                                            Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
+                                        </p>
+                                    </div>
                                 </div>
+                                <div className="mt-5" />
                             </div>
-                            <div className="mt-5" />
                         </div>
                     </div>
-                </div>
+                </body>
                 <MyFooter />
             </html>
         );
@@ -108,55 +108,70 @@ export default function Fasting() {
         daysAfterFasting.value.push(fastingStr);
     }
 
+
+
     return (
         <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
-            <div className="text-center p-10 items-center">
-                <head>
-                    <title>yurtemre.de | fasting</title>
-                </head>
-                <div>
-                    <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
-                    <div className="p-5 mx-auto items-center justify-center flex-col flex">
-                        <div className="mt-10" />
-                        <p className="text-2xl font-bold">
-                            Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan:
-                        </p>
-                        <div className="mt-5" />
-                        <p className="text-3xl font-bold text-center">
-                        {fastingStrBegin} Uhr - {fastingStrEnd} Uhr
-                        </p>
-                        <div className="mt-5" />
-                        <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
-                        <div className="mt-5" />
-                        <div className="items-center justify-center flex">
-                            <div className="group flex flex-col">
-                                <img
-                                    className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
-                                    src="./mosque.png"
-                                    alt="A mosque in the background."
-                                />
-                                <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
-                                    Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
-                                </p>
+            <head>
+                <title>yurtemre.de | fasting</title>
+            </head>
+            <body>
+
+
+                <div className="text-center p-10 items-center">
+
+                    <div>
+                        <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
+                        <div className="p-5 mx-auto items-center justify-center flex-col flex">
+                            <div className="mt-10" />
+                            <p className="text-2xl font-bold">
+                                Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan:
+                            </p>
+                            <div className="mt-5" />
+                            <p className="text-3xl font-bold text-center">
+                                {fastingStrBegin} Uhr - {fastingStrEnd} Uhr
+                            </p>
+                            <div className="mt-5" />
+                            <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
+                            <div className="mt-5" />
+                            <div className="items-center justify-center flex">
+                                <div className="group flex flex-col">
+                                    <img
+                                        className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
+                                        src="./mosque.png"
+                                        alt="A mosque in the background."
+                                    />
+                                    <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
+                                        Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="mt-10" />
-                        <p className="text-xl">
-                            Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
-                        </p>
-                        <div className="mt-5" />
-                        <div className="text-center overflow-auto h-96 px-6 divide-y-2 divide-opacity-20 divide-white">
+                            <div className="mt-10" />
                             {
-                                daysAfterFasting.value.map(
-                                    (day, i) => (
-                                        <p className="text-l py-2 hover:underline">{i+1}: {day}</p>
-                                    )
-                                )
+                                daysAfterFasting.value.length > 0 ? (
+                                    <div>
+                                        <p className="text-xl">
+                                            Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
+                                        </p>
+                                        <div className="mt-5" />
+                                        <div className="text-center overflow-auto h-96 px-6 divide-y-2 divide-opacity-20 divide-white">
+                                            {
+                                                daysAfterFasting.value.map(
+                                                    (day, i) => (
+                                                        <p className="text-l py-2 hover:underline">{i + 1}: {day}</p>
+                                                    )
+                                                )
+                                            }
+                                        </div>
+                                    </div>
+                                ) : null
                             }
+
+
                         </div>
                     </div>
                 </div>
-            </div>
+            </body>
             <MyFooter />
         </html>
     );

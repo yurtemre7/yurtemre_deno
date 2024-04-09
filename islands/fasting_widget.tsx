@@ -27,7 +27,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         const zeitVerschiebung = new Date(now.getFullYear(), 2, 31);
         if (now > zeitVerschiebung) {
             adjustedHours = 2;
-            console.log("adjusted hours");
+            // console.log("adjusted hours");
         }
 
         now.setHours(now.getHours() + adjustedHours);
