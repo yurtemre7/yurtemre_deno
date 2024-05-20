@@ -5,9 +5,9 @@ import WordOfTheDay from "../components/word_of_day.tsx";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { WOTD } from '../components/classes/WOTD.ts';
 import { Repositories } from "../components/classes/Github.ts";
-import MyProjects from "../components/my_projects.tsx";
 import Rezensionen from "../components/rezensionen.tsx";
 import MyFooter from "../components/my_footer.tsx";
+import SmoothScrollBtn from "../islands/smoothscroll_btn.tsx";
 
 interface InitialData {
   wotd: WOTD;
@@ -85,11 +85,9 @@ export default function Home({ data }: PageProps<InitialData>) {
             </blockquote>
             <p className="text-white text-2xl"></p>
             <div className="mt-12 mb-12 flex flex-row justify-center items-center">
-              <a href="#contact-me">
-                <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300">
-                  Kontakt 📬
-                </button>
-              </a>
+              <SmoothScrollBtn id="about-me" name="Über mich 🧑‍🦲" />
+              <div className="mx-4" />
+              <SmoothScrollBtn id="contact-me" name="Kontakt 📬" />
             </div>
             <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
               <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
@@ -108,10 +106,9 @@ export default function Home({ data }: PageProps<InitialData>) {
         <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
           <AboutMe />
         </div>
-        <div id="my-projects" className="pt-8 pb-8 bg-blue-700 text-white">
+        {/* <div id="my-projects" className="pt-8 pb-8 bg-blue-700 text-white">
           <MyProjects repos={data.repositories} />
-        </div>
-
+        </div> */}
         <div id="new-year">
           <DateCountdown date={newYear.getTime()} endTitle="Frohes neues Jahr! 🎆" title="Zeit bis zum Neujahr 2025:" />
         </div>
