@@ -90,12 +90,6 @@ export default function Home({ data }: PageProps<InitialData>) {
               >
                 Kontakt 📬
               </a></button>
-              <div className="mx-4"></div>
-              <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
-                href="/fasting"
-              >
-                Zum fasting ⚡
-              </a></button>
             </div>
             <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
               <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
