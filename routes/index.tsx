@@ -85,11 +85,11 @@ export default function Home({ data }: PageProps<InitialData>) {
             </blockquote>
             <p className="text-white text-2xl"></p>
             <div className="mt-12 mb-12 flex flex-row justify-center items-center">
-              <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300"><a
-                href="#contact-me"
-              >
-                Kontakt 📬
-              </a></button>
+              <a href="#contact-me">
+                <button className="bg-white text-blue-800 rounded shadow-lg py-2 px-4 hover:bg-blue-800 hover:text-white transition-colors duration-300">
+                  Kontakt 📬
+                </button>
+              </a>
             </div>
             <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
               <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
