@@ -16,6 +16,8 @@ import * as $SyncButton from "./islands/SyncButton.tsx";
 import * as $about from "./islands/about.tsx";
 import * as $ai_chat from "./islands/ai_chat.tsx";
 import * as $fasting_widget from "./islands/fasting_widget.tsx";
+import * as $my_apps from "./islands/my_apps.tsx";
+import * as $smoothscroll_btn from "./islands/smoothscroll_btn.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -36,6 +38,8 @@ const manifest = {
     "./islands/about.tsx": $about,
     "./islands/ai_chat.tsx": $ai_chat,
     "./islands/fasting_widget.tsx": $fasting_widget,
+    "./islands/my_apps.tsx": $my_apps,
+    "./islands/smoothscroll_btn.tsx": $smoothscroll_btn,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
