@@ -96,7 +96,7 @@ export default function Fasting() {
 
     const duration = (fastingDate!.end.getTime() || today.getTime()) - (fastingDate!.begin.getTime() || today.getTime());
 
-    const daysAfterFasting = useSignal([] as string[]);
+    const daysAfterFasting = useSignal<string[]>([]);
     for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + i);
@@ -157,7 +157,7 @@ export default function Fasting() {
                                         <div className="text-center overflow-auto h-96 px-6 divide-y-2 divide-opacity-20 divide-white">
                                             {
                                                 daysAfterFasting.value.map(
-                                                    (day, i) => (
+                                                    (day: string, i: number) => (
                                                         <p className="text-l py-2 hover:underline">{i + 1}: {day}</p>
                                                     )
                                                 )
