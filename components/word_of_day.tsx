@@ -16,7 +16,7 @@ export default function WordOfTheDay({ word, link }: WOTD) {
             <div className="flex-col items-center justify-center text-white">
 
                 <div className="text-5xl m-2 font-serif"> <a className="hover:underline" href={word_data.link}>{word_data.word}</a></div>
-                <div className="text-xl">is the <a className="hover:underline" href="https://www.duden.de">Duden</a>'s German word of the day.</div>
+                <div className="text-xl">is the <a className="underline bold" href="https://www.duden.de">Duden</a>'s German word of the day.</div>
             </div>
         );
     }
