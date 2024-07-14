@@ -19,7 +19,7 @@ let reps: Repositories = [];
 let lastFetch = Date.parse("2020-01-01");
 
 export const handler: Handlers<InitialData> = {
-  HEAD(_req, ctx) {
+  HEAD(_req, _ctx) {
     return new Response("", {
       status: 200,
       headers: {
