@@ -40,7 +40,8 @@ export const handler: Handlers<InitialData> = {
       const word = doc.querySelector('#block-numero-wordoftheday a.scene__title-link');
       if (word !== null) {
         const link = word!.getAttribute('href');
-        const textContent = link?.split('/').reverse()[0] || '';
+        const a_txt = word!.innerText.replace(/[\u00AD\u002D\u2011]+/g,'');
+        const textContent = a_txt; // link?.split('/').reverse()[0] || '';
         wotd = {
           word: textContent,
           link: url + link,
