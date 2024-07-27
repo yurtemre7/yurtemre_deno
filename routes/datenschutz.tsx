@@ -5,7 +5,7 @@ export default function Datenschutz() {
     <div>
       <div className="h-full w-full text-left p-10 items-center text-white bg-blue-600">
         <h1>Datenschutzerklärung</h1>
-        <p>Stand: 14. Oktober 2022</p>
+        <p>Stand: 27. Juli 2024</p>
         <div className="m-10" />
         <h2>Inhaltsübersicht</h2>{" "}
         <ul className="space-y-1 max-w-md list-disc list-inside m-4">
@@ -60,7 +60,7 @@ export default function Datenschutz() {
         <h2 id="m3">Verantwortlicher</h2>
         <div className="m-4" />
         <p>
-          Emre Yurtseven, App WoAuto,<br />Innsbrucker Straße 47A,{" "}
+          Emre Yurtseven, App WoAuto, Paren,<br />Innsbrucker Straße 47A,{" "}
           <br />10825 Berlin, Deutschland
         </p>
         E-Mail-Adresse:{" "}
