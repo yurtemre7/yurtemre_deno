@@ -7,9 +7,7 @@ export default function Paren() {
             <div className="text-center items-center w-1/2 my-10">
                 <h2 className="text-4xl font-bold text-white mb-8">Check it out here</h2>
                 <div className="flex justify-center mt-6">
-                    <iframe src={parenURL} height="600" width="300">
-
-                    </iframe>
+                    <iframe src={parenURL} height="600" width="300" />
                 </div>
             </div>
             <div className="text-center items-center w-1/2 my-10">
