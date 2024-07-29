@@ -77,6 +77,7 @@ export const handler: Handlers<InitialData> = {
 
 export default function Home({ data }: PageProps<InitialData>) {
   const newYear = new Date(2024, 11, 31, 23, 59);
+  const vacationJapan = new Date(2024, 8, 27, 23, 59);
   return (
     <html>
       <body>
@@ -122,6 +123,10 @@ export default function Home({ data }: PageProps<InitialData>) {
 
         <div id="paren">
           <Paren/>
+        </div>
+
+        <div id="japan-vacaction">
+          <DateCountdown date={vacationJapan.getTime()} endTitle="あざす！" title="Zeit bis zum 日本 Urlaub:" />
         </div>
 
         <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-700">
