@@ -90,6 +90,8 @@ export default function Home({ data }: PageProps<InitialData>) {
             <div className="mt-12 mb-12 flex flex-row justify-center items-center">
               <SmoothScrollBtn id="about-me" name="Über mich 🧑‍🦲" />
               <div className="mx-4" />
+              <SmoothScrollBtn id="paren" name="Paren 💸" />
+              <div className="mx-4" />
               <SmoothScrollBtn id="contact-me" name="Kontakt 📬" />
             </div>
             <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
