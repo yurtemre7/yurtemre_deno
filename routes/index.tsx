@@ -88,11 +88,11 @@ export default function Home({ data }: PageProps<InitialData>) {
               <p>"Die wirklich krasseste Website der Erde"</p>
             </blockquote>
             <p className="text-white text-2xl"></p>
-            <div className="mt-12 mb-12 flex flex-row justify-center items-center">
+            <div className="mt-12 mb-12 flex sm:flex-row flex-col justify-center items-center">
               <SmoothScrollBtn id="about-me" name="Über mich 🧑‍🦲" />
-              <div className="mx-4" />
+              <div className="m-4" />
               <SmoothScrollBtn id="paren" name="Paren 💸" />
-              <div className="mx-4" />
+              <div className="m-4" />
               <SmoothScrollBtn id="contact-me" name="Kontakt 📬" />
             </div>
             <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">

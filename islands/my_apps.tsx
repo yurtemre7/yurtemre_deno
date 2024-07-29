@@ -18,7 +18,7 @@ export default function MyApps() {
     ];
 
     return (
-        <div className="flex justify-center items-center text-center">
+        <div className="flex justify-center items-center text-center m-8">
           <div className="w-1/2">
             <h3 className="text-3xl font-bold mb-4">Meine Apps</h3>
             <ul>
