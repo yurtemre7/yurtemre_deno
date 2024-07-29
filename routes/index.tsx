@@ -9,6 +9,7 @@ import Rezensionen from "../components/rezensionen.tsx";
 import MyFooter from "../components/my_footer.tsx";
 import SmoothScrollBtn from "../islands/smoothscroll_btn.tsx";
 import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts";
+import Paren from "../components/paren.tsx";
 
 interface InitialData {
   wotd: WOTD;
@@ -113,6 +114,12 @@ export default function Home({ data }: PageProps<InitialData>) {
         </div> */}
         <div id="new-year">
           <DateCountdown date={newYear.getTime()} endTitle="Frohes neues Jahr! 🎆" title="Zeit bis zum Neujahr 2025:" />
+        </div>
+
+        {/* PAREN HERE - COLOR: #FFd65836 */}
+
+        <div id="paren">
+          <Paren/>
         </div>
 
         <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-700">
