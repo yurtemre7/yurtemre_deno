@@ -5,14 +5,22 @@ export default function MyFooter() {
                 <div className="text-center md:text-left">
                     <p>© 2020 - {new Date().getFullYear()} <a className="hover:underline" href="/">yurtemre.de</a></p>
                     <div className="flex justify-center md:justify-start mt-1">
-                        <p>Made with fresh</p>
-                        <div className="ml-2" />
-                        <img
-                            src="/logo.svg"
-                            height="22px"
-                            width="22px"
-                            alt="the fresh logo: a sliced lemon dripping with juice"
-                        />
+                        <p>Made with</p>
+                        <div className="ml-1" />
+                        <a href="https://fresh.deno.dev/" className="hover:underline flex flex-row hover:text-blue-200">
+                            <div>
+                                fresh
+                            </div>
+                            <div className="ml-1" />
+                            <img
+                                src="/logo.svg"
+                                height="22px"
+                                width="22px"
+                                alt="the fresh logo: a sliced lemon dripping with juice"
+                            />
+                        </a>
+                        <div className="ml-1" />
+
                     </div>
                 </div>
                 <div className="mt-4 md:mt-0 text-center md:text-right">
