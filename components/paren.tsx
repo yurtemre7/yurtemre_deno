@@ -4,7 +4,7 @@ const parenGoogleDownloadURL = "https://play.google.com/store/apps/details?id=de
 
 export default function Paren() {
     return (
-        <div id="contact-me" className="min-h-screen flex sm:flex-row flex-col items-center justify-center bg-orange-600">
+        <div className="min-h-screen flex sm:flex-row flex-col items-center justify-center bg-orange-600">
             <div className="text-center items-center w-1/2 my-10">
                 <h2 className="text-4xl font-bold text-white mb-8">Check it out here</h2>
                 <div className="flex justify-center mt-6">
