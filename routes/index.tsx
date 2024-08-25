@@ -9,7 +9,6 @@ import Rezensionen from "../components/rezensionen.tsx";
 import MyFooter from "../components/my_footer.tsx";
 import SmoothScrollBtn from "../islands/smoothscroll_btn.tsx";
 import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts";
-import Paren from "../components/paren.tsx";
 
 interface InitialData {
   wotd: WOTD;
@@ -77,11 +76,10 @@ export const handler: Handlers<InitialData> = {
 
 export default function Home({ data }: PageProps<InitialData>) {
   const newYear = new Date(2024, 11, 31, 23, 59);
-  const vacationJapan = new Date(2024, 8, 27, 23, 59);
   return (
     <html>
       <body>
-        <div className="min-h-screen flex items-center justify-center bg-blue-500">
+        <div className="min-h-screen flex items-center justify-center bg-blue-600">
           <div className="text-center pb-8 pt-8">
             <h1 className="text-6xl font-bold text-white mb-4">yurtemre.de</h1>
             <blockquote className="text-white text-xl italic font-semibold">
@@ -91,7 +89,7 @@ export default function Home({ data }: PageProps<InitialData>) {
             <div className="mt-12 mb-12 flex sm:flex-row flex-col justify-center items-center">
               <SmoothScrollBtn id="about-me" name="Über mich 🧑‍🦲" />
               <div className="m-4" />
-              <SmoothScrollBtn id="paren" name="Paren 💸" />
+              <a href="/paren"><SmoothScrollBtn id="paren" name="Paren 💴" /></a>
               <div className="m-4" />
               <SmoothScrollBtn id="contact-me" name="Kontakt 📬" />
             </div>
@@ -116,20 +114,12 @@ export default function Home({ data }: PageProps<InitialData>) {
           <MyProjects repos={data.repositories} />
         </div> */}
         <div id="new-year">
-          <DateCountdown date={newYear.getTime()} endTitle="Frohes neues Jahr! 🎆" title="Zeit bis zum Neujahr 2025:" />
+          <DateCountdown date={newYear.getTime()} endTitle="Frohes neues Jahr! 🎆" title="Zeit bis zum Neujahr 2025:" bg="bg-blue-800" />
         </div>
 
-        {/* PAREN HERE - COLOR: #FFd65836 */}
+        
 
-        <div id="paren">
-          <Paren/>
-        </div>
-
-        <div id="japan-vacaction">
-          <DateCountdown date={vacationJapan.getTime()} endTitle="あざす！" title="Zeit bis zum 日本 Urlaub:" />
-        </div>
-
-        <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-700">
+        <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-600">
           <div className="text-center">
             <h2 className="text-4xl font-bold text-white mb-4">Du findest mich hier 👇</h2>
             <div className="flex justify-center mt-6">

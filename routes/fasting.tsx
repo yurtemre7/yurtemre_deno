@@ -62,12 +62,12 @@ export default function Fasting() {
                     <title>yurtemre.de | fasting</title>
                 </head>
                 <body>
-                    <div className="text-center p-10 items-center">
+                    <div className="min-h-screen text-center p-10 items-center">
                         <div>
                             <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
                             <div className="p-5 mx-auto items-center justify-center flex-col flex">
                                 <div className="mt-10" />
-                                <DateCountdown date={ramdan2025.getTime()} title="Ramadan 2025" endTitle="Ramadan ist endlich da!" />
+                                <DateCountdown date={ramdan2025.getTime()} title="Ramadan 2025" endTitle="Ramadan ist endlich da!" bg="bg-blue-800" />
                                 <div className="mt-10" />
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col">

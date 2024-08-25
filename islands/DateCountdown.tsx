@@ -12,6 +12,7 @@ interface TargetDateInterface {
   date: number;
   title: string;
   endTitle: string;
+  bg: string;
 }
 
 export default function DateCountdown(tdi: TargetDateInterface) {
@@ -49,7 +50,7 @@ export default function DateCountdown(tdi: TargetDateInterface) {
   const now = Date.now();
 
   return (
-    <div className="flex flex-row items-center justify-center py-4 bg-blue-800 text-white pl-8 pr-8">
+    <div className={`flex flex-row items-center justify-center py-4 ${tdi.bg} text-white pl-8 pr-8`}>
       <h1 className="text-2xl mr-4">{tdi.title}</h1>
       <div className="relative w-64 h-16">
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center text-2xl">

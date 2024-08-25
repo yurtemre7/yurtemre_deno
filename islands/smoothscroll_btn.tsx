@@ -4,8 +4,8 @@ interface SmoothScrollBtnProps {
 }
 
 export default function SmoothScrollBtn({ id, name }: SmoothScrollBtnProps) {
-    const handleClick = (event: MouseEvent) => {
-        event.preventDefault();
+    const handleClick = () => {
+        // event.preventDefault();
         const element = document.getElementById(id);
         element?.scrollIntoView({ behavior: 'smooth' });
     };

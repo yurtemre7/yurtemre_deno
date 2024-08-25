@@ -9,6 +9,7 @@ import * as $deeplink from "./routes/deeplink.tsx";
 import * as $fasting from "./routes/fasting.tsx";
 import * as $impressum from "./routes/impressum.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $paren from "./routes/paren.tsx";
 import * as $sync from "./routes/sync.tsx";
 import * as $DateCountdown from "./islands/DateCountdown.tsx";
 import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
@@ -30,6 +31,7 @@ const manifest = {
     "./routes/fasting.tsx": $fasting,
     "./routes/impressum.tsx": $impressum,
     "./routes/index.tsx": $index,
+    "./routes/paren.tsx": $paren,
     "./routes/sync.tsx": $sync,
   },
   islands: {
