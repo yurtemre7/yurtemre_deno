@@ -6,7 +6,7 @@ const parenAppleDownloadURL = "https://apps.apple.com/us/app/paren/id6578395712"
 const parenGoogleDownloadURL = "https://play.google.com/store/apps/details?id=de.emredev.paren";
 
 export default function Paren() {
-    const vacationJapan = new Date(2024, 8, 27, 23, 59);
+    const vacationJapan = new Date(2024, 8, 27, 13, 10);
     return (
         <div>
             <div className="min-h-screen flex sm:flex-row flex-col items-center justify-center bg-orange-600">
