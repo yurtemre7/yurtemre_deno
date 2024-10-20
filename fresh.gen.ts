@@ -20,7 +20,7 @@ import * as $fasting_widget from "./islands/fasting_widget.tsx";
 import * as $my_apps from "./islands/my_apps.tsx";
 import * as $paren_flutter from "./islands/paren_flutter.tsx";
 import * as $smoothscroll_btn from "./islands/smoothscroll_btn.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
