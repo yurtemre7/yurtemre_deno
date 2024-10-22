@@ -23,5 +23,5 @@
     "tailwindcss/plugin": "npm:/tailwindcss@3.4.11/plugin.js"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
-  "nodeModulesDir": true
+  "nodeModulesDir": "auto"
 }
