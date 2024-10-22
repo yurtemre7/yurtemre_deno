@@ -31,7 +31,7 @@ export default function MyProjects({ repos }: RepositoryProps) {
                 </p>
                 <div className="grid grid-cols-1 sm:flex sm:flex-wrap sm:place-content-center flex-wrap gap-6 m-20">
                     {repos.length != 0
-                        ? repos.map((repo, index) => (
+                        ? repos.map((repo, _index) => (
                             <div>
                                 <div className="group rounded-2xl border-4">
                                     <div className="group-hover:bg-blue-800 p-4 rounded-2xl">

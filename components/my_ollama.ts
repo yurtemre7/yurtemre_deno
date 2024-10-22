@@ -57,12 +57,12 @@ class MyLlama {
         return null;
       });
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       resolve("An error occured. Please try again later.");
     });
   }
 }
 
-let myLlama = new MyLlama();
+const myLlama = new MyLlama();
 
 export default myLlama;
