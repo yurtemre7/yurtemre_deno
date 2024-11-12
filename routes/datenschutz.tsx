@@ -1,12 +1,21 @@
-import MyFooter from "../components/my_footer.tsx";
-
 export default function Datenschutz() {
   return (
-    <div>
-      <div className="h-full w-full text-left p-10 items-center text-white bg-blue-600">
-        <h1>Datenschutzerklärung</h1>
-        <p>Stand: 27. Juli 2024</p>
-        <div className="m-10" />
+    <div
+      className="min-h-screen w-full flex flex-col items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      <div
+        className="max-w-2xl w-full p-6 md:p-12 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 my-8">
+
+        {/* Backlink to Home */}
+        <div className="mb-4">
+          <a href="/" className="text-blue-500 hover:underline text-sm">← Back to Home</a>
+        </div>
+
+        <h1 className="text-3xl font-semibold mb-4">Datenschutzerklärung</h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
+          Stand: 27. Juli 2024
+        </p>
+
+        <div className="m-10"/>
         <h2>Inhaltsübersicht</h2>{" "}
         <ul className="space-y-1 max-w-md list-disc list-inside m-4">
           <li>
@@ -42,9 +51,9 @@ export default function Datenschutz() {
             <a className="hover:underline" href="#m42">Begriffsdefinitionen</a>
           </li>
         </ul>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m14">Einleitung</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Mit der folgenden Datenschutzerklärung möchten wir Sie darüber
           aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch
@@ -56,12 +65,12 @@ export default function Datenschutz() {
           Onlinepräsenzen, wie z.B. unserer Social-Media-Profile (nachfolgend
           zusammenfassend bezeichnet als "Onlineangebot“).
         </p>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m3">Verantwortlicher</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
-          Emre Yurtseven, App WoAuto, Paren,<br />Innsbrucker Straße 47A,{" "}
-          <br />10825 Berlin, Deutschland
+          Emre Yurtseven, App WoAuto, Paren,<br/>Innsbrucker Straße 47A,{" "}
+          <br/>10825 Berlin, Deutschland
         </p>
         E-Mail-Adresse:{" "}
         <p>
@@ -78,9 +87,9 @@ export default function Datenschutz() {
             https://www.yurtemre.de/impressum
           </a>
         </p>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="mOverview">Übersicht der Verarbeitungen</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und
           die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen
@@ -109,9 +118,9 @@ export default function Datenschutz() {
           <li>Büro- und Organisationsverfahren.</li>
           <li>Verwaltung und Beantwortung von Anfragen.</li>
         </ul>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h3 id="m13">Maßgebliche Rechtsgrundlagen</h3>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Im Folgenden erhalten Sie eine Übersicht der Rechtsgrundlagen der DSGVO,
           auf deren Basis wir personenbezogene Daten verarbeiten. Bitte nehmen Sie
@@ -165,9 +174,9 @@ export default function Datenschutz() {
           Ferner können Landesdatenschutzgesetze der einzelnen Bundesländer zur
           Anwendung gelangen.
         </p>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m27">Sicherheitsmaßnahmen</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter
           Berücksichtigung des Stands der Technik, der Implementierungskosten und
@@ -196,9 +205,9 @@ export default function Datenschutz() {
           Sie erkennen derart verschlüsselte Verbindungen an dem Präfix https://
           in der Adresszeile Ihres Browsers.
         </p>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m12">Löschung von Daten</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Die von uns verarbeiteten Daten werden nach Maßgabe der gesetzlichen
           Vorgaben gelöscht, sobald deren zur Verarbeitung erlaubten
@@ -219,9 +228,9 @@ export default function Datenschutz() {
           Aufbewahrung und Löschung von Daten beinhalten, die für die jeweiligen
           Verarbeitungen vorrangig gelten.
         </p>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m317">Geschäftliche Leistungen</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Wir verarbeiten Daten unserer Vertrags- und Geschäftspartner, z.B.
           Kunden und Interessenten (zusammenfassend bezeichnet als
@@ -356,9 +365,9 @@ export default function Datenschutz() {
             lit. b) DSGVO).
           </li>
         </ul>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m15">Änderung und Aktualisierung der Datenschutzerklärung</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Wir bitten Sie, sich regelmäßig über den Inhalt unserer
           Datenschutzerklärung zu informieren. Wir passen die Datenschutzerklärung
@@ -373,9 +382,9 @@ export default function Datenschutz() {
           wir zu beachten, dass die Adressen sich über die Zeit ändern können und
           bitten die Angaben vor Kontaktaufnahme zu prüfen.
         </p>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m10">Rechte der betroffenen Personen</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           Ihnen stehen als Betroffene nach der DSGVO verschiedene Rechte zu, die
           sich insbesondere aus Art. 15 bis 21 DSGVO ergeben:
@@ -440,9 +449,9 @@ export default function Datenschutz() {
             verstößt.
           </li>
         </ul>
-        <div className="m-10" />
+        <div className="m-10"/>
         <h2 id="m42">Begriffsdefinitionen</h2>
-        <div className="m-4" />
+        <div className="m-4"/>
         <p>
           In diesem Abschnitt erhalten Sie eine Übersicht über die in dieser
           Datenschutzerklärung verwendeten Begrifflichkeiten. Viele der Begriffe
@@ -482,7 +491,6 @@ export default function Datenschutz() {
           </li>
         </ul>
       </div>
-      <MyFooter />
     </div>
   );
 }

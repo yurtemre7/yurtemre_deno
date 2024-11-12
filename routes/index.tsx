@@ -1,137 +1,70 @@
-import DateCountdown from "../islands/DateCountdown.tsx";
-import AboutMe from "../islands/about.tsx";
-import WordOfTheDay from "../components/word_of_day.tsx";
-// import ChatScreen from "../islands/ai_chat.tsx";
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { WOTD } from '../components/classes/WOTD.ts';
-import { Repositories } from "../components/classes/Github.ts";
-import Rezensionen from "../components/rezensionen.tsx";
-import MyFooter from "../components/my_footer.tsx";
-import SmoothScrollBtn from "../islands/smoothscroll_btn.tsx";
-import { DOMParser } from "https://deno.land/x/deno_dom@v0.1.45/deno-dom-wasm.ts";
+import Snowfall from "../islands/snowfall.tsx";
 
-interface InitialData {
-  wotd: WOTD;
-  repositories: Repositories;
-}
-
-let reps: Repositories = [];
-let lastFetch = Date.parse("2020-01-01");
-
-export const handler: Handlers<InitialData> = {
-  HEAD(_req, _ctx) {
-    return new Response("", {
-      status: 200,
-      headers: {
-        "Content-Type": "text/html",
-      },
-      statusText: "OK",
-    });
-  },
-  async GET(_req, ctx) {
-    let wotd: WOTD = { word: '', link: '' };
-
-    const url = 'https://www.duden.de'
-    const resp = await fetch(url)
-    const html_data = await resp.text()
-    const doc = new DOMParser().parseFromString(html_data, 'text/html')
-
-    if (doc !== null) {
-      const word = doc.querySelector('#block-numero-wordoftheday a.scene__title-link');
-      if (word !== null) {
-        const link = word!.getAttribute('href');
-        const a_txt = word!.innerText.replace(/[\u00AD\u002D\u2011]+/g,'');
-        const textContent = a_txt; // link?.split('/').reverse()[0] || '';
-        wotd = {
-          word: textContent,
-          link: url + link,
-        };
-      }
-    }
-
-    if (Date.now() - lastFetch > 1000 * 60 * 5) {
-      const repositories = await fetch(
-        "https://api.github.com/users/yurtemre7/repos",
-      );
-      const fetched = await repositories.json();
-      if (fetched.message !== undefined) {
-        const data: InitialData = {
-          wotd: wotd,
-          repositories: [],
-        };
-        return ctx.render(data);
-      }
-      reps = fetched;
-      lastFetch = Date.now();
-    }
-
-    const data: InitialData = {
-      wotd: wotd,
-      repositories: reps,
-    };
-
-    return ctx.render(data);
-  },
-};
-
-export default function Home({ data }: PageProps<InitialData>) {
-  const newYear = new Date(2024, 11, 31, 23, 59);
+export default function Home() {
   return (
-    <html>
-      <body>
-        <div className="min-h-screen flex items-center justify-center bg-blue-600">
-          <div className="text-center pb-8 pt-8">
-            <h1 className="text-6xl font-bold text-white mb-4">yurtemre.de</h1>
-            <blockquote className="text-white text-xl italic font-semibold">
-              <p>"Die wirklich krasseste Website der Erde"</p>
-            </blockquote>
-            <p className="text-white text-2xl"></p>
-            <div className="mt-12 mb-12 flex sm:flex-row flex-col justify-center items-center">
-              <SmoothScrollBtn id="about-me" name="Über mich 🧑‍🦲" />
-              <div className="m-4" />
-              <a href="/paren"><SmoothScrollBtn id="paren" name="Paren 💴" /></a>
-              <div className="m-4" />
-              <SmoothScrollBtn id="contact-me" name="Kontakt 📬" />
-            </div>
-            <div id="wotd" className="flex items-center justify-center text-center text-white mt-6">
-              <WordOfTheDay word={data.wotd.word} link={data.wotd.link} />
-            </div>
+    <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      {/* Snowfall Background */}
+      <div className="max-w-4xl w-full mx-4 sm:mx-6 lg:mx-12 my-4 sm:my-6 p-6 sm:p-8 md:p-10 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+        {/* Header with Name and Info */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 md:mb-8">
+          <div>
+            <h1 className="text-3xl sm:text-2xl md:text-4xl font-semibold mb-1">Emre Yurtseven</h1>
+            <p className="text-lg sm:text-base md:text-xl font-medium">App Developer</p>
+          </div>
+          <p className="text-gray-500 dark:text-gray-400 mt-2 md:mt-0">
+            Born on January 16, 2002 • B.Sc. Computer Science
+          </p>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex flex-col md:flex-row gap-8 mb-8">
+          {/* Experience Section */}
+          <div className="flex-1 space-y-3">
+            <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">Experience</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+              <li>Junior Frontend Developer, DEIN ERSTER TAG, June 2023 - Present</li>
+              <li>Junior Frontend Developer, Appmelder, April 2021 - December 2022</li>
+            </ul>
+          </div>
+
+          {/* Projects Section */}
+          <div className="flex-1 space-y-3">
+            <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">Projects</h2>
+            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 overflow-x-auto">
+              <li>
+                <a href="https://github.com/yurtemre7/woauto" className="text-blue-500">
+                  WoAuto
+                </a> - Never lose sight of your car parking ever again.
+              </li>
+              <li>
+                <a href="/paren" className="text-blue-500">
+                  Paren
+                </a> - Enjoy your vacation and keep the local currency ready at your fingertips.
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div id="rezensionen">
-          <Rezensionen />
-        </div>
-
-        {/* <div id="ai-chat" className="pt-8 pb-8 bg-blue-300 text-white">
-        <ChatScreen />
-      </div> */}
-
-        <div id="about-me" className="pt-8 pb-8 bg-blue-600 text-white">
-          <AboutMe />
-        </div>
-        {/* <div id="my-projects" className="pt-8 pb-8 bg-blue-700 text-white">
-          <MyProjects repos={data.repositories} />
-        </div> */}
-        <div id="new-year">
-          <DateCountdown date={newYear.getTime()} endTitle="Frohes neues Jahr! 🎆" title="Zeit bis zum Neujahr 2025:" bg="bg-blue-800" />
-        </div>
-
-        
-
-        <div id="contact-me" className="min-h-screen flex items-center justify-center bg-blue-600">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-white mb-4">Du findest mich hier 👇</h2>
-            <div className="flex justify-center mt-6">
-              <a href="https://t.me/emredev" className="text-white hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">Telegram</a>
-              <a href="mailto:info@yurtemre.de" className="text-white hover:text-blue-200 mx-4 p-2 rounded bg-blue-500 hover:bg-blue-600 transition-colors duration-300">E-Mail</a>
-            </div>
+        {/* Footer with Contact Info */}
+        <footer className="pt-8 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400 flex flex-col sm:flex-row justify-between items-center md:items-center space-y-4 sm:space-y-0 md:space-x-4">
+          {/* Contact Info */}
+          <div className="space-y-1 text-center md:text-left">
+            <p><strong>Email:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-500">yurtemre7@icloud.com</a></p>
+            <p><strong>Telegram:</strong> <a href="https://t.me/emredev" className="text-blue-500">@emredev</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/yurtemre7" className="text-blue-500">github.com/yurtemre7</a></p>
           </div>
-        </div>
 
+          {/* Copyright and Legal Links */}
+          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 text-center sm:text-right">
+            <p>© 2020 - {new Date().getFullYear()} Emre Yurtseven</p>
+            <a href="/impressum" className="text-blue-500 hover:underline">Impressum</a>
+            <a href="/datenschutz" className="text-blue-500 hover:underline">Datenschutzerklärung</a>
+          </div>
+        </footer>
+      </div>
 
-      </body>
-      <MyFooter />
-    </html>
+      {/* Snowfall Component */}
+      <Snowfall />
+    </div>
   );
-}
+};

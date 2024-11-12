@@ -4,6 +4,7 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $_index from "./routes/_index.tsx";
 import * as $datenschutz from "./routes/datenschutz.tsx";
 import * as $deeplink from "./routes/deeplink.tsx";
 import * as $fasting from "./routes/fasting.tsx";
@@ -20,12 +21,14 @@ import * as $fasting_widget from "./islands/fasting_widget.tsx";
 import * as $my_apps from "./islands/my_apps.tsx";
 import * as $paren_flutter from "./islands/paren_flutter.tsx";
 import * as $smoothscroll_btn from "./islands/smoothscroll_btn.tsx";
+import * as $snowfall from "./islands/snowfall.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/_index.tsx": $_index,
     "./routes/datenschutz.tsx": $datenschutz,
     "./routes/deeplink.tsx": $deeplink,
     "./routes/fasting.tsx": $fasting,
@@ -44,6 +47,7 @@ const manifest = {
     "./islands/my_apps.tsx": $my_apps,
     "./islands/paren_flutter.tsx": $paren_flutter,
     "./islands/smoothscroll_btn.tsx": $smoothscroll_btn,
+    "./islands/snowfall.tsx": $snowfall,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
