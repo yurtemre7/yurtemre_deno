@@ -15,7 +15,7 @@ export default function Snowfall() {
   // Generate snowflakes on initial render
   useEffect(() => {
     // Ensures the animation restarts if component remounts
-    return () => window.cancelAnimationFrame(0);
+    return () => globalThis.cancelAnimationFrame(0);
   }, []);
 
   return (

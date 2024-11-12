@@ -3,7 +3,6 @@ import Snowfall from "../islands/snowfall.tsx";
 export default function Home() {
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-      {/* Snowfall Background */}
       <div className="max-w-4xl w-full mx-4 sm:mx-6 lg:mx-12 my-4 sm:my-6 p-6 sm:p-8 md:p-10 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
         {/* Header with Name and Info */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 md:mb-8">
