@@ -1,4 +1,4 @@
-import {useEffect} from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 
 // Configuration
 const SNOWFLAKE_COUNT = 25; // Adjust for more or fewer snowflakes
@@ -21,7 +21,7 @@ export default function Snowfall() {
   return (
     <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Render snowflakes */}
-      {Array.from({length: SNOWFLAKE_COUNT}).map((_, index) => (
+      {Array.from({ length: SNOWFLAKE_COUNT }).map((_, index) => (
         <div
           key={index}
           className="snowflake absolute top-0 text-white"
