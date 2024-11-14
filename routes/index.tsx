@@ -75,8 +75,8 @@ export default function Home() {
       <div className="flex flex-row justify-center items-center space-x-4 mt-6 mb-4">
         <CountdownClock targetDate={newYear.getTime()} label="New Year 2025" />
         <CountdownClock targetDate={birthDay.getTime()} label="Birth Day from Emre" />
-        <CountdownClock targetDate={birthDay.getTime()} label="Ramadan 2025" />
-        <CountdownClock targetDate={birthDay.getTime()} label="Birth Day from Teo" />
+        <CountdownClock targetDate={fasting.getTime()} label="Ramadan 2025" />
+        <CountdownClock targetDate={teoBirthday.getTime()} label="Birth Day from Teo" />
       </div>
     </div>
   );
