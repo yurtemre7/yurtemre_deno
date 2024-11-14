@@ -4,6 +4,8 @@ import Snowfall from "../islands/snowfall.tsx";
 export default function Home() {
   const newYear = new Date("2025-01-01T00:00:00");
   const birthDay = new Date("2025-01-16T00:00:00");
+  const fasting = new Date("2025-02-28T00:00:00");
+  const teoBirthday = new Date("2025-09-11T00:00:00");
   return (
     <div className="flex flex-col">
       <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
@@ -71,8 +73,10 @@ export default function Home() {
       </div>
       {/* Countdown Timers Below the Business Card */}
       <div className="flex flex-row justify-center items-center space-x-4 mt-6 mb-4">
-        <CountdownClock targetDate={newYear.getTime()} label="New Year" />
-        <CountdownClock targetDate={birthDay.getTime()} label="Birth Day" />
+        <CountdownClock targetDate={newYear.getTime()} label="New Year 2025" />
+        <CountdownClock targetDate={birthDay.getTime()} label="Birth Day from Emre" />
+        <CountdownClock targetDate={birthDay.getTime()} label="Ramadan 2025" />
+        <CountdownClock targetDate={birthDay.getTime()} label="Birth Day from Teo" />
       </div>
     </div>
   );
