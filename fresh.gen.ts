@@ -12,6 +12,7 @@ import * as $impressum from "./routes/impressum.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $paren from "./routes/paren.tsx";
 import * as $sync from "./routes/sync.tsx";
+import * as $CountdownClock from "./islands/CountdownClock.tsx";
 import * as $DateCountdown from "./islands/DateCountdown.tsx";
 import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
 import * as $SyncButton from "./islands/SyncButton.tsx";
@@ -38,6 +39,7 @@ const manifest = {
     "./routes/sync.tsx": $sync,
   },
   islands: {
+    "./islands/CountdownClock.tsx": $CountdownClock,
     "./islands/DateCountdown.tsx": $DateCountdown,
     "./islands/DeeplinkButton.tsx": $DeeplinkButton,
     "./islands/SyncButton.tsx": $SyncButton,
