@@ -39,7 +39,6 @@ export default function Home({wotd, repositories}: InitialData) {
 
   const translations: Translations = {
     en: {
-
       name: "Emre Yurtseven",
       profession: "App Developer",
       bornInfo: "Born on January 16, 2002 • B.Sc. Computer Science",
