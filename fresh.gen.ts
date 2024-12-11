@@ -19,6 +19,7 @@ import * as $SyncButton from "./islands/SyncButton.tsx";
 import * as $about from "./islands/about.tsx";
 import * as $ai_chat from "./islands/ai_chat.tsx";
 import * as $fasting_widget from "./islands/fasting_widget.tsx";
+import * as $index_1 from "./islands/index.tsx";
 import * as $my_apps from "./islands/my_apps.tsx";
 import * as $paren_flutter from "./islands/paren_flutter.tsx";
 import * as $smoothscroll_btn from "./islands/smoothscroll_btn.tsx";
@@ -46,6 +47,7 @@ const manifest = {
     "./islands/about.tsx": $about,
     "./islands/ai_chat.tsx": $ai_chat,
     "./islands/fasting_widget.tsx": $fasting_widget,
+    "./islands/index.tsx": $index_1,
     "./islands/my_apps.tsx": $my_apps,
     "./islands/paren_flutter.tsx": $paren_flutter,
     "./islands/smoothscroll_btn.tsx": $smoothscroll_btn,

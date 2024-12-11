@@ -1,5 +1,5 @@
 import { WOTD } from "./classes/WOTD.ts";
-import '../routes/index.tsx';
+import '../islands/index.tsx';
 
 export default function WordOfTheDay({ word, link }: WOTD) {
     const word_data = { word, link };
