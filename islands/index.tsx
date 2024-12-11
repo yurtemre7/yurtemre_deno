@@ -33,7 +33,7 @@ interface InitialData {
   repositories: Repositories;
 }
 
-export default function Home({wotd, repositories}: InitialData) {
+export default function Home({ wotd, repositories }: InitialData) {
   const language = useSignal<string>("en");
   const tempLanguage = useSignal<string>("en");
 
@@ -168,9 +168,9 @@ export default function Home({wotd, repositories}: InitialData) {
 
           <div className="flex flex-col md:flex-row gap-8 mb-8">
 
-            <div className="grid grid-cols-4 gap-8 mb-8">
+            <div className="md:grid md:grid-cols-4 gap-8 mb-8 space-y-4">
               {/* Experience Section */}
-              <div className="col-span-2 hover:underline space-y-3">
+              <div className="col-span-2 space-y-3">
                 <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.experience}</h2>
                 <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
                   <li>
@@ -249,18 +249,20 @@ export default function Home({wotd, repositories}: InitialData) {
       {/* Countdown Timers Below the Business Card */}
       <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
         {t.countdownLabels.map((label: string, index: number) => (
-          <CountdownClock
-            key={index}
-            targetDate={
-              [newYear.getTime(), birthDay.getTime(), fasting.getTime(), teoBirthday.getTime()][index]
-            }
-            label={label}
-          />
+          <div className="col-span-1" >
+            <CountdownClock
+              key={index}
+              targetDate={
+                [newYear.getTime(), birthDay.getTime(), fasting.getTime(), teoBirthday.getTime()][index]
+              }
+              label={label}
+            />
+          </div>
         ))}
       </div>
 
       {/* Word of the day */}
-      <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
+      <div className="flex justify-center items-center mt-6 mb-4">
         <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
       </div>
     </div>
