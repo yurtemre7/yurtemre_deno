@@ -1,6 +1,9 @@
 import { useSignal } from "@preact/signals";
 import CountdownClock from "./CountdownClock.tsx";
 import Snowfall from "./snowfall.tsx";
+import WordOfTheDay from "../components/word_of_day.tsx";
+import { WOTD } from "../components/classes/WOTD.ts";
+import { Repositories } from "../components/classes/Github.ts";
 
 type Translations = {
   [key: string]: {
@@ -25,8 +28,12 @@ type Translations = {
   };
 };
 
+interface InitialData {
+  wotd: WOTD;
+  repositories: Repositories;
+}
 
-export default function Home() {
+export default function Home({wotd, repositories}: InitialData) {
   const language = useSignal<string>("en");
   const tempLanguage = useSignal<string>("en");
 
@@ -251,6 +258,11 @@ export default function Home() {
             label={label}
           />
         ))}
+      </div>
+
+      {/* Word of the day */}
+      <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
+        <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
       </div>
     </div>
   );
