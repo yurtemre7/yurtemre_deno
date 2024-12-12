@@ -32,7 +32,7 @@ export default function WordOfTheDay({ word, link, language }: WordOfTheDayProps
 
   if (word_data.word !== "" && word_data.link !== "") {
     return (
-      <div className="flex-col items-center justify-center text-white">
+      <div className="flex-col items-center justify-center dark:text-gray-100 text-gray-900">
         <div className="text-5xl m-2 font-serif text-center">
           <a className="hover:underline" href={word_data.link}>
             {word_data.word}
