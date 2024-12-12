@@ -18,9 +18,9 @@
     "@std/dotenv": "jsr:@std/dotenv@^0.225.2",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
-    "tailwindcss": "npm:tailwindcss@3.4.11",
-    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.11/plugin.js"
+    "tailwindcss": "npm:tailwindcss@3.4.16",
+    "tailwindcss/": "npm:/tailwindcss@3.4.16/",
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.16/plugin.js"
   },
   "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
   "nodeModulesDir": "auto"
