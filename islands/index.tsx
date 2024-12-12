@@ -56,7 +56,7 @@ export default function Home({ wotd, repositories }: InitialData) {
       programmingItems: [
         "Flutter 4+ years",
         "Android & iOS Development",
-        "Python 4+ years",
+        "Python 2+ years",
         "JavaScript / TypeScript - React, Next.js and Fresh",
         "PHP",
       ],
@@ -87,7 +87,7 @@ export default function Home({ wotd, repositories }: InitialData) {
       programmingItems: [
         "Flutter 4年以上",
         "AndroidおよびiOS開発",
-        "Python 4年以上",
+        "Python 2年以上",
         "JavaScript / TypeScript - React、Next.js、Fresh",
         "PHP",
       ],
