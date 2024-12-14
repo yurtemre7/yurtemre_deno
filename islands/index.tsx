@@ -31,11 +31,12 @@ type Translations = {
 interface InitialData {
   wotd: WOTD;
   repositories: Repositories;
+  lang: string;
 }
 
-export default function Home({ wotd, repositories }: InitialData) {
-  const language = useSignal<string>("en");
-  const tempLanguage = useSignal<string>("en");
+export default function Home({ wotd, repositories, lang }: InitialData) {
+  const language = useSignal<string>(lang);
+  const tempLanguage = useSignal<string>(lang);
 
   const translations: Translations = {
     en: {
@@ -69,7 +70,7 @@ export default function Home({ wotd, repositories }: InitialData) {
       programmingSkills: "Programming Skills",
       languageSkills: "Language Skills",
     },
-    ja: {
+    jp: {
       name: "エムレ・ユルトセヴェン",
       profession: "アプリ開発者",
       bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
@@ -137,14 +138,14 @@ export default function Home({ wotd, repositories }: InitialData) {
               English
             </button>
             <button
-              className={`px-4 py-2 rounded-r-lg ${language.value === "ja" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
+              className={`px-4 py-2 rounded-r-lg ${language.value === "jp" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
               onClick={() => {
-                language.value = "ja";
+                language.value = "jp";
                 tempLanguage.value = language.value;
               }}
               onMouseOver={() => {
                 tempLanguage.value = language.value;
-                language.value = "ja";
+                language.value = "jp";
               }}
               onMouseOut={() => {
                 language.value = tempLanguage.value;

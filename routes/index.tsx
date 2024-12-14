@@ -4,73 +4,101 @@ import { WOTD } from "../components/classes/WOTD.ts";
 import Home from "../islands/index.tsx";
 import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
-
 interface InitialData {
-    wotd: WOTD;
-    repositories: Repositories;
-  }
-  
-  let reps: Repositories = [];
-  let lastFetch = Date.parse("2020-01-01");
-  
-  export const handler: Handlers<InitialData> = {
-    HEAD(_req, _ctx) {
-      return new Response("", {
-        status: 200,
-        headers: {
-          "Content-Type": "text/html",
-        },
-        statusText: "OK",
-      });
-    },
-    async GET(_req, ctx) {
-      let wotd: WOTD = { word: '', link: '' };
-  
-      const url = 'https://www.duden.de'
-      const resp = await fetch(url)
-      const html_data = await resp.text()
-      const doc = new DOMParser().parseFromString(html_data, 'text/html')
-  
-      if (doc !== null) {
-        const word = doc.querySelector('#block-numero-wordoftheday a.scene__title-link');
-        if (word !== null) {
-          const link = word!.getAttribute('href');
-          const a_txt = word!.innerText.replace(/[\u00AD\u002D\u2011]+/g,'');
-          const textContent = a_txt; // link?.split('/').reverse()[0] || '';
-          wotd = {
-            word: textContent,
-            link: url + link,
-          };
-        }
+  wotd: WOTD;
+  repositories: Repositories;
+  lang: string; // Added to store the language
+}
+
+const SUPPORTED_LANGUAGES = ["en", "jp"]; // Add your supported languages here
+
+let reps: Repositories = [];
+let lastFetch = Date.parse("2020-01-01");
+
+export const handler: Handlers<InitialData> = {
+  HEAD(_req, _ctx) {
+    return new Response("", {
+      status: 200,
+      headers: {
+        "Content-Type": "text/html",
+      },
+      statusText: "OK",
+    });
+  },
+
+  async GET(req, ctx) {
+    let wotd: WOTD = { word: '', link: '' };
+
+    // Extract the `lang` parameter from the query string
+    const url = new URL(req.url);
+    const langParam = url.searchParams.get("lang");
+    const cookies = req.headers.get("cookie") ?? "";
+    const cookieLang = cookies.split("; ").find((c) => c.startsWith("lang="))?.split("=")[1];
+    console.log(langParam);
+    // Determine the language to use
+    let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "") 
+      ? langParam 
+      : SUPPORTED_LANGUAGES.includes(cookieLang ?? "")
+      ? cookieLang 
+      : "en"; // Default to English
+
+    if (lang === undefined || lang === null) {
+      lang = "en";
+    }
+
+    console.log(lang);
+
+    // Fetch word of the day from Duden
+    const dudenUrl = 'https://www.duden.de';
+    const resp = await fetch(dudenUrl);
+    const html_data = await resp.text();
+    const doc = new DOMParser().parseFromString(html_data, 'text/html');
+
+    if (doc !== null) {
+      const word = doc.querySelector('#block-numero-wordoftheday a.scene__title-link');
+      if (word !== null) {
+        const link = word.getAttribute('href');
+        const a_txt = word.innerText.replace(/[\u00AD\u002D\u2011]+/g, '');
+        wotd = {
+          word: a_txt,
+          link: dudenUrl + link,
+        };
       }
-  
-      if (Date.now() - lastFetch > 1000 * 60 * 5) {
-        const repositories = await fetch(
-          "https://api.github.com/users/yurtemre7/repos",
-        );
-        const fetched = await repositories.json();
-        if (fetched.message !== undefined) {
-          const data: InitialData = {
-            wotd: wotd,
-            repositories: [],
-          };
-          return ctx.render(data);
-        }
-        reps = fetched;
-        lastFetch = Date.now();
+    }
+
+    // Fetch repositories every 5 minutes
+    if (Date.now() - lastFetch > 1000 * 60 * 5) {
+      const repositories = await fetch("https://api.github.com/users/yurtemre7/repos");
+      const fetched = await repositories.json();
+      if (fetched.message !== undefined) {
+        const data: InitialData = {
+          wotd: wotd,
+          repositories: [],
+          lang: lang, // Pass the language to the initial data
+        };
+        return ctx.render(data);
       }
-  
-      const data: InitialData = {
-        wotd: wotd,
-        repositories: reps,
-      };
-  
-      return ctx.render(data);
-    },
-  };
+      reps = fetched;
+      lastFetch = Date.now();
+    }
+
+    const data: InitialData = {
+      wotd: wotd,
+      repositories: reps,
+      lang: lang, // Pass the language to the initial data
+    };
+
+    // Set the language cookie if it's passed via query parameter
+    const response = await ctx.render(data);
+    if (langParam) {
+      response.headers.set("Set-Cookie", `lang=${lang}; Path=/; HttpOnly`);
+    }
+    return response;
+  },
+};
 
 export default function Index({ data }: PageProps<InitialData>) {
   return (
-    <Home repositories={data.repositories} wotd={data.wotd}/>
+    <Home repositories={data.repositories} wotd={data.wotd} lang={data.lang} />
   );
 }
