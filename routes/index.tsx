@@ -28,20 +28,23 @@ export const handler: Handlers<InitialData> = {
 
   async GET(req, ctx) {
     let wotd: WOTD = { word: '', link: '' };
-
+    
     // Extract the `lang` parameter from the query string
     const url = new URL(req.url);
     const langParam = url.searchParams.get("lang");
-    const cookies = req.headers.get("cookie") ?? "";
-    const cookieLang = cookies.split("; ").find((c) => c.startsWith("lang="))?.split("=")[1];
-    // Determine the language to use
-    let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "") 
-      ? langParam 
-      : SUPPORTED_LANGUAGES.includes(cookieLang ?? "")
-      ? cookieLang 
-      : "en"; // Default to English
 
-    if (lang === undefined || lang === null) {
+    // Extract the `Accept-Language` header
+    const acceptLanguage = req.headers.get("accept-language") || "";
+    const prefersJapanese = acceptLanguage.includes("ja");
+
+    // Determine the language to use
+    let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "") // Check query parameter
+      ? langParam // Use query parameter if valid
+      : prefersJapanese // Fallback to Accept-Language header
+        ? "jp"
+        : "en"; // Default to English
+
+    if (lang === null) {
       lang = "en";
     }
 
