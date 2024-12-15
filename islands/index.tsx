@@ -2,8 +2,7 @@ import { useSignal } from "@preact/signals";
 import CountdownClock from "./CountdownClock.tsx";
 import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
-import { WOTD } from "../components/classes/WOTD.ts";
-import { Repositories } from "../components/classes/Github.ts";
+import { InitialData } from "../components/classes/InitialData.ts";
 
 type Translations = {
   [key: string]: {
@@ -28,13 +27,7 @@ type Translations = {
   };
 };
 
-interface InitialData {
-  wotd: WOTD;
-  repositories: Repositories;
-  lang: string;
-}
-
-export default function Home({ wotd, repositories, lang }: InitialData) {
+export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
   const tempLanguage = useSignal<string>(lang);
 

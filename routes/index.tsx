@@ -1,48 +1,26 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { Repositories } from "../components/classes/Github.ts";
+import { InitialData } from "../components/classes/InitialData.ts";
 import { WOTD } from "../components/classes/WOTD.ts";
 import Home from "../islands/index.tsx";
 import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
-interface InitialData {
-  wotd: WOTD;
-  repositories: Repositories;
-  lang: string; // Added to store the language
-}
-
-const SUPPORTED_LANGUAGES = ["en", "jp"]; // Add your supported languages here
-
-let reps: Repositories = [];
-let lastFetch = Date.parse("2020-01-01");
+const SUPPORTED_LANGUAGES = ["en", "jp"];
 
 export const handler: Handlers<InitialData> = {
-  HEAD(_req, _ctx) {
-    return new Response("", {
-      status: 200,
-      headers: {
-        "Content-Type": "text/html",
-      },
-      statusText: "OK",
-    });
-  },
-
   async GET(req, ctx) {
     let wotd: WOTD = { word: '', link: '' };
-    
-    // Extract the `lang` parameter from the query string
+
     const url = new URL(req.url);
     const langParam = url.searchParams.get("lang");
 
-    // Extract the `Accept-Language` header
     const acceptLanguage = req.headers.get("accept-language") || "";
     const prefersJapanese = acceptLanguage.includes("ja");
 
-    // Determine the language to use
-    let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "") // Check query parameter
-      ? langParam // Use query parameter if valid
-      : prefersJapanese // Fallback to Accept-Language header
+    let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "")
+      ? langParam
+      : prefersJapanese
         ? "jp"
-        : "en"; // Default to English
+        : "en";
 
     if (lang === null) {
       lang = "en";
@@ -66,26 +44,9 @@ export const handler: Handlers<InitialData> = {
       }
     }
 
-    // Fetch repositories every 5 minutes
-    if (Date.now() - lastFetch > 1000 * 60 * 5) {
-      const repositories = await fetch("https://api.github.com/users/yurtemre7/repos");
-      const fetched = await repositories.json();
-      if (fetched.message !== undefined) {
-        const data: InitialData = {
-          wotd: wotd,
-          repositories: [],
-          lang: lang, // Pass the language to the initial data
-        };
-        return ctx.render(data);
-      }
-      reps = fetched;
-      lastFetch = Date.now();
-    }
-
     const data: InitialData = {
       wotd: wotd,
-      repositories: reps,
-      lang: lang, // Pass the language to the initial data
+      lang: lang,
     };
 
     return await ctx.render(data);
@@ -94,6 +55,6 @@ export const handler: Handlers<InitialData> = {
 
 export default function Index({ data }: PageProps<InitialData>) {
   return (
-    <Home repositories={data.repositories} wotd={data.wotd} lang={data.lang} />
+    <Home wotd={data.wotd} lang={data.lang} />
   );
 }
