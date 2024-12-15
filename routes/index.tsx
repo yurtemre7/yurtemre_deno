@@ -8,24 +8,20 @@ const SUPPORTED_LANGUAGES = ["en", "jp"];
 
 
 function getPreferredLanguage(acceptLanguageHeader: string): string {
-  // Parse the header into an array of language preferences with quality values
   const preferences = acceptLanguageHeader
     .split(",")
     .map((lang) => {
       const [tag, qValue] = lang.split(";q=");
       return { tag: tag.trim(), quality: qValue ? parseFloat(qValue) : 1.0 };
     })
-    .sort((a, b) => b.quality - a.quality); // Sort by quality value (descending)
+    .sort((a, b) => b.quality - a.quality);
 
-  console.log(preferences);
-  // Find the first supported language in the sorted preferences
   for (const pref of preferences) {
     if (SUPPORTED_LANGUAGES.includes(pref.tag)) {
       return pref.tag;
     }
   }
 
-  // Default to English if no supported language is found
   return "en";
 }
 
