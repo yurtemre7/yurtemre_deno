@@ -1,7 +1,7 @@
 import { useSignal } from "@preact/signals";
 import MyFooter from "../components/my_footer.tsx";
 import FastingCountdown from "../islands/fasting_widget.tsx";
-import DateCountdown from "../islands/DateCountdown.tsx";
+import CountdownClock from "../islands/CountdownClock.tsx";
 
 // map of key date -> (begin, end)
 interface FastingDates {
@@ -67,7 +67,7 @@ export default function Fasting() {
                             <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
                             <div className="p-5 mx-auto items-center justify-center flex-col flex">
                                 <div className="mt-10" />
-                                <DateCountdown date={ramdan2025.getTime()} title="Ramadan 2025" endTitle="Ramadan ist endlich da!" bg="bg-blue-800" />
+                                <CountdownClock targetDate={ramdan2025.getTime()} label="Ramadan 2025" />
                                 <div className="mt-10" />
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col">
