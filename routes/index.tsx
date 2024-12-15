@@ -34,7 +34,6 @@ export const handler: Handlers<InitialData> = {
     const langParam = url.searchParams.get("lang");
     const cookies = req.headers.get("cookie") ?? "";
     const cookieLang = cookies.split("; ").find((c) => c.startsWith("lang="))?.split("=")[1];
-    console.log(langParam);
     // Determine the language to use
     let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "") 
       ? langParam 
@@ -45,8 +44,6 @@ export const handler: Handlers<InitialData> = {
     if (lang === undefined || lang === null) {
       lang = "en";
     }
-
-    console.log(lang);
 
     // Fetch word of the day from Duden
     const dudenUrl = 'https://www.duden.de';
@@ -88,12 +85,7 @@ export const handler: Handlers<InitialData> = {
       lang: lang, // Pass the language to the initial data
     };
 
-    // Set the language cookie if it's passed via query parameter
-    const response = await ctx.render(data);
-    if (langParam) {
-      response.headers.set("Set-Cookie", `lang=${lang}; Path=/; HttpOnly`);
-    }
-    return response;
+    return await ctx.render(data);
   },
 };
 
