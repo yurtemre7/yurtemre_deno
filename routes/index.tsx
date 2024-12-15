@@ -6,6 +6,29 @@ import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
 const SUPPORTED_LANGUAGES = ["en", "jp"];
 
+
+function getPreferredLanguage(acceptLanguageHeader: string): string {
+  // Parse the header into an array of language preferences with quality values
+  const preferences = acceptLanguageHeader
+    .split(",")
+    .map((lang) => {
+      const [tag, qValue] = lang.split(";q=");
+      return { tag: tag.trim(), quality: qValue ? parseFloat(qValue) : 1.0 };
+    })
+    .sort((a, b) => b.quality - a.quality); // Sort by quality value (descending)
+
+  console.log(preferences);
+  // Find the first supported language in the sorted preferences
+  for (const pref of preferences) {
+    if (SUPPORTED_LANGUAGES.includes(pref.tag)) {
+      return pref.tag;
+    }
+  }
+
+  // Default to English if no supported language is found
+  return "en";
+}
+
 export const handler: Handlers<InitialData> = {
   async GET(req, ctx) {
     let wotd: WOTD = { word: '', link: '' };
@@ -14,11 +37,11 @@ export const handler: Handlers<InitialData> = {
     const langParam = url.searchParams.get("lang");
 
     const acceptLanguage = req.headers.get("accept-language") || "";
-    const prefersJapanese = acceptLanguage.includes("ja");
+    const prefLang = getPreferredLanguage(acceptLanguage);
 
     let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "")
       ? langParam
-      : prefersJapanese
+      : prefLang == "ja"
         ? "jp"
         : "en";
 
