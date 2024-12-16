@@ -1,7 +1,6 @@
 import { type PageProps } from "$fresh/server.ts";
 
 export default function App(props: PageProps) {
-  console.log(props);
   return (
     <html lang={props.data['lang']} className="dark:bg-gray-900 bg-gray-100">
       <head>
