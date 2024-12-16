@@ -7,7 +7,7 @@ const translations: { [lang: string]: { notFound: string; wordOfDay: string; dud
     wordOfDay: "is the german word of the day provided by",
     duden: "Duden",
   },
-  jp: {
+  ja: {
     notFound: "今日の単語: 見つかりません",
     wordOfDay: "は、本日のドイツ語である:",
     duden: "Duden (ドゥーデン)",

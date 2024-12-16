@@ -4,7 +4,7 @@ import { WOTD } from "../components/classes/WOTD.ts";
 import Home from "../islands/index.tsx";
 import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
-const SUPPORTED_LANGUAGES = ["en", "jp"];
+const SUPPORTED_LANGUAGES = ["en", "ja"];
 
 
 function getPreferredLanguage(acceptLanguageHeader: string): string {
@@ -38,7 +38,7 @@ export const handler: Handlers<InitialData> = {
     let lang = SUPPORTED_LANGUAGES.includes(langParam ?? "")
       ? langParam
       : prefLang == "ja"
-        ? "jp"
+        ? prefLang
         : "en";
 
     if (lang === null) {

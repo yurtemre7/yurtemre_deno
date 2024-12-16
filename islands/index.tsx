@@ -63,7 +63,7 @@ export default function Home({ wotd, lang }: InitialData) {
       programmingSkills: "Programming Skills",
       languageSkills: "Language Skills",
     },
-    jp: {
+    ja: {
       name: "エムレ・ユルトセヴェン",
       profession: "アプリ開発者",
       bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
@@ -131,14 +131,14 @@ export default function Home({ wotd, lang }: InitialData) {
               English
             </button>
             <button
-              className={`px-4 py-2 rounded-r-lg ${language.value === "jp" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
+              className={`px-4 py-2 rounded-r-lg ${language.value === "ja" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
               onClick={() => {
-                language.value = "jp";
+                language.value = "ja";
                 tempLanguage.value = language.value;
               }}
               onMouseOver={() => {
                 tempLanguage.value = language.value;
-                language.value = "jp";
+                language.value = "ja";
               }}
               onMouseOut={() => {
                 language.value = tempLanguage.value;
