@@ -2,7 +2,7 @@ import { type PageProps } from "$fresh/server.ts";
 
 export default function App(props: PageProps) {
   return (
-    <html lang={props.data['lang']} className="dark:bg-gray-900 bg-gray-100">
+    <html lang={props.data?.lang ?? 'en'} className="dark:bg-gray-900 bg-gray-100">
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
