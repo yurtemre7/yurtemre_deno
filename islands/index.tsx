@@ -3,6 +3,7 @@ import CountdownClock from "./CountdownClock.tsx";
 import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
 import { InitialData } from "../components/classes/InitialData.ts";
+import Timeline from "./timeline.tsx";
 
 type Translations = {
   [key: string]: {
@@ -29,7 +30,7 @@ type Translations = {
 
 // Kanji for the days of the week
 const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
-const dayMap = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+const dayMap = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
@@ -250,8 +251,11 @@ export default function Home({ wotd, lang }: InitialData) {
         <Snowfall />
       </div>
       <div className="flex flex-row justify-center items-center text-4xl m-4">
-        {currentDayKanji}曜日 - {currentDay}
+        今日は{currentDayKanji}曜日だ - Today is {currentDay}
       </div>
+      
+      <Timeline language={language.value as "en" | "ja"}/>
+
       {/* Countdown Timers Below the Business Card */}
       <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
         {t.countdownLabels.map((label: string, index: number) => (
@@ -271,6 +275,8 @@ export default function Home({ wotd, lang }: InitialData) {
       <div className="flex justify-center items-center mt-6 mb-4">
         <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
       </div>
+
+      
     </div>
   );
 }

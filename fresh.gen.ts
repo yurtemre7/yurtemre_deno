@@ -18,6 +18,7 @@ import * as $fasting_widget from "./islands/fasting_widget.tsx";
 import * as $index_1 from "./islands/index.tsx";
 import * as $paren_flutter from "./islands/paren_flutter.tsx";
 import * as $snowfall from "./islands/snowfall.tsx";
+import * as $timeline from "./islands/timeline.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -40,6 +41,7 @@ const manifest = {
     "./islands/index.tsx": $index_1,
     "./islands/paren_flutter.tsx": $paren_flutter,
     "./islands/snowfall.tsx": $snowfall,
+    "./islands/timeline.tsx": $timeline,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
