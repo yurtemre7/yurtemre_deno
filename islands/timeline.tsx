@@ -2,10 +2,10 @@ type TimelineEvent = {
     year: number;
     title: { en: string; ja: string };
     description: { en: string; ja: string };
-  };
-  
-  
-  const events: TimelineEvent[] = [
+};
+
+
+const events: TimelineEvent[] = [
     {
         year: 2020,
         title: { en: "University", ja: "大学" },
@@ -36,40 +36,40 @@ type TimelineEvent = {
 type TimelineProps = {
     language: "en" | "ja";
 };
-  
+
 
 export default function Timeline({ language }: TimelineProps) {
     return (
-      <div className="relative w-full px-6 py-10">
-        {/* Fixed Title */}
-        <h2 className="text-center text-2xl font-semibold mb-6 sticky top-0 bg-white dark:bg-gray-900 z-10">
-          {language === "en" ? "Timeline" : "タイムライン"}
-        </h2>
-  
-        {/* Timeline Container */}
-        <div className="relative w-full overflow-x-auto pb-6">
-          {/* Horizontal Line */}
-          <div className="relative flex items-center">
-            <div className="absolute top-1/2 w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
-  
-            {/* Events */}
-            <div className="flex gap-20 min-w-[100%] px-10">
-              {events.map((event, index) => (
-                <div
-                  key={index}
-                  className="relative flex flex-col items-center gap-3 opacity-85 hover:opacity-100"
-                >
-                  {/* Event Card */}
-                  <div className="w-[200px] p-4 m-4 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-transform duration-300 hover:border-2 hover:border-white dark:hover:border-gray-400">
-                    <h3 className="text-blue-500 font-bold text-xl">{event.year}</h3>
-                    <p className="font-medium">{event.title}</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">{event.description}</p>
-                  </div>
+        <div className="relative w-full px-6 py-10">
+            {/* Fixed Title */}
+            <h2 className="text-center text-2xl font-semibold mb-6 sticky top-0 bg-white dark:bg-gray-900 z-10">
+                {language === "en" ? "Timeline" : "タイムライン"}
+            </h2>
+
+            {/* Timeline Container */}
+            <div className="relative w-full overflow-x-auto pb-6">
+                {/* Horizontal Line */}
+                <div className="relative flex items-center">
+                    <div className="absolute top-1/2 w-full h-1 bg-gray-300 dark:bg-gray-700"></div>
+
+                    {/* Events */}
+                    <div className="flex gap-20 min-w-[100%] px-10">
+                        {events.map((event, index) => (
+                            <div
+                                key={index}
+                                className="relative flex flex-col items-center gap-3 opacity-85 hover:opacity-100"
+                            >
+                                {/* Event Card */}
+                                <div className="w-[200px] p-4 m-4 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-transform duration-300 hover:border-2 hover:border-white dark:hover:border-gray-400">
+                                    <h3 className="text-blue-500 font-bold text-xl">{event.year}</h3>
+                                    <p className="font-medium">{event.title[language]}</p>
+                                    <p className="text-gray-600 dark:text-gray-400 text-sm">{event.description[language]}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-              ))}
             </div>
-          </div>
         </div>
-      </div>
     );
-  }
+}
