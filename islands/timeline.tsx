@@ -23,14 +23,15 @@ const events: TimelineEvent[] = [
     },
     {
         year: 2024,
-        title: { en: "Learning Japanese", ja: "日本語を学ぶ" },
-        description: { en: "Began learning Japanese and had a trip to Japan.", ja: "日本語を学び始め、日本を旅行しました。" },
-    },
-    {
-        year: 2024,
         title: { en: "Bachelor of Science", ja: "学士号" },
         description: { en: "Achieved a Bachelor's Degree in Computer Science.", ja: "コンピュータサイエンスの学士号を取得しました。" },
     },
+    {
+        year: 2024,
+        title: { en: "Learning Japanese", ja: "日本語を学ぶ" },
+        description: { en: "Began learning Japanese and had a trip to Japan.", ja: "日本語を学び始め、日本を旅行しました。" },
+    },
+
 ];
 
 type TimelineProps = {
