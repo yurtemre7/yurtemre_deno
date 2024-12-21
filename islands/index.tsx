@@ -27,9 +27,18 @@ type Translations = {
   };
 };
 
+// Kanji for the days of the week
+const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
+const dayMap = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
+
 export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
   const tempLanguage = useSignal<string>(lang);
+
+  // Determine the Kanji for the current day of the week
+  const day = new Date().getDay();
+  const currentDayKanji = dayKanjiMap[day]; // 0 = Sunday, 1 = Monday, etc.
+  const currentDay = dayMap[day];
 
   const translations: Translations = {
     en: {
@@ -109,7 +118,7 @@ export default function Home({ wotd, lang }: InitialData) {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col text-gray-900 dark:text-gray-100">
       <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <div className="max-w-5xl w-full mx-4 sm:mx-6 lg:mx-12 my-4 sm:my-6 p-6 sm:p-8 md:p-10 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
           {/* Language Switch */}
@@ -239,6 +248,9 @@ export default function Home({ wotd, lang }: InitialData) {
 
         {/* Snowfall Component */}
         <Snowfall />
+      </div>
+      <div className="flex flex-row justify-center items-center text-4xl m-4">
+        {currentDayKanji}曜日 - {currentDay}
       </div>
       {/* Countdown Timers Below the Business Card */}
       <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
