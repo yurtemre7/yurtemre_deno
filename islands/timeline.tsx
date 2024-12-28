@@ -43,7 +43,7 @@ export default function Timeline({ language }: TimelineProps) {
     return (
         <div className="relative w-full px-6 py-10">
             {/* Fixed Title */}
-            <h2 className="text-center text-2xl font-semibold mb-6 sticky top-0 bg-white dark:bg-gray-900 z-10">
+            <h2 className="text-center text-2xl font-semibold mb-6 sticky top-0 bg-gray-300 dark:bg-gray-700 z-10">
                 {language === "en" ? "Timeline" : "タイムライン"}
             </h2>
 
