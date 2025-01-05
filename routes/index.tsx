@@ -6,7 +6,6 @@ import { DOMParser } from "jsr:@b-fuze/deno-dom";
 
 const SUPPORTED_LANGUAGES = ["en", "ja"];
 
-
 function getPreferredLanguage(acceptLanguageHeader: string): string {
   const preferences = acceptLanguageHeader
     .split(",")

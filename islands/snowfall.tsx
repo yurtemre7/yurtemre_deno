@@ -1,9 +1,7 @@
 import { useEffect } from 'preact/hooks';
 
-// Configuration
 const SNOWFLAKE_COUNT = 25; // Adjust for more or fewer snowflakes
 
-// Determine the appropriate emoji based on the date
 const getSeasonalEmoji = (): string => {
   const today = new Date();
   const month = today.getMonth(); // 0 = January, 11 = December
@@ -33,15 +31,12 @@ const generateRandomSnowflake = () => ({
 export default function Snowfall() {
   const emoji = getSeasonalEmoji();
 
-  // Generate snowflakes on initial render
   useEffect(() => {
-    // Ensures the animation restarts if component remounts
     return () => globalThis.cancelAnimationFrame(0);
   }, []);
 
   return (
     <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Render snowflakes */}
       {Array.from({ length: SNOWFLAKE_COUNT }).map((_, index) => (
         <div
           key={index}
@@ -50,7 +45,7 @@ export default function Snowfall() {
             position: 'absolute',
             left: generateRandomSnowflake().left,
             opacity: generateRandomSnowflake().opacity,
-            fontSize: `${10 + Math.random() * 15}px`, // Random size between 10px and 25px
+            fontSize: `${10 + Math.random() * 35}px`,
             animation: `fall linear infinite`,
             animationDuration: generateRandomSnowflake().animationDuration,
             transform: generateRandomSnowflake().transform,
@@ -60,7 +55,6 @@ export default function Snowfall() {
         </div>
       ))}
 
-      {/* Animation styling for falling snowflakes */}
       <style>
         {`
           @keyframes fall {

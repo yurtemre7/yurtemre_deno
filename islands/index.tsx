@@ -28,7 +28,6 @@ type Translations = {
   };
 };
 
-// Kanji for the days of the week
 const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
 const dayMap = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -36,9 +35,8 @@ export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
   const tempLanguage = useSignal<string>(lang);
 
-  // Determine the Kanji for the current day of the week
   const day = new Date().getDay();
-  const currentDayKanji = dayKanjiMap[day]; // 0 = Sunday, 1 = Monday, etc.
+  const currentDayKanji = dayKanjiMap[day];
   const currentDay = dayMap[day];
 
   const translations: Translations = {
@@ -56,7 +54,7 @@ export default function Home({ wotd, lang }: InitialData) {
       copyright: "© 2020 - ",
       impressum: "Impressum",
       datenschutz: "Datenschutzerklärung",
-      countdownLabels: ["New Year 2025", "Birth Day from Emre", "Ramadan 2025", "Birth Day from Teo"],
+      countdownLabels: ["New Year 2026", "Birth Day from Emre", "Ramadan 2025", "Birth Day from Teo"],
       programmingItems: [
         "Flutter 4+ years",
         "Android & iOS Development",
@@ -87,7 +85,7 @@ export default function Home({ wotd, lang }: InitialData) {
       copyright: "© 2020 - ",
       impressum: "インプリント",
       datenschutz: "データ保護方針",
-      countdownLabels: ["2025年の新年", "エムレの誕生日", "ラマダン2025", "テオの誕生日"],
+      countdownLabels: ["2026年の新年", "エムレの誕生日", "ラマダン2025", "テオの誕生日"],
       programmingItems: [
         "Flutter 4年以上",
         "AndroidおよびiOS開発",
@@ -108,12 +106,11 @@ export default function Home({ wotd, lang }: InitialData) {
 
   const t = translations[language.value];
 
-  const newYear: Date = new Date("2025-01-01T00:00:00");
+  const newYear: Date = new Date("2026-01-01T00:00:00");
   const birthDay: Date = new Date("2025-01-16T00:00:00");
   const fasting: Date = new Date("2025-02-28T00:00:00");
   const teoBirthday: Date = new Date("2025-09-11T00:00:00");
 
-  // Helper function to format months
   const formatMonthYear = (date: Date, locale: string): string => {
     return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(date);
   };
@@ -122,6 +119,7 @@ export default function Home({ wotd, lang }: InitialData) {
     <div className="flex flex-col text-gray-900 dark:text-gray-100">
       <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
         <div className="max-w-5xl w-full mx-4 sm:mx-6 lg:mx-12 my-4 sm:my-6 p-6 sm:p-8 md:p-10 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+
           {/* Language Switch */}
           <div className="flex justify-end mb-4">
             <button
@@ -169,10 +167,9 @@ export default function Home({ wotd, lang }: InitialData) {
           </div>
 
           {/* Main Content */}
-
           <div className="flex flex-col md:flex-row gap-8 mb-8">
-
             <div className="md:grid md:grid-cols-4 gap-8 mb-8 space-y-4">
+
               {/* Experience Section */}
               <div className="col-span-2 space-y-3">
                 <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.experience}</h2>
@@ -206,7 +203,6 @@ export default function Home({ wotd, lang }: InitialData) {
                 </ul>
               </div>
 
-
               {/* Programming Skills Section */}
               <div className="col-span-2 space-y-3">
                 <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.programmingSkills}</h2>
@@ -231,6 +227,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
           {/* Footer with Contact Info */}
           <footer className="pt-8 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400 flex flex-col sm:flex-row justify-between items-center md:items-center space-y-4 sm:space-y-0 md:space-x-4">
+
             {/* Contact Info */}
             <div className="space-y-1 text-center md:text-left">
               <p><strong>{t.email}:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-500 hover:underline">yurtemre7@icloud.com</a></p>
@@ -250,13 +247,14 @@ export default function Home({ wotd, lang }: InitialData) {
         {/* Snowfall Component */}
         <Snowfall />
       </div>
+
       <div className="flex flex-row justify-center items-center text-4xl m-4">
         今日は{currentDayKanji}曜日だ - Today is {currentDay}
       </div>
-      
-      <Timeline language={language.value as "en" | "ja"}/>
 
-      {/* Countdown Timers Below the Business Card */}
+      <Timeline language={language.value as "en" | "ja"} />
+
+      {/* Countdown Timers */}
       <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
         {t.countdownLabels.map((label: string, index: number) => (
           <div className="col-span-1" >
@@ -275,8 +273,6 @@ export default function Home({ wotd, lang }: InitialData) {
       <div className="flex justify-center items-center mt-6 mb-4">
         <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
       </div>
-
-      
     </div>
   );
 }

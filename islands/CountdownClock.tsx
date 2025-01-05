@@ -3,7 +3,7 @@ import { useEffect } from 'preact/hooks';
 
 interface CountdownClockProps {
     targetDate: number;
-    label?: string;  // Optional label prop
+    label?: string;
 }
 
 function CountdownClock({ targetDate, label = "Time Left" }: CountdownClockProps) {
@@ -40,6 +40,21 @@ function CountdownClock({ targetDate, label = "Time Left" }: CountdownClockProps
                 <div className="text-center">
                     {timeRemaining.value.days}d
                 </div>
+            </div>
+        );
+    }
+
+    if (
+        timeRemaining.value.days === 0 &&
+        timeRemaining.value.hours === 0 &&
+        timeRemaining.value.minutes === 0 &&
+        timeRemaining.value.seconds === 0
+    ) {
+        return (
+            <div className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2 rounded-lg shadow-lg text-xs sm:text-sm md:text-base font-semibold">
+                <div className="text-center">{label}</div>
+                <div className="text-center">✅</div>
+                <div className="text-center opacity-70">{(new Date(targetDate)).toDateString()}</div>
             </div>
         );
     }
