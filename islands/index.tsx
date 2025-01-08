@@ -3,7 +3,6 @@ import CountdownClock from "./CountdownClock.tsx";
 import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
 import { InitialData } from "../components/classes/InitialData.ts";
-import Timeline from "./timeline.tsx";
 
 type Translations = {
   [key: string]: {
@@ -108,7 +107,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
   const newYear: Date = new Date("2026-01-01T00:00:00");
   const birthDay: Date = new Date("2025-01-16T00:00:00");
-  const fasting: Date = new Date("2025-02-28T00:00:00");
+  const fasting: Date = new Date("2025-02-28T23:59:59");
   const teoBirthday: Date = new Date("2025-09-11T00:00:00");
 
   const formatMonthYear = (date: Date, locale: string): string => {
@@ -252,25 +251,33 @@ export default function Home({ wotd, lang }: InitialData) {
         今日は{currentDayKanji}曜日だ - Today is {currentDay}
       </div>
 
-      <Timeline language={language.value as "en" | "ja"} />
-
       {/* Countdown Timers */}
       <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
         {t.countdownLabels.map((label: string, index: number) => (
+
           <div className="col-span-1" >
-            <CountdownClock
+            {index == 2 ? <a className="hover:underline" href="fasting">
+              <CountdownClock
+                key={index}
+                targetDate={
+                  [newYear.getTime(), birthDay.getTime(), fasting.getTime(), teoBirthday.getTime()][index]
+                }
+                label={label}
+              />
+            </a> : <CountdownClock
               key={index}
               targetDate={
                 [newYear.getTime(), birthDay.getTime(), fasting.getTime(), teoBirthday.getTime()][index]
               }
               label={label}
-            />
+            />}
+
           </div>
         ))}
       </div>
 
       {/* Word of the day */}
-      <div className="flex justify-center items-center mt-6 mb-4">
+      <div className="flex justify-center items-center mt-6 mb-6">
         <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
       </div>
     </div>
