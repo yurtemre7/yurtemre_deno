@@ -87,11 +87,11 @@ export default function Fasting() {
                                     <div className="group flex flex-col">
                                         <img
                                             className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
-                                            src="./mosque.png"
-                                            alt="A mosque in the background."
+                                            src="./tokyo_camii.jpg"
+                                            alt="Tokyo Camii"
                                         />
                                         <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
-                                            Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
+                                            Tokyo Camii
                                         </p>
                                     </div>
                                 </div>
@@ -164,11 +164,11 @@ export default function Fasting() {
                                 <div className="group flex flex-col">
                                     <img
                                         className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
-                                        src="./mosque.png"
-                                        alt="A mosque in the background."
+                                        src="./tokyo_camii.jpg"
+                                        alt="Tokyo Camii"
                                     />
                                     <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
-                                        Image by <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/users/alexman89-10638719/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Alexandru Manole</a> from <a className="italic hover:underline hover:text-blue-200" href="https://pixabay.com/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=5610250">Pixabay</a>
+                                        Tokyo Camii
                                     </p>
                                 </div>
                             </div>
