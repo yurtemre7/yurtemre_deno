@@ -15,7 +15,7 @@ export default function Fasting() {
     const fastingDates: Map<string, FastingDates> = new Map();
 
     // add from static fasting.csv file
-    const fastingCSV = Deno.readTextFileSync("./static/fasting.csv");
+    const fastingCSV = Deno.readTextFileSync("./static/fasting25.csv");
     const fastingLines = fastingCSV.split("\n");
 
     let index = 0;
@@ -51,13 +51,27 @@ export default function Fasting() {
     const todayString = formatterToday.format(today.getTime());
 
     const fastingDate = fastingDates.get(todayString);
+    // console.log(fastingDates);
 
     const ramdan2025 = new Date(2025, 1, 28, 23, 59);
+    const firstDay = new Date(2025, 2, 1, 12, 0, 0);
 
+    const fastingDays = useSignal<string[]>([]);
+    for (let i = 0; i < fastingDates.size; i++) {
+        const tomorrow = new Date(firstDay);
+        tomorrow.setDate(tomorrow.getDate() + i);
+        // console.log(tomorrow);
+        const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
+        const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
+        const longFormatter = new Intl.DateTimeFormat('de-DE', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+        const shortFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
+        const fastingStr = longFormatter.format(fastingBegin) + ' Uhr - ' + shortFormatter.format(fastingEnd) + ' Uhr';
+        fastingDays.value.push(fastingStr);
+    }
 
     if (fastingDate === undefined) {
         return (
-            <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+            <html className=" bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 <head>
                     <title>yurtemre.de | fasting</title>
                 </head>
@@ -81,7 +95,24 @@ export default function Fasting() {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="mt-5" />
+                                <div className="mt-10" />
+                                {fastingDays.value.length > 0 ? (
+                                    <div>
+                                        <p className="text-xl">
+                                            Die restlichen Tage ({fastingDays.value.length} Tag{fastingDays.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
+                                        </p>
+                                        <div className="mt-5" />
+                                        <div className="text-center overflow-auto h-96 px-6 divide-y-2 divide-opacity-20 divide-white">
+                                            {
+                                                fastingDays.value.map(
+                                                    (day: string, i: number) => (
+                                                        <p className="text-l py-2 hover:underline">{i + 1}: {day}</p>
+                                                    )
+                                                )
+                                            }
+                                        </div>
+                                    </div>
+                                ) : null}
                             </div>
                         </div>
                     </div>
@@ -108,18 +139,13 @@ export default function Fasting() {
         daysAfterFasting.value.push(fastingStr);
     }
 
-
-
     return (
         <html className="bg-blue-500 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
             <head>
                 <title>yurtemre.de | fasting</title>
             </head>
             <body>
-
-
                 <div className="text-center p-10 items-center">
-
                     <div>
                         <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
                         <div className="p-5 mx-auto items-center justify-center flex-col flex">
@@ -166,8 +192,6 @@ export default function Fasting() {
                                     </div>
                                 ) : null
                             }
-
-
                         </div>
                     </div>
                 </div>
