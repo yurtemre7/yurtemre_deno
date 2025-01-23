@@ -1,0 +1,24 @@
+export type Locale = "en" | "ja";
+
+export type Translations = {
+  [key: string]: {
+    name: string;
+    profession: string;
+    bornInfo: string;
+    experience: string;
+    projects: string;
+    woautoDesc: string;
+    parenDesc: string;
+    email: string;
+    telegram: string;
+    github: string;
+    copyright: string;
+    impressum: string;
+    datenschutz: string;
+    countdownLabels: string[];
+    programmingSkills: string;
+    languageSkills: string;
+    programmingItems: string[];
+    languageItems: string[];
+  };
+};

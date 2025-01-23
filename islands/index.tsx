@@ -3,29 +3,8 @@ import CountdownClock from "./CountdownClock.tsx";
 import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
 import { InitialData } from "../components/classes/InitialData.ts";
-
-type Translations = {
-  [key: string]: {
-    name: string;
-    profession: string;
-    bornInfo: string;
-    experience: string;
-    projects: string;
-    woautoDesc: string;
-    parenDesc: string;
-    email: string;
-    telegram: string;
-    github: string;
-    copyright: string;
-    impressum: string;
-    datenschutz: string;
-    countdownLabels: string[];
-    programmingSkills: string;
-    languageSkills: string;
-    programmingItems: string[];
-    languageItems: string[];
-  };
-};
+import { getNextBirthday, getNextNewYears, formatMonthYear } from "../utils/dates.ts";
+import translations from "../utils/locales/translations.ts";
 
 const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
 const dayMap = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -38,81 +17,11 @@ export default function Home({ wotd, lang }: InitialData) {
   const currentDayKanji = dayKanjiMap[day];
   const currentDay = dayMap[day];
 
-  const translations: Translations = {
-    en: {
-      name: "Emre Yurtseven",
-      profession: "App Developer",
-      bornInfo: "Born on January 16, 2002 • B.Sc. Computer Science",
-      experience: "Experience",
-      projects: "Projects",
-      woautoDesc: "Never lose sight of your car parking ever again.",
-      parenDesc: "Enjoy your vacation and keep the local currency ready at your fingertips.",
-      email: "Email",
-      telegram: "Telegram",
-      github: "GitHub",
-      copyright: "© 2020 - ",
-      impressum: "Impressum",
-      datenschutz: "Datenschutzerklärung",
-      countdownLabels: ["New Year 2026", "Birth Day from Emre", "Ramadan 2025", "Birth Day from Teo"],
-      programmingItems: [
-        "Flutter 4+ years",
-        "Android & iOS Development",
-        "Python 2+ years",
-        "JavaScript / TypeScript - React, Next.js and Fresh",
-        "PHP",
-      ],
-      languageItems: [
-        "German (Deutsch) - Native",
-        "Turkish (Türkçe) - Casual / Native",
-        "English - Professional",
-        "Japanese (日本語) - Beginner",
-      ],
-      programmingSkills: "Programming Skills",
-      languageSkills: "Language Skills",
-    },
-    ja: {
-      name: "エムレ・ユルトセヴェン",
-      profession: "アプリ開発者",
-      bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
-      experience: "経験",
-      projects: "プロジェクト",
-      woautoDesc: "駐車した場所を二度と見失いません。",
-      parenDesc: "休暇を楽しみ、現地通貨を手元に簡単に管理しましょう。",
-      email: "メール",
-      telegram: "テレグラム",
-      github: "ギットハブ",
-      copyright: "© 2020 - ",
-      impressum: "インプリント",
-      datenschutz: "データ保護方針",
-      countdownLabels: ["2026年の新年", "エムレの誕生日", "ラマダン2025", "テオの誕生日"],
-      programmingItems: [
-        "Flutter 4年以上",
-        "AndroidおよびiOS開発",
-        "Python 2年以上",
-        "JavaScript / TypeScript - React、Next.js、Fresh",
-        "PHP",
-      ],
-      languageItems: [
-        "ドイツ語 (Deutsch) - ネイティブ",
-        "トルコ語 (Türkçe) - カジュアル / ネイティブ",
-        "英語 - プロフェッショナル",
-        "日本語 - 初級",
-      ],
-      programmingSkills: "プログラミングスキル",
-      languageSkills: "言語スキル",
-    }
-  };
-
   const t = translations[language.value];
 
-  const newYear: Date = new Date("2026-01-01T00:00:00");
-  const birthDay: Date = new Date("2025-01-16T00:00:00");
+  const newYear: Date = getNextNewYears();
+  const birthDay: Date = getNextBirthday();
   const fasting: Date = new Date("2025-02-28T23:59:59");
-  const teoBirthday: Date = new Date("2025-09-11T00:00:00");
-
-  const formatMonthYear = (date: Date, locale: string): string => {
-    return new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(date);
-  };
 
   return (
     <div className="flex flex-col text-gray-900 dark:text-gray-100">
@@ -120,8 +29,11 @@ export default function Home({ wotd, lang }: InitialData) {
         <div className="max-w-5xl w-full mx-4 sm:mx-6 lg:mx-12 my-4 sm:my-6 p-6 sm:p-8 md:p-10 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
 
           {/* Language Switch */}
-          <div className="flex justify-end mb-4">
+          <nav aria-label="Language switcher" className="flex justify-end mb-4">
             <button
+              aria-label="Switch to English"
+              role="switch"
+              aria-checked={language.value === "en"}
               className={`px-4 py-2 rounded-l-lg ${language.value === "en" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
               onClick={() => {
                 language.value = "en";
@@ -138,6 +50,9 @@ export default function Home({ wotd, lang }: InitialData) {
               English
             </button>
             <button
+              aria-label="Switch to Japanese"
+              role="switch"
+              aria-checked={language.value === "ja"}
               className={`px-4 py-2 rounded-r-lg ${language.value === "ja" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
               onClick={() => {
                 language.value = "ja";
@@ -154,7 +69,7 @@ export default function Home({ wotd, lang }: InitialData) {
             >
               日本語
             </button>
-          </div>
+          </nav>
 
           {/* Header with Name and Info */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 md:mb-8">
@@ -229,9 +144,9 @@ export default function Home({ wotd, lang }: InitialData) {
 
             {/* Contact Info */}
             <div className="space-y-1 text-center md:text-left">
-              <p><strong>{t.email}:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-500 hover:underline">yurtemre7@icloud.com</a></p>
-              <p><strong>{t.telegram}:</strong> <a href="https://t.me/emredev" className="text-blue-500 hover:underline">@emredev</a></p>
-              <p><strong>{t.github}:</strong> <a href="https://github.com/yurtemre7" className="text-blue-500 hover:underline">github.com/yurtemre7</a></p>
+              <p><strong>{t.email}:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-500 hover:underline" rel="noopener noreferrer">yurtemre7@icloud.com</a></p>
+              <p><strong>{t.telegram}:</strong> <a href="https://t.me/emredev" className="text-blue-500 hover:underline" rel="noopener noreferrer">@emredev</a></p>
+              <p><strong>{t.github}:</strong> <a href="https://github.com/yurtemre7" className="text-blue-500 hover:underline" rel="noopener noreferrer">github.com/yurtemre7</a></p>
             </div>
 
             {/* Copyright and Legal Links */}
@@ -260,14 +175,14 @@ export default function Home({ wotd, lang }: InitialData) {
               <CountdownClock
                 key={index}
                 targetDate={
-                  [newYear.getTime(), birthDay.getTime(), fasting.getTime(), teoBirthday.getTime()][index]
+                  [newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]
                 }
                 label={label}
               />
             </a> : <CountdownClock
               key={index}
               targetDate={
-                [newYear.getTime(), birthDay.getTime(), fasting.getTime(), teoBirthday.getTime()][index]
+                [newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]
               }
               label={label}
             />}
