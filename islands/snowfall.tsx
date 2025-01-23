@@ -1,6 +1,6 @@
-import { useEffect } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 
-const SNOWFLAKE_COUNT = 25; // Adjust for more or fewer snowflakes
+const SNOWFLAKE_COUNT = 30;
 
 const getSeasonalEmoji = (): string => {
   const today = new Date();
@@ -20,29 +20,54 @@ const getSeasonalEmoji = (): string => {
   return '❄️'; // Winter
 };
 
-// Snowflake style
 const generateRandomSnowflake = () => ({
-  left: Math.random() * 100 + 'vw', // Random horizontal position
-  animationDuration: 5 + Math.random() * 5 + 's', // Random falling speed
-  opacity: 0.5 + Math.random() * 0.5, // Random opacity for variation
-  transform: `scale(${0.3 + Math.random() * 0.7})`, // Random scale
+  left: Math.random() * 100 + 'vw',
+  animationDuration: 5 + Math.random() * 5 + 's',
+  opacity: 0.5 + Math.random() * 0.5,
+  transform: `scale(${0.3 + Math.random() * 0.7})`,
 });
 
 export default function Snowfall() {
   const emoji = getSeasonalEmoji();
+  const [documentHeight, setDocumentHeight] = useState(0);
 
   useEffect(() => {
-    return () => globalThis.cancelAnimationFrame(0);
+    const updateHeight = () => {
+      setDocumentHeight(document.documentElement.scrollHeight);
+    };
+
+    updateHeight();
+
+    const resizeObserver = new ResizeObserver(updateHeight);
+    resizeObserver.observe(document.body);
+
+    const mutationObserver = new MutationObserver(updateHeight);
+    mutationObserver.observe(document.body, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+    });
+
+    globalThis.addEventListener('resize', updateHeight);
+
+    return () => {
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+      globalThis.removeEventListener('resize', updateHeight);
+    };
   }, []);
 
   return (
-    <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 overflow-hidden pointer-events-none"
+      style={{ height: `${documentHeight}px` }}
+    >
       {Array.from({ length: SNOWFLAKE_COUNT }).map((_, index) => (
         <div
           key={index}
-          className="snowflake absolute top-0 text-white"
+          className="snowflake fixed text-white"
           style={{
-            position: 'absolute',
             left: generateRandomSnowflake().left,
             opacity: generateRandomSnowflake().opacity,
             fontSize: `${10 + Math.random() * 35}px`,
@@ -59,10 +84,10 @@ export default function Snowfall() {
         {`
           @keyframes fall {
             0% {
-              transform: translateY(-100vh) rotate(0deg);
+              transform: translateY(-100%) rotate(0deg);
             }
             100% {
-              transform: translateY(100vh) rotate(360deg);
+              transform: translateY(${documentHeight}px) rotate(360deg);
             }
           }
         `}
