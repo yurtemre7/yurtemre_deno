@@ -33,7 +33,7 @@ function CountdownClock({ targetDate, label = "Time Left" }: CountdownClockProps
         };
     }
 
-    if (timeRemaining.value.days > 1) {
+    if (timeRemaining.value.days >= 1) {
         return (
             <div className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2 rounded-lg shadow-lg text-xs sm:text-sm md:text-base font-semibold">
                 <div className="text-center mb-1">{label}</div>
