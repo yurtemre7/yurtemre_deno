@@ -13,6 +13,8 @@ interface FastingDates {
 export default function Fasting() {
     // map of key date -> FastingDates
     const fastingDates: Map<string, FastingDates> = new Map();
+    const fastingDays = useSignal<string[]>([]);
+    const daysAfterFasting = useSignal<string[]>([]);
 
     // add from static fasting.csv file
     const fastingCSV = Deno.readTextFileSync("./static/fasting25.csv");
@@ -56,7 +58,7 @@ export default function Fasting() {
     const ramdan2025 = new Date(2025, 1, 28, 23, 59);
     const firstDay = new Date(2025, 2, 1, 12, 0, 0);
 
-    const fastingDays = useSignal<string[]>([]);
+    
     for (let i = 0; i < fastingDates.size; i++) {
         const tomorrow = new Date(firstDay);
         tomorrow.setDate(tomorrow.getDate() + i);
@@ -127,7 +129,7 @@ export default function Fasting() {
 
     const duration = (fastingDate!.end.getTime() || today.getTime()) - (fastingDate!.begin.getTime() || today.getTime());
 
-    const daysAfterFasting = useSignal<string[]>([]);
+    
     for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + i);

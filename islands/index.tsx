@@ -21,7 +21,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
   const newYear: Date = getNextNewYears();
   const birthDay: Date = getNextBirthday();
-  const fasting: Date = new Date("2025-02-28T23:59:59");
+  const fasting = new Date(2025, 1, 28, 23, 59);
 
   return (
     <div className="flex flex-col text-gray-900 dark:text-gray-100">
@@ -33,6 +33,7 @@ export default function Home({ wotd, lang }: InitialData) {
             <button
               aria-label="Switch to English"
               role="switch"
+              type="button"
               aria-checked={language.value === "en"}
               className={`px-4 py-2 rounded-l-lg ${language.value === "en" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
               onClick={() => {
@@ -52,6 +53,7 @@ export default function Home({ wotd, lang }: InitialData) {
             <button
               aria-label="Switch to Japanese"
               role="switch"
+              type="button"
               aria-checked={language.value === "ja"}
               className={`px-4 py-2 rounded-r-lg ${language.value === "ja" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
               onClick={() => {
