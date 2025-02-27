@@ -29,7 +29,7 @@ export default {
   languageItems: [
     "ドイツ語 (Deutsch) - ネイティブ",
     "トルコ語 (Türkçe) - カジュアル / ネイティブ",
-    "英語 - プロフェッショナル",
+    "英語 (English) - プロフェッショナル",
     "日本語 - 初級",
   ],
   programmingSkills: "プログラミングスキル",
