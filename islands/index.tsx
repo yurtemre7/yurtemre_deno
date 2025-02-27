@@ -19,184 +19,216 @@ export default function Home({ wotd, lang }: InitialData) {
 
   const t = translations[language.value];
 
-  const newYear: Date = getNextNewYears();
-  const birthDay: Date = getNextBirthday();
+  const newYear = getNextNewYears();
+  const birthDay = getNextBirthday();
   const fasting = new Date(2025, 1, 28, 23, 59);
 
+  // Function to handle language change
+  const handleLanguageChange = (newLang: string) => {
+    language.value = newLang;
+    tempLanguage.value = newLang;
+  };
+
   return (
-    <div className="flex flex-col text-gray-900 dark:text-gray-100">
-      <div className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-        <div className="max-w-5xl w-full mx-4 sm:mx-6 lg:mx-12 my-4 sm:my-6 p-6 sm:p-8 md:p-10 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+    <main className="text-gray-900 dark:text-gray-100">
+      <section className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 p-4">
+        <article className="max-w-5xl w-full mx-auto my-4 sm:my-6 p-4 sm:p-6 lg:p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
 
-          {/* Language Switch */}
-          <nav aria-label="Language switcher" className="flex justify-end mb-4">
-            <button
-              aria-label="Switch to English"
-              role="switch"
-              type="button"
-              aria-checked={language.value === "en"}
-              className={`px-4 py-2 rounded-l-lg ${language.value === "en" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
-              onClick={() => {
-                language.value = "en";
-                tempLanguage.value = language.value;
-              }}
-              onMouseOver={() => {
-                tempLanguage.value = language.value;
-                language.value = "en";
-              }}
-              onMouseOut={() => {
-                language.value = tempLanguage.value;
-              }}
-            >
-              English
-            </button>
-            <button
-              aria-label="Switch to Japanese"
-              role="switch"
-              type="button"
-              aria-checked={language.value === "ja"}
-              className={`px-4 py-2 rounded-r-lg ${language.value === "ja" ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
-              onClick={() => {
-                language.value = "ja";
-                tempLanguage.value = language.value;
-              }}
-              onMouseOver={() => {
-                tempLanguage.value = language.value;
-                language.value = "ja";
-              }}
-              onMouseOut={() => {
-                language.value = tempLanguage.value;
-              }}
-
-            >
-              日本語
-            </button>
+          {/* Language Switch - Improved accessibility and interaction */}
+          <nav aria-label="Language switcher" className="flex justify-between mb-4 gap-4">
+            {language.value === "ja" ? (
+              <span className="text-xl md:text-2xl">
+              今日は{currentDayKanji}曜日だ
+              </span>
+            ) : (
+              <span className="text-xl md:text-2xl">
+              Today is {currentDay}
+              </span>
+            )}
+            <div className="inline-flex rounded-md shadow-sm" role="group">
+              <button
+                aria-label="Switch to English"
+                type="button"
+                aria-pressed={language.value === "en"}
+                className={`px-4 py-2 text-sm font-medium rounded-l-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "en"
+                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                    : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+                  }`}
+                onClick={() => handleLanguageChange("en")}
+              >
+                English
+              </button>
+              <button
+                aria-label="Switch to Japanese"
+                type="button"
+                aria-pressed={language.value === "ja"}
+                className={`px-4 py-2 text-sm font-medium rounded-r-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "ja"
+                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                    : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+                  }`}
+                onClick={() => handleLanguageChange("ja")}
+              >
+                日本語
+              </button>
+            </div>
           </nav>
 
-          {/* Header with Name and Info */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6 md:mb-8">
+          {/* Header with Name and Info - Improved spacing and responsive design */}
+          <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
             <div>
-              <h1 className="text-3xl sm:text-2xl md:text-4xl font-semibold mb-1">{t.name}</h1>
-              <p className="text-lg sm:text-base md:text-xl font-medium">{t.profession}</p>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{t.name}</h1>
+              <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mt-1">{t.profession}</p>
             </div>
-            <p className="text-gray-500 dark:text-gray-400 mt-2 md:mt-0">{t.bornInfo}</p>
-          </div>
+            <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base">{t.bornInfo}</p>
+          </header>
 
-          {/* Main Content */}
-          <div className="flex flex-col md:flex-row gap-8 mb-8">
-            <div className="md:grid md:grid-cols-4 gap-8 mb-8 space-y-4">
-
+          {/* Main Content - Improved grid structure */}
+          <div className="mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Experience Section */}
-              <div className="col-span-2 space-y-3">
-                <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.experience}</h2>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-                  <li>
-                    Junior Frontend Developer, DEIN ERSTER TAG,{" "}
-                    {formatMonthYear(new Date("2023-06-01"), language.value)} - {language.value === "en" ? "Present" : "現在"}
+              <section className="space-y-3">
+                <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.experience}</h2>
+                <ul className="space-y-4">
+                  <li className="flex">
+                    <div>
+                      <p className="font-medium">Junior Frontend Developer, DEIN ERSTER TAG</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {formatMonthYear(new Date("2023-06-01"), language.value)} - {language.value === "en" ? "Present" : "現在"}
+                      </p>
+                    </div>
                   </li>
-                  <li>
-                    Junior Frontend Developer, Appmelder,{" "}
-                    {formatMonthYear(new Date("2021-04-01"), language.value)} -{" "}
-                    {formatMonthYear(new Date("2022-12-01"), language.value)}
+                  <li className="flex">
+                    <div>
+                      <p className="font-medium">Junior Frontend Developer, Appmelder</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        {formatMonthYear(new Date("2021-04-01"), language.value)} -{" "}
+                        {formatMonthYear(new Date("2022-12-01"), language.value)}
+                      </p>
+                    </div>
                   </li>
                 </ul>
-              </div>
+              </section>
 
               {/* Projects Section */}
-              <div className="col-span-2 space-y-3">
-                <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.projects}</h2>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300 overflow-x-auto">
-                  <li>
-                    <a href="https://github.com/yurtemre7/woauto" className="text-blue-500 hover:underline">
-                      WoAuto
-                    </a> - {t.woautoDesc}
+              <section className="space-y-3">
+                <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.projects}</h2>
+                <ul className="space-y-4">
+                  <li className="flex">
+                    <div>
+                      <a href="https://github.com/yurtemre7/woauto" className="text-blue-600 hover:underline font-medium">
+                        WoAuto
+                      </a>
+                      <p className="text-gray-700 dark:text-gray-300">{t.woautoDesc}</p>
+                    </div>
                   </li>
-                  <li>
-                    <a href="/paren" className="text-blue-500 hover:underline">
-                      Paren
-                    </a> - {t.parenDesc}
+                  <li className="flex">
+                    <div>
+                      <a href="/paren" className="text-blue-600 hover:underline font-medium">
+                        Paren
+                      </a>
+                      <p className="text-gray-700 dark:text-gray-300">{t.parenDesc}</p>
+                    </div>
                   </li>
                 </ul>
-              </div>
+              </section>
 
               {/* Programming Skills Section */}
-              <div className="col-span-2 space-y-3">
-                <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.programmingSkills}</h2>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+              <section className="space-y-3">
+                <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.programmingSkills}</h2>
+                <ul className="grid grid-cols-2 gap-2">
                   {t.programmingItems.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="flex items-center">
+                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </section>
 
               {/* Language Skills Section */}
-              <div className="col-span-2 space-y-3">
-                <h2 className="text-xl sm:text-lg md:text-2xl font-semibold mb-2">{t.languageSkills}</h2>
-                <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+              <section className="space-y-3">
+                <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.languageSkills}</h2>
+                <ul className="grid grid-cols-2 gap-2">
                   {t.languageItems.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="flex items-center">
+                      <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </section>
             </div>
           </div>
 
-          {/* Footer with Contact Info */}
-          <footer className="pt-8 border-t border-gray-200 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-400 flex flex-col sm:flex-row justify-between items-center md:items-center space-y-4 sm:space-y-0 md:space-x-4">
+          {/* Footer with Contact Info - Improved layout and responsiveness */}
+          <footer className="pt-6 border-t border-gray-200 dark:border-gray-700 text-sm">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Contact Info */}
+              <div className="space-y-2">
+                <ul className="space-y-2">
+                  <li className="flex items-center">
+                    <span><strong>{t.email}:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-600 hover:underline">yurtemre7@icloud.com</a></span>
+                  </li>
+                  <li className="flex items-center">
+                    <span><strong>{t.telegram}:</strong> <a href="https://t.me/emredev" className="text-blue-600 hover:underline">@emredev</a></span>
+                  </li>
+                  <li className="flex items-center">
+                    <span><strong>{t.github}:</strong> <a href="https://github.com/yurtemre7" className="text-blue-600 hover:underline">github.com/yurtemre7</a></span>
+                  </li>
+                </ul>
+              </div>
 
-            {/* Contact Info */}
-            <div className="space-y-1 text-center md:text-left">
-              <p><strong>{t.email}:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-500 hover:underline" rel="noopener noreferrer">yurtemre7@icloud.com</a></p>
-              <p><strong>{t.telegram}:</strong> <a href="https://t.me/emredev" className="text-blue-500 hover:underline" rel="noopener noreferrer">@emredev</a></p>
-              <p><strong>{t.github}:</strong> <a href="https://github.com/yurtemre7" className="text-blue-500 hover:underline" rel="noopener noreferrer">github.com/yurtemre7</a></p>
-            </div>
-
-            {/* Copyright and Legal Links */}
-            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 text-center sm:text-right">
-              <p>{t.copyright}{new Date().getFullYear()} {t.name}</p>
-              <a href="/impressum" className="text-blue-500 hover:underline">{t.impressum}</a>
-              <a href="/datenschutz" className="text-blue-500 hover:underline">{t.datenschutz}</a>
+              {/* Copyright and Legal Links */}
+              <div className="flex flex-col space-y-2 sm:items-end">
+                <p className="text-gray-500 dark:text-gray-400">{t.copyright} {new Date().getFullYear()} {t.name}</p>
+                <div className="flex space-x-4">
+                  <a href="/impressum" className="text-blue-600 hover:underline">{t.impressum}</a>
+                  <a href="/datenschutz" className="text-blue-600 hover:underline">{t.datenschutz}</a>
+                </div>
+              </div>
             </div>
           </footer>
-        </div>
+        </article>
 
         {/* Snowfall Component */}
         <Snowfall />
-      </div>
+      </section>
 
-      <div className="flex flex-row justify-center items-center text-4xl m-4">
-        今日は{currentDayKanji}曜日だ - Today is {currentDay}
-      </div>
+      
 
-      {/* Countdown Timers */}
-      <div className="flex flex-row justify-center items-center space-x-8 mt-6 mb-4">
-        {t.countdownLabels.map((label: string, index: number) => (
-
-          <div className="col-span-1" >
-            {index == 2 ? <a className="hover:underline" href="fasting">
-              <CountdownClock
-                key={index}
-                targetDate={
-                  [newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]
-                }
-                label={label}
-              />
-            </a> : <CountdownClock
-              key={index}
-              targetDate={
-                [newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]
-              }
-              label={label}
-            />}
-
+      {/* Countdown Timers - Improved layout */}
+      <section className="py-8 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {t.countdownLabels.map((label, index) => (
+              <div key={index} className="flex justify-center">
+                {index === 2 ? (
+                  <a className="w-full hover:underline" href="fasting">
+                    <CountdownClock
+                      targetDate={[newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]}
+                      label={label}
+                    />
+                  </a>
+                ) : (
+                  <CountdownClock
+                    targetDate={[newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]}
+                    label={label}
+                  />
+                )}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
-      {/* Word of the day */}
-      <div className="flex justify-center items-center mt-6 mb-6">
-        <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
-      </div>
-    </div>
+      {/* Word of the day - Improved container */}
+      <section className="py-8 bg-gray-50 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-center">
+            <div className="w-full max-w-md">
+              <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
