@@ -39,15 +39,8 @@ export default function Fasting() {
     // console.log(fastingDates);
 
     const today = new Date();
-    const zeitVerschiebung = new Date(today.getFullYear(), 2, 31);
-    let adjustedHours = 1;
-
-    if (today > zeitVerschiebung) {
-        adjustedHours = 2;
-        // console.log("adjusted hours");
-    }
-
-    today.setHours(today.getHours() + adjustedHours);
+    const offset = 0;
+    today.setDate(today.getDate() + offset);
 
     const formatterToday = new Intl.DateTimeFormat('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
     const todayString = formatterToday.format(today.getTime());
@@ -58,7 +51,7 @@ export default function Fasting() {
     const ramdan2025 = new Date(2025, 1, 28, 23, 59);
     const firstDay = new Date(2025, 2, 1, 12, 0, 0);
 
-    
+
     for (let i = 0; i < fastingDates.size; i++) {
         const tomorrow = new Date(firstDay);
         tomorrow.setDate(tomorrow.getDate() + i);
@@ -104,11 +97,13 @@ export default function Fasting() {
                                             Die restlichen Tage ({fastingDays.value.length} Tag{fastingDays.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
                                         </p>
                                         <div className="mt-5" />
-                                        <div className="text-center overflow-auto h-full px-6 divide-y-2 divide-opacity-20 divide-white">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
                                             {
                                                 fastingDays.value.map(
-                                                    (day: string, _) => (
-                                                        <p className="text-l py-3 hover:underline">{day}</p>
+                                                    (day: string, i: number) => (
+                                                        <div key={i} className="border p-4 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
+                                                            <p className="text-l py-2">{day}</p>
+                                                        </div>
                                                     )
                                                 )
                                             }
@@ -129,10 +124,10 @@ export default function Fasting() {
 
     const duration = (fastingDate!.end.getTime() || today.getTime()) - (fastingDate!.begin.getTime() || today.getTime());
 
-    
+
     for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
-        const tomorrow = new Date();
-        tomorrow.setDate(tomorrow.getDate() + i);
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + i);
         const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
         const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
         const longFormatter = new Intl.DateTimeFormat('de-DE', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -182,11 +177,13 @@ export default function Fasting() {
                                             Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
                                         </p>
                                         <div className="mt-5" />
-                                        <div className="text-center overflow-auto h-full px-6 divide-y-2 divide-opacity-20 divide-white">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
                                             {
                                                 daysAfterFasting.value.map(
                                                     (day: string, i: number) => (
-                                                        <p className="text-l py-2 hover:underline">{i + 1}: {day}</p>
+                                                        <div key={i} className="border p-4 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
+                                                            <p className="text-l py-2">{day}</p>
+                                                        </div>
                                                     )
                                                 )
                                             }
