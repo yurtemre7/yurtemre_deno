@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 
-const SNOWFLAKE_COUNT = 30;
+const SNOWFLAKE_COUNT = 15;
 
 const getSeasonalEmoji = (): string => {
   const today = new Date();
