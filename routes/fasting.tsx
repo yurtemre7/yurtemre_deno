@@ -39,6 +39,13 @@ export default function Fasting() {
     // console.log(fastingDates);
 
     const today = new Date();
+    let adjustedHours = 1;
+    const zeitVerschiebung = new Date(today.getFullYear(), 2, 31);
+    if (today > zeitVerschiebung) {
+        adjustedHours = 2;
+        // console.log("adjusted hours");
+    }
+    today.setHours(today.getHours() + adjustedHours);
     const offset = 0;
     today.setDate(today.getDate() + offset);
 
