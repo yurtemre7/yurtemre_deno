@@ -21,7 +21,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
     }, []);
 
     function calculateTimeLeft() {
-        let now = new Date();
+        const now = new Date();
 
         let adjustedHours = 1;
         const zeitVerschiebung = new Date(now.getFullYear(), 2, 31);
@@ -29,7 +29,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
             adjustedHours = 2;
         }
 
-        now.setHours(now.getHours() + adjustedHours - 2);
+        now.setHours(now.getHours() + adjustedHours);
 
         const difference = end - now.getTime();
 
@@ -58,25 +58,21 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         seconds.value = Math.floor(difference / 1000) - hours.value * 60 * 60 - minutes.value * 60;
     }
 
-    return (
-        <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-row items-center justify-center rounded-xl">
-                {
-                    progress.value == 100 ?
-                        (
-                            <p className="text-2xl font-bold">
-                                Fasten ist für heute vorbei, frohes Mahl! 🍽️
-                            </p>
-                        ) : (
-                            <p className="text-2xl">
-                                {hours.value > 0 && `Noch ${hours.value} Stunde${hours.value == 1 ? '' : 'n'} `}
-                                {minutes.value > 0 && `${minutes.value} Minute${minutes.value == 1 ? '' : 'n'} `}
-                                {seconds.value > 0 && `${seconds.value} Sekunde${seconds.value == 1 ? '' : 'n'}`}
-                            </p>
-                        )
-                }
+    if (progress.value == 100) {
+        return (
+            <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-row items-center justify-center rounded-xl">
+                    <p className="text-2xl font-bold m-5">
+                        Fasten ist für heute vorbei, frohes Mahl! 🍽️
+                    </p>
+                </div>
             </div>
-            <div className="m-10">
+        )
+    }
+
+    return (
+        <div className="flex flex-col items-center justify-center w-full">
+            <div className="m-4 w-full">
                 <div className="relative pt-1">
                     <div className="flex mb-2 items-center justify-between">
                         <div>
@@ -91,7 +87,19 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                         </div>
                     </div>
                     <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
-                        <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-800"></div>
+                        <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-800">
+
+                        </div>
+                    </div>
+                    <p className="text-2xl text-center m-4">
+                        {hours.value > 0 && `${hours.value}h `}
+                        {minutes.value > 0 && `${minutes.value}m `}
+                        {seconds.value > 0 && `${seconds.value}s`}
+                    </p>
+                    <div className="mt-4 text-center text-sm text-indigo-500 dark:text-indigo-300">
+                        {progress.value > 50 && progress.value != 100 && (
+                            <p>Durchhalten! Du hast schon mehr als die Hälfte geschafft.</p>
+                        )}
                     </div>
                 </div>
             </div>
