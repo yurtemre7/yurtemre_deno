@@ -14,24 +14,22 @@ export default function FastingCountdown({ end, duration }: InitialData) {
 
     useEffect(() => {
         calculateTimeLeft();
-        const timer = setTimeout(() => {
+        const timer = setInterval(() => {
             calculateTimeLeft();
         }, 1000);
-        return () => clearTimeout(timer);
-    });
+        return () => clearInterval(timer);
+    }, []);
 
     function calculateTimeLeft() {
-        const now = new Date();
+        let now = new Date();
 
         let adjustedHours = 1;
         const zeitVerschiebung = new Date(now.getFullYear(), 2, 31);
         if (now > zeitVerschiebung) {
             adjustedHours = 2;
-            // console.log("adjusted hours");
         }
 
-        now.setHours(now.getHours() + adjustedHours);
-
+        now.setHours(now.getHours() + adjustedHours - 2);
 
         const difference = end - now.getTime();
 
@@ -56,9 +54,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         }
 
         hours.value = Math.floor(difference / 1000 / 60 / 60);
-
         minutes.value = Math.floor(difference / 1000 / 60) - hours.value * 60;
-
         seconds.value = Math.floor(difference / 1000) - hours.value * 60 * 60 - minutes.value * 60;
     }
 
@@ -73,7 +69,9 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                             </p>
                         ) : (
                             <p className="text-2xl">
-                                Noch {hours.value} Stunde{hours.value == 1 ? '' : 'n'} {minutes.value} Minute{minutes.value == 1 ? '' : 'n'} {seconds.value} Sekunde{seconds.value == 1 ? '' : 'n'}
+                                {hours.value > 0 && `Noch ${hours.value} Stunde${hours.value == 1 ? '' : 'n'} `}
+                                {minutes.value > 0 && `${minutes.value} Minute${minutes.value == 1 ? '' : 'n'} `}
+                                {seconds.value > 0 && `${seconds.value} Sekunde${seconds.value == 1 ? '' : 'n'}`}
                             </p>
                         )
                 }
@@ -83,7 +81,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                     <div className="flex mb-2 items-center justify-between">
                         <div>
                             <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">
-                                {progress.value == 100 ? "Done" : "Progress"}
+                                {progress.value == 100 ? "Fertig" : "Laufend"}
                             </span>
                         </div>
                         <div className="text-right">
@@ -92,12 +90,11 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                             </span>
                         </div>
                     </div>
-                    <div className="overflow-hidden h-1.5 mb-4 text-xs flex rounded bg-indigo-200">
+                    <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
                         <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-800"></div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
