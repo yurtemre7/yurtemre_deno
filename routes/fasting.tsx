@@ -78,6 +78,12 @@ export default function Fasting() {
                     <title>yurtemre.de | fasting</title>
                 </head>
                 <body>
+                    <nav className="bg-gray-800 p-4">
+                        <div className="container mx-auto flex justify-between items-center">
+                            <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
+                            <h2 className="font-bold italic text-center text-white">fasting ⚡</h2>
+                        </div>
+                    </nav>
                     <div className="min-h-screen text-center p-10 items-center">
                         <div>
                             <h2 className="text-4xl text-center font-bold italic">fasting ⚡</h2>
@@ -149,11 +155,15 @@ export default function Fasting() {
                 <title>yurtemre.de | fasting</title>
             </head>
             <body>
-                <div className="text-center p-10 items-center">
+                <nav className="bg-gray-800 p-4">
+                    <div className="container mx-auto flex justify-between items-center">
+                        <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
+                        <h2 className="font-bold italic text-center text-white">fasting ⚡</h2>
+                    </div>
+                </nav>
+                <div className="text-center p-2 items-center">
                     <div>
-                        <h2 className="text-4xl font-bold italic text-center">fasting ⚡</h2>
-                        <div className="p-5 mx-auto items-center justify-center flex-col flex">
-                            <div className="mt-5" />
+                        <div className="p-4 mx-auto items-center justify-center flex-col flex">
                             <p className="text-2xl text-center">
                                 Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
                             </p>

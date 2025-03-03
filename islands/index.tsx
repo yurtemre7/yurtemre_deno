@@ -201,7 +201,7 @@ export default function Home({ wotd, lang }: InitialData) {
             {t.countdownLabels.map((label, index) => (
               <div key={index} className="flex justify-center">
                 {index === 2 ? (
-                  <a className="w-full hover:underline" href="fasting">
+                  <a className="hover:underline" href="fasting">
                     <CountdownClock
                       targetDate={[newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]}
                       label={label}

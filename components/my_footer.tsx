@@ -7,7 +7,7 @@ export default function MyFooter() {
                     <div className="flex justify-center md:justify-start mt-1">
                         <p>Made with</p>
                         <div className="ml-1" />
-                        <a href="https://fresh.deno.dev/" className="hover:underline flex flex-row hover:text-blue-200">
+                        <a href="https://fresh.deno.dev/" className="hover:underline flex flex-row">
                             <div>
                                 fresh
                             </div>
@@ -24,8 +24,8 @@ export default function MyFooter() {
                     </div>
                 </div>
                 <div className="mt-4 md:mt-0 text-center md:text-right">
-                    <a href="/impressum" className="hover:underline hover:text-blue-200 mr-4">Impressum</a>
-                    <a href="/datenschutz" className="hover:underline hover:text-blue-200">Datenschutz</a>
+                    <a href="/impressum" className="hover:underline mr-4">Impressum</a>
+                    <a href="/datenschutz" className="hover:underline">Datenschutz</a>
                 </div>
             </div>
         </footer>
