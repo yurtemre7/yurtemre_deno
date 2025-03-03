@@ -63,7 +63,9 @@ export default function FastingCountdown({ end, duration }: InitialData) {
             <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-row items-center justify-center rounded-xl">
                     <p className="text-2xl font-bold m-5">
-                        Fasten ist für heute vorbei, frohes Mahl! 🍽️
+                        İftar - Fastenbrechen
+                        <br />
+                        Afiet olsun! - Guten Appetit!
                     </p>
                 </div>
             </div>

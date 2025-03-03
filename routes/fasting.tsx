@@ -67,7 +67,7 @@ export default function Fasting() {
         const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
         const longFormatter = new Intl.DateTimeFormat('de-DE', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         const shortFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
-        const fastingStr = longFormatter.format(fastingBegin) + ' Uhr - ' + shortFormatter.format(fastingEnd) + ' Uhr';
+        const fastingStr = longFormatter.format(fastingBegin) + ' Uhr bis ' + shortFormatter.format(fastingEnd) + ' Uhr';
         fastingDays.value.push(fastingStr);
     }
 
@@ -80,10 +80,10 @@ export default function Fasting() {
                 <body>
                     <div className="min-h-screen text-center p-10 items-center">
                         <div>
-                            <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
+                            <h2 className="text-4xl text-center font-bold italic">fasting ⚡</h2>
                             <div className="p-5 mx-auto items-center justify-center flex-col flex">
                                 <div className="mt-10" />
-                                <CountdownClock targetDate={ramdan2025.getTime()} label="Ramadan 2025" />
+                                <CountdownClock targetDate={ramdan2025.getTime()} label="Ramadan 2025 in Berlin 🇩🇪" />
                                 <div className="mt-10" />
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col">
@@ -101,14 +101,14 @@ export default function Fasting() {
                                 {fastingDays.value.length > 0 ? (
                                     <div>
                                         <p className="text-xl">
-                                            Die restlichen Tage ({fastingDays.value.length} Tag{fastingDays.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
+                                            Die restlichen Tage ({fastingDays.value.length} Tag{fastingDays.value.length > 1 ? "e" : ""}) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
                                         </p>
                                         <div className="mt-5" />
                                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
                                             {
                                                 fastingDays.value.map(
                                                     (day: string, i: number) => (
-                                                        <div key={i} className="border p-4 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
+                                                        <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
                                                             <p className="text-l py-2">{day}</p>
                                                         </div>
                                                     )
@@ -139,7 +139,7 @@ export default function Fasting() {
         const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
         const longFormatter = new Intl.DateTimeFormat('de-DE', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
         const shortFormatter = new Intl.DateTimeFormat('de-DE', { hour: '2-digit', minute: '2-digit' });
-        const fastingStr = longFormatter.format(fastingBegin) + ' Uhr - ' + shortFormatter.format(fastingEnd) + ' Uhr';
+        const fastingStr = longFormatter.format(fastingBegin) + ' Uhr bis ' + shortFormatter.format(fastingEnd) + ' Uhr';
         daysAfterFasting.value.push(fastingStr);
     }
 
@@ -151,11 +151,11 @@ export default function Fasting() {
             <body>
                 <div className="text-center p-10 items-center">
                     <div>
-                        <h2 className="text-4xl font-bold text-center">fasting ⚡</h2>
+                        <h2 className="text-4xl font-bold italic text-center">fasting ⚡</h2>
                         <div className="p-5 mx-auto items-center justify-center flex-col flex">
-                            <div className="mt-10" />
-                            <p className="text-2xl font-bold">
-                                Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan:
+                            <div className="mt-5" />
+                            <p className="text-2xl text-center">
+                                Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
                             </p>
                             <div className="mt-5" />
                             <p className="text-3xl font-bold text-center">
@@ -176,19 +176,18 @@ export default function Fasting() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="mt-10" />
+                            <div className="mt-5" />
                             {
                                 daysAfterFasting.value.length > 0 ? (
                                     <div>
                                         <p className="text-xl">
-                                            Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan sind wie folgt:
+                                            Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
                                         </p>
-                                        <div className="mt-5" />
                                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
                                             {
                                                 daysAfterFasting.value.map(
                                                     (day: string, i: number) => (
-                                                        <div key={i} className="border p-4 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
+                                                        <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
                                                             <p className="text-l py-2">{day}</p>
                                                         </div>
                                                     )
