@@ -111,7 +111,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                             <p>Durchhalten! Du hast schon mehr als die Hälfte geschafft.</p>
                         )}
 
-                        {progress.value > 25 && progress.value < 50 && progress.value != 100 && (
+                        {progress.value >= 25 && progress.value < 50 && progress.value != 100 && (
                             <p>Fast ist schon Halbzeit! Weiter gehts.</p>
                         )}
 
