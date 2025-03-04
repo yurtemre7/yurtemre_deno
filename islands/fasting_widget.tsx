@@ -99,8 +99,24 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                         {seconds.value > 0 && `${seconds.value}s`}
                     </p>
                     <div className="mt-4 text-center text-sm text-indigo-500 dark:text-indigo-300">
-                        {progress.value > 50 && progress.value != 100 && (
+                        {progress.value >= 99 && progress.value != 100 && (
+                            <p>Letzten Schritte sind zu erledigen! Gekocht? Gedeckt? Bestellt? Guten Appetit!</p>
+                        )}
+
+                        {progress.value >= 75 && progress.value < 99 && progress.value != 100 && (
+                            <p>Respekt! Jetzt stark bleiben, bald kannst du futtern!</p>
+                        )}
+
+                        {progress.value >= 50 && progress.value < 75 && progress.value != 100 && (
                             <p>Durchhalten! Du hast schon mehr als die Hälfte geschafft.</p>
+                        )}
+
+                        {progress.value > 25 && progress.value < 50 && progress.value != 100 && (
+                            <p>Fast ist schon Halbzeit! Weiter gehts.</p>
+                        )}
+
+                        {progress.value < 25 && (
+                            <p>Nicht mehr lang bis du das 1. Viertel geschafft hast!</p>
                         )}
                     </div>
                 </div>
