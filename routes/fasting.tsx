@@ -3,7 +3,6 @@ import MyFooter from "../components/my_footer.tsx";
 import FastingCountdown from "../islands/fasting_widget.tsx";
 import CountdownClock from "../islands/CountdownClock.tsx";
 
-// map of key date -> (begin, end)
 interface FastingDates {
     begin: Date;
     end: Date;
