@@ -73,7 +73,7 @@ export default function Fasting() {
 
     if (fastingDate === undefined) {
         return (
-            <html className=" bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+            <html className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 <head>
                     <title>yurtemre.de | fasting</title>
                 </head>
@@ -151,15 +151,15 @@ export default function Fasting() {
     }
 
     return (
-        <html className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+        <html className="bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-green-100">
             <head>
                 <title>yurtemre.de | fasting</title>
             </head>
             <body>
-                <nav className="bg-gray-800 p-4">
+                <nav className="bg-gray-700 p-4">
                     <div className="container mx-auto flex justify-between items-center">
-                        <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
-                        <h2 className="font-bold text-center text-white">fasting ⚡</h2>
+                        <a href="/" className="text-lg font-bold hover:underline">yurtemre.de</a>
+                        <h2 className="font-bold text-center">fasting ⚡</h2>
                     </div>
                 </nav>
                 <div className="text-center p-4 items-center">

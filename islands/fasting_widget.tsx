@@ -76,20 +76,20 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         <div className="flex flex-col items-center justify-center w-full">
             <div className="m-4 w-full">
                 <div className="relative pt-1">
-                    <div className="flex m-4 items-center justify-between">
+                    <div className="flex m-4 items-center justify-between gap-2">
                         <div>
-                            <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">
+                            <span className="text-sm font-semibold inline-block py-1 px-3 uppercase rounded-full text-green-600 bg-green-200">
                                 {progress.value == 100 ? "Fertig" : "Fortschritt"}
                             </span>
                         </div>
                         <div className="text-right">
-                            <span className="text-sm font-semibold inline-block ml-4">
+                            <span className="rounded-full py-1 px-3 text-sm font-semibold inline-block">
                                 {progress.value.toFixed(3)}%
                             </span>
                         </div>
                     </div>
-                    <div className="overflow-hidden h-4 m-4 text-xs flex rounded bg-indigo-200">
-                        <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-800">
+                    <div className="overflow-hidden h-4 m-4 text-xs flex rounded bg-green-200">
+                        <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-800">
                         </div>
                     </div>
                     <div className="m-4 grid gap-1 justify-center mx-auto" style={{ gridTemplateColumns: `repeat(5, 20px)`, width: '110px' }}>
@@ -102,7 +102,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                             return (
                                 <div
                                     key={index}
-                                    className={`w-4 h-4 border ${isFilled ? 'bg-indigo-800 border-indigo-800' : isNext ? 'bg-indigo-400 animate-pulse border-indigo-400' : 'bg-indigo-200 border-indigo-200'}`}
+                                    className={`w-4 h-4 border ${isFilled ? 'bg-green-800 border-green-800' : isNext ? 'bg-green-400 animate-pulse border-green-400' : 'bg-green-200 border-green-200'}`}
                                 ></div>
                             );
                         })}
@@ -113,7 +113,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                     {minutes.value > 0 && `${minutes.value}m `}
                     {seconds.value > 0 && `${seconds.value}s`}
                 </p>
-                <div className="mt-4 text-center text-sm text-indigo-500 dark:text-indigo-300">
+                <div className="mt-4 text-center text-sm">
                     {progress.value >= 99 && progress.value != 100 && (
                         <p>Letzten Schritte sind zu erledigen! Gekocht? Gedeckt? Bestellt? Guten Appetit!</p>
                     )}
