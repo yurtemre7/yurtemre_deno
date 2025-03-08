@@ -92,13 +92,13 @@ export default function Fasting() {
                                 <CountdownClock targetDate={ramdan2025.getTime()} label="Ramadan 2025 in Berlin 🇩🇪" />
                                 <div className="mt-10" />
                                 <div className="items-center justify-center flex">
-                                    <div className="group flex flex-col">
+                                    <div className="group flex flex-col gap-1">
                                         <img
-                                            className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
+                                            className="mx-auto max-md:max-h-xl md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
                                             src="./tokyo_camii.jpg"
                                             alt="Tokyo Camii"
                                         />
-                                        <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
+                                        <p className="duration-500 ease-in-out transform md:group-hover:translate-y-4 md:group-hover:scale-110">
                                             Tokyo Camii
                                         </p>
                                     </div>
@@ -136,7 +136,8 @@ export default function Fasting() {
     const fastingStrEnd = fastingFormatter.format(fastingDate!.end || new Date());
 
     const duration = (fastingDate!.end.getTime() || today.getTime()) - (fastingDate!.begin.getTime() || today.getTime());
-
+    const durationHours = Math.floor(duration / (1000 * 60 * 60));
+    const durationMinutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
 
     for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
         const tomorrow = new Date(today);
@@ -158,35 +159,40 @@ export default function Fasting() {
                 <nav className="bg-gray-800 p-4">
                     <div className="container mx-auto flex justify-between items-center">
                         <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
-                        <h2 className="font-bold italic text-center text-white">fasting ⚡</h2>
+                        <h2 className="font-bold text-center text-white">fasting ⚡</h2>
                     </div>
                 </nav>
-                <div className="text-center p-2 items-center">
+                <div className="text-center p-4 items-center">
                     <div>
                         <div className="p-4 mx-auto items-center justify-center flex-col flex">
                             <p className="text-2xl text-center">
                                 Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
                             </p>
-                            <div className="mt-5" />
-                            <p className="text-3xl font-bold text-center">
-                                {fastingStrBegin} Uhr - {fastingStrEnd} Uhr
-                            </p>
-                            <div className="mt-5" />
+                            <div className="mt-4" />
+                            <div className="text-3xl font-bold text-center flex flex-col sm:flex-row justify-center items-center">
+                                <span>{fastingStrBegin} Uhr</span>
+                                <span className="mx-2">-</span>
+                                <span>{fastingStrEnd} Uhr</span>
+                            </div>
+                            <div className="mt-2" />
+                            <div className="text-xl text-center">
+                                {durationHours}h {durationMinutes}m lang
+                            </div>
                             <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
-                            <div className="mt-5" />
+                            <div className="mt-4" />
                             <div className="items-center justify-center flex">
-                                <div className="group flex flex-col">
+                                <div className="group flex flex-col gap-1">
                                     <img
-                                        className="mx-auto max-md:max-h-xl md:h-96 rounded-xl group-hover:border-2 group-hover:border-blue-50 group-hover:shadow-2xl transition duration-500 ease-in-out transform group-hover:-translate-y-1 group-hover:scale-110"
+                                        className="mx-auto max-md:max-h-xl md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
                                         src="./tokyo_camii.jpg"
                                         alt="Tokyo Camii"
                                     />
-                                    <p className="duration-500 ease-in-out transform group-hover:translate-y-4 group-hover:scale-110">
+                                    <p className="duration-500 ease-in-out transform md:group-hover:translate-y-4 md:group-hover:scale-110">
                                         Tokyo Camii
                                     </p>
                                 </div>
                             </div>
-                            <div className="mt-5" />
+                            <div className="mt-4" />
                             {
                                 daysAfterFasting.value.length > 0 ? (
                                     <div>
