@@ -94,7 +94,7 @@ export default function Fasting() {
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col gap-1">
                                         <img
-                                            className="mx-auto max-md:max-h-xl md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
+                                            className="mx-auto md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
                                             src="./tokyo_camii.jpg"
                                             alt="Tokyo Camii"
                                         />
@@ -163,57 +163,55 @@ export default function Fasting() {
                     </div>
                 </nav>
                 <div className="text-center p-4 items-center">
-                    <div>
-                        <div className="p-4 mx-auto items-center justify-center flex-col flex">
-                            <p className="text-2xl text-center">
-                                Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
-                            </p>
-                            <div className="mt-4" />
-                            <div className="text-3xl font-bold text-center flex flex-col sm:flex-row justify-center items-center">
-                                <span>{fastingStrBegin} Uhr</span>
-                                <span className="mx-2">-</span>
-                                <span>{fastingStrEnd} Uhr</span>
-                            </div>
-                            <div className="mt-2" />
-                            <div className="text-xl text-center">
-                                {durationHours}h {durationMinutes}m lang
-                            </div>
-                            <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
-                            <div className="mt-4" />
-                            <div className="items-center justify-center flex">
-                                <div className="group flex flex-col gap-1">
-                                    <img
-                                        className="mx-auto max-md:max-h-xl md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
-                                        src="./tokyo_camii.jpg"
-                                        alt="Tokyo Camii"
-                                    />
-                                    <p className="duration-500 ease-in-out transform md:group-hover:translate-y-4 md:group-hover:scale-110">
-                                        Tokyo Camii
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="mt-4" />
-                            {
-                                daysAfterFasting.value.length > 0 ? (
-                                    <div>
-                                        <p className="text-xl">
-                                            Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
-                                        </p>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
-                                            {
-                                                daysAfterFasting.value.map(
-                                                    (day: string, i: number) => (
-                                                        <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
-                                                            <p className="text-l py-2">{day}</p>
-                                                        </div>
-                                                    )
-                                                )
-                                            }
-                                        </div>
-                                    </div>
-                                ) : null
-                            }
+                    <div className="p-4 mx-auto items-center justify-center flex-col flex">
+                        <p className="text-2xl text-center">
+                            Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
+                        </p>
+                        <div className="mt-4" />
+                        <div className="text-3xl font-bold text-center flex flex-col sm:flex-row justify-center items-center">
+                            <span>{fastingStrBegin} Uhr</span>
+                            <span className="mx-2">-</span>
+                            <span>{fastingStrEnd} Uhr</span>
                         </div>
+                        <div className="mt-2" />
+                        <div className="text-xl text-center">
+                            {durationHours}h {durationMinutes}m lang
+                        </div>
+                        <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
+                        <div className="mt-4" />
+                        <div className="items-center justify-center flex">
+                            <div className="group flex flex-col gap-1">
+                                <img
+                                    className="mx-auto md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
+                                    src="./tokyo_camii.jpg"
+                                    alt="Tokyo Camii"
+                                />
+                                <p className="duration-500 ease-in-out transform md:group-hover:translate-y-4 md:group-hover:scale-110">
+                                    Tokyo Camii
+                                </p>
+                            </div>
+                        </div>
+                        <div className="mt-4" />
+                        {
+                            daysAfterFasting.value.length > 0 ? (
+                                <div>
+                                    <p className="text-xl">
+                                        Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
+                                    </p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
+                                        {
+                                            daysAfterFasting.value.map(
+                                                (day: string, i: number) => (
+                                                    <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
+                                                        <p className="text-l py-2">{day}</p>
+                                                    </div>
+                                                )
+                                            )
+                                        }
+                                    </div>
+                                </div>
+                            ) : null
+                        }
                     </div>
                 </div>
             </body>
