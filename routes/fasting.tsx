@@ -175,7 +175,7 @@ export default function Fasting() {
                         </div>
                         <div className="mt-2" />
                         <div className="text-xl text-center">
-                            {durationHours}h {durationMinutes}m lang
+                            = {durationHours}h {durationMinutes}m lang
                         </div>
                         <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
                         <div className="mt-4" />
