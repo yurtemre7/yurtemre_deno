@@ -94,7 +94,7 @@ export default function Fasting() {
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col gap-1">
                                         <img
-                                            className="mx-auto md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
+                                            className="mx-auto md:h-96 h-1/4 rounded-xl md:group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
                                             src="./tokyo_camii.jpg"
                                             alt="Tokyo Camii"
                                         />
@@ -151,12 +151,12 @@ export default function Fasting() {
     }
 
     return (
-        <html className="bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-green-100">
+        <html className="bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-green-50">
             <head>
                 <title>yurtemre.de | fasting</title>
             </head>
             <body>
-                <nav className="bg-gray-700 p-4">
+                <nav className="dark:bg-gray-700 bg-green-500 p-4">
                     <div className="container mx-auto flex justify-between items-center">
                         <a href="/" className="text-lg font-bold hover:underline">yurtemre.de</a>
                         <h2 className="font-bold text-center">fasting ⚡</h2>
@@ -182,7 +182,7 @@ export default function Fasting() {
                         <div className="items-center justify-center flex">
                             <div className="group flex flex-col gap-1">
                                 <img
-                                    className="mx-auto md:h-96 h-1/4 rounded-xl group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
+                                    className="mx-auto md:h-96 h-1/4 rounded-xl md:group-hover:shadow-2xl transition duration-500 ease-in-out transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
                                     src="./tokyo_camii.jpg"
                                     alt="Tokyo Camii"
                                 />
@@ -202,7 +202,7 @@ export default function Fasting() {
                                         {
                                             daysAfterFasting.value.map(
                                                 (day: string, i: number) => (
-                                                    <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300">
+                                                    <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300">
                                                         <p className="text-l py-2">{day}</p>
                                                     </div>
                                                 )

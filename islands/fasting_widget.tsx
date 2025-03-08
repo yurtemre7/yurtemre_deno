@@ -88,7 +88,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                             </span>
                         </div>
                     </div>
-                    <div className="overflow-hidden h-4 m-4 text-xs flex rounded bg-green-200">
+                    <div className="border-2 border-green-300 overflow-hidden h-4 m-4 text-xs flex rounded bg-green-200">
                         <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-800">
                         </div>
                     </div>
@@ -102,7 +102,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                             return (
                                 <div
                                     key={index}
-                                    className={`w-4 h-4 border ${isFilled ? 'bg-green-800 border-green-800' : isNext ? 'bg-green-400 animate-pulse border-green-400' : 'bg-green-200 border-green-200'}`}
+                                    className={`w-4 h-4 border ${isFilled ? 'bg-green-800 border-green-300' : isNext ? 'bg-green-400 animate-pulse dark:border-green-100 border-green-500' : 'bg-green-200 border-green-200'}`}
                                 ></div>
                             );
                         })}
