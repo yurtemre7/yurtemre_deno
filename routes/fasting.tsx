@@ -151,83 +151,81 @@ export default function Fasting() {
     }
 
     return (
-        <html className="bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-green-50">
+        <html className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
             <head>
                 <title>yurtemre.de | fasting</title>
             </head>
             <body>
-                <nav className="dark:bg-gray-700 bg-green-500 p-4">
+                <nav className="bg-gradient-to-r from-green-400 to-blue-500 p-4 shadow-lg">
                     <div className="container mx-auto flex justify-between items-center">
-                        <a href="/" className="text-lg font-bold hover:underline">yurtemre.de</a>
-                        <h2 className="font-bold text-center">fasting ⚡</h2>
+                        <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
+                        <h2 className="text-white font-bold text-center">fasting ⚡</h2>
                     </div>
                 </nav>
                 <div className="text-center p-4 items-center">
                     <div className="p-4 mx-auto items-center justify-center flex-col flex">
-                        <p className="text-2xl text-center">
-                            Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
-                        </p>
-                        {fastingDate!.index + 1 === 26 ? (
-                            <p className="text-xl text-center font-bold italic">
-                                Heute ist Laylatul Qadr
-                            </p>
-                        ) : null}
-                        <div className="mt-4" />
-                        <div className="text-3xl font-bold text-center flex flex-col sm:flex-row justify-center items-center">
-                            <span>{fastingStrBegin} Uhr</span>
-                            <span className="mx-2">-</span>
-                            <span>{fastingStrEnd} Uhr</span>
-                        </div>
-                        <div className="mt-2" />
-                        <div className="text-xl text-center">
-                            = {durationHours}h {durationMinutes}m lang
-                        </div>
-                        <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
-                        <div className="mt-4" />
-                        <div className="items-center justify-center flex">
-                            <div className="group flex flex-col gap-1">
+                        <div className="flex flex-col md:flex-row justify-center items-center md:space-x-10 p-10">
+                            <div className="flex-1 text-center text-center">
+                                <p className="text-4xl font-bold">
+                                    Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪
+                                </p>
+                                {fastingDate!.index + 1 === 26 ? (
+                                    <p className="text-2xl font-bold italic mt-4">
+                                        Heute ist Laylatul Qadr
+                                    </p>
+                                ) : null}
+                                <div className="mt-8 text-5xl font-bold flex justify-center md:justify-end items-center">
+                                    <span>{fastingStrBegin} Uhr</span>
+                                    <span className="mx-4">-</span>
+                                    <span>{fastingStrEnd} Uhr</span>
+                                </div>
+                                <div className="mt-4 text-3xl">
+                                    = {durationHours}h {durationMinutes}m lang
+                                </div>
+                                <div className="mt-8">
+                                    <FastingCountdown end={fastingDate!.end.getTime() || Date.now()} duration={duration} />
+                                </div>
+                            </div>
+                            <div className="flex-1 mt-10 md:mt-0 text-center">
                                 <img
-                                    className="md:h-96 rounded-xl md:group-hover:shadow-2xl md:transition md:duration-500 md:ease-in-out md:transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
+                                    className="md:h-96 rounded-xl md:transition md:duration-500 md:ease-in-out md:transform md:hover:scale-110"
                                     src="./tokyo_camii.jpg"
                                     alt="Tokyo Camii"
                                 />
-                                <p className="duration-500 ease-in-out transform md:group-hover:translate-y-4 md:group-hover:scale-110">
+                                <p className="mt-6 text-2xl font-bold">
                                     Tokyo Camii
                                 </p>
                             </div>
                         </div>
-                        <div className="mt-4" />
-                        {
-                            daysAfterFasting.value.length > 0 ? (
-                                <div>
-                                    <p className="text-xl">
-                                        Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
-                                    </p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
-                                        {
-                                            daysAfterFasting.value.map(
-                                                (day: string, i: number) => {
-                                                    if (day.includes("26.")) {
-                                                        // laylatul qadr
-                                                        return (
-                                                            <div key={i} className="border border-green-500 border-opacity-50 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100">
-                                                                <p className="text-l py-2 font-bold">{day}</p>
-                                                                <p className="text-sm italic">Laylatul Qadr</p>
-                                                            </div>
-                                                        );
-                                                    }
-                                                    return (
-                                                        <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300">
-                                                            <p className="text-l py-2">{day}</p>
-                                                        </div>
-                                                    );
-                                                }
-                                            )
+                        <div className="mt-10">
+                            <div className="text-center">
+                                <p className="text-2xl">
+                                    Die restlichen Tage ({daysAfterFasting.value.length} Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
+                                </p>
+                            </div>
+                            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
+                                {
+                                    daysAfterFasting.value.map(
+                                        (day: string, i: number) => {
+                                            if (day.includes("26.")) {
+                                                // laylatul qadr
+                                                return (
+                                                    <div key={i} className="border border-green-500 border-opacity-50 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100">
+                                                        <p className="text-l py-2 font-bold">{day}</p>
+                                                        <p className="text-sm italic">Laylatul Qadr</p>
+                                                    </div>
+                                                );
+                                            }
+                                            return (
+                                                <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300">
+                                                    <p className="text-l py-2">{day}</p>
+                                                </div>
+                                            );
                                         }
-                                    </div>
-                                </div>
-                            ) : null
-                        }
+                                    )
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </body>
