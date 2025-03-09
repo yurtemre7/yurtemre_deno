@@ -210,7 +210,7 @@ export default function Fasting() {
                                             if (day.includes("26.")) {
                                                 // laylatul qadr
                                                 return (
-                                                    <div key={i} className="border border-green-500 border-opacity-50 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100">
+                                                    <div key={i} className="border dark:bg-green-900 border-green-500 border-opacity-50 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100">
                                                         <p className="text-l py-2 font-bold">{day}</p>
                                                         <p className="text-sm italic">Laylatul Qadr</p>
                                                     </div>
