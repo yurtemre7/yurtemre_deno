@@ -29,7 +29,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
             adjustedHours = 2;
         }
 
-        now.setHours(now.getHours() + adjustedHours - 1);
+        now.setHours(now.getHours() + adjustedHours);
 
         const difference = end - now.getTime();
 
