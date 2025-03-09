@@ -174,7 +174,7 @@ export default function Fasting() {
                                         Heute ist Laylatul Qadr
                                     </p>
                                 ) : null}
-                                <div className="mt-8 text-5xl font-bold flex justify-center md:justify-end items-center">
+                                <div className="mt-8 text-5xl font-bold flex justify-center items-center">
                                     <span>{fastingStrBegin} Uhr</span>
                                     <span className="mx-4">-</span>
                                     <span>{fastingStrEnd} Uhr</span>
