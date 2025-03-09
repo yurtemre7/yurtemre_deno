@@ -16,7 +16,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         calculateTimeLeft();
         const timer = setInterval(() => {
             calculateTimeLeft();
-        }, 1000);
+        }, 500);
         return () => clearInterval(timer);
     }, []);
 
@@ -29,7 +29,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
             adjustedHours = 2;
         }
 
-        now.setHours(now.getHours() + adjustedHours);
+        now.setHours(now.getHours() + adjustedHours - 1);
 
         const difference = end - now.getTime();
 
@@ -92,17 +92,16 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                         <div style={{ width: `${progress.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-800">
                         </div>
                     </div>
-                    <div className="m-4 grid gap-1 justify-center mx-auto" style={{ gridTemplateColumns: `repeat(5, 20px)`, width: '110px' }}>
+                    <div className="m-4 grid gap-1 justify-center mx-auto" style={{ gridTemplateColumns: `repeat(5, 30px)`, width: '165px' }}>
                         {Array.from({ length: 5 * 5 }).map((_, index) => {
-                            const row = index % 5;
-                            const col = Math.floor(index / 5);
-                            const dayProgress = ((row * 5 + col) / (5 * 5)) * 100;
-                            const isFilled = dayProgress < progress.value;
-                            const isNext = dayProgress >= progress.value && dayProgress < progress.value + (100 / (5 * 5));
+                            const cellProgress = (index + 1) * 4;
+                            const isFilled = cellProgress <= progress.value;
+                            const isNext = cellProgress > progress.value && cellProgress <= progress.value + 4;
+
                             return (
                                 <div
                                     key={index}
-                                    className={`w-4 h-4 border ${isFilled ? 'bg-green-800 border-green-300' : isNext ? 'bg-green-400 animate-pulse dark:border-green-100 border-green-500' : 'bg-green-200 border-green-200'}`}
+                                    className={`w-6 h-6 border ${isFilled ? 'bg-green-800 border-green-300' : isNext ? 'bg-green-400 animate-pulse border-green-500' : 'bg-green-200 border-green-200'}`}
                                 ></div>
                             );
                         })}
@@ -111,7 +110,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
                 <p className="text-2xl text-center m-4">
                     {hours.value > 0 && `${hours.value}h `}
                     {minutes.value > 0 && `${minutes.value}m `}
-                    {seconds.value > 0 && `${seconds.value}s`}
+                    {seconds.value > 0 && `${seconds.value}s`} verbleiben
                 </p>
                 <div className="mt-4 text-center text-sm">
                     {progress.value >= 99 && progress.value != 100 && (
