@@ -3,6 +3,7 @@ import MyFooter from "../components/my_footer.tsx";
 import FastingCountdown from "../islands/fasting_widget.tsx";
 import CountdownClock from "../islands/CountdownClock.tsx";
 
+
 interface FastingDates {
     begin: Date;
     end: Date;
@@ -166,6 +167,11 @@ export default function Fasting() {
                         <p className="text-2xl text-center">
                             Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪:
                         </p>
+                        {fastingDate!.index + 1 === 26 ? (
+                            <p className="text-xl text-center font-bold italic">
+                                Heute ist Laylatul Qadr
+                            </p>
+                        ) : null}
                         <div className="mt-4" />
                         <div className="text-3xl font-bold text-center flex flex-col sm:flex-row justify-center items-center">
                             <span>{fastingStrBegin} Uhr</span>
@@ -200,11 +206,22 @@ export default function Fasting() {
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
                                         {
                                             daysAfterFasting.value.map(
-                                                (day: string, i: number) => (
-                                                    <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300">
-                                                        <p className="text-l py-2">{day}</p>
-                                                    </div>
-                                                )
+                                                (day: string, i: number) => {
+                                                    if (day.includes("26.")) {
+                                                        // laylatul qadr
+                                                        return (
+                                                            <div key={i} className="border border-green-500 border-opacity-50 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100">
+                                                                <p className="text-l py-2 font-bold">{day}</p>
+                                                                <p className="text-sm italic">Laylatul Qadr</p>
+                                                            </div>
+                                                        );
+                                                    }
+                                                    return (
+                                                        <div key={i} className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300">
+                                                            <p className="text-l py-2">{day}</p>
+                                                        </div>
+                                                    );
+                                                }
                                             )
                                         }
                                     </div>
