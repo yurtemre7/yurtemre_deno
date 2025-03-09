@@ -11,6 +11,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
     const minutes = useSignal(0);
     const seconds = useSignal(0);
     const progress = useSignal(0);
+    const progressToStart = useSignal(0);
 
     useEffect(() => {
         calculateTimeLeft();
@@ -22,7 +23,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
 
     function calculateTimeLeft() {
         const now = new Date();
-
+        
         let adjustedHours = 1;
         const zeitVerschiebung = new Date(now.getFullYear(), 2, 31);
         if (now > zeitVerschiebung) {
@@ -32,6 +33,8 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         now.setHours(now.getHours() + adjustedHours);
 
         const difference = end - now.getTime();
+        const start = end - duration;
+        const timeToStart = start - now.getTime();
 
         if (difference < 0) {
             progress.value = 100;
@@ -44,6 +47,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         }
 
         progress.value = 100 - (difference / duration) * 100;
+        progressToStart.value = 100 - (timeToStart / duration) * 100;
 
         if (progress.value > 100) {
             progress.value = 100;
@@ -56,6 +60,36 @@ export default function FastingCountdown({ end, duration }: InitialData) {
         hours.value = Math.floor(difference / 1000 / 60 / 60);
         minutes.value = Math.floor(difference / 1000 / 60) - hours.value * 60;
         seconds.value = Math.floor(difference / 1000) - hours.value * 60 * 60 - minutes.value * 60;
+    }
+
+    if (progress.value == 0) {
+        return (
+            <div className="flex flex-col items-center justify-center">
+                <p className="text-2xl font-bold m-5">
+                    Sahur zamanı - Zeit zum Essen vor dem Fasten
+                </p>
+                <div className="m-4 w-full">
+                    <div className="relative pt-1">
+                        <div className="flex m-4 items-center justify-between gap-2">
+                            <div>
+                                <span className="text-sm font-semibold inline-block py-1 px-3 uppercase rounded-full text-green-600 bg-green-200">
+                                    Fortschritt bis zum Start
+                                </span>
+                            </div>
+                            <div className="text-right">
+                                <span className="rounded-full py-1 px-3 text-sm font-semibold inline-block">
+                                    {progressToStart.value.toFixed(3)}%
+                                </span>
+                            </div>
+                        </div>
+                        <div className="border-2 border-green-300 overflow-hidden h-4 m-4 text-xs flex rounded bg-green-200">
+                            <div style={{ width: `${progressToStart.value}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-800">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     if (progress.value == 100) {
