@@ -165,7 +165,7 @@ export default function Fasting() {
                 <div className="text-center p-4 items-center">
                     <div className="p-4 mx-auto items-center justify-center flex-col flex">
                         <div className="flex flex-col md:flex-row justify-center items-center md:space-x-10 p-10">
-                            <div className="flex-1 text-center text-center">
+                            <div className="flex-1 text-center">
                                 <p className="text-4xl font-bold">
                                     Heute ist der {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪
                                 </p>
