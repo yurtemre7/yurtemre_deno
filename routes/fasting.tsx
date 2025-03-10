@@ -188,7 +188,7 @@ export default function Fasting() {
                             </div>
                             <div className="flex-1 mt-10 md:mt-0 text-center">
                                 <img
-                                    className="md:h-96 rounded-xl md:transition md:duration-500 md:ease-in-out md:transform md:hover:scale-110"
+                                    className="rounded-xl md:transition md:duration-500 md:ease-in-out md:transform md:hover:scale-110"
                                     src="./tokyo_camii.jpg"
                                     alt="Tokyo Camii"
                                 />
