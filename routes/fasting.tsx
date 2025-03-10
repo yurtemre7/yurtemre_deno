@@ -94,7 +94,7 @@ export default function Fasting() {
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col gap-1">
                                         <img
-                                            className="md:h-96 rounded-xl md:group-hover:shadow-2xl md:transition md:duration-500 md:ease-in-out md:transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
+                                            className="rounded-xl md:group-hover:shadow-2xl md:transition md:duration-500 md:ease-in-out md:transform md:group-hover:-translate-y-1 md:group-hover:scale-110"
                                             src="./tokyo_camii.jpg"
                                             alt="Tokyo Camii"
                                         />
