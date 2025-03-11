@@ -1,7 +1,7 @@
 import { getNextYearValue } from "../dates.ts";
 
 export default {
-  name: "エムレ・ユルトセヴェン",
+  name: "エムレ・ユルトセブン",
   profession: "アプリ開発者",
   bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
   experience: "経験",
