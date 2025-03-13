@@ -14,6 +14,20 @@ export default function FastingCountdown({ end, duration }: InitialData) {
     const progressToStart = useSignal(0);
 
     useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === "visible") {
+                globalThis.location.reload();
+            }
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        return () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+        };
+    }, []);
+
+    useEffect(() => {
         calculateTimeLeft();
         const timer = setInterval(() => {
             calculateTimeLeft();
@@ -23,7 +37,7 @@ export default function FastingCountdown({ end, duration }: InitialData) {
 
     function calculateTimeLeft() {
         const now = new Date();
-        
+
         let adjustedHours = 1;
         const zeitVerschiebung = new Date(now.getFullYear(), 2, 31);
         if (now > zeitVerschiebung) {

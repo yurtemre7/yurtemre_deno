@@ -24,10 +24,10 @@ export default function Home({ wotd, lang }: InitialData) {
   const fasting = new Date(2025, 1, 28, 23, 59);
 
   // Function to handle language change
-  const handleLanguageChange = (newLang: string) => {
+  function handleLanguageChange(newLang: string) {
     language.value = newLang;
     tempLanguage.value = newLang;
-  };
+  }
 
   return (
     <main className="text-gray-900 dark:text-gray-100">
@@ -38,11 +38,11 @@ export default function Home({ wotd, lang }: InitialData) {
           <nav aria-label="Language switcher" className="flex justify-between mb-4 gap-4">
             {language.value === "ja" ? (
               <span className="text-xl md:text-2xl">
-              今日は{currentDayKanji}曜日だ
+                今日は{currentDayKanji}曜日だ
               </span>
             ) : (
               <span className="text-xl md:text-2xl">
-              Today is {currentDay}
+                Today is {currentDay}
               </span>
             )}
             <div className="inline-flex rounded-md shadow-sm" role="group">
@@ -51,8 +51,8 @@ export default function Home({ wotd, lang }: InitialData) {
                 type="button"
                 aria-pressed={language.value === "en"}
                 className={`px-4 py-2 text-sm font-medium rounded-l-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "en"
-                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-                    : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
                   }`}
                 onClick={() => handleLanguageChange("en")}
               >
@@ -63,8 +63,8 @@ export default function Home({ wotd, lang }: InitialData) {
                 type="button"
                 aria-pressed={language.value === "ja"}
                 className={`px-4 py-2 text-sm font-medium rounded-r-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "ja"
-                    ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-                    : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+                  ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                  : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
                   }`}
                 onClick={() => handleLanguageChange("ja")}
               >
@@ -192,7 +192,7 @@ export default function Home({ wotd, lang }: InitialData) {
         <Snowfall />
       </section>
 
-      
+
 
       {/* Countdown Timers - Improved layout */}
       <section className="py-4 bg-white dark:bg-gray-900">
