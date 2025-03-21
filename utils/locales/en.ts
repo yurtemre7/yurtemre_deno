@@ -3,7 +3,7 @@ import { getNextYearValue } from "../dates.ts";
 export default {
   name: "Emre Yurtseven",
   profession: "App Developer",
-  bornInfo: "Born on January 16, 2002 • B.Sc. Computer Science",
+  bornInfo: "Born on January 16th 2002 • B.Sc. Computer Science",
   experience: "Experience",
   projects: "Projects",
   woautoDesc: "Never lose sight of your car parking ever again.",
