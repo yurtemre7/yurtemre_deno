@@ -40,6 +40,7 @@ function CountdownClock({ targetDate, label = "Time Left" }: CountdownClockProps
                 <div className="text-center">
                     {timeRemaining.value.days}d
                 </div>
+                <div className="text-center opacity-70">{(new Date(targetDate)).toLocaleDateString()}</div>
             </div>
         );
     }
@@ -54,7 +55,7 @@ function CountdownClock({ targetDate, label = "Time Left" }: CountdownClockProps
             <div className="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-2 rounded-lg shadow-lg text-xs sm:text-sm md:text-base font-semibold">
                 <div className="text-center">{label}</div>
                 <div className="text-center">✅</div>
-                <div className="text-center opacity-70">{(new Date(targetDate)).toDateString()}</div>
+                <div className="text-center opacity-70">{(new Date(targetDate)).toLocaleDateString()}</div>
             </div>
         );
     }
@@ -65,6 +66,7 @@ function CountdownClock({ targetDate, label = "Time Left" }: CountdownClockProps
             <div className="text-center">
                 {timeRemaining.value.hours}h : {timeRemaining.value.minutes}m : {timeRemaining.value.seconds}s
             </div>
+            <div className="text-center opacity-70">{(new Date(targetDate)).toLocaleDateString()}</div>
         </div>
     );
 };
