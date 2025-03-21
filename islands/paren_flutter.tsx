@@ -19,7 +19,7 @@ export default function ParenFlutter() {
             <div className="flex justify-center m-6">
                 <iframe className="rounded-2xl" src={parenURL} height="600" width={`${maxWidth} sm:300`} />
             </div>
-            <button onClick={toggleWidth} className="sm:inline hidden text-white mx-4 p-2 rounded bg-orange-800 hover:bg-orange-900 transition-colors duration-300">
+            <button type="button" onClick={toggleWidth} className="sm:inline hidden text-white mx-4 p-2 rounded bg-orange-800 hover:bg-orange-900 transition-colors duration-300">
                 Switch View
             </button>
         </div>

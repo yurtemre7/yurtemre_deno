@@ -157,7 +157,7 @@ export default function Fasting() {
             <body>
                 <nav className="bg-gradient-to-r from-green-400 to-blue-500 p-4 shadow-lg">
                     <div className="container mx-auto flex justify-between items-center">
-                        <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
+                        <a href="/" className="text-white text-lg font-bold hover:underline">← yurtemre.de</a>
                         <h2 className="text-white font-bold text-center">fasting ⚡</h2>
                     </div>
                 </nav>
