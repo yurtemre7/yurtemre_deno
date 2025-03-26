@@ -4,6 +4,7 @@
 
 .gradient-bg {
     background: linear-gradient(180deg, #a8edea, #fed6e3);
+    background-color: #a8edea;
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     color: #333;
@@ -27,6 +28,7 @@
 @media (prefers-color-scheme: dark) {
     .gradient-bg {
         background: linear-gradient(180deg, #1e3b8aed, #1e293b);
+        background-color: #1e3b8a;
         background-size: 400% 400%;
         animation: gradientAnimation 15s ease infinite;
         color: #f3f4f6;
