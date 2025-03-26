@@ -37,7 +37,7 @@ export default function Home({ wotd, lang }: InitialData) {
           </div>
         </nav> */}
       {/* Language Switch - Improved accessibility and interaction */}
-      <nav aria-label="Language switcher" className="text-lg md:text-xl flex justify-between bg-gradient-to-r from-gray-700 to-gray-800 p-4 shadow-lg">
+      <nav aria-label="Language switcher" className="text-lg md:text-xl flex justify-between p-4 shadow-lg">
         <a href="/" className="font-bold hover:underline text-2xl">yurtemre.de</a>
         <div className="inline-flex rounded-md shadow-sm" role="group">
           <button
@@ -46,7 +46,7 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-pressed={language.value === "en"}
             className={`px-2 font-medium rounded-l-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "en"
               ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-              : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+              : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
               }`}
             onClick={() => handleLanguageChange("en")}
           >
@@ -58,7 +58,7 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-pressed={language.value === "ja"}
             className={`px-2 font-medium rounded-r-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "ja"
               ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-              : "bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+              : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
               }`}
             onClick={() => handleLanguageChange("ja")}
           >
@@ -67,8 +67,8 @@ export default function Home({ wotd, lang }: InitialData) {
         </div>
       </nav>
       <main className="text-gray-900 dark:text-gray-100">
-        <section className="min-h-screen w-full flex justify-center items-center bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 p-4">
-          <article className="max-w-5xl w-full mx-auto my-4 sm:my-6 p-4 sm:p-6 lg:p-8 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+        <section className="min-h-screen w-full flex justify-center items-center text-gray-900 dark:text-gray-100 p-4">
+          <article className="max-w-5xl w-full mx-auto my-4 sm:my-6 p-4 sm:p-6 lg:p-8 rounded-lg shadow-xl border-2 border-gray-300 dark:border-gray-400">
             <div className="flex justify-center">
               {language.value === "ja" ? (
                 <span>
@@ -82,7 +82,7 @@ export default function Home({ wotd, lang }: InitialData) {
             </div>
 
             {/* Header with Name and Info - Improved spacing and responsive design */}
-            <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-gray-200 dark:border-gray-700 pb-4">
+            <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-gray-300 dark:border-gray-400 pb-4">
               <div>
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{t.name}</h1>
                 <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mt-1">{t.profession}</p>
@@ -167,7 +167,7 @@ export default function Home({ wotd, lang }: InitialData) {
             </div>
 
             {/* Footer with Contact Info - Improved layout and responsiveness */}
-            <footer className="pt-6 border-t border-gray-200 dark:border-gray-700 text-sm">
+            <footer className="pt-6 border-t border-gray-300 dark:border-gray-400 text-sm">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Contact Info */}
                 <div className="space-y-2">
@@ -203,7 +203,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
 
         {/* Countdown Timers - Improved layout */}
-        <section className="py-4 bg-white dark:bg-gray-900">
+        <section className="py-4">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {t.countdownLabels.map((label, index) => (
@@ -228,7 +228,7 @@ export default function Home({ wotd, lang }: InitialData) {
         </section>
 
         {/* Word of the day - Improved container */}
-        <section className="py-8 bg-gray-50 dark:bg-gray-800">
+        <section className="py-8">
           <div className="container mx-auto px-4">
             <div className="flex justify-center">
               <div className="w-full max-w-md">

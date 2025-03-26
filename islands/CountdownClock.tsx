@@ -8,7 +8,7 @@ interface CountdownClockProps {
     bg_color?: string;
 }
 
-function CountdownClock({ targetDate, label = "Time Left", dark_bg_color = "gray-800", bg_color = "gray-200" }: CountdownClockProps) {
+function CountdownClock({ targetDate, label = "Time Left", dark_bg_color = "blue-950", bg_color = "gray-200" }: CountdownClockProps) {
     const timeRemaining = useSignal(calculateTimeRemaining());
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function CountdownClock({ targetDate, label = "Time Left", dark_bg_color = "gray
 
     if (timeRemaining.value.days >= 1) {
         return (
-            <div className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-lg text-xs sm:text-sm md:text-base font-semibold`}>
+            <div className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}>
                 <div className="text-center mb-1">{label}</div>
                 <div className="text-center">
                     {timeRemaining.value.days}d
@@ -54,7 +54,7 @@ function CountdownClock({ targetDate, label = "Time Left", dark_bg_color = "gray
         timeRemaining.value.seconds === 0
     ) {
         return (
-            <div className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-lg text-xs sm:text-sm md:text-base font-semibold`}>
+            <div className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}>
                 <div className="text-center">{label}</div>
                 <div className="text-center">✅</div>
                 <div className="text-center opacity-70">{(new Date(targetDate)).toLocaleDateString()}</div>
@@ -63,7 +63,7 @@ function CountdownClock({ targetDate, label = "Time Left", dark_bg_color = "gray
     }
 
     return (
-        <div className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-lg text-xs sm:text-sm md:text-base font-semibold`}>
+        <div className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}>
             <div className="text-center mb-1">{label}</div>
             <div className="text-center">
                 {timeRemaining.value.hours}h : {timeRemaining.value.minutes}m : {timeRemaining.value.seconds}s
