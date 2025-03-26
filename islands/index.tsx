@@ -31,12 +31,6 @@ export default function Home({ wotd, lang }: InitialData) {
 
   return (
     <div className="text-gray-900 dark:text-gray-100">
-      {/* <nav className="bg-gradient-to-r from-gray-700 to-gray-800 p-4 shadow-lg">
-          <div className="container mx-auto flex justify-between items-center">
-            <a href="/" className="text-white text-lg font-bold hover:underline">yurtemre.de</a>
-          </div>
-        </nav> */}
-      {/* Language Switch - Improved accessibility and interaction */}
       <nav aria-label="Language switcher" className="text-lg md:text-xl flex justify-between p-4 shadow-lg">
         <a href="/" className="font-bold hover:underline text-2xl">yurtemre.de</a>
         <div className="inline-flex rounded-md shadow-sm" role="group">
@@ -199,8 +193,6 @@ export default function Home({ wotd, lang }: InitialData) {
           {/* Snowfall Component */}
           <Snowfall />
         </section>
-
-
 
         {/* Countdown Timers - Improved layout */}
         <section className="py-4">
