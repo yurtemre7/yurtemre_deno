@@ -204,13 +204,13 @@ export default function Home({ wotd, lang }: InitialData) {
                   {index === 2 ? (
                     <a className="hover:underline" href="fasting">
                       <CountdownClock
-                        targetDate={[newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]}
+                        targetDate={fasting.getTime()}
                         label={label}
                       />
                     </a>
                   ) : (
                     <CountdownClock
-                      targetDate={[newYear.getTime(), birthDay.getTime(), fasting.getTime()][index]}
+                      targetDate={[newYear.getTime(), birthDay.getTime()][index]}
                       label={label}
                     />
                   )}
