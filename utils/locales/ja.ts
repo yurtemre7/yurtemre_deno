@@ -17,7 +17,7 @@ export default {
   countdownLabels: [
     getNextYearValue() + "年の新年",
     "エムレの誕生日",
-    "ラマダン2025",
+    "ラマダン2026",
   ],
   programmingItems: [
     "Flutter 4年以上",

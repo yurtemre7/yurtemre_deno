@@ -16,7 +16,7 @@ export default function Fasting() {
     const daysAfterFasting = useSignal<string[]>([]);
 
     // add from static fasting.csv file
-    const fastingCSV = Deno.readTextFileSync("./static/fasting25.csv");
+    const fastingCSV = Deno.readTextFileSync("./static/fasting26.csv");
     const fastingLines = fastingCSV.split("\n");
 
     let index = 0;
@@ -52,16 +52,16 @@ export default function Fasting() {
     const todayString = formatterToday.format(today.getTime());
 
     const fastingDate = fastingDates.get(todayString);
-    // console.log(fastingDates);
+    console.log(fastingDates);
 
-    const ramdan2025 = new Date(2025, 1, 28, 23, 59);
-    const firstDay = new Date(2025, 2, 1, 12, 0, 0);
+    const ramadanDate = new Date(2026, 1, 17, 23, 59);
+    const firstDay = new Date(2026, 1, 18, 0, 0);
 
 
     for (let i = 0; i < fastingDates.size; i++) {
         const tomorrow = new Date(firstDay);
         tomorrow.setDate(tomorrow.getDate() + i);
-        // console.log(tomorrow);
+        console.log(tomorrow);
         const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
         const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
         const longFormatter = new Intl.DateTimeFormat('de-DE', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -88,7 +88,7 @@ export default function Fasting() {
                             <h2 className="text-4xl text-center font-bold italic">fasting ⚡</h2>
                             <div className="p-5 mx-auto items-center justify-center flex-col flex">
                                 <div className="mt-10" />
-                                <CountdownClock targetDate={ramdan2025.getTime()} label="Ramadan 2025 in Berlin 🇩🇪" />
+                                <CountdownClock targetDate={ramadanDate.getTime()} label="Ramadan 2026 in Berlin 🇩🇪" />
                                 <div className="mt-10" />
                                 <div className="items-center justify-center flex">
                                     <div className="group flex flex-col gap-1">
