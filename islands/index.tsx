@@ -21,7 +21,8 @@ export default function Home({ wotd, lang }: InitialData) {
 
   const newYear = getNextNewYears();
   const birthDay = getNextBirthday();
-  const fasting = new Date(2025, 1, 28, 23, 59);
+  // TODO manual change required once a year
+  const fasting = new Date(2026, 1, 17, 23, 59);
 
   // Function to handle language change
   function handleLanguageChange(newLang: string) {
