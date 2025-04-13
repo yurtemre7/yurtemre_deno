@@ -52,7 +52,7 @@ export default function Fasting() {
     const todayString = formatterToday.format(today.getTime());
 
     const fastingDate = fastingDates.get(todayString);
-    console.log(fastingDates);
+    // console.log(fastingDates);
 
     const ramadanDate = new Date(2026, 1, 17, 23, 59);
     const firstDay = new Date(2026, 1, 18, 0, 0);
@@ -61,7 +61,7 @@ export default function Fasting() {
     for (let i = 0; i < fastingDates.size; i++) {
         const tomorrow = new Date(firstDay);
         tomorrow.setDate(tomorrow.getDate() + i);
-        console.log(tomorrow);
+        // console.log(tomorrow);
         const fastingBegin = fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
         const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end || Date.now();
         const longFormatter = new Intl.DateTimeFormat('de-DE', { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
