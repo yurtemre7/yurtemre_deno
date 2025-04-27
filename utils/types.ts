@@ -20,5 +20,6 @@ export type Translations = {
     languageSkills: string;
     programmingItems: string[];
     languageItems: string[];
+    present: string;
   };
 };

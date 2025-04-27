@@ -12,6 +12,11 @@ const translations: { [lang: string]: { notFound: string; wordOfDay: string; dud
     wordOfDay: "は、本日のドイツ語である:",
     duden: "Duden (ドゥーデン)",
   },
+  tr: {
+    notFound: "Günün kelimesi: Bulunamadı",
+    wordOfDay: "şu anda sağlanan Almanca kelimedir",
+    duden: "Duden",
+  }
 };
 
 interface WordOfTheDayProps extends WOTD {

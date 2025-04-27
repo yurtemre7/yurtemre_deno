@@ -34,4 +34,5 @@ export default {
   ],
   programmingSkills: "プログラミングスキル",
   languageSkills: "言語スキル",
+  present: "現在",
 };

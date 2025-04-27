@@ -8,14 +8,15 @@ import translations from "../utils/locales/translations.ts";
 
 const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
 const dayMap = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const günMap = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
 
 export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
-  const tempLanguage = useSignal<string>(lang);
 
   const day = new Date().getDay();
   const currentDayKanji = dayKanjiMap[day];
   const currentDay = dayMap[day];
+  const currentTurkishDay = günMap[day];
 
   const t = translations[language.value];
 
@@ -23,23 +24,23 @@ export default function Home({ wotd, lang }: InitialData) {
   const birthDay = getNextBirthday();
   // TODO manual change required once a year
   const fasting = new Date(2026, 1, 17, 23, 59);
+  console.log(fasting.toLocaleString());
 
   // Function to handle language change
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
-    tempLanguage.value = newLang;
   }
 
   return (
     <div className="text-gray-900 dark:text-gray-100">
-      <nav aria-label="Language switcher" className="text-lg md:text-xl flex justify-between p-4 shadow-lg">
+      <nav aria-label="Language switcher" className="text-lg md:text-xl flex flex-col md:flex-row justify-between items-center p-4 shadow-lg space-y-4 md:space-y-0">
         <a href="/" className="font-bold hover:underline text-2xl">yurtemre.de</a>
-        <div className="inline-flex rounded-md shadow-sm" role="group">
+        <div className="inline-flex rounded-md shadow-sm flex-wrap justify-center" role="group">
           <button
             aria-label="Switch to English"
             type="button"
             aria-pressed={language.value === "en"}
-            className={`px-2 font-medium rounded-l-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "en"
+            className={`px-4 py-2 font-medium rounded-t-lg rounded-l-lg rounded-tr-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "en"
               ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
               : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
               }`}
@@ -51,13 +52,25 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-label="Switch to Japanese"
             type="button"
             aria-pressed={language.value === "ja"}
-            className={`px-2 font-medium rounded-r-lg focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "ja"
+            className={`px-4 py-2 font-medium focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "ja"
               ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
               : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
               }`}
             onClick={() => handleLanguageChange("ja")}
           >
             日本語
+          </button>
+          <button
+            aria-label="Switch to Turkish"
+            type="button"
+            aria-pressed={language.value === "tr"}
+            className={`px-4 py-2 font-medium rounded-b-lg rounded-r-lg rounded-bl-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "tr"
+              ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+              : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+              }`}
+            onClick={() => handleLanguageChange("tr")}
+          >
+            Türkçe
           </button>
         </div>
       </nav>
@@ -68,6 +81,10 @@ export default function Home({ wotd, lang }: InitialData) {
               {language.value === "ja" ? (
                 <span>
                   今日は{currentDayKanji}曜日だ
+                </span>
+              ) : language.value === "tr" ? (
+                <span>
+                  Bugün {currentTurkishDay}
                 </span>
               ) : (
                 <span>
@@ -96,7 +113,7 @@ export default function Home({ wotd, lang }: InitialData) {
                       <div>
                         <p className="font-medium">Junior Frontend Developer, DEIN ERSTER TAG</p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {formatMonthYear(new Date("2023-06-01"), language.value)} - {language.value === "en" ? "Present" : "現在"}
+                          {formatMonthYear(new Date("2023-06-01"), language.value)} - {t.present}
                         </p>
                       </div>
                     </li>
