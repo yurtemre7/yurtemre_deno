@@ -32,5 +32,3 @@ jobs:
           project: "yurtemre7-yurtemre-deno"
           entrypoint: "./main.ts"
           root: ""
-          
-          

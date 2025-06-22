@@ -37,5 +37,5 @@ export default {
   ],
   programmingSkills: "Programming Skills",
   languageSkills: "Language Skills",
-  present: "Present"
+  present: "Present",
 };

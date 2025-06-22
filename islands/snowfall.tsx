@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from "preact/hooks";
 
 const SNOWFLAKE_COUNT = 20;
 
@@ -7,15 +7,16 @@ const getSeasonalEmoji = (): string => {
   const month = today.getMonth();
   const day = today.getDate();
 
-  const newYearEmojis = ['🎇', '🎆', '🥳'];
-  const aprilFoolsEmojis = ['🤣', '😜', '🤪'];
-  const birthdayEmojis = ['🎂', '🎉', '🎁'];
-  const springEmojis = ['🌸', '🌷', '🌼'];
-  const summerEmojis = ['☀️', '🌞', '🏖️'];
-  const fallEmojis = ['🍂', '🍁', '🎃'];
-  const winterEmojis = ['❄️', '⛄', '🎄'];
+  const newYearEmojis = ["🎇", "🎆", "🥳"];
+  const aprilFoolsEmojis = ["🤣", "😜", "🤪"];
+  const birthdayEmojis = ["🎂", "🎉", "🎁"];
+  const springEmojis = ["🌸", "🌷", "🌼"];
+  const summerEmojis = ["☀️", "🌞", "🏖️"];
+  const fallEmojis = ["🍂", "🍁", "🎃"];
+  const winterEmojis = ["❄️", "⛄", "🎄"];
 
-  const getRandomEmoji = (emojis: string[]) => emojis[Math.floor(Math.random() * emojis.length)];
+  const getRandomEmoji = (emojis: string[]) =>
+    emojis[Math.floor(Math.random() * emojis.length)];
 
   if (month === 0 && day === 1) return getRandomEmoji(newYearEmojis);
   if (month === 3 && day === 1) return getRandomEmoji(aprilFoolsEmojis);
@@ -29,8 +30,8 @@ const getSeasonalEmoji = (): string => {
 };
 
 const generateRandomSnowflake = () => ({
-  left: Math.random() * 100 + 'vw',
-  animationDuration: 12.5 + Math.random() * 5 + 's',
+  left: Math.random() * 100 + "vw",
+  animationDuration: 12.5 + Math.random() * 5 + "s",
   opacity: 0.25 + Math.random() * 0.5,
   transform: `scale(${0.3 + Math.random() * 0.7})`,
 });
@@ -50,14 +51,18 @@ export default function Snowfall() {
     resizeObserver.observe(document.body);
 
     const mutationObserver = new MutationObserver(updateHeight);
-    mutationObserver.observe(document.body, { subtree: true, childList: true, attributes: true });
+    mutationObserver.observe(document.body, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+    });
 
-    globalThis.addEventListener('resize', updateHeight);
+    globalThis.addEventListener("resize", updateHeight);
 
     return () => {
       resizeObserver.disconnect();
       mutationObserver.disconnect();
-      globalThis.removeEventListener('resize', updateHeight);
+      globalThis.removeEventListener("resize", updateHeight);
     };
   }, []);
 
@@ -73,7 +78,7 @@ export default function Snowfall() {
           className="snowflake fixed text-white"
           style={{
             left: generateRandomSnowflake().left,
-            top:`-${50 + (Math.random() * 50)}vh`, // Start off-screen
+            top: `-${50 + (Math.random() * 50)}vh`, // Start off-screen
             opacity: generateRandomSnowflake().opacity,
             fontSize: `${10 + Math.random() * 35}px`,
             animation: `fall linear infinite`,
@@ -92,7 +97,9 @@ export default function Snowfall() {
               transform: rotate(0deg);
             }
             100% {
-              transform: translateY(${documentHeight + globalThis.innerHeight}px) rotate(360deg);
+              transform: translateY(${
+          documentHeight + globalThis.innerHeight
+        }px) rotate(360deg);
             }
           }
         `}

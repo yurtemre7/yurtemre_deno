@@ -4,9 +4,9 @@ import jaTranslation from "./ja.ts";
 import trTranslation from "./tr.ts";
 
 const translations: Translations = {
-    en: enTranslation,
-    ja: jaTranslation,
-    tr: trTranslation,
-  };
+  en: enTranslation,
+  ja: jaTranslation,
+  tr: trTranslation,
+};
 
 export default translations;

@@ -1,7 +1,9 @@
 import { WOTD } from "./classes/WOTD.ts";
 
 // Define translations
-const translations: { [lang: string]: { notFound: string; wordOfDay: string; duden: string } } = {
+const translations: {
+  [lang: string]: { notFound: string; wordOfDay: string; duden: string };
+} = {
   en: {
     notFound: "Word of the day: Not found",
     wordOfDay: "is the german word of the day provided by",
@@ -16,14 +18,16 @@ const translations: { [lang: string]: { notFound: string; wordOfDay: string; dud
     notFound: "Günün kelimesi: Bulunamadı",
     wordOfDay: "şu anda sağlanan Almanca kelimedir",
     duden: "Duden",
-  }
+  },
 };
 
 interface WordOfTheDayProps extends WOTD {
   language: string; // Extend with language prop
 }
 
-export default function WordOfTheDay({ word, link, language }: WordOfTheDayProps) {
+export default function WordOfTheDay(
+  { word, link, language }: WordOfTheDayProps,
+) {
   const word_data = { word, link };
   const t = translations[language];
 
@@ -44,7 +48,10 @@ export default function WordOfTheDay({ word, link, language }: WordOfTheDayProps
           </a>
         </div>
         <div className="text-xl text-center">
-          {t.wordOfDay} <a className="underline bold" href="https://www.duden.de">{t.duden}</a>.
+          {t.wordOfDay}{" "}
+          <a className="underline bold" href="https://www.duden.de">
+            {t.duden}
+          </a>.
         </div>
       </div>
     );
