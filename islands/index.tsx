@@ -59,7 +59,7 @@ export default function Home({ wotd, lang }: InitialData) {
       >
         <a
           href="/"
-          className="text-2xl font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+          className="text-2xl font-bold text-emerald-400 hover:text-emerald-300 hover:underline transition-colors"
         >
           yurtemre.de
         </a>
@@ -73,7 +73,7 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-pressed={language.value === "en"}
             className={`px-4 py-2 font-medium rounded-t-lg rounded-l-lg rounded-tr-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${
               language.value === "en"
-                ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                ? "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500"
                 : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
             }`}
             onClick={() => handleLanguageChange("en")}
@@ -86,7 +86,7 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-pressed={language.value === "ja"}
             className={`px-4 py-2 font-medium focus:z-10 focus:ring-2 focus:outline-none transition-colors ${
               language.value === "ja"
-                ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                ? "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500"
                 : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
             }`}
             onClick={() => handleLanguageChange("ja")}
@@ -99,7 +99,7 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-pressed={language.value === "tr"}
             className={`px-4 py-2 font-medium rounded-b-lg rounded-r-lg rounded-bl-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${
               language.value === "tr"
-                ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                ? "bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500"
                 : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
             }`}
             onClick={() => handleLanguageChange("tr")}
@@ -211,7 +211,7 @@ export default function Home({ wotd, lang }: InitialData) {
                       <div>
                         <a
                           href="/"
-                          className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+                          className="text-emerald-400 hover:text-emerald-300 hover:underline font-medium transition-colors"
                         >
                           WoAuto
                         </a>
@@ -234,7 +234,7 @@ export default function Home({ wotd, lang }: InitialData) {
                       <div>
                         <a
                           href="/paren"
-                          className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+                          className="text-emerald-400 hover:text-emerald-300 hover:underline font-medium transition-colors"
                         >
                           Paren
                         </a>
@@ -257,7 +257,7 @@ export default function Home({ wotd, lang }: InitialData) {
                       <div>
                         <a
                           href="https://yurtemre7.github.io/mouse-battery/"
-                          className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
+                          className="text-emerald-400 hover:text-emerald-300 hover:underline font-medium transition-colors"
                         >
                           SteelMouse
                         </a>
@@ -324,7 +324,7 @@ export default function Home({ wotd, lang }: InitialData) {
                         <strong>{t.email}:</strong>{" "}
                         <a
                           href="mailto:yurtemre7@icloud.com"
-                          className="text-blue-600 hover:underline"
+                          className="text-emerald-400 hover:text-emerald-300 hover:underline"
                         >
                           yurtemre7@icloud.com
                         </a>
@@ -335,7 +335,7 @@ export default function Home({ wotd, lang }: InitialData) {
                         <strong>{t.telegram}:</strong>{" "}
                         <a
                           href="https://t.me/emredev"
-                          className="text-blue-600 hover:underline"
+                          className="text-emerald-400 hover:text-emerald-300 hover:underline"
                         >
                           @emredev
                         </a>
@@ -346,7 +346,7 @@ export default function Home({ wotd, lang }: InitialData) {
                         <strong>{t.github}:</strong>{" "}
                         <a
                           href="https://github.com/yurtemre7"
-                          className="text-blue-600 hover:underline"
+                          className="text-emerald-400 hover:text-emerald-300 hover:underline"
                         >
                           github.com/yurtemre7
                         </a>
@@ -363,13 +363,13 @@ export default function Home({ wotd, lang }: InitialData) {
                   <div className="flex space-x-4">
                     <a
                       href="/impressum"
-                      className="text-blue-600 hover:underline"
+                      className="text-emerald-400 hover:text-emerald-300 hover:underline"
                     >
                       {t.impressum}
                     </a>
                     <a
                       href="/datenschutz"
-                      className="text-blue-600 hover:underline"
+                      className="text-emerald-400 hover:text-emerald-300 hover:underline"
                     >
                       {t.datenschutz}
                     </a>
