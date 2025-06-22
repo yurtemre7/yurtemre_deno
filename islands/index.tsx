@@ -314,7 +314,7 @@ export default function Home({ wotd, lang }: InitialData) {
             </div>
 
             {/* Footer with Contact Info - Improved layout and responsiveness */}
-            <footer className="pt-6 border-t border-gray-300 dark:border-gray-400 text-sm">
+            <div className="pt-6 border-t border-gray-300 dark:border-gray-400 text-sm">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Contact Info */}
                 <div className="space-y-2">
@@ -354,29 +354,8 @@ export default function Home({ wotd, lang }: InitialData) {
                     </li>
                   </ul>
                 </div>
-
-                {/* Copyright and Legal Links */}
-                <div className="flex flex-col space-y-2 sm:items-end">
-                  <p className="text-gray-500 dark:text-gray-400">
-                    {t.copyright} {new Date().getFullYear()} {t.name}
-                  </p>
-                  <div className="flex space-x-4">
-                    <a
-                      href="/impressum"
-                      className="text-emerald-400 hover:text-emerald-300 hover:underline"
-                    >
-                      {t.impressum}
-                    </a>
-                    <a
-                      href="/datenschutz"
-                      className="text-emerald-400 hover:text-emerald-300 hover:underline"
-                    >
-                      {t.datenschutz}
-                    </a>
-                  </div>
-                </div>
               </div>
-            </footer>
+            </div>
           </article>
 
           {/* Snowfall Component */}
@@ -427,6 +406,27 @@ export default function Home({ wotd, lang }: InitialData) {
             </div>
           </div>
         </section>
+        <footer className="bg-gray-900 mt-8 py-6 border-t border-gray-700">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-400 text-xs md:text-sm">
+              {t.name} {t.copyright} {new Date().getFullYear()}
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="/impressum"
+                className="text-emerald-400 hover:text-emerald-300 hover:underline text-xs md:text-sm"
+              >
+                {t.impressum}
+              </a>
+              <a
+                href="/datenschutz"
+                className="text-emerald-400 hover:text-emerald-300 hover:underline text-xs md:text-sm"
+              >
+                {t.datenschutz}
+              </a>
+            </div>
+          </div>
+        </footer>
       </main>
     </div>
   );
