@@ -9,6 +9,7 @@ export type Translations = {
     projects: string;
     woautoDesc: string;
     parenDesc: string;
+    steelMouseDesc: string;
     email: string;
     telegram: string;
     github: string;

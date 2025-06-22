@@ -4,10 +4,12 @@ export default {
   name: "エムレ・ユルトセブン",
   profession: "アプリ開発者",
   bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
-  experience: "経験",
+  experience: "実務経験",
   projects: "プロジェクト",
   woautoDesc: "駐車した場所を二度と見失いません。",
   parenDesc: "休暇を楽しみ、現地通貨を手元に簡単に管理しましょう。",
+  steelMouseDesc:
+    "SteelSeriesマウスのバッテリー残量をWindowsのシステムトレイで一目で確認できます。",
   email: "メール",
   telegram: "テレグラム",
   github: "ギットハブ",

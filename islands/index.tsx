@@ -24,7 +24,7 @@ export default function Home({ wotd, lang }: InitialData) {
   const birthDay = getNextBirthday();
   // TODO manual change required once a year
   const fasting = new Date(2026, 1, 17, 23, 59);
-  console.log(fasting.toLocaleString());
+  // console.log(fasting.toLocaleString());
 
   // Function to handle language change
   function handleLanguageChange(newLang: string) {
@@ -135,18 +135,56 @@ export default function Home({ wotd, lang }: InitialData) {
                   <ul className="space-y-4">
                     <li className="flex">
                       <div>
-                        <a href="https://github.com/yurtemre7/woauto" className="text-blue-600 hover:underline font-medium">
-                          WoAuto
+                      <a href="/" className="text-blue-600 hover:underline font-medium">
+                        WoAuto
+                      </a>
+                      <p className="text-gray-700 dark:text-gray-300">{t.woautoDesc}</p>
+                      <div>
+                        <a
+                        href="https://github.com/yurtemre7/woauto"
+                        className="text-sm text-gray-500 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        {t.github}
                         </a>
-                        <p className="text-gray-700 dark:text-gray-300">{t.woautoDesc}</p>
+                      </div>
                       </div>
                     </li>
                     <li className="flex">
                       <div>
-                        <a href="/paren" className="text-blue-600 hover:underline font-medium">
-                          Paren
+                      <a href="/paren" className="text-blue-600 hover:underline font-medium">
+                        Paren
+                      </a>
+                      <p className="text-gray-700 dark:text-gray-300">{t.parenDesc}</p>
+                      <div>
+                        <a
+                        href="https://github.com/yurtemre7/paren"
+                        className="text-sm text-gray-500 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        {t.github}
                         </a>
-                        <p className="text-gray-700 dark:text-gray-300">{t.parenDesc}</p>
+                      </div>
+                      </div>
+                    </li>
+                    <li className="flex">
+                      <div>
+                      <a href="https://yurtemre7.github.io/mouse-battery/" className="text-blue-600 hover:underline font-medium">
+                        SteelMouse
+                      </a>
+                      <p className="text-gray-700 dark:text-gray-300">{t.steelMouseDesc}</p>
+                      <div>
+                        <a
+                        href="https://github.com/yurtemre7/mouse-battery"
+                        className="text-sm text-gray-500 hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        {t.github}
+                        </a>
+                      </div>
                       </div>
                     </li>
                   </ul>
