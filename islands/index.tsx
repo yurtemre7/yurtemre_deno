@@ -256,7 +256,7 @@ export default function Home({ wotd, lang }: InitialData) {
                     <li className="flex">
                       <div>
                         <a
-                          href="https://yurtemre7.github.io/mouse-battery/"
+                          href="https://yurtemre7.github.io/steel-mouse/"
                           className="text-emerald-400 hover:text-emerald-300 hover:underline font-medium transition-colors"
                         >
                           SteelMouse
@@ -266,7 +266,7 @@ export default function Home({ wotd, lang }: InitialData) {
                         </p>
                         <div>
                           <a
-                            href="https://github.com/yurtemre7/mouse-battery"
+                            href="https://github.com/yurtemre7/steel-mouse"
                             className="text-sm text-gray-500 hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
