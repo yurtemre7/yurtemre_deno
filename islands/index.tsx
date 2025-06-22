@@ -111,9 +111,17 @@ export default function Home({ wotd, lang }: InitialData) {
                   <ul className="space-y-4">
                     <li className="flex">
                       <div>
+                        <p className="font-medium">Frontend Developer, DEIN ERSTER TAG</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                          {formatMonthYear(new Date("2025-06-12"), language.value)} - {t.present}
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex">
+                      <div>
                         <p className="font-medium">Junior Frontend Developer, DEIN ERSTER TAG</p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {formatMonthYear(new Date("2023-06-01"), language.value)} - {t.present}
+                          {formatMonthYear(new Date("2023-06-01"), language.value)} - {formatMonthYear(new Date("2025-06-01"), language.value)}
                         </p>
                       </div>
                     </li>
