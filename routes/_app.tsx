@@ -23,7 +23,7 @@ export default function App(props: PageProps) {
         <meta name="theme-color" content="#121212" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body className="min-h-screen bg-gray-900 text-gray-100 antialiased">
+      <body className="min-h-screen bg-gray-800 text-gray-100 antialiased">
         <props.Component />
       </body>
     </html>
