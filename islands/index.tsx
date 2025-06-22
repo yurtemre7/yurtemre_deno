@@ -3,12 +3,32 @@ import CountdownClock from "./CountdownClock.tsx";
 import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
 import { InitialData } from "../components/classes/InitialData.ts";
-import { getNextBirthday, getNextNewYears, formatMonthYear } from "../utils/dates.ts";
+import {
+  formatMonthYear,
+  getNextBirthday,
+  getNextNewYears,
+} from "../utils/dates.ts";
 import translations from "../utils/locales/translations.ts";
 
 const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
-const dayMap = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const günMap = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
+const dayMap = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const günMap = [
+  "Pazar",
+  "Pazartesi",
+  "Salı",
+  "Çarşamba",
+  "Perşembe",
+  "Cuma",
+  "Cumartesi",
+];
 
 export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
@@ -32,18 +52,30 @@ export default function Home({ wotd, lang }: InitialData) {
   }
 
   return (
-    <div className="text-gray-900 dark:text-gray-100">
-      <nav aria-label="Language switcher" className="text-lg md:text-xl flex flex-col md:flex-row justify-between items-center p-4 shadow-lg space-y-4 md:space-y-0">
-        <a href="/" className="font-bold hover:underline text-2xl">yurtemre.de</a>
-        <div className="inline-flex rounded-md shadow-sm flex-wrap justify-center" role="group">
+    <div>
+      <nav
+        aria-label="Language switcher"
+        className="bg-gray-800 text-gray-100 shadow-lg flex flex-col md:flex-row justify-between items-center p-4 space-y-4 md:space-y-0"
+      >
+        <a
+          href="/"
+          className="text-2xl font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+        >
+          yurtemre.de
+        </a>
+        <div
+          className="inline-flex rounded-md shadow-sm flex-wrap justify-center"
+          role="group"
+        >
           <button
             aria-label="Switch to English"
             type="button"
             aria-pressed={language.value === "en"}
-            className={`px-4 py-2 font-medium rounded-t-lg rounded-l-lg rounded-tr-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "en"
-              ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-              : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
-              }`}
+            className={`px-4 py-2 font-medium rounded-t-lg rounded-l-lg rounded-tr-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${
+              language.value === "en"
+                ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+            }`}
             onClick={() => handleLanguageChange("en")}
           >
             English
@@ -52,10 +84,11 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-label="Switch to Japanese"
             type="button"
             aria-pressed={language.value === "ja"}
-            className={`px-4 py-2 font-medium focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "ja"
-              ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-              : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
-              }`}
+            className={`px-4 py-2 font-medium focus:z-10 focus:ring-2 focus:outline-none transition-colors ${
+              language.value === "ja"
+                ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+            }`}
             onClick={() => handleLanguageChange("ja")}
           >
             日本語
@@ -64,42 +97,51 @@ export default function Home({ wotd, lang }: InitialData) {
             aria-label="Switch to Turkish"
             type="button"
             aria-pressed={language.value === "tr"}
-            className={`px-4 py-2 font-medium rounded-b-lg rounded-r-lg rounded-bl-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${language.value === "tr"
-              ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
-              : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
-              }`}
+            className={`px-4 py-2 font-medium rounded-b-lg rounded-r-lg rounded-bl-none focus:z-10 focus:ring-2 focus:outline-none transition-colors ${
+              language.value === "tr"
+                ? "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500"
+                : "text-gray-800 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600 focus:ring-gray-400"
+            }`}
             onClick={() => handleLanguageChange("tr")}
           >
             Türkçe
           </button>
         </div>
       </nav>
-      <main className="text-gray-900 dark:text-gray-100">
-        <section className="min-h-screen w-full flex justify-center items-center text-gray-900 dark:text-gray-100 p-4">
-          <article className="max-w-5xl w-full mx-auto my-4 sm:my-6 p-4 sm:p-6 lg:p-8 rounded-lg shadow-xl border-2 border-gray-300 dark:border-gray-400">
+      <main>
+        <section className="min-h-screen w-full flex justify-center items-center p-4">
+          <article className="max-w-5xl w-full mx-auto my-4 sm:my-6 p-6 lg:p-8 bg-gray-800 border border-gray-700 rounded-lg shadow-xl">
             <div className="flex justify-center">
-              {language.value === "ja" ? (
-                <span>
-                  今日は{currentDayKanji}曜日だ
-                </span>
-              ) : language.value === "tr" ? (
-                <span>
-                  Bugün {currentTurkishDay}
-                </span>
-              ) : (
-                <span>
-                  Today is {currentDay}
-                </span>
-              )}
+              {language.value === "ja"
+                ? (
+                  <span>
+                    今日は{currentDayKanji}曜日だ
+                  </span>
+                )
+                : language.value === "tr"
+                ? (
+                  <span>
+                    Bugün {currentTurkishDay}
+                  </span>
+                )
+                : (
+                  <span>
+                    Today is {currentDay}
+                  </span>
+                )}
             </div>
 
             {/* Header with Name and Info - Improved spacing and responsive design */}
-            <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-gray-300 dark:border-gray-400 pb-4">
+            <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 border-b border-gray-700 pb-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">{t.name}</h1>
-                <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mt-1">{t.profession}</p>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+                  {t.name}
+                </h1>
+                <p className="text-lg font-medium text-gray-300 mt-1">
+                  {t.profession}
+                </p>
               </div>
-              <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base">{t.bornInfo}</p>
+              <p className="text-gray-400 text-sm md:text-base">{t.bornInfo}</p>
             </header>
 
             {/* Main Content - Improved grid structure */}
@@ -107,30 +149,52 @@ export default function Home({ wotd, lang }: InitialData) {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 {/* Experience Section */}
                 <section className="space-y-3">
-                  <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.experience}</h2>
+                  <h2 className="text-xl font-semibold mb-3 border-emerald-400 text-white">
+                    {t.experience}
+                  </h2>
                   <ul className="space-y-4">
                     <li className="flex">
                       <div>
-                        <p className="font-medium">Frontend Developer, DEIN ERSTER TAG</p>
+                        <p className="font-medium">
+                          Frontend Developer, DEIN ERSTER TAG
+                        </p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {formatMonthYear(new Date("2025-06-12"), language.value)} - {t.present}
+                          {formatMonthYear(
+                            new Date("2025-06-12"),
+                            language.value,
+                          )} - {t.present}
                         </p>
                       </div>
                     </li>
                     <li className="flex">
                       <div>
-                        <p className="font-medium">Junior Frontend Developer, DEIN ERSTER TAG</p>
+                        <p className="font-medium">
+                          Junior Frontend Developer, DEIN ERSTER TAG
+                        </p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {formatMonthYear(new Date("2023-06-01"), language.value)} - {formatMonthYear(new Date("2025-06-01"), language.value)}
+                          {formatMonthYear(
+                            new Date("2023-06-01"),
+                            language.value,
+                          )} - {formatMonthYear(
+                            new Date("2025-06-01"),
+                            language.value,
+                          )}
                         </p>
                       </div>
                     </li>
                     <li className="flex">
                       <div>
-                        <p className="font-medium">Junior Frontend Developer, Appmelder</p>
+                        <p className="font-medium">
+                          Junior Frontend Developer, Appmelder
+                        </p>
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {formatMonthYear(new Date("2021-04-01"), language.value)} -{" "}
-                          {formatMonthYear(new Date("2022-12-01"), language.value)}
+                          {formatMonthYear(
+                            new Date("2021-04-01"),
+                            language.value,
+                          )} - {formatMonthYear(
+                            new Date("2022-12-01"),
+                            language.value,
+                          )}
                         </p>
                       </div>
                     </li>
@@ -139,60 +203,77 @@ export default function Home({ wotd, lang }: InitialData) {
 
                 {/* Projects Section */}
                 <section className="space-y-3">
-                  <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.projects}</h2>
+                  <h2 className="text-xl font-semibold mb-3 border-emerald-400 text-white">
+                    {t.projects}
+                  </h2>
                   <ul className="space-y-4">
                     <li className="flex">
                       <div>
-                      <a href="/" className="text-blue-600 hover:underline font-medium">
-                        WoAuto
-                      </a>
-                      <p className="text-gray-700 dark:text-gray-300">{t.woautoDesc}</p>
-                      <div>
                         <a
-                        href="https://github.com/yurtemre7/woauto"
-                        className="text-sm text-gray-500 hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                          href="/"
+                          className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
                         >
-                        {t.github}
+                          WoAuto
                         </a>
-                      </div>
+                        <p className="text-gray-700 dark:text-gray-300">
+                          {t.woautoDesc}
+                        </p>
+                        <div>
+                          <a
+                            href="https://github.com/yurtemre7/woauto"
+                            className="text-sm text-gray-500 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {t.github}
+                          </a>
+                        </div>
                       </div>
                     </li>
                     <li className="flex">
                       <div>
-                      <a href="/paren" className="text-blue-600 hover:underline font-medium">
-                        Paren
-                      </a>
-                      <p className="text-gray-700 dark:text-gray-300">{t.parenDesc}</p>
-                      <div>
                         <a
-                        href="https://github.com/yurtemre7/paren"
-                        className="text-sm text-gray-500 hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                          href="/paren"
+                          className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
                         >
-                        {t.github}
+                          Paren
                         </a>
-                      </div>
+                        <p className="text-gray-700 dark:text-gray-300">
+                          {t.parenDesc}
+                        </p>
+                        <div>
+                          <a
+                            href="https://github.com/yurtemre7/paren"
+                            className="text-sm text-gray-500 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {t.github}
+                          </a>
+                        </div>
                       </div>
                     </li>
                     <li className="flex">
                       <div>
-                      <a href="https://yurtemre7.github.io/mouse-battery/" className="text-blue-600 hover:underline font-medium">
-                        SteelMouse
-                      </a>
-                      <p className="text-gray-700 dark:text-gray-300">{t.steelMouseDesc}</p>
-                      <div>
                         <a
-                        href="https://github.com/yurtemre7/mouse-battery"
-                        className="text-sm text-gray-500 hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                          href="https://yurtemre7.github.io/mouse-battery/"
+                          className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors"
                         >
-                        {t.github}
+                          SteelMouse
                         </a>
-                      </div>
+                        <p className="text-gray-700 dark:text-gray-300">
+                          {t.steelMouseDesc}
+                        </p>
+                        <div>
+                          <a
+                            href="https://github.com/yurtemre7/mouse-battery"
+                            className="text-sm text-gray-500 hover:underline"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {t.github}
+                          </a>
+                        </div>
                       </div>
                     </li>
                   </ul>
@@ -200,11 +281,15 @@ export default function Home({ wotd, lang }: InitialData) {
 
                 {/* Programming Skills Section */}
                 <section className="space-y-3">
-                  <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.programmingSkills}</h2>
+                  <h2 className="text-xl font-semibold mb-3 border-emerald-400 text-white">
+                    {t.programmingSkills}
+                  </h2>
                   <ul className="grid grid-cols-2 gap-2">
                     {t.programmingItems.map((item, index) => (
                       <li key={index} className="flex items-center">
-                        <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        <span className="text-gray-700 dark:text-gray-300">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -212,11 +297,15 @@ export default function Home({ wotd, lang }: InitialData) {
 
                 {/* Language Skills Section */}
                 <section className="space-y-3">
-                  <h2 className="text-xl font-semibold mb-3 border-blue-500">{t.languageSkills}</h2>
+                  <h2 className="text-xl font-semibold mb-3 border-blue-500">
+                    {t.languageSkills}
+                  </h2>
                   <ul className="grid grid-cols-2 gap-2">
                     {t.languageItems.map((item, index) => (
                       <li key={index} className="flex items-center">
-                        <span className="text-gray-700 dark:text-gray-300">{item}</span>
+                        <span className="text-gray-700 dark:text-gray-300">
+                          {item}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -231,23 +320,59 @@ export default function Home({ wotd, lang }: InitialData) {
                 <div className="space-y-2">
                   <ul className="space-y-2">
                     <li className="flex items-center">
-                      <span><strong>{t.email}:</strong> <a href="mailto:yurtemre7@icloud.com" className="text-blue-600 hover:underline">yurtemre7@icloud.com</a></span>
+                      <span>
+                        <strong>{t.email}:</strong>{" "}
+                        <a
+                          href="mailto:yurtemre7@icloud.com"
+                          className="text-blue-600 hover:underline"
+                        >
+                          yurtemre7@icloud.com
+                        </a>
+                      </span>
                     </li>
                     <li className="flex items-center">
-                      <span><strong>{t.telegram}:</strong> <a href="https://t.me/emredev" className="text-blue-600 hover:underline">@emredev</a></span>
+                      <span>
+                        <strong>{t.telegram}:</strong>{" "}
+                        <a
+                          href="https://t.me/emredev"
+                          className="text-blue-600 hover:underline"
+                        >
+                          @emredev
+                        </a>
+                      </span>
                     </li>
                     <li className="flex items-center">
-                      <span><strong>{t.github}:</strong> <a href="https://github.com/yurtemre7" className="text-blue-600 hover:underline">github.com/yurtemre7</a></span>
+                      <span>
+                        <strong>{t.github}:</strong>{" "}
+                        <a
+                          href="https://github.com/yurtemre7"
+                          className="text-blue-600 hover:underline"
+                        >
+                          github.com/yurtemre7
+                        </a>
+                      </span>
                     </li>
                   </ul>
                 </div>
 
                 {/* Copyright and Legal Links */}
                 <div className="flex flex-col space-y-2 sm:items-end">
-                  <p className="text-gray-500 dark:text-gray-400">{t.copyright} {new Date().getFullYear()} {t.name}</p>
+                  <p className="text-gray-500 dark:text-gray-400">
+                    {t.copyright} {new Date().getFullYear()} {t.name}
+                  </p>
                   <div className="flex space-x-4">
-                    <a href="/impressum" className="text-blue-600 hover:underline">{t.impressum}</a>
-                    <a href="/datenschutz" className="text-blue-600 hover:underline">{t.datenschutz}</a>
+                    <a
+                      href="/impressum"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {t.impressum}
+                    </a>
+                    <a
+                      href="/datenschutz"
+                      className="text-blue-600 hover:underline"
+                    >
+                      {t.datenschutz}
+                    </a>
                   </div>
                 </div>
               </div>
@@ -264,19 +389,24 @@ export default function Home({ wotd, lang }: InitialData) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {t.countdownLabels.map((label, index) => (
                 <div key={index} className="flex justify-center rounded-lg">
-                  {index === 2 ? (
-                    <a className="hover:underline" href="fasting">
+                  {index === 2
+                    ? (
+                      <a className="hover:underline" href="fasting">
+                        <CountdownClock
+                          targetDate={fasting.getTime()}
+                          label={label}
+                        />
+                      </a>
+                    )
+                    : (
                       <CountdownClock
-                        targetDate={fasting.getTime()}
+                        targetDate={[
+                          newYear.getTime(),
+                          birthDay.getTime(),
+                        ][index]}
                         label={label}
                       />
-                    </a>
-                  ) : (
-                    <CountdownClock
-                      targetDate={[newYear.getTime(), birthDay.getTime()][index]}
-                      label={label}
-                    />
-                  )}
+                    )}
                 </div>
               ))}
             </div>
@@ -288,7 +418,11 @@ export default function Home({ wotd, lang }: InitialData) {
           <div className="container mx-auto px-4">
             <div className="flex justify-center">
               <div className="w-full max-w-md">
-                <WordOfTheDay word={wotd.word} link={wotd.link} language={language.value} />
+                <WordOfTheDay
+                  word={wotd.word}
+                  link={wotd.link}
+                  language={language.value}
+                />
               </div>
             </div>
           </div>
