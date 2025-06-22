@@ -55,7 +55,7 @@ export default function Home({ wotd, lang }: InitialData) {
     <div>
       <nav
         aria-label="Language switcher"
-        className="bg-gray-800 text-gray-100 shadow-lg flex flex-col md:flex-row justify-between items-center p-4 space-y-4 md:space-y-0"
+        className="bg-gray-900 text-gray-100 shadow-lg flex flex-col md:flex-row justify-between items-center p-4 space-y-4 md:space-y-0"
       >
         <a
           href="/"
@@ -313,47 +313,40 @@ export default function Home({ wotd, lang }: InitialData) {
               </div>
             </div>
 
-            {/* Footer with Contact Info - Improved layout and responsiveness */}
+            {/* Contact Info */}
             <div className="pt-6 border-t border-gray-300 dark:border-gray-400 text-sm">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="flex flex-col md:flex-row md:items-center items-start justify-between">
                 {/* Contact Info */}
-                <div className="space-y-2">
-                  <ul className="space-y-2">
-                    <li className="flex items-center">
-                      <span>
-                        <strong>{t.email}:</strong>{" "}
-                        <a
-                          href="mailto:yurtemre7@icloud.com"
-                          className="text-emerald-400 hover:text-emerald-300 hover:underline"
-                        >
-                          yurtemre7@icloud.com
-                        </a>
-                      </span>
-                    </li>
-                    <li className="flex items-center">
-                      <span>
-                        <strong>{t.telegram}:</strong>{" "}
-                        <a
-                          href="https://t.me/emredev"
-                          className="text-emerald-400 hover:text-emerald-300 hover:underline"
-                        >
-                          @emredev
-                        </a>
-                      </span>
-                    </li>
-                    <li className="flex items-center">
-                      <span>
-                        <strong>{t.github}:</strong>{" "}
-                        <a
-                          href="https://github.com/yurtemre7"
-                          className="text-emerald-400 hover:text-emerald-300 hover:underline"
-                        >
-                          github.com/yurtemre7
-                        </a>
-                      </span>
-                    </li>
-                  </ul>
-                </div>
+
+                <span>
+                  <strong>{t.email}:</strong>{" "}
+                  <a
+                    href="mailto:yurtemre7@icloud.com"
+                    className="text-emerald-400 hover:text-emerald-300 hover:underline"
+                  >
+                    yurtemre7@icloud.com
+                  </a>
+                </span>
+
+                <span>
+                  <strong>{t.telegram}:</strong>{" "}
+                  <a
+                    href="https://t.me/emredev"
+                    className="text-emerald-400 hover:text-emerald-300 hover:underline"
+                  >
+                    @emredev
+                  </a>
+                </span>
+
+                <span>
+                  <strong>{t.github}:</strong>{" "}
+                  <a
+                    href="https://github.com/yurtemre7"
+                    className="text-emerald-400 hover:text-emerald-300 hover:underline"
+                  >
+                    github.com/yurtemre7
+                  </a>
+                </span>
               </div>
             </div>
           </article>
