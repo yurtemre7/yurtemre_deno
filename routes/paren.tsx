@@ -10,6 +10,7 @@ const parenGoogleDownloadURL =
 
 export default function Paren() {
   const vacationJapan = new Date(2024, 8, 27, 13, 10);
+  const vacationJapan2 = new Date(2025, 8, 10, 15, 50);
   return (
     <html className="bg-orange-600">
       <body>
@@ -55,6 +56,14 @@ export default function Paren() {
           <CountdownClock
             targetDate={vacationJapan.getTime()}
             label="日本 Urlaub 2024"
+            bg_color="orange-600"
+            dark_bg_color="orange-600"
+          />
+        </div>
+        <div id="japan-vacaction-2">
+          <CountdownClock
+            targetDate={vacationJapan2.getTime()}
+            label="日本 Urlaub 2025"
             bg_color="orange-600"
             dark_bg_color="orange-600"
           />
