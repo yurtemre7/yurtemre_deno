@@ -60,7 +60,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
           <div className="absolute top-0 right-0 opacity-50 md:p-8 p-1">
             <div
-            className="mt-4 md:mt-0 inline-flex rounded-md shadow-sm"
+            className="inline-flex rounded-xl shadow-sm"
             role="group"
           >
             <button
@@ -68,7 +68,7 @@ export default function Home({ wotd, lang }: InitialData) {
               type="button"
               aria-pressed={language.value === "en"}
               onClick={() => handleLanguageChange("en")}
-              className={`px-4 py-2 font-medium rounded-l-md transition-colors focus:outline-none ${
+              className={`p-2 font-medium rounded-l-xl transition-colors focus:outline-none ${
                 language.value === "en"
                   ? "bg-[#FF6F61] text-white"
                   : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -81,7 +81,7 @@ export default function Home({ wotd, lang }: InitialData) {
               type="button"
               aria-pressed={language.value === "ja"}
               onClick={() => handleLanguageChange("ja")}
-              className={`px-4 py-2 font-medium transition-colors focus:outline-none ${
+              className={`p-2 font-medium transition-colors focus:outline-none ${
                 language.value === "ja"
                   ? "bg-[#FF6F61] text-white"
                   : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -94,7 +94,7 @@ export default function Home({ wotd, lang }: InitialData) {
               type="button"
               aria-pressed={language.value === "tr"}
               onClick={() => handleLanguageChange("tr")}
-              className={`px-4 py-2 font-medium rounded-r-md transition-colors focus:outline-none ${
+              className={`p-2 font-medium rounded-r-xl transition-colors focus:outline-none ${
                 language.value === "tr"
                   ? "bg-[#FF6F61] text-white"
                   : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
