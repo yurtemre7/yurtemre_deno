@@ -2,7 +2,7 @@ import { getNextYearValue } from "../dates.ts";
 
 export default {
   name: "Emre Yurtseven",
-  profession: "Uygulama Geliştirici",
+  profession: "Mobile Uygulama Geliştirici",
   bornInfo: "16 Ocak 2002'de doğdu • Bilgisayar Bilimi Lisans",
   experience: "Çalışma Deneyimi",
   projects: "Projeler",

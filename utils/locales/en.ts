@@ -2,7 +2,7 @@ import { getNextYearValue } from "../dates.ts";
 
 export default {
   name: "Emre Yurtseven",
-  profession: "App Developer",
+  profession: "Mobile App Developer",
   bornInfo: "Born on January 16th 2002 • B.Sc. Computer Science",
   experience: "Working Experience",
   projects: "Projects",

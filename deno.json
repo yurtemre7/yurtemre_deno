@@ -19,6 +19,7 @@
     "@std/dotenv": "jsr:@std/dotenv@^0.225.3",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
+    "react-scroll": "npm:react-scroll@^1.9.3",
     "tailwindcss": "npm:tailwindcss@3.4.16",
     "tailwindcss/": "npm:/tailwindcss@3.4.16/",
     "tailwindcss/plugin": "npm:/tailwindcss@3.4.16/plugin.js"

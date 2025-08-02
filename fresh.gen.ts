@@ -16,6 +16,7 @@ import * as $DeeplinkButton from "./islands/DeeplinkButton.tsx";
 import * as $SyncButton from "./islands/SyncButton.tsx";
 import * as $fasting_widget from "./islands/fasting_widget.tsx";
 import * as $index_1 from "./islands/index.tsx";
+import * as $index2 from "./islands/index2.tsx";
 import * as $paren_flutter from "./islands/paren_flutter.tsx";
 import * as $snowfall from "./islands/snowfall.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -38,6 +39,7 @@ const manifest = {
     "./islands/SyncButton.tsx": $SyncButton,
     "./islands/fasting_widget.tsx": $fasting_widget,
     "./islands/index.tsx": $index_1,
+    "./islands/index2.tsx": $index2,
     "./islands/paren_flutter.tsx": $paren_flutter,
     "./islands/snowfall.tsx": $snowfall,
   },

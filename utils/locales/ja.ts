@@ -2,7 +2,7 @@ import { getNextYearValue } from "../dates.ts";
 
 export default {
   name: "エンレ・ユルトセブン",
-  profession: "アプリ開発者",
+  profession: "モバイルアプリ開発者",
   bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
   experience: "実務経験",
   projects: "プロジェクト",
