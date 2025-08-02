@@ -58,7 +58,7 @@ export default function Home({ wotd, lang }: InitialData) {
           >
           </div>
 
-          <div className="absolute top-0 right-0 opacity-50 p-8">
+          <div className="absolute top-0 right-0 opacity-50 md:p-8 p-1">
             <div
             className="mt-4 md:mt-0 inline-flex rounded-md shadow-sm"
             role="group"
@@ -286,7 +286,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
         {/* Word of the Day */}
         <section id="wotd" className="py-8 animate-on-scroll">
-          <div className="max-w-md mx-auto">
+          <div className="max-w-md mx-auto px-8">
             <WordOfTheDay
               word={wotd.word}
               link={wotd.link}
