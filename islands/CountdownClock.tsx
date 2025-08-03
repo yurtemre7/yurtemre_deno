@@ -12,8 +12,7 @@ function CountdownClock(
   {
     targetDate,
     label = "Time Left",
-    dark_bg_color = "blue-950",
-    bg_color = "gray-200",
+    dark_bg_color = "#0A0F1E",
   }: CountdownClockProps,
 ) {
   const timeRemaining = useSignal(calculateTimeRemaining());
@@ -45,7 +44,7 @@ function CountdownClock(
   if (timeRemaining.value.days >= 1) {
     return (
       <div
-        className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
+        className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
       >
         <div className="text-center mb-1">{label}</div>
         <div className="text-center">
@@ -66,7 +65,7 @@ function CountdownClock(
   ) {
     return (
       <div
-        className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
+        className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
       >
         <div className="text-center">{label}</div>
         <div className="text-center">✅</div>
@@ -79,7 +78,7 @@ function CountdownClock(
 
   return (
     <div
-      className={`bg-${bg_color} dark:bg-${dark_bg_color} text-gray-900 dark:text-gray-100 p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
+      className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
     >
       <div className="text-center mb-1">{label}</div>
       <div className="text-center">

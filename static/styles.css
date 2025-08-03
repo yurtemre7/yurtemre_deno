@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* text-[#FF6F61] hover:text-[#FFB3A7]; */
+a {
+    color: #FF6F61;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FFB3A7;
+}
+
+p {
+    color: #A0AEC0;
+}
+
+.cta-button {
+    height: 40px;
+    width: 200px;
+    background-color: #FF6F61;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.cta-button:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+    

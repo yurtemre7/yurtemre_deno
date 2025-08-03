@@ -1,6 +1,6 @@
 export default function MyFooterParen() {
   return (
-    <footer className="bg-orange-600 text-white py-4 px-6 md:flex md:justify-between flex-col">
+    <footer className="bg-[#0A0F1E] text-[#E2E8F0] py-4 px-6 md:flex md:justify-between flex-col">
       <div className="md:justify-between md:flex md:items-center flex-col md:flex-row">
         <div className="text-center md:text-left">
           <p>

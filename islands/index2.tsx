@@ -53,85 +53,92 @@ export default function Home({ wotd, lang }: InitialData) {
           id="hero"
           className="relative min-h-screen flex flex-col justify-center items-center text-center animate-fadeIn overflow-hidden"
         >
-          <div
-            className="absolute inset-0 bg-[url('/fuji.jpg')] bg-cover bg-center opacity-15 -z-10"
-          >
+          <div className="absolute inset-0 bg-[url('/fuji.jpg')] bg-cover bg-center opacity-15 -z-10">
           </div>
 
-          <div className="absolute top-0 right-0 opacity-50 md:p-8 p-1">
-            <div
-            className="inline-flex rounded-xl shadow-sm"
-            role="group"
-          >
-            <button
-              aria-label="Switch to English"
-              type="button"
-              aria-pressed={language.value === "en"}
-              onClick={() => handleLanguageChange("en")}
-              className={`p-2 font-medium rounded-l-xl transition-colors focus:outline-none ${
-                language.value === "en"
-                  ? "bg-[#FF6F61] text-white"
-                  : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
-              }`}
-            >
-              English
-            </button>
-            <button
-              aria-label="Switch to Japanese"
-              type="button"
-              aria-pressed={language.value === "ja"}
-              onClick={() => handleLanguageChange("ja")}
-              className={`p-2 font-medium transition-colors focus:outline-none ${
-                language.value === "ja"
-                  ? "bg-[#FF6F61] text-white"
-                  : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
-              }`}
-            >
-              日本語
-            </button>
-            <button
-              aria-label="Switch to Turkish"
-              type="button"
-              aria-pressed={language.value === "tr"}
-              onClick={() => handleLanguageChange("tr")}
-              className={`p-2 font-medium rounded-r-xl transition-colors focus:outline-none ${
-                language.value === "tr"
-                  ? "bg-[#FF6F61] text-white"
-                  : "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
-              }`}
-            >
-              Türkçe
-            </button>
-          </div>
-          </div>
-          {/* <Snowfall /> */}
-          <header className="mb-8">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
-              {t.name}
-            </h1>
-            <p className="mt-4 text-xl sm:text-2xl text-gray-300">
-              {t.profession}
-            </p>
-            <p className="mt-2 text-[#A0AEC0]">
+          <div className="absolute top-0 left-0 opacity-50 md:p-8 p-2">
+            <p className="">
               {language.value === "ja"
                 ? `今日は${currentDayKanji}曜日だ`
                 : language.value === "tr"
                 ? `Bugün ${currentTurkishDay}`
                 : `Today is ${currentDay}`}
             </p>
+          </div>
+
+          <div className="absolute top-0 right-0 opacity-50 md:p-8 p-2">
+            <div
+              className="inline-flex rounded-xl shadow-sm"
+              role="group"
+            >
+              <button
+                aria-label="Switch to English"
+                type="button"
+                aria-pressed={language.value === "en"}
+                onClick={() => handleLanguageChange("en")}
+                className={`p-2 font-medium rounded-l-xl transition-colors focus:outline-none ${
+                  language.value === "en"
+                    ? "bg-[#FF6F61] text-[#E2E8F0]"
+                    : "text-[#0A0F1E] bg-[#E2E8F0]"
+                }`}
+              >
+                English
+              </button>
+              <button
+                aria-label="Switch to Japanese"
+                type="button"
+                aria-pressed={language.value === "ja"}
+                onClick={() => handleLanguageChange("ja")}
+                className={`p-2 font-medium transition-colors focus:outline-none ${
+                  language.value === "ja"
+                    ? "bg-[#FF6F61] text-[#E2E8F0]"
+                    : "text-[#0A0F1E] bg-[#E2E8F0]"
+                }`}
+              >
+                日本語
+              </button>
+              <button
+                aria-label="Switch to Turkish"
+                type="button"
+                aria-pressed={language.value === "tr"}
+                onClick={() => handleLanguageChange("tr")}
+                className={`p-2 font-medium rounded-r-xl transition-colors focus:outline-none ${
+                  language.value === "tr"
+                    ? "bg-[#FF6F61] text-[#E2E8F0]"
+                    : "text-[#0A0F1E] bg-[#E2E8F0]"
+                }`}
+              >
+                Türkçe
+              </button>
+            </div>
+          </div>
+          {/* <Snowfall /> */}
+          <header className="mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+              {t.name}
+            </h1>
+            <p className="text-xl sm:text-2xl">
+              {t.profession}
+            </p>
           </header>
-          <a
-            href="#experience"
-            className="px-6 py-3 bg-[#FF6F61] rounded hover:bg-[#946861] transition-colors"
+
+          <button
+            type="button"
+            onClick={() =>
+              globalThis.scrollTo({
+                top: document.getElementById("experience")?.offsetTop || 0,
+                behavior: "smooth",
+              })}
+            className="cta-button"
           >
             {t.experience}
-          </a>
+          </button>
         </section>
 
         {/* Experience Section */}
         <section id="experience" className="py-12 bg-[#15202B]">
           <div className="container mx-auto px-4">
-            <h3 className="text-2xl font-semibold text-[#FF6F61] mb-6">
+            <h3 className="text-2xl font-semibold mb-6">
               {t.experience}
             </h3>
             <div className="space-y-6">
@@ -139,7 +146,7 @@ export default function Home({ wotd, lang }: InitialData) {
                 <h4 className="text-xl font-medium">
                   Frontend Developer, DEIN ERSTER TAG
                 </h4>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm">
                   {formatMonthYear(new Date("2025-06-12"), language.value)} -
                   {" "}
                   {t.present}
@@ -149,7 +156,7 @@ export default function Home({ wotd, lang }: InitialData) {
                 <h4 className="text-xl font-medium">
                   Junior Frontend Developer, DEIN ERSTER TAG
                 </h4>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm">
                   {formatMonthYear(new Date("2023-06-01"), language.value)} -
                   {" "}
                   {formatMonthYear(new Date("2025-06-01"), language.value)}
@@ -159,7 +166,7 @@ export default function Home({ wotd, lang }: InitialData) {
                 <h4 className="text-xl font-medium">
                   Junior Frontend Developer, Appmelder
                 </h4>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm">
                   {formatMonthYear(new Date("2021-04-01"), language.value)} -
                   {" "}
                   {formatMonthYear(new Date("2022-12-01"), language.value)}
@@ -172,23 +179,23 @@ export default function Home({ wotd, lang }: InitialData) {
         {/* Projects Section */}
         <section id="projects" className="py-12">
           <div className="container mx-auto px-4">
-            <h3 className="text-2xl font-semibold text-[#FF6F61] mb-6">
+            <h3 className="text-2xl font-semibold mb-6">
               {t.projects}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
                 <a
                   href="/"
-                  className="text-xl font-medium text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+                  className="text-xl font-medium transition-colors"
                 >
                   WoAuto
                 </a>
-                <p className="text-[#A0AEC0] mt-2">{t.woautoDesc}</p>
+                <p className="mt-2">{t.woautoDesc}</p>
                 <a
                   href="https://github.com/yurtemre7/woauto"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-500 hover:underline mt-1 inline-block"
+                  className="text-sm mt-1 inline-block"
                 >
                   {t.github}
                 </a>
@@ -196,16 +203,16 @@ export default function Home({ wotd, lang }: InitialData) {
               <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
                 <a
                   href="/paren"
-                  className="text-xl font-medium text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+                  className="text-xl font-medium transition-colors"
                 >
                   Paren
                 </a>
-                <p className="text-[#A0AEC0] mt-2">{t.parenDesc}</p>
+                <p className="mt-2">{t.parenDesc}</p>
                 <a
                   href="https://github.com/yurtemre7/paren"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-500 hover:underline mt-1 inline-block"
+                  className="text-sm mt-1 inline-block"
                 >
                   {t.github}
                 </a>
@@ -213,16 +220,16 @@ export default function Home({ wotd, lang }: InitialData) {
               <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
                 <a
                   href="https://yurtemre7.github.io/steel-mouse/"
-                  className="text-xl font-medium text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+                  className="text-xl font-medium transition-colors"
                 >
                   SteelMouse
                 </a>
-                <p className="text-[#A0AEC0] mt-2">{t.steelMouseDesc}</p>
+                <p className="mt-2">{t.steelMouseDesc}</p>
                 <a
                   href="https://github.com/yurtemre7/steel-mouse"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-gray-500 hover:underline mt-1 inline-block"
+                  className="text-sm mt-1 inline-block"
                 >
                   {t.github}
                 </a>
@@ -234,7 +241,7 @@ export default function Home({ wotd, lang }: InitialData) {
         {/* Skills Section */}
         <section id="skills" className="py-12 bg-[#15202B]">
           <div className="container mx-auto px-4">
-            <h3 className="text-2xl font-semibold text-[#FF6F61] mb-6">
+            <h3 className="text-2xl font-semibold mb-6">
               Skills
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
@@ -243,11 +250,11 @@ export default function Home({ wotd, lang }: InitialData) {
                   key={idx}
                   className="p-4 bg-[#0A0F1E] rounded-lg text-center shadow-md"
                 >
-                  {item}
+                  <p>{item}</p>
                 </div>
               ))}
             </div>
-            <h3 className="text-2xl font-semibold text-[#FF6F61] mb-6">
+            <h3 className="text-2xl font-semibold mb-6">
               Languages
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -256,7 +263,7 @@ export default function Home({ wotd, lang }: InitialData) {
                   key={idx}
                   className="p-4 bg-[#0A0F1E] rounded-lg text-center shadow-md"
                 >
-                  {item}
+                  <p>{item}</p>
                 </div>
               ))}
             </div>
@@ -304,7 +311,7 @@ export default function Home({ wotd, lang }: InitialData) {
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a
               href="mailto:yurtemre7@icloud.com"
-              className="text-lg text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+              className="text-lg transition-colors"
             >
               {" "}yurtemre7@icloud.com
             </a>
@@ -312,7 +319,7 @@ export default function Home({ wotd, lang }: InitialData) {
               href="https://github.com/yurtemre7"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+              className="text-lg transition-colors"
             >
               GitHub
             </a>
@@ -320,7 +327,7 @@ export default function Home({ wotd, lang }: InitialData) {
               href="https://www.linkedin.com/in/yurtemre"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+              className="text-lg transition-colors"
             >
               LinkedIn
             </a>
@@ -328,7 +335,7 @@ export default function Home({ wotd, lang }: InitialData) {
               href="https://t.me/emredev"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+              className="text-lg transition-colors"
             >
               Telegram
             </a>
@@ -337,18 +344,18 @@ export default function Home({ wotd, lang }: InitialData) {
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
             <a
               href="/impressum"
-              className="text-xs md:text-sm text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+              className="text-xs md:text-sm transition-colors"
             >
               {t.impressum}
             </a>
             <a
               href="/datenschutz"
-              className="text-xs md:text-sm text-[#FF6F61] hover:text-[#FFB3A7] transition-colors"
+              className="text-xs md:text-sm transition-colors"
             >
               {t.datenschutz}
             </a>
           </div>
-          <p className="text-xs md:text-sm text-[#A0AEC0]">
+          <p className="text-xs md:text-sm">
             {t.name} {t.copyright} {new Date().getFullYear()}
           </p>
         </div>

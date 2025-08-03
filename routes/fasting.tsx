@@ -103,12 +103,12 @@ export default function Fasting() {
 
   if (fastingDate === undefined) {
     return (
-      <html className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+      <html className="bg-[#0A0F1E] text-[#E2E8F0]">
         <head>
           <title>yurtemre.de | fasting</title>
         </head>
         <body>
-          <nav className="bg-gray-800 p-4">
+          <nav className="bg-[#0A0F1E] p-4">
             <div className="container mx-auto flex justify-between items-center">
               <a
                 href="/"
@@ -116,7 +116,7 @@ export default function Fasting() {
               >
                 yurtemre.de
               </a>
-              <h2 className="font-bold italic text-center text-white">
+              <h2 className="font-bold italic text-center">
                 fasting ⚡
               </h2>
             </div>
@@ -160,7 +160,7 @@ export default function Fasting() {
                           (day: string, i: number) => (
                             <div
                               key={i}
-                              className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
+                              className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
                             >
                               <p className="text-l py-2">{day}</p>
                             </div>
@@ -218,12 +218,12 @@ export default function Fasting() {
   }
 
   return (
-    <html className="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <html className="bg-[#0A0F1E] text-[#E2E8F0]">
       <head>
         <title>yurtemre.de | fasting</title>
       </head>
       <body>
-        <nav className="bg-gradient-to-r from-green-400 to-blue-500 p-4 shadow-lg">
+        <nav className="bg-[#0A0F1E] p-4 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
             <a
               href="/"
@@ -231,7 +231,7 @@ export default function Fasting() {
             >
               ← yurtemre.de
             </a>
-            <h2 className="text-white font-bold text-center">fasting ⚡</h2>
+            <h2 className="font-bold text-center">fasting ⚡</h2>
           </div>
         </nav>
         <div className="text-center p-4 items-center">
@@ -291,7 +291,7 @@ export default function Fasting() {
                       return (
                         <div
                           key={i}
-                          className="border dark:bg-green-900 border-green-500 border-opacity-50 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100"
+                          className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100"
                         >
                           <p className="text-l py-2 font-bold">{day}</p>
                           <p className="text-sm italic">Laylatul Qadr</p>
@@ -301,7 +301,7 @@ export default function Fasting() {
                     return (
                       <div
                         key={i}
-                        className="border border-white border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300"
+                        className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
                       >
                         <p className="text-l py-2">{day}</p>
                       </div>

@@ -4,7 +4,7 @@ export default function App(props: PageProps) {
   return (
     <html
       lang={props.data?.lang ?? "en"}
-      className="dark bg-gray-900 text-gray-100 antialiased transition-colors duration-200"
+      className="bg-[#0A0F1E] text-[#E2E8F0] antialiased transition-colors duration-200"
     >
       <head>
         <meta charset="utf-8" />
@@ -23,7 +23,7 @@ export default function App(props: PageProps) {
         <meta name="theme-color" content="#121212" />
         <link rel="stylesheet" href="/styles.css" />
       </head>
-      <body className="min-h-screen bg-gray-800 text-gray-100 antialiased">
+      <body className="min-h-screen antialiased">
         <props.Component />
       </body>
     </html>
