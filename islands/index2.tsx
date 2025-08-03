@@ -66,6 +66,10 @@ export default function Home({ wotd, lang }: InitialData) {
             </p>
           </div>
 
+          <div className="absolute bottom-0 right-0 opacity-50 md:p-8 p-2">
+            <a href="https://pixabay.com/de/photos/berg-fuji-tanuki-see-571387/">berg-fuji-tanuki-see</a>
+          </div>
+
           <div className="absolute top-0 right-0 opacity-50 md:p-8 p-2">
             <div
               className="inline-flex rounded-xl shadow-sm"
