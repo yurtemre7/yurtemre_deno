@@ -1,12 +1,12 @@
 import { useSignal } from "@preact/signals";
-import CountdownClock from "./CountdownClock.tsx";
-import Snowfall from "./snowfall.tsx";
+// import CountdownClock from "./CountdownClock.tsx";
+// import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
 import { InitialData } from "../components/classes/InitialData.ts";
 import {
   formatMonthYear,
-  getNextBirthday,
-  getNextNewYears,
+  // getNextBirthday,
+  // getNextNewYears,
 } from "../utils/dates.ts";
 import translations from "../utils/locales/translations.ts";
 
@@ -37,9 +37,9 @@ export default function Home({ wotd, lang }: InitialData) {
   const currentDayKanji = dayKanjiMap[day];
   const currentDay = dayMap[day];
   const currentTurkishDay = günMap[day];
-  const newYear = getNextNewYears();
-  const birthDay = getNextBirthday();
-  const fasting = new Date(2026, 1, 17, 23, 59); // manual update required once a year
+  // const newYear = getNextNewYears();
+  // const birthDay = getNextBirthday();
+  // const fasting = new Date(2026, 1, 17, 23, 59); // manual update required once a year
 
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
