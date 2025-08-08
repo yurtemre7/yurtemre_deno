@@ -34,7 +34,7 @@ export default function WordOfTheDay(
   if (word_data === undefined) {
     return (
       <div className="flex items-center justify-center">
-        <h1>{t.notFound}</h1>
+        <p>{t.notFound}</p>
       </div>
     );
   }
