@@ -34,7 +34,7 @@ export default {
     "Türkçe (Türkçe) - Günlük / Ana Dil",
     "İngilizce - Profesyonel",
     "Japonca (日本語) - Başlangıç",
-    "Fransızca (Français) - Başlangıç"
+    "Fransızca (Français) - Başlangıç",
   ],
   programmingSkills: "Programlama Becerileri",
   languageSkills: "Dil Becerileri",

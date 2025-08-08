@@ -4,32 +4,35 @@
 
 /* text-[#FF6F61] hover:text-[#FFB3A7]; */
 a {
-    color: #E53E3E;
+    color: #e53e3e;
 }
 
 a:hover {
     text-decoration: underline;
-    color: #FFB3A7;
+    color: #ffb3a7;
 }
 
 p {
-    color: #A0AEC0;
+    color: #a0aec0;
 }
 
 .cta-button {
     height: 40px;
     width: 200px;
-    background-color: #E53E3E;
+    background-color: #e53e3e;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #E2E8F0;
+    color: #e2e8f0;
 }
 
 .cta-button:hover {
     opacity: 0.8;
     text-decoration: underline;
 }
-    
+
+img {
+    pointer-events: none;
+}

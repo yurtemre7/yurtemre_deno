@@ -12,12 +12,12 @@ export default {
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: "0" },
-          '100%': { opacity: "1" },
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       animation: {
-        fadeIn: 'fadeIn 5.0s ease-out forwards',
+        fadeIn: "fadeIn 5.0s ease-out forwards",
       },
     },
   },

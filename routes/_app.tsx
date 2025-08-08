@@ -9,7 +9,7 @@ export default function App(props: PageProps) {
       <head>
         {/* Character encoding should be first */}
         <meta charset="utf-8" />
-        
+
         {/* Viewport and mobile settings */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -17,17 +17,17 @@ export default function App(props: PageProps) {
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        
+
         {/* Title and description for SEO */}
         <title>{props.url.host}</title>
         <meta
           name="description"
           content="Portfolio website of Emre Yurtseven, the most krass app developer."
         />
-        
+
         {/* Styling */}
         <link rel="stylesheet" href="/styles.css" />
-        
+
         {/* Theme and other meta */}
         <meta name="theme-color" content="#121212" />
       </head>
