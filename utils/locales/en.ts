@@ -16,7 +16,7 @@ export default {
   github: "GitHub",
   copyright: "© 2020 - ",
   impressum: "Imprint",
-  datenschutz: "Data Privacy Policy",
+  datenschutz: "Privacy Policy",
   countdownLabels: [
     "New Year " + getNextYearValue(),
     "Birth Day from Emre",
