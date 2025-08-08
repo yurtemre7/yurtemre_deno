@@ -53,10 +53,22 @@ export default function Home({ wotd, lang }: InitialData) {
           id="hero"
           className="relative min-h-screen flex flex-col justify-center items-center text-center animate-fadeIn overflow-hidden"
         >
-          <div className="absolute inset-0 bg-[url('/fuji.jpg')] bg-cover bg-center opacity-15 -z-10">
-          </div>
-
-          <div className="absolute top-0 left-0 opacity-50 md:p-8 p-2">
+          {/* <div className="absolute blur-sm inset-0 bg-[url(/fuji.jpg)] bg-cover bg-fixed bg-center opacity-30 -z-10"/> */}
+          <img
+            src="/fuji.jpg"
+            loading="lazy"
+            className="absolute -z-10 inset-0"
+            style={{
+              filter: "blur(4px)",
+              opacity: 0.3,
+              objectFit: "cover",
+              objectPosition: "center",
+              width: "100vw",
+              height: "100vh",
+            }}
+            alt="Background"
+          />
+          <div className="absolute top-0 left-0 opacity-75 md:p-8 p-2">
             <p className="">
               {language.value === "ja"
                 ? `今日は${currentDayKanji}曜日だ`
@@ -67,10 +79,12 @@ export default function Home({ wotd, lang }: InitialData) {
           </div>
 
           <div className="absolute bottom-0 right-0 opacity-50 md:p-8 p-2">
-            <a href="https://pixabay.com/de/photos/berg-fuji-tanuki-see-571387/">berg-fuji-tanuki-see</a>
+            <a href="https://pixabay.com/de/photos/berg-fuji-tanuki-see-571387/">
+              berg-fuji-tanuki-see
+            </a>
           </div>
 
-          <div className="absolute top-0 right-0 opacity-50 md:p-8 p-2">
+          <div className="absolute top-0 right-0 opacity-75 md:p-8 p-2">
             <div
               className="inline-flex rounded-xl shadow-sm"
               role="group"
