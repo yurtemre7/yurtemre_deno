@@ -4,7 +4,7 @@
 
 /* text-[#FF6F61] hover:text-[#FFB3A7]; */
 a {
-    color: #FF6F61;
+    color: #E53E3E;
 }
 
 a:hover {
@@ -19,13 +19,13 @@ p {
 .cta-button {
     height: 40px;
     width: 200px;
-    background-color: #FF6F61;
+    background-color: #E53E3E;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: white;
+    color: #E2E8F0;
 }
 
 .cta-button:hover {

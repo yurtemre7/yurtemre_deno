@@ -94,10 +94,10 @@ export default function Home({ wotd, lang }: InitialData) {
                 type="button"
                 aria-pressed={language.value === "en"}
                 onClick={() => handleLanguageChange("en")}
-                className={`p-2 font-medium rounded-l-xl transition-colors focus:outline-none ${
+                className={`p-2 font-medium rounded-l-xl transition-all focus:outline-none ${
                   language.value === "en"
-                    ? "bg-[#FF6F61] text-[#E2E8F0]"
-                    : "text-[#0A0F1E] bg-[#E2E8F0]"
+                    ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
+                    : "text-[#0A0F1E] bg-[#E2E8F0] hover:bg-gray-200"
                 }`}
               >
                 English
@@ -107,10 +107,10 @@ export default function Home({ wotd, lang }: InitialData) {
                 type="button"
                 aria-pressed={language.value === "ja"}
                 onClick={() => handleLanguageChange("ja")}
-                className={`p-2 font-medium transition-colors focus:outline-none ${
+                className={`p-2 font-medium transition-all focus:outline-none ${
                   language.value === "ja"
-                    ? "bg-[#FF6F61] text-[#E2E8F0]"
-                    : "text-[#0A0F1E] bg-[#E2E8F0]"
+                    ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
+                    : "text-[#0A0F1E] bg-[#E2E8F0] hover:bg-gray-200"
                 }`}
               >
                 日本語
@@ -120,10 +120,10 @@ export default function Home({ wotd, lang }: InitialData) {
                 type="button"
                 aria-pressed={language.value === "tr"}
                 onClick={() => handleLanguageChange("tr")}
-                className={`p-2 font-medium rounded-r-xl transition-colors focus:outline-none ${
+                className={`p-2 font-medium rounded-r-xl transition-all focus:outline-none ${
                   language.value === "tr"
-                    ? "bg-[#FF6F61] text-[#E2E8F0]"
-                    : "text-[#0A0F1E] bg-[#E2E8F0]"
+                    ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
+                    : "text-[#0A0F1E] bg-[#E2E8F0] hover:bg-gray-200"
                 }`}
               >
                 Türkçe
@@ -135,7 +135,7 @@ export default function Home({ wotd, lang }: InitialData) {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
               {t.name}
             </h1>
-            <p className="text-xl sm:text-2xl">
+            <p className="text-xl sm:text-2xl pt-1">
               {t.profession}
             </p>
           </header>
@@ -156,14 +156,14 @@ export default function Home({ wotd, lang }: InitialData) {
         {/* Experience Section */}
         <section id="experience" className="py-12 bg-[#15202B]">
           <div className="container mx-auto px-4">
-            <h3 className="text-2xl font-semibold mb-6">
+            <h1 className="text-2xl font-semibold mb-6">
               {t.experience}
-            </h3>
+            </h1>
             <div className="space-y-6">
               <article className="p-6 bg-[#0A0F1E] rounded-lg shadow-md">
-                <h4 className="text-xl font-medium">
+                <h2 className="text-xl font-medium">
                   Frontend Developer, DEIN ERSTER TAG
-                </h4>
+                </h2>
                 <p className="text-sm">
                   {formatMonthYear(new Date("2025-06-12"), language.value)} -
                   {" "}
@@ -171,9 +171,9 @@ export default function Home({ wotd, lang }: InitialData) {
                 </p>
               </article>
               <article className="p-6 bg-[#0A0F1E] rounded-lg shadow-md">
-                <h4 className="text-xl font-medium">
+                <h2 className="text-xl font-medium">
                   Junior Frontend Developer, DEIN ERSTER TAG
-                </h4>
+                </h2>
                 <p className="text-sm">
                   {formatMonthYear(new Date("2023-06-01"), language.value)} -
                   {" "}
@@ -181,9 +181,9 @@ export default function Home({ wotd, lang }: InitialData) {
                 </p>
               </article>
               <article className="p-6 bg-[#0A0F1E] rounded-lg shadow-md">
-                <h4 className="text-xl font-medium">
+                <h2 className="text-xl font-medium">
                   Junior Frontend Developer, Appmelder
-                </h4>
+                </h2>
                 <p className="text-sm">
                   {formatMonthYear(new Date("2021-04-01"), language.value)} -
                   {" "}
@@ -197,9 +197,9 @@ export default function Home({ wotd, lang }: InitialData) {
         {/* Projects Section */}
         <section id="projects" className="py-12">
           <div className="container mx-auto px-4">
-            <h3 className="text-2xl font-semibold mb-6">
+            <h1 className="text-2xl font-semibold mb-6">
               {t.projects}
-            </h3>
+            </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
                 <a
@@ -259,9 +259,9 @@ export default function Home({ wotd, lang }: InitialData) {
         {/* Skills Section */}
         <section id="skills" className="py-12 bg-[#15202B]">
           <div className="container mx-auto px-4">
-            <h3 className="text-2xl font-semibold mb-6">
+            <h1 className="text-2xl font-semibold mb-6">
               Skills
-            </h3>
+            </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
               {t.programmingItems.map((item, idx) => (
                 <div
@@ -272,9 +272,9 @@ export default function Home({ wotd, lang }: InitialData) {
                 </div>
               ))}
             </div>
-            <h3 className="text-2xl font-semibold mb-6">
+            <h1 className="text-2xl font-semibold mb-6">
               Languages
-            </h3>
+            </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {t.languageItems.map((item, idx) => (
                 <div
