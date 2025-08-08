@@ -33,6 +33,7 @@ export default {
     "トルコ語 (Türkçe) - カジュアル / ネイティブ",
     "英語 (English) - プロフェッショナル",
     "日本語 - 初級",
+    "フランス語 (Français) - 初級"
   ],
   programmingSkills: "プログラミングスキル",
   languageSkills: "言語スキル",

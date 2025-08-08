@@ -15,8 +15,8 @@ export default {
   telegram: "Telegram",
   github: "GitHub",
   copyright: "© 2020 - ",
-  impressum: "Impressum",
-  datenschutz: "Datenschutzerklärung",
+  impressum: "Imprint",
+  datenschutz: "Data Privacy Policy",
   countdownLabels: [
     "New Year " + getNextYearValue(),
     "Birth Day from Emre",
@@ -34,6 +34,7 @@ export default {
     "Turkish (Türkçe) - Casual / Native",
     "English - Professional",
     "Japanese (日本語) - Beginner",
+    "French (Français) - Beginner",
   ],
   programmingSkills: "Programming Skills",
   languageSkills: "Language Skills",
