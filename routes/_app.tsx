@@ -4,7 +4,7 @@ export default function App(props: PageProps) {
   return (
     <html
       lang={props.data?.lang ?? "en"}
-      className="bg-[#0A0F1E] text-[#E2E8F0] antialiased transition-colors duration-200"
+      className="bg-[#0A0F1E] text-[#E2E8F0]"
     >
       <head>
         {/* Character encoding should be first */}
@@ -31,7 +31,7 @@ export default function App(props: PageProps) {
         {/* Theme and other meta */}
         <meta name="theme-color" content="#121212" />
       </head>
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen">
         <props.Component />
       </body>
     </html>
