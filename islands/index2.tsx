@@ -292,6 +292,21 @@ export default function Home({ wotd, lang }: InitialData) {
           </div>
         </section>
 
+        {/* Word of the Day */}
+
+        <section
+          id="wotd"
+          className="py-8 animate-on-scroll flex justify-center items-center"
+        >
+          <div className="max-w-md mx-auto px-8">
+            <WordOfTheDay
+              word={wotd.word}
+              link={wotd.link}
+              language={language.value}
+            />
+          </div>
+        </section>
+
         {/* Skills Section */}
         <section
           id="skprlang"
@@ -403,18 +418,6 @@ export default function Home({ wotd, lang }: InitialData) {
           </div>
         </section> */
         }
-
-        {/* Word of the Day */}
-
-        <section id="wotd" className="py-8 animate-on-scroll flex justify-center items-center">
-          <div className="max-w-md mx-auto px-8">
-            <WordOfTheDay
-              word={wotd.word}
-              link={wotd.link}
-              language={language.value}
-            />
-          </div>
-        </section>
       </main>
 
       {/* Footer */}
