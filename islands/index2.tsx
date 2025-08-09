@@ -292,71 +292,68 @@ export default function Home({ wotd, lang }: InitialData) {
           </div>
         </section>
 
-        {/* Projects Section */}
-        <section id="projects" className="py-12">
+        {/* Skills Section */}
+        <section
+          id="skprlang"
+          className="py-12 min-h-screen flex justify-center items-center"
+        >
           <div className="container mx-auto px-4">
             <h1 className="text-2xl font-semibold mb-6">
               {t.projects}
             </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+              <div className="p-4 rounded-lg">
                 <a
                   href="/"
                   className="text-xl font-medium transition-colors"
                 >
                   WoAuto
                 </a>
-                <p className="mt-2">{t.woautoDesc}</p>
+                <p>{t.woautoDesc}</p>
                 <a
                   href="https://github.com/yurtemre7/woauto"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm mt-1 inline-block"
+                  className="text-sm mt-2 inline-block"
                 >
                   {t.github}
                 </a>
-              </article>
-              <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
+              </div>
+              <div className="p-4 rounded-lg">
                 <a
                   href="/paren"
                   className="text-xl font-medium transition-colors"
                 >
                   Paren
                 </a>
-                <p className="mt-2">{t.parenDesc}</p>
+                <p>{t.parenDesc}</p>
                 <a
                   href="https://github.com/yurtemre7/paren"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm mt-1 inline-block"
+                  className="text-sm mt-2 inline-block"
                 >
                   {t.github}
                 </a>
-              </article>
-              <article className="p-6 bg-[#15202B] rounded-lg shadow-md">
+              </div>
+              <div className="p-4 rounded-lg">
                 <a
                   href="https://yurtemre7.github.io/steel-mouse/"
                   className="text-xl font-medium transition-colors"
                 >
                   SteelMouse
                 </a>
-                <p className="mt-2">{t.steelMouseDesc}</p>
+                <p>{t.steelMouseDesc}</p>
                 <a
                   href="https://github.com/yurtemre7/steel-mouse"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm mt-1 inline-block"
+                  className="text-sm mt-2 inline-block"
                 >
                   {t.github}
                 </a>
-              </article>
+              </div>
             </div>
-          </div>
-        </section>
-
-        {/* Skills Section */}
-        <section id="skills" className="py-12">
-          <div className="container mx-auto px-4">
             <h1 className="text-2xl font-semibold mb-6">
               Skills
             </h1>
@@ -409,7 +406,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
         {/* Word of the Day */}
 
-        <section id="wotd" className="py-8 animate-on-scroll">
+        <section id="wotd" className="py-8 animate-on-scroll flex justify-center items-center">
           <div className="max-w-md mx-auto px-8">
             <WordOfTheDay
               word={wotd.word}
