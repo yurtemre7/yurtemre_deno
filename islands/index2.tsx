@@ -89,7 +89,7 @@ export default function Home({ wotd, lang }: InitialData) {
   }
 
   useEffect(() => {
-    globalThis.addEventListener("wheel", (_: WheelEvent) => {
+    globalThis.addEventListener("scroll", () => {
       // ev.preventDefault();
       // 0.35 opacity at first
       // -0.15 opacity at last
