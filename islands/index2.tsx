@@ -1,4 +1,5 @@
 import { useSignal } from "@preact/signals";
+import { useEffect } from "preact/hooks";
 // import CountdownClock from "./CountdownClock.tsx";
 // import Snowfall from "./snowfall.tsx";
 import WordOfTheDay from "../components/word_of_day.tsx";
@@ -30,8 +31,50 @@ const günMap = [
   "Cumartesi",
 ];
 
+interface WorkExperience {
+  id: string;
+  title: string;
+  company: string;
+  startDate: Date;
+  endDate: Date | "present";
+  description: string;
+}
+
+const workExperiences: WorkExperience[] = [
+  {
+    id: "det-1",
+    title: "Frontend Developer",
+    company: "DEIN ERSTER TAG",
+    startDate: new Date("2025-06-12"),
+    endDate: "present",
+    description:
+      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots, copy generation, and app prototyping. Also heavily involved on the web development using ReactJS and WordPress.",
+  },
+  {
+    id: "det-2",
+    title: "Junior Frontend Developer",
+    company: "DEIN ERSTER TAG",
+    startDate: new Date("2023-06-01"),
+    endDate: new Date("2025-06-01"),
+    description:
+      "Continued development of the cross-platform Flutter app, highvalues business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
+  },
+  {
+    id: "appmelder",
+    title: "Junior Frontend Developer",
+    company: "Appmelder",
+    startDate: new Date("2021-04-01"),
+    endDate: new Date("2022-12-01"),
+    description:
+      "Refactored the initial production codebase by applying improved techniques and aligning the app's design with Figma specifications. Implemented revenue-critical features through rapid sprints, successfully delivering customer value using Flutter, Dart, and Python.",
+  },
+];
+
 export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
+  const bgop = useSignal<number>(0.35);
+  const bgblur = useSignal<number>(1);
+  const expandedExperience = useSignal<string | null>(null);
   const t = translations[language.value];
   const day = new Date().getDay();
   const currentDayKanji = dayKanjiMap[day];
@@ -45,13 +88,32 @@ export default function Home({ wotd, lang }: InitialData) {
     language.value = newLang;
   }
 
+  useEffect(() => {
+    globalThis.addEventListener("wheel", (_: WheelEvent) => {
+      // ev.preventDefault();
+      // 0.35 opacity at first
+      // -0.15 opacity at last
+
+      // 1 blur at first
+      // 6 blur at last
+
+      // animate between while scrolling this distance
+      const h1 = document.body.scrollHeight - globalThis.innerHeight;
+      const h = globalThis.scrollY;
+      const opacity = (h / h1) * -0.15 + 0.35;
+      const blur = (h / h1) * 5 + 1;
+      bgop.value = opacity;
+      bgblur.value = blur;
+    });
+  }, []);
+
   return (
-    <div className="bg-[#0A0F1E] text-[#E2E8F0] min-h-screen scroll-smooth">
+    <div className="bg-[#0A0F1E] text-[#E2E8F0] min-h-screen scroll-smooth animate-fadeIn overflow-hidden">
       <main>
         {/* Hero Section */}
         <section
           id="hero"
-          className="relative min-h-screen flex flex-col justify-center items-center text-center animate-fadeIn overflow-hidden"
+          className="relative min-h-screen flex flex-col justify-center items-center text-center"
         >
           {/* <div className="absolute blur-sm inset-0 bg-[url(/fuji.jpg)] bg-cover bg-fixed bg-center opacity-30 -z-10"/> */}
           <img
@@ -59,9 +121,10 @@ export default function Home({ wotd, lang }: InitialData) {
             loading="lazy"
             className="absolute -z-10 inset-0"
             style={{
-              filter: "blur(4px)",
-              opacity: 0.3,
+              filter: `blur(${bgblur.value}px)`,
+              opacity: bgop.value,
               objectFit: "cover",
+              position: "fixed",
               objectPosition: "center",
               width: "100vw",
               height: "100vh",
@@ -154,42 +217,77 @@ export default function Home({ wotd, lang }: InitialData) {
         </section>
 
         {/* Experience Section */}
-        <section id="experience" className="py-12 bg-[#15202B]">
+        <section
+          id="experience"
+          className="py-12 min-h-screen flex justify-center items-center"
+        >
           <div className="container mx-auto px-4">
             <h1 className="text-2xl font-semibold mb-6">
               {t.experience}
             </h1>
-            <div className="space-y-6">
-              <article className="p-6 bg-[#0A0F1E] rounded-lg shadow-md">
-                <h2 className="text-xl font-medium">
-                  Frontend Developer, DEIN ERSTER TAG
-                </h2>
-                <p className="text-sm">
-                  {formatMonthYear(new Date("2025-06-12"), language.value)} -
-                  {" "}
-                  {t.present}
-                </p>
-              </article>
-              <article className="p-6 bg-[#0A0F1E] rounded-lg shadow-md">
-                <h2 className="text-xl font-medium">
-                  Junior Frontend Developer, DEIN ERSTER TAG
-                </h2>
-                <p className="text-sm">
-                  {formatMonthYear(new Date("2023-06-01"), language.value)} -
-                  {" "}
-                  {formatMonthYear(new Date("2025-06-01"), language.value)}
-                </p>
-              </article>
-              <article className="p-6 bg-[#0A0F1E] rounded-lg shadow-md">
-                <h2 className="text-xl font-medium">
-                  Junior Frontend Developer, Appmelder
-                </h2>
-                <p className="text-sm">
-                  {formatMonthYear(new Date("2021-04-01"), language.value)} -
-                  {" "}
-                  {formatMonthYear(new Date("2022-12-01"), language.value)}
-                </p>
-              </article>
+            <div className="space-y-4">
+              {workExperiences.map((exp) => (
+                <div
+                  key={exp.id}
+                  className="group relative p-6 rounded-lg transition-all duration-200 cursor-pointer md:cursor-default"
+                  onClick={() =>
+                    expandedExperience.value =
+                      expandedExperience.value === exp.id
+                        ? null
+                        : exp.id}
+                >
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <h2 className="text-xl font-medium">
+                        {exp.title}, {exp.company}
+                      </h2>
+                      <p className="text-sm">
+                        {formatMonthYear(exp.startDate, language.value)} -{"  "}
+                        {exp.endDate === "present"
+                          ? t.present
+                          : formatMonthYear(exp.endDate, language.value)}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      className="ml-4 flex-shrink-0 md:hidden"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        expandedExperience.value =
+                          expandedExperience.value === exp.id ? null : exp.id;
+                      }}
+                    >
+                      <svg
+                        className={`w-5 h-5 transition-transform ${
+                          expandedExperience.value === exp.id
+                            ? "rotate-180"
+                            : ""
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  <div
+                    className={`mt-3 text-sm text-gray-300 transition-all duration-200 ease-in-out overflow-hidden ${
+                      expandedExperience.value === exp.id
+                        ? "opacity-100"
+                        : "opacity-0 h-0 md:opacity-100 md:h-auto"
+                    }`}
+                  >
+                    <p>{exp.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -257,7 +355,7 @@ export default function Home({ wotd, lang }: InitialData) {
         </section>
 
         {/* Skills Section */}
-        <section id="skills" className="py-12 bg-[#15202B]">
+        <section id="skills" className="py-12">
           <div className="container mx-auto px-4">
             <h1 className="text-2xl font-semibold mb-6">
               Skills
@@ -266,7 +364,7 @@ export default function Home({ wotd, lang }: InitialData) {
               {t.programmingItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-4 bg-[#0A0F1E] rounded-lg text-center shadow-md"
+                  className="p-4 rounded-lg text-center"
                 >
                   <p>{item}</p>
                 </div>
@@ -279,7 +377,7 @@ export default function Home({ wotd, lang }: InitialData) {
               {t.languageItems.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-4 bg-[#0A0F1E] rounded-lg text-center shadow-md"
+                  className="p-4 rounded-lg text-center"
                 >
                   <p>{item}</p>
                 </div>
@@ -310,6 +408,7 @@ export default function Home({ wotd, lang }: InitialData) {
         }
 
         {/* Word of the Day */}
+
         <section id="wotd" className="py-8 animate-on-scroll">
           <div className="max-w-md mx-auto px-8">
             <WordOfTheDay
@@ -323,7 +422,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
       {/* Footer */}
       {/* Footer */}
-      <footer className="bg-[#15202B] border-t border-gray-700 py-12">
+      <footer className="border-t border-gray-900 py-12">
         <div className="container mx-auto px-4 flex flex-col items-center space-y-6">
           {/* Mixed Contact Links */}
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
