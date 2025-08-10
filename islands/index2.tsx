@@ -155,50 +155,78 @@ export default function Home({ wotd, lang }: InitialData) {
 
           <div className="absolute top-0 right-0 opacity-75 md:p-8 p-2">
             <div
-              className="inline-flex rounded-xl shadow-sm"
+              className="flex flex-col md:inline-flex md:flex-row rounded-xl shadow-sm bg-transparent items-stretch md:items-center md:space-x-2 space-y-2 md:space-y-0"
               role="group"
+              aria-label="Language selector"
             >
               <button
                 aria-label="Switch to English"
+                title="English"
                 type="button"
                 aria-pressed={language.value === "en"}
                 onClick={() => handleLanguageChange("en")}
-                className={`p-2 font-medium rounded-l-xl transition-all focus:outline-none ${
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleLanguageChange("en");
+                  }
+                }}
+                className={`rounded-lg flex items-center gap-2 px-3 py-2 text-sm font-medium transition-transform transform will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E53E3E] ${
                   language.value === "en"
                     ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
-                    : "text-[#0A0F1E] bg-[#E2E8F0] hover:bg-gray-200"
+                    : "text-[#E2E8F0] bg-transparent hover:bg-white/5 hover:scale-105"
                 }`}
               >
-                English
+                <span aria-hidden>🇺🇸</span>
+                <span className="hidden sm:inline">EN</span>
               </button>
+
               <button
                 aria-label="Switch to Japanese"
+                title="日本語"
                 type="button"
                 aria-pressed={language.value === "ja"}
                 onClick={() => handleLanguageChange("ja")}
-                className={`p-2 font-medium transition-all focus:outline-none ${
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleLanguageChange("ja");
+                  }
+                }}
+                className={`rounded-lg flex items-center gap-2 px-3 py-2 text-sm font-medium transition-transform transform will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E53E3E] ${
                   language.value === "ja"
                     ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
-                    : "text-[#0A0F1E] bg-[#E2E8F0] hover:bg-gray-200"
+                    : "text-[#E2E8F0] bg-transparent hover:bg-white/5 hover:scale-105"
                 }`}
               >
-                日本語
+                <span aria-hidden>🇯🇵</span>
+                <span className="hidden sm:inline">日本語</span>
               </button>
+
               <button
                 aria-label="Switch to Turkish"
+                title="Türkçe"
                 type="button"
                 aria-pressed={language.value === "tr"}
                 onClick={() => handleLanguageChange("tr")}
-                className={`p-2 font-medium rounded-r-xl transition-all focus:outline-none ${
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleLanguageChange("tr");
+                  }
+                }}
+                className={`rounded-lg flex items-center gap-2 px-3 py-2 text-sm font-medium transition-transform transform will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E53E3E] ${
                   language.value === "tr"
                     ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
-                    : "text-[#0A0F1E] bg-[#E2E8F0] hover:bg-gray-200"
+                    : "text-[#E2E8F0] bg-transparent hover:bg-white/5 hover:scale-105"
                 }`}
               >
-                Türkçe
+                <span aria-hidden>🇹🇷</span>
+                <span className="hidden sm:inline">Türkçe</span>
               </button>
             </div>
           </div>
+
           <header id="main-content" className="mb-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
               {t.name}
