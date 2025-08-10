@@ -134,8 +134,9 @@ export default function Home({ wotd, lang }: InitialData) {
               width: "100vw",
               height: "100vh",
             }}
-            alt="Background"
+            alt="Mount Fuji landscape"
           />
+
           <div className="absolute top-0 left-0 opacity-75 md:p-8 p-2">
             <p className="">
               {language.value === "ja"
@@ -198,8 +199,7 @@ export default function Home({ wotd, lang }: InitialData) {
               </button>
             </div>
           </div>
-          {/* <Snowfall /> */}
-          <header className="mb-4">
+          <header id="main-content" className="mb-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
               {t.name}
             </h1>

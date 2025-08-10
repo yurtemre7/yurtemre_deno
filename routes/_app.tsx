@@ -1,6 +1,9 @@
 import { type PageProps } from "$fresh/server.ts";
 
 export default function App(props: PageProps) {
+  const description =
+    "Portfolio of Emre Yurtseven — mobile & web developer focusing on Flutter, TypeScript and modern front-end development.";
+
   return (
     <html
       lang={props.data?.lang ?? "en"}
@@ -20,10 +23,10 @@ export default function App(props: PageProps) {
 
         {/* Title and description for SEO */}
         <title>{props.url.host}</title>
-        <meta
-          name="description"
-          content="Portfolio website of Emre Yurtseven, the most krass app developer."
-        />
+        <meta name="description" content={description} />
+
+        {/* Favicon */}
+        <link rel="icon" href="/favicon.ico" />
 
         {/* Styling */}
         <link rel="stylesheet" href="/styles.css" />
