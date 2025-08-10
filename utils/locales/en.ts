@@ -36,7 +36,7 @@ export default {
     "Japanese (日本語) - Beginner",
     "French (Français) - Beginner",
   ],
-  programmingSkills: "Programming Skills",
-  languageSkills: "Language Skills",
+  programmingSkills: "Skills",
+  languageSkills: "Languages",
   present: "Present",
 };

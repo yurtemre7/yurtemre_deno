@@ -6,7 +6,12 @@ const translations: {
 } = {
   en: {
     notFound: "Word of the day: Not found",
-    wordOfDay: "is the german word of the day provided by",
+    wordOfDay: "is the German word of the day provided by",
+    duden: "Duden",
+  },
+  de: {
+    notFound: "Wort des Tages: Nicht gefunden",
+    wordOfDay: "ist das deutsche Wort des Tages, bereitgestellt von",
     duden: "Duden",
   },
   ja: {
@@ -29,9 +34,9 @@ export default function WordOfTheDay(
   { word, link, language }: WordOfTheDayProps,
 ) {
   const word_data = { word, link };
-  const t = translations[language];
+  const t = translations[language] ?? translations["en"];
 
-  if (word_data === undefined) {
+  if (!word_data || word_data.word === "") {
     return (
       <div className="flex items-center justify-center">
         <p>{t.notFound}</p>

@@ -1,4 +1,4 @@
-export type Locale = "en" | "ja";
+export type Locale = "en" | "ja" | "de";
 
 export type Translations = {
   [key: string]: {

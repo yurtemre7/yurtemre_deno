@@ -37,6 +37,6 @@ export default {
     "Fransızca (Français) - Başlangıç",
   ],
   programmingSkills: "Programlama Becerileri",
-  languageSkills: "Dil Becerileri",
+  languageSkills: "Diller",
   present: "Şu anda",
 };

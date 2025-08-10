@@ -10,65 +10,7 @@ import {
   // getNextNewYears,
 } from "../utils/dates.ts";
 import translations from "../utils/locales/translations.ts";
-
-const dayKanjiMap = ["日", "月", "火", "水", "木", "金", "土"];
-const dayMap = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-const günMap = [
-  "Pazar",
-  "Pazartesi",
-  "Salı",
-  "Çarşamba",
-  "Perşembe",
-  "Cuma",
-  "Cumartesi",
-];
-
-interface WorkExperience {
-  id: string;
-  title: string;
-  company: string;
-  startDate: Date;
-  endDate: Date | "present";
-  description: string;
-}
-
-const workExperiences: WorkExperience[] = [
-  {
-    id: "det-1",
-    title: "Frontend Developer",
-    company: "DEIN ERSTER TAG",
-    startDate: new Date("2025-06-12"),
-    endDate: "present",
-    description:
-      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots, copy generation, and app prototyping. Also heavily involved on the web development using ReactJS and WordPress.",
-  },
-  {
-    id: "det-2",
-    title: "Junior Frontend Developer",
-    company: "DEIN ERSTER TAG",
-    startDate: new Date("2023-06-01"),
-    endDate: new Date("2025-06-01"),
-    description:
-      "Continued development of the cross-platform Flutter app, highvalues business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
-  },
-  {
-    id: "appmelder",
-    title: "Junior Frontend Developer",
-    company: "Appmelder",
-    startDate: new Date("2021-04-01"),
-    endDate: new Date("2022-12-01"),
-    description:
-      "Refactored the initial production codebase by applying improved techniques and aligning the app's design with Figma specifications. Implemented revenue-critical features through rapid sprints, successfully delivering customer value using Flutter, Dart, and Python.",
-  },
-];
+import dayLine from "../utils/locales/dayline.ts";
 
 export default function Home({ wotd, lang }: InitialData) {
   const language = useSignal<string>(lang);
@@ -76,13 +18,7 @@ export default function Home({ wotd, lang }: InitialData) {
   const bgblur = useSignal<number>(1);
   const expandedExperience = useSignal<string | null>(null);
   const t = translations[language.value];
-  const day = new Date().getDay();
-  const currentDayKanji = dayKanjiMap[day];
-  const currentDay = dayMap[day];
-  const currentTurkishDay = günMap[day];
-  // const newYear = getNextNewYears();
-  // const birthDay = getNextBirthday();
-  // const fasting = new Date(2026, 1, 17, 23, 59); // manual update required once a year
+  // day string produced by utils/locales/dayline.ts
 
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
@@ -138,13 +74,7 @@ export default function Home({ wotd, lang }: InitialData) {
           />
 
           <div className="absolute top-0 left-0 opacity-75 md:p-8 p-2">
-            <p className="">
-              {language.value === "ja"
-                ? `今日は${currentDayKanji}曜日だ`
-                : language.value === "tr"
-                ? `Bugün ${currentTurkishDay}`
-                : `Today is ${currentDay}`}
-            </p>
+            <p className="">{dayLine(language.value)}</p>
           </div>
 
           <div className="absolute bottom-0 right-0 opacity-50 md:p-8 p-2">
@@ -179,6 +109,28 @@ export default function Home({ wotd, lang }: InitialData) {
               >
                 <span aria-hidden>🇺🇸</span>
                 <span className="hidden sm:inline">EN</span>
+              </button>
+
+              <button
+                aria-label="Switch to German"
+                title="Deutsch"
+                type="button"
+                aria-pressed={language.value === "de"}
+                onClick={() => handleLanguageChange("de")}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleLanguageChange("de");
+                  }
+                }}
+                className={`rounded-lg flex items-center gap-2 px-3 py-2 text-sm font-medium transition-transform transform will-change-transform focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E53E3E] ${
+                  language.value === "de"
+                    ? "bg-[#E53E3E] text-[#E2E8F0] shadow-lg shadow-[#E53E3E]/30"
+                    : "text-[#E2E8F0] bg-transparent hover:bg-white/5 hover:scale-105"
+                }`}
+              >
+                <span aria-hidden>🇩🇪</span>
+                <span className="hidden sm:inline">DE</span>
               </button>
 
               <button
@@ -403,7 +355,7 @@ export default function Home({ wotd, lang }: InitialData) {
               </div>
             </div>
             <h1 className="text-2xl font-semibold mb-6">
-              Skills
+              {t.programmingSkills}
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
               {t.programmingItems.map((item, idx) => (
@@ -416,7 +368,7 @@ export default function Home({ wotd, lang }: InitialData) {
               ))}
             </div>
             <h1 className="text-2xl font-semibold mb-6">
-              Languages
+              {t.languageSkills}
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {t.languageItems.map((item, idx) => (
@@ -513,3 +465,42 @@ export default function Home({ wotd, lang }: InitialData) {
     </div>
   );
 }
+
+interface WorkExperience {
+  id: string;
+  title: string;
+  company: string;
+  startDate: Date;
+  endDate: Date | "present";
+  description: string;
+}
+
+const workExperiences: WorkExperience[] = [
+  {
+    id: "det-1",
+    title: "Frontend Developer",
+    company: "DEIN ERSTER TAG",
+    startDate: new Date("2025-06-12"),
+    endDate: "present",
+    description:
+      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots, copy generation, and app prototyping. Also heavily involved on the web development using ReactJS and WordPress.",
+  },
+  {
+    id: "det-2",
+    title: "Junior Frontend Developer",
+    company: "DEIN ERSTER TAG",
+    startDate: new Date("2023-06-01"),
+    endDate: new Date("2025-06-01"),
+    description:
+      "Continued development of the cross-platform Flutter app, highvalues business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
+  },
+  {
+    id: "appmelder",
+    title: "Junior Frontend Developer",
+    company: "Appmelder",
+    startDate: new Date("2021-04-01"),
+    endDate: new Date("2022-12-01"),
+    description:
+      "Refactored the initial production codebase by applying improved techniques and aligning the app's design with Figma specifications. Implemented revenue-critical features through rapid sprints, successfully delivering customer value using Flutter, Dart, and Python.",
+  },
+];
