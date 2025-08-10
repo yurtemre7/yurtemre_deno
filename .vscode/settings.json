@@ -18,6 +18,6 @@
     ".vscode/tailwind.json"
   ],
   "[css]": {
-    "editor.defaultFormatter": "vscode.css-language-features"
+    "editor.defaultFormatter": "denoland.vscode-deno"
   }
 }
