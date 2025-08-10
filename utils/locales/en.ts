@@ -4,13 +4,13 @@ export default {
   name: "Emre Yurtseven",
   profession: "Mobile App Developer",
   bornInfo: "Born on January 16th 2002 • B.Sc. Computer Science",
-  experience: "Working Experience",
+  experience: "Work Experience",
   projects: "Projects",
   woautoDesc: "Never lose sight of your car parking ever again.",
   parenDesc:
     "Enjoy your vacation and keep the local currency ready at your fingertips.",
   steelMouseDesc:
-    "See your SteelSeries mouse's battery level at a glance in the windows system tray.",
+    "See your SteelSeries mouse's battery level at a glance in the Windows system tray.",
   email: "Email",
   telegram: "Telegram",
   github: "GitHub",
@@ -19,7 +19,7 @@ export default {
   datenschutz: "Privacy Policy",
   countdownLabels: [
     "New Year " + getNextYearValue(),
-    "Birth Day from Emre",
+    "Emre's Birthday",
     "Ramadan 2026",
   ],
   programmingItems: [
