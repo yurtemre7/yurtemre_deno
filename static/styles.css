@@ -17,8 +17,8 @@ p {
 }
 
 .cta-button {
-  height: 40px;
-  width: 200px;
+  height: 30px;
+  width: 180px;
   background-color: #e53e3e;
   border-radius: 5px;
   display: flex;
@@ -30,7 +30,7 @@ p {
 
 .cta-button:hover {
   opacity: 0.8;
-  text-decoration: underline;
+  border: 1px solid #e2e8f0;
 }
 
 img {
