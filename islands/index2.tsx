@@ -89,22 +89,27 @@ export default function Home({ wotd, lang }: InitialData) {
   }
 
   useEffect(() => {
-    globalThis.addEventListener("scroll", () => {
-      // ev.preventDefault();
-      // 0.35 opacity at first
-      // -0.15 opacity at last
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const h1 = Math.max(
+          1,
+          document.body.scrollHeight - globalThis.innerHeight,
+        );
+        const h = Math.max(0, globalThis.scrollY || 0);
+        const ratio = Math.max(0, Math.min(1, h / h1));
+        bgop.value = ratio * -0.15 + 0.35;
+        bgblur.value = ratio * 5 + 1;
+      });
+    };
 
-      // 1 blur at first
-      // 6 blur at last
+    globalThis.addEventListener("scroll", onScroll, { passive: true });
 
-      // animate between while scrolling this distance
-      const h1 = document.body.scrollHeight - globalThis.innerHeight;
-      const h = globalThis.scrollY;
-      const opacity = (h / h1) * -0.15 + 0.35;
-      const blur = (h / h1) * 5 + 1;
-      bgop.value = opacity;
-      bgblur.value = blur;
-    });
+    return () => {
+      globalThis.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
