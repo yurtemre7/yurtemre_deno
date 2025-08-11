@@ -407,7 +407,7 @@ export default function Home({ wotd, lang }: InitialData) {
 
       {/* Footer */}
       {/* Footer */}
-      <footer className="border-t border-gray-900 py-12">
+      <footer className="py-12">
         <div className="container mx-auto px-4 flex flex-col items-center space-y-6">
           {/* Mixed Contact Links */}
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
