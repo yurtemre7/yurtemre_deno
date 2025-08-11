@@ -30,9 +30,9 @@ export default {
     "PHP",
   ],
   languageItems: [
-    "Deutsch (Deutsch) - Muttersprache",
+    "Deutsch - Muttersprache",
     "Türkisch (Türkçe) - Alltagssprache / Muttersprache",
-    "Englisch - Beruflich",
+    "Englisch (English) - Beruflich",
     "Japanisch (日本語) - Anfänger",
     "Französisch (Français) - Anfänger",
   ],
