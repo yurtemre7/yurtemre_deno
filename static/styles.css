@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 h1 {
-  font-size: 2rem;
+  margin-block: 0.67em;
+  font-size: 2em;
 }
 
 /* text-[#FF6F61] hover:text-[#FFB3A7]; */
