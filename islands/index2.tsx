@@ -483,7 +483,7 @@ const workExperiences: WorkExperience[] = [
     startDate: new Date("2025-06-12"),
     endDate: "present",
     description:
-      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots, copy generation, and app prototyping. Also heavily involved on the web development using ReactJS and WordPress.",
+      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots and internal copy generation. Also heavily involved on the web development using ReactJS and WordPress.",
   },
   {
     id: "det-2",
@@ -492,7 +492,7 @@ const workExperiences: WorkExperience[] = [
     startDate: new Date("2023-06-01"),
     endDate: new Date("2025-06-01"),
     description:
-      "Continued development of the cross-platform Flutter app, highvalues business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
+      "Continued development of the cross-platform Flutter app, implemented highvalued business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
   },
   {
     id: "appmelder",
