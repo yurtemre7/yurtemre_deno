@@ -6,6 +6,7 @@ export default {
   bornInfo: "Born on January 16th 2002 • B.Sc. Computer Science",
   experience: "Work Experience",
   projects: "Projects",
+  blog: "Blog",
   woautoDesc: "Never lose sight of your car parking ever again.",
   parenDesc:
     "Enjoy your vacation and keep the local currency ready at your fingertips.",
@@ -14,6 +15,8 @@ export default {
   email: "Email",
   telegram: "Telegram",
   github: "GitHub",
+  linkedin: "LinkedIn",
+  fasting: "Fasting",
   copyright: "© 2020 - ",
   impressum: "Imprint",
   datenschutz: "Privacy Policy",

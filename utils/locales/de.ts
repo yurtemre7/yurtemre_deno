@@ -6,6 +6,7 @@ export default {
   bornInfo: "Geboren am 16. Januar 2002 • B.Sc. Informatik",
   experience: "Berufserfahrung",
   projects: "Projekte",
+  blog: "Blog",
   woautoDesc: "Verliere nie wieder dein geparktes Auto aus den Augen.",
   parenDesc:
     "Genieße deinen Urlaub und habe die Landeswährung stets griffbereit.",
@@ -14,6 +15,8 @@ export default {
   email: "E-Mail",
   telegram: "Telegram",
   github: "GitHub",
+  linkedin: "LinkedIn",
+  fasting: "Fasten",
   copyright: "© 2020 - ",
   impressum: "Impressum",
   datenschutz: "Datenschutz",

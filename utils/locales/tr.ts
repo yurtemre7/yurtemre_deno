@@ -6,6 +6,7 @@ export default {
   bornInfo: "16 Ocak 2002'de doğdu • Bilgisayar Bilimi Lisans",
   experience: "Çalışma Deneyimi",
   projects: "Projeler",
+  blog: "Blog",
   woautoDesc: "Araba park yerinizi bir daha asla kaybetmeyin.",
   parenDesc:
     "Tatilinizin keyfini çıkarın ve yerel para birimini elinizin altında tutun.",
@@ -14,6 +15,8 @@ export default {
   email: "E-posta",
   telegram: "Telegram",
   github: "GitHub",
+  linkedin: "LinkedIn",
+  fasting: "Oruç",
   copyright: "© 2020 - ",
   impressum: "Künye",
   datenschutz: "Gizlilik Politikası",

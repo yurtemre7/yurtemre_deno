@@ -48,13 +48,23 @@ export default function WordOfTheDay(
     return (
       <div className="flex-col items-center justify-center text-gray-10">
         <div className="text-5xl m-2 font-serif text-center">
-          <a className="hover:underline" href={word_data.link}>
+          <a
+            className="hover:underline"
+            href={word_data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {word_data.word}
           </a>
         </div>
         <div className="text-xl text-center">
           {t.wordOfDay}{" "}
-          <a className="underline bold" href="https://www.duden.de">
+          <a
+            className="underline bold"
+            href="https://www.duden.de"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {t.duden}
           </a>.
         </div>

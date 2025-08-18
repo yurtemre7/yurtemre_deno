@@ -322,6 +322,8 @@ export default function Home({ wotd, lang }: InitialData) {
               <div className="p-4 rounded-lg">
                 <a
                   href="/paren"
+                  target="_self"
+                  rel="noopener noreferrer"
                   className="text-xl font-medium transition-colors"
                 >
                   Paren
@@ -339,6 +341,8 @@ export default function Home({ wotd, lang }: InitialData) {
               <div className="p-4 rounded-lg">
                 <a
                   href="https://yurtemre7.github.io/steel-mouse/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-xl font-medium transition-colors"
                 >
                   SteelMouse
@@ -406,7 +410,6 @@ export default function Home({ wotd, lang }: InitialData) {
       </main>
 
       {/* Footer */}
-      {/* Footer */}
       <footer className="py-12">
         <div className="container mx-auto px-4 flex flex-col items-center space-y-6">
           {/* Mixed Contact Links */}
@@ -423,7 +426,7 @@ export default function Home({ wotd, lang }: InitialData) {
               rel="noopener noreferrer"
               className="text-lg transition-colors"
             >
-              GitHub
+              {t.github}
             </a>
             <a
               href="https://www.linkedin.com/in/yurtemre"
@@ -431,7 +434,7 @@ export default function Home({ wotd, lang }: InitialData) {
               rel="noopener noreferrer"
               className="text-lg transition-colors"
             >
-              LinkedIn
+              {t.linkedin}
             </a>
             <a
               href="https://t.me/emredev"
@@ -439,7 +442,23 @@ export default function Home({ wotd, lang }: InitialData) {
               rel="noopener noreferrer"
               className="text-lg transition-colors"
             >
-              Telegram
+              {t.telegram}
+            </a>
+            <a
+              href="/blog"
+              target="_self"
+              rel="noopener noreferrer"
+              className="text-lg transition-colors"
+            >
+              {t.blog}
+            </a>
+            <a
+              href="/fasting"
+              target="_self"
+              rel="noopener noreferrer"
+              className="text-lg transition-colors"
+            >
+              {t.fasting}
             </a>
           </div>
           {/* Impressum, Datenschutz, and Copyright */}

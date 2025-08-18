@@ -6,6 +6,7 @@ export default {
   bornInfo: "2002年1月16日生まれ • コンピュータサイエンス学士",
   experience: "実務経験",
   projects: "プロジェクト",
+  blog: "ブログ",
   woautoDesc: "駐車した場所を二度と見失いません。",
   parenDesc: "休暇を楽しみ、現地通貨を手元に簡単に管理しましょう。",
   steelMouseDesc:
@@ -13,6 +14,8 @@ export default {
   email: "メール",
   telegram: "テレグラム",
   github: "ギットハブ",
+  linkedin: "リンクトイン",
+  fasting: "断食",
   copyright: "© 2020 - ",
   impressum: "インプリント",
   datenschutz: "データ保護方針",
