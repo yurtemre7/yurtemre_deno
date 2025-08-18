@@ -4,13 +4,15 @@ date: 2025-08-18
 excerpt: "Who am I and what do I do?"
 ---
 
-# Who am I?
+## Who am I?
 
 I am a young developer based in Berlin. Having worked with Flutter and Dart for the last 4 years, I've acquired a ton of experience in mobile app development. I know the best practices, helped found them myself and I am still learning till this day.
 
+## My Dream
+
 My dream is it to build with that foundation that I've created the best applications possible. Always striving to improve from sprint to sprint. Thanks to the *Ära* (age) of AI everyday workflows are speed up, developers can start projects much faster but at the cost of quality and uniqueness. **I am here to counteract that.**
 
-# My Stack
+## My Stack
 
 I use
 - Flutter
@@ -27,6 +29,8 @@ I use
 And those tools have enabled me to build full stack applications.
 
 The most proud application yet is [Paren](/paren), which enabled fast currency conversions in your vacation to help you *exactly when you need it*.
+
+## Code Example
 
 As for coding example, I'll provide you the code of my little stock market prediction algorithm, which is pure regression based.
 
