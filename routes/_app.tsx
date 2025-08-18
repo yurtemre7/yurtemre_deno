@@ -30,6 +30,7 @@ export default function App(props: PageProps) {
 
         {/* Styling */}
         <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="/blog.css" />
 
         {/* Theme and other meta */}
         <meta name="theme-color" content="#121212" />
