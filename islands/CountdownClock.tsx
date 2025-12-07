@@ -8,11 +8,11 @@ interface CountdownClockProps {
   bg_color?: string;
 }
 
-function CountdownClock(
+export default function CountdownClock(
   {
     targetDate,
     label = "Time Left",
-    dark_bg_color = "#0A0F1E",
+    dark_bg_color = "#141721",
   }: CountdownClockProps,
 ) {
   const timeRemaining = useSignal(calculateTimeRemaining());
@@ -91,5 +91,3 @@ function CountdownClock(
     </div>
   );
 }
-
-export default CountdownClock;
