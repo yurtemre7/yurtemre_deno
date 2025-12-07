@@ -115,7 +115,9 @@ export default function Snowfall() {
               transform: rotate(0deg) scale(var(--flake-scale, 1));
             }
             100% {
-              transform: translateY(${documentHeight + globalThis.innerHeight}px) rotate(360deg) scale(var(--flake-scale, 1));
+              transform: translateY(${
+          documentHeight + globalThis.innerHeight
+        }px) rotate(360deg) scale(var(--flake-scale, 1));
             }
           }
         `}

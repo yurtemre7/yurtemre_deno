@@ -31,7 +31,9 @@ function getPreferredLanguage(acceptLanguageHeader: string): string {
 app.use(async (ctx) => {
   ctx.state.shared = "hello";
   const acceptLanguage = ctx.req.headers.get("accept-language") || "";
-  ctx.state.language = getPreferredLanguage(acceptLanguage) as State["language"];
+  ctx.state.language = getPreferredLanguage(
+    acceptLanguage,
+  ) as State["language"];
   return await ctx.next();
 });
 

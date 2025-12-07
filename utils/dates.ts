@@ -23,7 +23,7 @@ export const formatMonthYear = (date: Date, locale: string): string => {
 export const calculateDurationInYearsAndMonths = (
   startDate: Date,
   endDate: Date | "present",
-  locale: string = "en"
+  locale: string = "en",
 ): string => {
   const end = endDate === "present" ? new Date() : endDate;
   // If the start is after the end, return a localized zero-duration string.
