@@ -1,18 +1,21 @@
-//import DateCountdown from "../islands/DateCountdown.tsx";
-import ParenFlutter from "@/islands/paren_flutter.tsx";
+import ParenFlutter from "../islands/ParenFlutter.tsx";
 import CountdownClock from "@/islands/CountdownClock.tsx";
+import { define } from "../utils.ts";
 
 const parenAppleDownloadURL =
   "https://apps.apple.com/us/app/paren/id6578395712";
 const parenGoogleDownloadURL =
   "https://play.google.com/store/apps/details?id=de.emredev.paren";
 
-export default function Paren() {
+export default define.page(function Paren() {
   const vacationJapan = new Date(2024, 8, 27, 13, 10);
   const vacationJapan2 = new Date(2025, 8, 10, 15, 50);
   return (
     <div>
-      <nav className="p-4 shadow-lg">
+      <head>
+        <title>Par円 | yurtemre.de</title>
+      </head>
+      <nav className="p-4">
         <div className="container mx-auto flex justify-between items-center">
           <a
             href="/"
@@ -64,4 +67,4 @@ export default function Paren() {
       </div>
     </div>
   );
-}
+});

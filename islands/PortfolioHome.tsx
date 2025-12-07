@@ -3,7 +3,6 @@ interface PortfolioHomeProps {
 }
 
 import { useSignal } from "@preact/signals";
-import { useEffect } from "preact/hooks";
 
 import {
   calculateDurationInYearsAndMonths,
@@ -15,10 +14,56 @@ import translations from "@/utils/locales/translations.ts";
 import dayLine from "@/utils/locales/dayline.ts";
 import Snowfall from "./snowfall.tsx";
 
+interface WorkExperience {
+  id: string;
+  title: string;
+  company: string;
+  startDate: Date;
+  endDate: Date | "present";
+  description: string;
+}
+
+const workExperiences: WorkExperience[] = [
+  {
+    id: "famedly-1",
+    title: "Flutter Developer",
+    company: "Famedly",
+    startDate: new Date("2026-01-05"),
+    endDate: "present",
+    description:
+      "Flutter App developer for the cross-platform healthcare communication app. Working on new features, bug fixes, and performance improvements while collaborating with a team of developers and designers to enhance user experience and ensure compliance with healthcare regulations.",
+  },
+  {
+    id: "det-1",
+    title: "Frontend Developer",
+    company: "DEIN ERSTER TAG",
+    startDate: new Date("2025-06-12"),
+    endDate: new Date("2025-12-31"),
+    description:
+      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots and internal copy generation. Also heavily involved on the web development using ReactJS and WordPress.",
+  },
+  {
+    id: "det-2",
+    title: "Junior Frontend Developer",
+    company: "DEIN ERSTER TAG",
+    startDate: new Date("2023-06-01"),
+    endDate: new Date("2025-06-01"),
+    description:
+      "Continued development of the cross-platform Flutter app, implemented highvalued business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
+  },
+  {
+    id: "appmelder",
+    title: "Junior Frontend Developer",
+    company: "Appmelder",
+    startDate: new Date("2021-04-01"),
+    endDate: new Date("2022-12-01"),
+    description:
+      "Refactored the initial production codebase by applying improved techniques and aligning the app's design with Figma specifications. Implemented revenue-critical features through rapid sprints, successfully delivering customer value using Flutter, Dart, and Python.",
+  },
+];
+
 export default function PortfolioHome(props: PortfolioHomeProps) {
   const language = useSignal<string>(props.language);
-  const bgop = useSignal<number>(0.35);
-  const bgblur = useSignal<number>(1);
   const expandedExperience = useSignal<string | null>(null);
   const t = translations[language.value];
   // day string produced by utils/locales/dayline.ts
@@ -26,30 +71,6 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
   }
-
-  useEffect(() => {
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const h1 = Math.max(
-          1,
-          document.body.scrollHeight - globalThis.innerHeight,
-        );
-        const h = Math.max(0, globalThis.scrollY || 0);
-        const ratio = Math.max(0, Math.min(1, h / h1));
-        bgop.value = ratio * -0.15 + 0.35;
-        bgblur.value = ratio * 5 + 1;
-      });
-    };
-
-    globalThis.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      globalThis.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
 
   return (
     <div className="text-[#E2E8F0] min-h-screen scroll-smooth animate-fadeIn overflow-hidden">
@@ -59,33 +80,9 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
           id="hero"
           className="relative min-h-screen flex flex-col justify-center items-center text-center"
         >
-          {/* <div className="absolute blur-sm inset-0 bg-[url(/fuji.jpg)] bg-cover bg-fixed bg-center opacity-30 -z-10"/> */}
-          <img
-            src="/fuji.jpg"
-            loading="lazy"
-            className="absolute -z-10 inset-0"
-            style={{
-              filter: `blur(${bgblur.value}px)`,
-              opacity: bgop.value,
-              objectFit: "cover",
-              position: "fixed",
-              objectPosition: "center",
-              width: "100vw",
-              height: "100vh",
-            }}
-            alt="Mount Fuji landscape"
-          />
-
           <div className="absolute top-0 left-0 opacity-75 md:p-8 p-2">
             <p className="">{dayLine(language.value)}</p>
           </div>
-
-          <div className="absolute bottom-0 right-0 opacity-50 md:p-8 p-2">
-            <a href="https://pixabay.com/de/photos/berg-fuji-tanuki-see-571387/">
-              berg-fuji-tanuki-see
-            </a>
-          </div>
-
           <div className="absolute top-0 right-0 opacity-75 md:p-8 p-2">
             <div
               className="flex flex-col md:inline-flex md:flex-row rounded-xl shadow-sm bg-transparent items-stretch md:items-center md:space-x-2 space-y-2 md:space-y-0"
@@ -182,14 +179,14 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
             </div>
           </div>
 
-          <header id="main-content" className="mb-4">
+          <div id="main-content" className="mb-4">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
               {t.name}
             </h1>
             <p className="text-xl sm:text-2xl pt-1">
               {t.profession}
             </p>
-          </header>
+          </div>
 
           <button
             type="button"
@@ -404,119 +401,6 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
       </main>
       {/* Snowfall Component */}
       <Snowfall />
-
-      {/* Footer */}
-      <footer className="py-12">
-        <div className="container mx-auto px-4 flex flex-col items-center space-y-6">
-          {/* Mixed Contact Links */}
-          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <a
-              href="mailto:yurtemre7@icloud.com"
-              className="text-lg transition-colors"
-            >
-              {" "}yurtemre7@icloud.com
-            </a>
-            <a
-              href="https://github.com/yurtemre7"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg transition-colors"
-            >
-              {t.github}
-            </a>
-            <a
-              href="https://www.linkedin.com/in/yurtemre"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg transition-colors"
-            >
-              {t.linkedin}
-            </a>
-            <a
-              href="https://t.me/emredev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg transition-colors"
-            >
-              {t.telegram}
-            </a>
-            <a
-              href="/fasting"
-              target="_self"
-              rel="noopener noreferrer"
-              className="text-lg transition-colors"
-            >
-              {t.fasting}
-            </a>
-          </div>
-          {/* Impressum, Datenschutz, and Copyright */}
-          <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-            <a
-              href="/impressum"
-              className="text-xs md:text-sm transition-colors"
-            >
-              {t.impressum}
-            </a>
-            <a
-              href="/datenschutz"
-              className="text-xs md:text-sm transition-colors"
-            >
-              {t.datenschutz}
-            </a>
-          </div>
-          <p className="text-xs md:text-sm">
-            {t.name} {t.copyright} {new Date().getFullYear()}
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }
-
-interface WorkExperience {
-  id: string;
-  title: string;
-  company: string;
-  startDate: Date;
-  endDate: Date | "present";
-  description: string;
-}
-
-const workExperiences: WorkExperience[] = [
-  {
-    id: "famedly-1",
-    title: "Flutter Developer",
-    company: "Famedly",
-    startDate: new Date("2026-01-05"),
-    endDate: "present",
-    description:
-      "Flutter App developer for the cross-platform healthcare communication app. Working on new features, bug fixes, and performance improvements while collaborating with a team of developers and designers to enhance user experience and ensure compliance with healthcare regulations.",
-  },
-  {
-    id: "det-1",
-    title: "Frontend Developer",
-    company: "DEIN ERSTER TAG",
-    startDate: new Date("2025-06-12"),
-    endDate: new Date("2025-12-31"),
-    description:
-      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots and internal copy generation. Also heavily involved on the web development using ReactJS and WordPress.",
-  },
-  {
-    id: "det-2",
-    title: "Junior Frontend Developer",
-    company: "DEIN ERSTER TAG",
-    startDate: new Date("2023-06-01"),
-    endDate: new Date("2025-06-01"),
-    description:
-      "Continued development of the cross-platform Flutter app, implemented highvalued business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
-  },
-  {
-    id: "appmelder",
-    title: "Junior Frontend Developer",
-    company: "Appmelder",
-    startDate: new Date("2021-04-01"),
-    endDate: new Date("2022-12-01"),
-    description:
-      "Refactored the initial production codebase by applying improved techniques and aligning the app's design with Figma specifications. Implemented revenue-critical features through rapid sprints, successfully delivering customer value using Flutter, Dart, and Python.",
-  },
-];
