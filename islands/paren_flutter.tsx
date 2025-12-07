@@ -3,31 +3,36 @@ import { useSignal } from "@preact/signals";
 const parenURL = "https://yurtemre7.github.io/paren/";
 
 export default function ParenFlutter() {
-  const maxWidth = useSignal(300);
+  const maxWidth = useSignal(350);
 
   function toggleWidth() {
-    if (maxWidth.value == 600) {
-      maxWidth.value = 300;
+    if (maxWidth.value == 700) {
+      maxWidth.value = 350;
     } else {
-      maxWidth.value = 600;
+      maxWidth.value = 700;
     }
   }
 
   return (
-    <div className="text-center items-center w-1/2 my-10">
-      <h2 className="text-4xl font-bold text-white mb-8">Check it out here</h2>
-      <div className="flex justify-center m-6">
+    <div className="flex flex-col items-center w-full md:w-1/2 mx-auto my-10">
+      <h2 className="text-4xl font-bold text-white mb-8 text-center">
+        Check it out here
+      </h2>
+
+      <div className="flex justify-center w-full px-4 mb-6">
         <iframe
-          className="rounded-2xl"
+          className="rounded-2xl w-full"
           src={parenURL}
-          height="600"
-          width={`${maxWidth} sm:300`}
+          height={700}
+          width={maxWidth.value}
+          style={{ maxWidth: `${maxWidth.value}px` }}
         />
       </div>
+
       <button
         type="button"
         onClick={toggleWidth}
-        className="sm:inline hidden text-white mx-4 p-2 rounded bg-orange-800 hover:bg-orange-900 transition-colors duration-300"
+        className="cta-button"
       >
         Switch View
       </button>
