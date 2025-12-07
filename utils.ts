@@ -4,7 +4,7 @@ import { createDefine } from "fresh";
 // data among middlewares, layouts and routes.
 export interface State {
   shared: string;
-  language: "en" | "de" | "ja" | "tr";
+  language: string;
 }
 
 export const define = createDefine<State>();
