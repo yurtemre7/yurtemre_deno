@@ -1,0 +1,42 @@
+@import "tailwindcss";
+@import "tailwindcss/utilities";
+:where(h1) {
+  margin-block: 0.67em;
+  font-size: 2em;
+}
+
+/* text-[#FF6F61] hover:text-[#FFB3A7]; */
+a {
+  color: #e53e3e;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ffb3a7;
+}
+
+p {
+  color: #a0aec0;
+}
+
+.cta-button {
+  height: 30px;
+  width: 180px;
+  background-color: #e53e3e;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #e2e8f0;
+}
+
+.cta-button:hover {
+  opacity: 0.8;
+  border: 1px solid #e2e8f0;
+}
+
+img {
+  pointer-events: none;
+}
+
