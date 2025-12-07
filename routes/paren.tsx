@@ -1,7 +1,6 @@
 //import DateCountdown from "../islands/DateCountdown.tsx";
-import ParenFlutter from "../islands/paren_flutter.tsx";
-import MyFooterParen from "../components/my_footer_paren.tsx";
-import CountdownClock from "../islands/CountdownClock.tsx";
+import ParenFlutter from "@/islands/paren_flutter.tsx";
+import CountdownClock from "@/islands/CountdownClock.tsx";
 
 const parenAppleDownloadURL =
   "https://apps.apple.com/us/app/paren/id6578395712";
@@ -14,7 +13,7 @@ export default function Paren() {
   return (
     <html className="bg-orange-600">
       <body>
-        <nav className="bg-gradient-to-r from-orange-400 to-orange-800 p-4 shadow-lg">
+        <nav className="bg-linear-to-r from-orange-400 to-orange-800 p-4 shadow-lg">
           <div className="container mx-auto flex justify-between items-center">
             <a
               href="/"
@@ -68,7 +67,6 @@ export default function Paren() {
             dark_bg_color="orange-600"
           />
         </div>
-        <MyFooterParen />
       </body>
     </html>
   );

@@ -1,13 +1,39 @@
-/// <reference no-default-lib="true" />
-/// <reference lib="dom" />
-/// <reference lib="dom.iterable" />
-/// <reference lib="dom.asynciterable" />
-/// <reference lib="deno.ns" />
+import { App, staticFiles } from "fresh";
+import { type State } from "./utils.ts";
 
-import "@std/dotenv/load";
+export const app = new App<State>();
 
-import { start } from "$fresh/server.ts";
-import manifest from "./fresh.gen.ts";
-import config from "./fresh.config.ts";
+app.use(staticFiles());
 
-await start(manifest, config);
+const SUPPORTED_LANGUAGES = ["en", "de", "ja", "tr"];
+
+function getPreferredLanguage(acceptLanguageHeader: string): string {
+  const preferences = acceptLanguageHeader
+    .split(",")
+    .map((part) => {
+      const [tag, q] = part.split(";q=");
+      const primary = tag.trim().toLowerCase().split("-")[0];
+      const quality = q ? parseFloat(q) : 1.0;
+      return { tag: primary, quality };
+    })
+    .sort((a, b) => b.quality - a.quality);
+
+  for (const pref of preferences) {
+    if (SUPPORTED_LANGUAGES.includes(pref.tag)) {
+      return pref.tag;
+    }
+  }
+
+  return "en";
+}
+
+// Pass a shared value from a middleware
+app.use(async (ctx) => {
+  ctx.state.shared = "hello";
+  const acceptLanguage = ctx.req.headers.get("accept-language") || "";
+  ctx.state.language = getPreferredLanguage(acceptLanguage) as State["language"];
+  return await ctx.next();
+});
+
+// Include file-system based routes here
+app.fsRoutes();

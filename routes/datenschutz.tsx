@@ -1,4 +1,6 @@
-export default function Datenschutz() {
+import { define } from "../utils.ts";
+
+export default define.page(function Datenschutz() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center bg-[#0A0F1E] text-[#E2E8F0]">
       <div className="max-w-2xl w-full p-6 md:p-12 rounded-lg shadow-md my-8">
@@ -513,4 +515,4 @@ export default function Datenschutz() {
       </div>
     </div>
   );
-}
+});

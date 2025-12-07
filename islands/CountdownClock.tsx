@@ -44,7 +44,7 @@ function CountdownClock(
   if (timeRemaining.value.days >= 1) {
     return (
       <div
-        className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
+        className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
       >
         <div className="text-center mb-1">{label}</div>
         <div className="text-center">
@@ -65,7 +65,7 @@ function CountdownClock(
   ) {
     return (
       <div
-        className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
+        className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
       >
         <div className="text-center">{label}</div>
         <div className="text-center">✅</div>
@@ -78,7 +78,7 @@ function CountdownClock(
 
   return (
     <div
-      className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 rounded-xl shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
+      className={`bg-${dark_bg_color} text-[#E2E8F0] p-2 shadow-xl text-xs sm:text-sm md:text-base font-semibold`}
     >
       <div className="text-center mb-1">{label}</div>
       <div className="text-center">

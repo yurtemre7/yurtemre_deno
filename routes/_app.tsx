@@ -1,12 +1,12 @@
-import { type PageProps } from "$fresh/server.ts";
+import { define } from "../utils.ts";
 
-export default function App(props: PageProps) {
+export default define.page(function App({ Component, url, state }) {
+  // console.log(req.headers);
   const description =
     "Portfolio of Emre Yurtseven — mobile & web developer focusing on Flutter, TypeScript and modern front-end development.";
-
   return (
     <html
-      lang={props.data?.lang ?? "en"}
+      lang={state.language}
       className="bg-[#0A0F1E] text-[#E2E8F0]"
     >
       <head>
@@ -22,22 +22,18 @@ export default function App(props: PageProps) {
         />
 
         {/* Title and description for SEO */}
-        <title>{props.url.host}</title>
+        <title>{url.host}</title>
         <meta name="description" content={description} />
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
 
-        {/* Styling */}
-        <link rel="stylesheet" href="/styles.css" />
-        <link rel="stylesheet" href="/blog.css" />
-
         {/* Theme and other meta */}
         <meta name="theme-color" content="#121212" />
       </head>
       <body className="min-h-screen">
-        <props.Component />
+        <Component />
       </body>
     </html>
   );
-}
+});

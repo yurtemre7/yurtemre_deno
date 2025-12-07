@@ -1,6 +1,6 @@
 import { useEffect, useState } from "preact/hooks";
 
-const SNOWFLAKE_COUNT = 20;
+const SNOWFLAKE_COUNT = 12;
 
 const getSeasonalEmoji = (): string => {
   const today = new Date();
@@ -29,12 +29,23 @@ const getSeasonalEmoji = (): string => {
   return getRandomEmoji(winterEmojis);
 };
 
-const generateRandomSnowflake = () => ({
-  left: Math.random() * 100 + "vw",
-  animationDuration: 12.5 + Math.random() * 5 + "s",
-  opacity: 0.25 + Math.random() * 0.5,
-  transform: `scale(${0.3 + Math.random() * 0.7})`,
-});
+const generateRandomSnowflake = () => {
+  const duration = 10 + Math.random() * 12; // seconds
+  const scale = 0.35 + Math.random() * 0.85;
+  return {
+    left: Math.random() * 100 + "vw",
+    duration,
+    animationDuration: `${duration}s`,
+    // a bit more transparent to make it less crowdy
+    opacity: 0.15 + Math.random() * 0.35,
+    scale,
+    fontSize: `${8 + Math.random() * 28}px`,
+    // negative delay so flakes are staggered across the animation timeline
+    animationDelay: `-${Math.random() * duration}s`,
+    // start slightly off-screen above
+    topStart: `-${30 + Math.random() * 70}vh`,
+  };
+};
 
 export default function Snowfall() {
   const emoji = getSeasonalEmoji();
@@ -72,34 +83,39 @@ export default function Snowfall() {
       className="fixed inset-0 overflow-hidden pointer-events-none"
       style={{ height: `${documentHeight}px` }}
     >
-      {Array.from({ length: SNOWFLAKE_COUNT }).map((_, index) => (
-        <div
-          key={index}
-          className="snowflake fixed text-white"
-          style={{
-            left: generateRandomSnowflake().left,
-            top: `-${50 + (Math.random() * 50)}vh`, // Start off-screen
-            opacity: generateRandomSnowflake().opacity,
-            fontSize: `${10 + Math.random() * 35}px`,
-            animation: `fall linear infinite`,
-            animationDuration: generateRandomSnowflake().animationDuration,
-            transform: generateRandomSnowflake().transform,
-          }}
-        >
-          {emoji}
-        </div>
-      ))}
+      {Array.from({ length: SNOWFLAKE_COUNT }).map((_, index) => {
+        const flake = generateRandomSnowflake();
+        return (
+          <div
+            key={index}
+            className="snowflake fixed text-white"
+            style={{
+              left: flake.left,
+              top: flake.topStart,
+              opacity: flake.opacity,
+              fontSize: flake.fontSize,
+              animation: `fall linear infinite`,
+              animationDuration: flake.animationDuration,
+              animationDelay: flake.animationDelay,
+              // keep scale available to the keyframes via a CSS variable
+              transform: `translateY(0) scale(${flake.scale})`,
+              // @ts-ignore - set CSS variable inline
+              ["--flake-scale"]: String(flake.scale),
+            } as unknown as Record<string, string | number>}
+          >
+            {emoji}
+          </div>
+        );
+      })}
 
       <style>
         {`
           @keyframes fall {
             0% {
-              transform: rotate(0deg);
+              transform: rotate(0deg) scale(var(--flake-scale, 1));
             }
             100% {
-              transform: translateY(${
-          documentHeight + globalThis.innerHeight
-        }px) rotate(360deg);
+              transform: translateY(${documentHeight + globalThis.innerHeight}px) rotate(360deg) scale(var(--flake-scale, 1));
             }
           }
         `}

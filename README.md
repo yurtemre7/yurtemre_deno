@@ -1,23 +1,17 @@
 # yurtemre fresh project
 
-[![Made with Fresh](https://fresh.deno.dev/fresh-badge-dark.svg)](https://fresh.deno.dev)
+Your new Fresh project is ready to go. You can follow the Fresh "Getting
+Started" guide here: https://fresh.deno.dev/docs/getting-started
 
-### Development
+### Usage
 
-Start the project in dev mode:
+Make sure to install Deno:
+https://docs.deno.com/runtime/getting_started/installation
+
+Then start the project in development mode:
 
 ```
-deno task start
+deno task dev
 ```
 
 This will watch the project directory and restart as necessary.
-
-### Deploy
-
-How to run on a server
-
-```
-deno task run
-```
-
-This will make it run in production mode on port 80.
