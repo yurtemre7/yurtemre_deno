@@ -7,7 +7,7 @@ export default define.page(function SteelMouse() {
         <title>SteelMouse | yurtemre.de</title>
       </head>
       <nav className="p-4">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="flex justify-between items-center">
           <a
             href="/"
             className="text-lg font-bold hover:underline"

@@ -4,7 +4,7 @@ export default define.page(function Datenschutz() {
   return (
     <div>
       <nav className="p-4">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="flex justify-between items-center">
           <a
             href="/"
             className="text-white text-lg font-bold hover:underline"

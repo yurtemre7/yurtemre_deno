@@ -80,10 +80,10 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
           id="hero"
           className="relative min-h-screen flex flex-col justify-center items-center text-center"
         >
-          <div className="absolute top-0 left-0 opacity-75 md:p-8 p-2">
+          <div className="absolute top-0 left-0 opacity-75 md:p-8 p-4">
             <p className="">{dayLine(language.value)}</p>
           </div>
-          <div className="absolute top-0 right-0 opacity-75 md:p-8 p-2">
+          <div className="absolute top-0 right-0 opacity-75 md:p-8 p-4">
             <div
               className="flex flex-col md:inline-flex md:flex-row rounded-xl shadow-sm bg-transparent items-stretch md:items-center md:space-x-2 space-y-2 md:space-y-0"
               role="group"
