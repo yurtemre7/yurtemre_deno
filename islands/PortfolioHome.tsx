@@ -331,7 +331,7 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
               </div>
               <div className="p-4 rounded-lg">
                 <a
-                  href="https://yurtemre7.github.io/steel-mouse/"
+                  href="/steelmouse"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xl font-medium transition-colors"

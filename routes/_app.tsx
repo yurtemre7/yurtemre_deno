@@ -80,6 +80,14 @@ export default define.page(function App({ Component, url, state }) {
             >
               Par円
             </a>
+             <a
+              href="/steelmouse"
+              target="_self"
+              rel="noopener noreferrer"
+              className="text-lg transition-colors"
+            >
+              SteelMouse
+            </a>
             <a
               href="/fasting"
               target="_self"
