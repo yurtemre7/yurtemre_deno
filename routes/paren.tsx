@@ -19,17 +19,26 @@ export default define.page(function Paren() {
         <div className="container mx-auto flex justify-between items-center">
           <a
             href="/"
-            className="text-white text-lg font-bold hover:underline"
+            className="text-lg font-bold hover:underline"
           >
             ← yurtemre.de
           </a>
-          <h2 className="text-white font-bold text-center">Par円</h2>
+          <h2 className="font-bold text-center">Par円</h2>
         </div>
       </nav>
       <div className="min-h-screen flex sm:flex-row flex-col items-center justify-center">
-        <ParenFlutter />
+        <div className="flex flex-col items-center w-full md:w-1/2 mx-auto my-10">
+          <div className="flex justify-center w-full px-4 mb-6">
+            <img
+              width={300}
+              src="/paren_app.png"
+              alt="Download Paren in the Apple AppStore"
+              className="rounded-2xl shadow-lg"
+            />
+          </div>
+        </div>
         <div className="text-center items-center w-1/2 my-10">
-          <h2 className="text-4xl font-bold text-white mb-8">
+          <h2 className="text-4xl font-bold mb-8">
             Download Par円👇
           </h2>
           <div className="flex justify-center sm:flex-row flex-col m-8">
