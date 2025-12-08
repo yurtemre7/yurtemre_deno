@@ -11,9 +11,6 @@ export default define.page(function Paren() {
   const vacationJapan2 = new Date(2025, 8, 10, 15, 50);
   return (
     <div>
-      <head>
-        <title>Par円 | yurtemre.de</title>
-      </head>
       <nav className="p-4">
         <div className="flex justify-between items-center">
           <a

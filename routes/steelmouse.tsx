@@ -3,9 +3,6 @@ import { define } from "../utils.ts";
 export default define.page(function SteelMouse() {
   return (
     <div>
-      <head>
-        <title>SteelMouse | yurtemre.de</title>
-      </head>
       <nav className="p-4">
         <div className="flex justify-between items-center">
           <a

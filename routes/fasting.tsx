@@ -105,9 +105,6 @@ export default define.page(function Fasting() {
   if (fastingDate === undefined) {
     return (
       <div>
-        <head>
-          <title>fasting | yurtemre.de</title>
-        </head>
         <nav className="p-4">
           <div className="flex justify-between items-center">
             <a
@@ -212,9 +209,6 @@ export default define.page(function Fasting() {
 
   return (
     <div>
-      <head>
-        <title>fasting | yurtemre.de</title>
-      </head>
       <nav className="p-4">
         <div className="flex justify-between items-center">
           <a
