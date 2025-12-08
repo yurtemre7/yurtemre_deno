@@ -1,6 +1,6 @@
 import { useSignal } from "@preact/signals";
 
-const parenURL = "/flutter";
+const parenURL = "/iparen";
 
 export default function ParenFlutter() {
   const maxWidth = useSignal(350);
