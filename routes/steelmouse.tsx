@@ -32,7 +32,7 @@ export default define.page(function SteelMouse() {
           </div>
         </div>
 
-        <main className="w-full max-w-3xl backdrop-blur rounded-xl shadow-md">
+        <main className="w-full max-w-3xl">
           <section className="mb-4">
             <h2 className="text-lg font-semibold mb-2">About</h2>
             <p>
