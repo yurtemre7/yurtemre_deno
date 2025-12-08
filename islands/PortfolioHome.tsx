@@ -180,10 +180,10 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
           </div>
 
           <div id="main-content" className="mb-4">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold">
+            <span className="text-3xl sm:text-4xl md:text-5xl font-bold">
               {t.name}
-            </h1>
-            <p className="text-xl sm:text-2xl pt-1">
+            </span>
+            <p className="text-lg sm:text-xl md:text-2xl">
               {t.profession}
             </p>
           </div>
