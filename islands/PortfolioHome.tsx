@@ -30,27 +30,26 @@ const workExperiences: WorkExperience[] = [
     company: "Famedly",
     startDate: new Date("2026-01-05"),
     endDate: "present",
-    description:
-      "Flutter App developer for the cross-platform healthcare communication app. Working on new features, bug fixes, and performance improvements while collaborating with a team of developers and designers to enhance user experience and ensure compliance with healthcare regulations.",
+    description: "TBD",
   },
   {
     id: "det-1",
     title: "Frontend Developer",
     company: "DEIN ERSTER TAG",
-    startDate: new Date("2025-06-12"),
+    startDate: new Date("2023-06-01"),
     endDate: new Date("2025-12-31"),
     description:
-      "Continued development of the cross-platform Flutter app. Integrated CI/CD via Fastlane for automated builds and leveraged OpenAI, Azure, and AWS for chatbots and internal copy generation. Also heavily involved on the web development using ReactJS and WordPress.",
+      "Developed and maintained a cross-platform Flutter application in the education sector. Took charge of implementing key product features such as the 'DET Direkt' application flow, in which students can apply within the app and receive updates on their application status. Collaborated closely with backend developers to integrate new APIs, such as AI solutions 'AI ChatBot Bo' for student career support. Implemented notifications using Firebase Messaging and analytics tools like Appsflyer and Google Analytics to monitor user engagement and app performance. Also improved the app's CI/CD pipeline using fastlane.",
   },
-  {
-    id: "det-2",
-    title: "Junior Frontend Developer",
-    company: "DEIN ERSTER TAG",
-    startDate: new Date("2023-06-01"),
-    endDate: new Date("2025-06-01"),
-    description:
-      "Continued development of the cross-platform Flutter app, implemented highvalued business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
-  },
+  // {
+  //   id: "det-2",
+  //   title: "Junior Frontend Developer",
+  //   company: "DEIN ERSTER TAG",
+  //   startDate: new Date("2023-06-01"),
+  //   endDate: new Date("2025-06-01"),
+  //   description:
+  //     "Continued development of the cross-platform Flutter app, implemented highvalued business features, Firebase notifications, and analytics (Appsflyer/GA). Then migrated it to Flutter Web embedded in ReactJS and WordPress.",
+  // },
   {
     id: "appmelder",
     title: "Junior Frontend Developer",
@@ -58,7 +57,7 @@ const workExperiences: WorkExperience[] = [
     startDate: new Date("2021-04-01"),
     endDate: new Date("2022-12-01"),
     description:
-      "Refactored the initial production codebase by applying improved techniques and aligning the app's design with Figma specifications. Implemented revenue-critical features through rapid sprints, successfully delivering customer value using Flutter, Dart, and Python.",
+      "Developed and maintained a cross-platform Flutter application in the legal-tech sector. Implemented new features, creation of digital 'Briefkasten' and the 'Schnellmelder' a fast reporting mode to let the user report an advertisement in their mailbox before asking them to register a profile. Collaborated with backend developers to integrate RESTful APIs and ensure seamless data flow between the app and server. Utilized Firebase services for authentication, Sentry for error tracking and improved the app's CI/CD pipeline using fastlane.",
   },
 ];
 
