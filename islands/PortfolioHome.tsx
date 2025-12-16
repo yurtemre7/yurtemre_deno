@@ -12,7 +12,7 @@ import {
 } from "@/utils/dates.ts";
 import translations from "@/utils/locales/translations.ts";
 import dayLine from "@/utils/locales/dayline.ts";
-import Snowfall from "./snowfall.tsx";
+import Snowfall from "./Snowfall.tsx";
 
 interface WorkExperience {
   id: string;
