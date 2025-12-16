@@ -26,9 +26,9 @@ export default {
     "Ramadan 2026",
   ],
   programmingItems: [
-    "Flutter 4+ years",
+    "Flutter 5+ years",
     "Android & iOS Development",
-    "Python 2+ years",
+    "Python",
     "JavaScript / TypeScript - React, Next.js and Fresh",
     "PHP",
   ],

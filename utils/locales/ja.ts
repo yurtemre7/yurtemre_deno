@@ -25,9 +25,9 @@ export default {
     "ラマダン2026",
   ],
   programmingItems: [
-    "Flutter 4年以上",
+    "Flutter 5年以上",
     "AndroidおよびiOS開発",
-    "Python 2年以上",
+    "Python",
     "JavaScript / TypeScript - React、Next.js、Fresh",
     "PHP",
   ],
