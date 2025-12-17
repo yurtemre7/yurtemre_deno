@@ -80,7 +80,7 @@ export default define.page(function App({ Component, url, state }) {
             >
               Par円
             </a>
-             <a
+            <a
               href="/steelmouse"
               target="_self"
               rel="noopener noreferrer"
