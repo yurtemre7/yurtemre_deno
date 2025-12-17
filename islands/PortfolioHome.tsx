@@ -12,7 +12,7 @@ import {
 } from "@/utils/dates.ts";
 import translations from "@/utils/locales/translations.ts";
 import dayLine from "@/utils/locales/dayline.ts";
-import Snowfall from "./SnowFall.tsx";
+import SeasonalBackground from "./SeasonalBackground.tsx";
 
 interface WorkExperience {
   id: string;
@@ -398,8 +398,8 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
         </section> */
         }
       </main>
-      {/* Snowfall Component */}
-      <Snowfall />
+      {/* Emoji Component */}
+      <SeasonalBackground />
     </div>
   );
 }
