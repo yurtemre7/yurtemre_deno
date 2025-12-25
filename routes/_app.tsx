@@ -98,7 +98,7 @@ export default define.page(function App({ Component, url, state }) {
             </a>
             <a
               href="https://sevven.yurtemre.de/"
-              target="_self"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-lg transition-colors"
             >
