@@ -20,6 +20,7 @@ export default {
   copyright: "© 2020 - ",
   impressum: "Künye",
   datenschutz: "Gizlilik Politikası",
+  countdownLabel: "Geri sayımlar",
   countdownLabels: [
     "Yeni Yıl " + getNextYearValue(),
     "Emre'nin Doğum Günü",

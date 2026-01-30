@@ -19,6 +19,7 @@ export type Translations = {
     copyright: string;
     impressum: string;
     datenschutz: string;
+    countdownLabel: string;
     countdownLabels: string[];
     programmingSkills: string;
     languageSkills: string;

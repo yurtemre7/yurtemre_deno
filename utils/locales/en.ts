@@ -20,6 +20,7 @@ export default {
   copyright: "© 2020 - ",
   impressum: "Imprint",
   datenschutz: "Privacy Policy",
+  countdownLabel: "Countdowns",
   countdownLabels: [
     "New Year " + getNextYearValue(),
     "Emre's Birthday",

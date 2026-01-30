@@ -19,6 +19,7 @@ export default {
   copyright: "© 2020 - ",
   impressum: "インプリント",
   datenschutz: "データ保護方針",
+  countdownLabel: "カウントダウン",
   countdownLabels: [
     getNextYearValue() + "年の新年",
     "エムレの誕生日",
