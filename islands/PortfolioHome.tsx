@@ -7,12 +7,13 @@ import { useSignal } from "@preact/signals";
 import {
   calculateDurationInYearsAndMonths,
   formatMonthYear,
-  // getNextBirthday,
-  // getNextNewYears,
+  getNextBirthday,
+  getNextNewYears,
 } from "@/utils/dates.ts";
 import translations from "@/utils/locales/translations.ts";
 import dayLine from "@/utils/locales/dayline.ts";
 import SeasonalBackground from "./SeasonalBackground.tsx";
+import CountdownClock from "./CountdownClock.tsx";
 
 interface WorkExperience {
   id: string;
@@ -30,7 +31,8 @@ const workExperiences: WorkExperience[] = [
     company: "Famedly",
     startDate: new Date("2026-01-05"),
     endDate: "present",
-    description: "TBD",
+    description:
+      "Maintaining the Famedly Matrix TIM Messenger with Flutter. Also working with the Matrix Dart SDK for business customers matrix app solutions.",
   },
   {
     id: "det-1",
@@ -66,6 +68,9 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
   const expandedExperience = useSignal<string | null>(null);
   const t = translations[language.value];
   // day string produced by utils/locales/dayline.ts
+  const newYear = getNextNewYears();
+  const birthDay = getNextBirthday();
+  const fasting = new Date(2026, 1, 17, 23, 59);
 
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
@@ -294,23 +299,6 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
               <div className="p-4 rounded-lg">
                 <a
-                  href="/"
-                  className="text-xl font-medium transition-colors"
-                >
-                  WoAuto
-                </a>
-                <p>{t.woautoDesc}</p>
-                <a
-                  href="https://github.com/yurtemre7/woauto"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm mt-2 inline-block"
-                >
-                  {t.github}
-                </a>
-              </div>
-              <div className="p-4 rounded-lg">
-                <a
                   href="/paren"
                   target="_self"
                   rel="noopener noreferrer"
@@ -347,6 +335,23 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
                   {t.github}
                 </a>
               </div>
+              <div className="p-4 rounded-lg">
+                <a
+                  href="/"
+                  className="text-xl font-medium transition-colors"
+                >
+                  WoAuto
+                </a>
+                <p>{t.woautoDesc}</p>
+                <a
+                  href="https://github.com/yurtemre7/woauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm mt-2 inline-block"
+                >
+                  {t.github}
+                </a>
+              </div>
             </div>
             <h1 className="text-2xl font-semibold mb-6">
               {t.programmingSkills}
@@ -374,29 +379,36 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Countdown Timers Section */}
-        {
-          /* <section id="timers" className="py-8 animate-on-scroll">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {/* Countdown Timers Section */}
+            <h1 className="text-2xl font-semibold mb-6">
+              {t.countdownLabel}
+            </h1>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mx-auto">
               {t.countdownLabels.map((label, index) => (
                 <div key={index} className="flex justify-center">
-                  {index === 2 ? (
-                    <a href="fasting" className="hover:underline">
-                      <CountdownClock targetDate={fasting.getTime()} label={label} />
-                    </a>
-                  ) : (
-                    <CountdownClock targetDate={[ newYear.getTime(), birthDay.getTime() ][index]} label={label} />
-                  )}
+                  {index === 2
+                    ? (
+                      <a href="fasting" className="hover:underline">
+                        <CountdownClock
+                          targetDate={fasting.getTime()}
+                          label={label}
+                        />
+                      </a>
+                    )
+                    : (
+                      <CountdownClock
+                        targetDate={[
+                          newYear.getTime(),
+                          birthDay.getTime(),
+                        ][index]}
+                        label={label}
+                      />
+                    )}
                 </div>
               ))}
             </div>
           </div>
-        </section> */
-        }
+        </section>
       </main>
       {/* Emoji Component */}
       <SeasonalBackground />
