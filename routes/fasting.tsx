@@ -75,11 +75,10 @@ export default define.page(function Fasting() {
   const fastingDate = fastingDates.get(todayString);
   // console.log(fastingDates);
 
-  const ramadanDate = new Date(2026, 1, 17, 23, 59);
-  const firstDay = new Date(2026, 1, 18, 0, 0);
+  const ramadanDate = new Date(2026, 1, 19, 0, 0);
 
   for (let i = 0; i < fastingDates.size; i++) {
-    const tomorrow = new Date(firstDay);
+    const tomorrow = new Date(ramadanDate);
     tomorrow.setDate(tomorrow.getDate() + i);
     // console.log(tomorrow);
     const fastingBegin =
@@ -129,7 +128,7 @@ export default define.page(function Fasting() {
               <div className="items-center justify-center flex">
                 <div className="group flex flex-col gap-1">
                   <img
-                    className="rounded-xl md:group-hover:shadow-2xl md:transition md:duration-500 md:ease-in-out md:transform md:group-hover:-translate-y-1 md:group-hover:scale-110 max-h-[600px]"
+                    className="rounded-xl md:group-hover:shadow-2xl md:transition md:duration-500 md:ease-in-out md:transform md:group-hover:-translate-y-1 md:group-hover:scale-110 max-h-150"
                     src="./hamidiye_mosque.jpg"
                     alt="Hamidiye Mosque"
                   />
@@ -150,14 +149,28 @@ export default define.page(function Fasting() {
                   <div className="mt-5" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
                     {fastingDays.value.map(
-                      (day: string, i: number) => (
-                        <div
-                          key={i}
-                          className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
-                        >
-                          <p className="text-l py-2">{day}</p>
-                        </div>
-                      ),
+                      (day: string, i: number) => {
+                        if (i + 1 === 26) {
+                          // laylatul qadr
+                          return (
+                            <div
+                              key={i}
+                              className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300"
+                            >
+                              <p className="text-l py-2 font-bold">{day}</p>
+                              <p className="text-sm italic">Laylatul Qadr</p>
+                            </div>
+                          );
+                        }
+                        return (
+                          <div
+                            key={i}
+                            className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
+                          >
+                            <p className="text-l py-2">{day}</p>
+                          </div>
+                        );
+                      },
                     )}
                   </div>
                 </div>
@@ -253,7 +266,7 @@ export default define.page(function Fasting() {
           </div>
           <div className="flex-1">
             <img
-              className="rounded-xl md:transition md:duration-500 md:ease-in-out md:transform md:hover:scale-110 max-h-[600px]"
+              className="rounded-xl md:transition md:duration-500 md:ease-in-out md:transform md:hover:scale-110 max-h-150"
               src="./hamidiye_mosque.jpg"
               alt="Hamidiye Mosque"
             />
@@ -273,12 +286,12 @@ export default define.page(function Fasting() {
           <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
             {daysAfterFasting.value.map(
               (day: string, i: number) => {
-                if (day.includes("26.")) {
+                if (i + 1 === 26) {
                   // laylatul qadr
                   return (
                     <div
                       key={i}
-                      className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300 bg-green-100"
+                      className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300"
                     >
                       <p className="text-l py-2 font-bold">{day}</p>
                       <p className="text-sm italic">Laylatul Qadr</p>

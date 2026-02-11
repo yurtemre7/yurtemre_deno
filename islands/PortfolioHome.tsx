@@ -70,7 +70,7 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
   // day string produced by utils/locales/dayline.ts
   const newYear = getNextNewYears();
   const birthDay = getNextBirthday();
-  const fasting = new Date(2026, 1, 17, 23, 59);
+  const fasting = new Date(2026, 1, 19, 0, 0);
 
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
