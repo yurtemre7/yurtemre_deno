@@ -1,316 +1,351 @@
-import { useSignal } from "@preact/signals";
-import { define } from "../utils.ts";
-import CountdownClock from "../islands/CountdownClock.tsx";
-import FastingCountdown from "../islands/FastingCountdown.tsx";
+/**
+ * Fasting Page - Ramadan 2026 Berlin
+ *
+ * Optimized with Fresh 2.0 + Preact best practices:
+ * - Server-side data loading (no blocking client-side CSV parsing)
+ * - Proper TypeScript types for type safety
+ * - Memoized computations to prevent unnecessary recalculations
+ * - Semantic HTML and accessibility improvements
+ * - Clean separation of concerns (data logic vs UI)
+ * - Efficient signal usage with proper cleanup
+ * - Responsive design with Tailwind CSS
+ */
 
-interface FastingDates {
+import { useMemo } from "preact/hooks";
+import { define } from "../utils.ts";
+import { FastingProgress, getBerlinNow } from "../islands/FastingProgress.tsx";
+import CountdownClock from "../islands/CountdownClock.tsx";
+
+// ============================================================================
+// Types
+// ============================================================================
+
+interface FastingDay {
+  /** Date key in format dd.mm.yyyy */
+  key: string;
+  /** Fasting begin date/time */
   begin: Date;
+  /** Fasting end date/time */
   end: Date;
+  /** Day index (0-based) */
   index: number;
+  /** Formatted display string */
+  display: string;
+  /** Is this Laylatul Qadr? */
+  isLaylatulQadr: boolean;
 }
 
-export default define.page(function Fasting() {
-  // map of key date -> FastingDates
-  const fastingDates: Map<string, FastingDates> = new Map();
-  const fastingDays = useSignal<string[]>([]);
-  const daysAfterFasting = useSignal<string[]>([]);
+interface FastingData {
+  /** Map of date key to fasting day info */
+  byDate: Map<string, FastingDay>;
+  /** Ordered array of all fasting days */
+  days: FastingDay[];
+}
 
-  // add from static fasting.csv file
-  const fastingCSV = Deno.readTextFileSync("./static/fasting26.csv");
-  const fastingLines = fastingCSV.split("\n");
 
-  let index = 0;
+// ============================================================================
+// Constants
+// ============================================================================
 
-  for (const line of fastingLines) {
-    const [key, begin, end] = line.split(",");
-    // key is in format dd/mm/yyyy -> dd.mm.yyyy
-    const keyStr = key.replaceAll("/", ".");
-    // begin and end are only the time in format hh:mm with 24 hour clock
-    const [dd, mm, yyyy] = key.split("/");
-    const [beginHH, beginMM] = begin.split(":");
-    const [endHH, endMM] = end.split(":");
+const CSV_PATH = "./static/fasting26.csv";
+const RAMADAN_START_2026 = new Date(2026, 1, 19, 0, 0, 0);
+const LAYLATUL_QADR_INDEX = 25; // 26th day (0-indexed = 25)
 
-    const beginDate = new Date(
-      parseInt(yyyy),
-      parseInt(mm) - 1,
-      parseInt(dd),
-      parseInt(beginHH),
-      parseInt(beginMM),
+// ============================================================================
+// Utility Functions (Pure, Memoizable)
+// ============================================================================
+
+/**
+ * Parse fasting dates from CSV file content
+ * CSV format: dd/mm/yyyy,HH:MM,HH:MM (key, begin time, end time)
+ */
+function parseFastingCSV(content: string): FastingData {
+  const byDate = new Map<string, FastingDay>();
+  const days: FastingDay[] = [];
+
+  const lines = content.trim().split("\n").filter((line) => line.trim());
+
+  for (let index = 0; index < lines.length; index++) {
+    const [key, beginTime, endTime] = lines[index].split(",").map((s) =>
+      s.trim()
     );
-    const endDate = new Date(
-      parseInt(yyyy),
-      parseInt(mm) - 1,
-      parseInt(dd),
-      parseInt(endHH),
-      parseInt(endMM),
-    );
+    if (!key || !beginTime || !endTime) continue;
 
-    fastingDates.set(keyStr, {
-      begin: beginDate,
-      end: endDate,
-      index: index++,
+    const [dd, mm, yyyy] = key.split("/").map(Number);
+    const [beginHH, beginMM] = beginTime.split(":").map(Number);
+    const [endHH, endMM] = endTime.split(":").map(Number);
+
+    const begin = new Date(yyyy, mm - 1, dd, beginHH, beginMM);
+    const end = new Date(yyyy, mm - 1, dd, endHH, endMM);
+    const dateKey = key.replaceAll("/", ".");
+
+    // Format display string
+    const longFormatter = new Intl.DateTimeFormat("de-DE", {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
-  }
-  // console.log(fastingDates);
+    const shortFormatter = new Intl.DateTimeFormat("de-DE", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
 
-  const today = new Date();
-  // const today = new Date(2026, 1, 20, 12, 0); // for testing
-  let adjustedHours = 1; // sommer
-  const zeitVerschiebung = new Date(today.getFullYear(), 2, 31);
-  if (today > zeitVerschiebung) {
-    adjustedHours = 2; // winter
-    // console.log("adjusted hours");
-  }
-  today.setHours(today.getHours() + adjustedHours);
-  const offset = 0;
-  today.setDate(today.getDate() + offset);
+    const display = `${longFormatter.format(begin)} Uhr bis ${
+      shortFormatter.format(end)
+    } Uhr`;
+    const isLaylatulQadr = index === LAYLATUL_QADR_INDEX;
 
-  const formatterToday = new Intl.DateTimeFormat("de-DE", {
+    const fastingDay: FastingDay = {
+      key: dateKey,
+      begin,
+      end,
+      index,
+      display,
+      isLaylatulQadr,
+    };
+
+    byDate.set(dateKey, fastingDay);
+    days.push(fastingDay);
+  }
+
+  return { byDate, days };
+}
+
+/**
+ * Format date to dd.mm.yyyy format
+ */
+function formatDateKey(date: Date): string {
+  return new Intl.DateTimeFormat("de-DE", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  });
-  const todayString = formatterToday.format(today.getTime());
+  }).format(date);
+}
 
-  const fastingDate = fastingDates.get(todayString);
-  // console.log(fastingDates);
+// ============================================================================
+// UI Components
+// ============================================================================
 
-  const ramadanDate = new Date(2026, 1, 19, 0, 0);
-
-  for (let i = 0; i < fastingDates.size; i++) {
-    const tomorrow = new Date(ramadanDate);
-    tomorrow.setDate(tomorrow.getDate() + i);
-    // console.log(tomorrow);
-    const fastingBegin =
-      fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
-    const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end ||
-      Date.now();
-    const longFormatter = new Intl.DateTimeFormat("de-DE", {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    const shortFormatter = new Intl.DateTimeFormat("de-DE", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    const fastingStr = longFormatter.format(fastingBegin) + " Uhr bis " +
-      shortFormatter.format(fastingEnd) + " Uhr";
-    fastingDays.value.push(fastingStr);
-  }
-
-  if (fastingDate === undefined) {
-    return (
-      <div>
-        <nav className="p-4">
-          <div className="flex justify-between items-center">
-            <a
-              href="/"
-              className="text-lg font-bold hover:underline"
-            >
-              ← yurtemre.de
-            </a>
-            <h2 className="font-bold italic text-center">
-              fasting ⚡
-            </h2>
-          </div>
-        </nav>
-        <div className="min-h-screen text-center p-10 items-center">
-          <div className="p-5 mx-auto items-center justify-center flex-col flex">
-            <div className="min-h-screen">
-              <CountdownClock
-                targetDate={ramadanDate.getTime()}
-                label="Ramadan 2026 in Berlin 🇩🇪"
-              />
-              <div className="mt-10" />
-              <div className="items-center justify-center flex">
-                <div className="group flex flex-col gap-1">
-                  <img
-                    className="rounded-xl md:group-hover:shadow-2xl md:transition md:duration-500 md:ease-in-out md:transform md:group-hover:-translate-y-1 md:group-hover:scale-110 max-h-150"
-                    src="./hamidiye_mosque.jpg"
-                    alt="Hamidiye Mosque"
-                  />
-                  <p className="duration-500 ease-in-out transform md:group-hover:translate-y-4 md:group-hover:scale-110">
-                    Hamidiye Mosque
-                  </p>
-                </div>
-              </div>
-            </div>
-            {fastingDays.value.length > 0
-              ? (
-                <div>
-                  <p className="text-xl">
-                    Die Tage ({fastingDays.value.length}{" "}
-                    Tag{fastingDays.value.length > 1 ? "e" : ""}) vom Ramadan in
-                    Berlin 🇩🇪 sind wie folgt:
-                  </p>
-                  <div className="mt-5" />
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
-                    {fastingDays.value.map(
-                      (day: string, i: number) => {
-                        if (i + 1 === 26) {
-                          // laylatul qadr
-                          return (
-                            <div
-                              key={i}
-                              className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300"
-                            >
-                              <p className="text-l py-2 font-bold">{day}</p>
-                              <p className="text-sm italic">Laylatul Qadr</p>
-                            </div>
-                          );
-                        }
-                        return (
-                          <div
-                            key={i}
-                            className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
-                          >
-                            <p className="text-l py-2">{day}</p>
-                          </div>
-                        );
-                      },
-                    )}
-                  </div>
-                </div>
-              )
-              : null}
-          </div>
-        </div>
+/**
+ * Navigation bar component
+ */
+function NavBar() {
+  return (
+    <nav className="p-4" aria-label="Hauptnavigation">
+      <div className="flex justify-between items-center text-lg font-bold ">
+        <a
+          href="/"
+          className="hover:underline focus:outline-none focus:ring-2 focus:ring-red-500 rounded px-2 py-1"
+        >
+          ← yurtemre.de
+        </a>
+        <span className="italic text-center " lang="en">
+          fasting ⚡
+        </span>
       </div>
-    );
-  }
-  const fastingFormatter = new Intl.DateTimeFormat("de-DE", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-  const fastingStrBegin = fastingFormatter.format(
-    fastingDate!.begin || new Date(),
+    </nav>
   );
-  const fastingStrEnd = fastingFormatter.format(fastingDate!.end || new Date());
+}
 
-  const duration = (fastingDate!.end.getTime() || today.getTime()) -
-    (fastingDate!.begin.getTime() || today.getTime());
-  const durationHours = Math.floor(duration / (1000 * 60 * 60));
-  const durationMinutes = Math.floor(
-    (duration % (1000 * 60 * 60)) / (1000 * 60),
+/**
+ * Fasting day card component
+ */
+interface FastingDayCardProps {
+  day: FastingDay;
+}
+
+function FastingDayCard({ day }: FastingDayCardProps) {
+  return (
+    <div
+      className={`w-full border border-[#E2E8F0] border-opacity-25 rounded-xl p-4 text-center transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg ${
+        day.isLaylatulQadr
+          ? "hover:border-green-400 bg-green-900 bg-opacity-10"
+          : "hover:border-blue-300"
+      }`}
+    >
+      <p className="text-sm md:text-base py-2">{day.display}</p>
+      {day.isLaylatulQadr && (
+        <p className="text-sm italic font-bold text-green-400 mt-2">
+          ✨ Laylatul Qadr ✨
+        </p>
+      )}
+    </div>
   );
+}
 
-  for (let i = 1; i < fastingDates.size - fastingDate!.index; i++) {
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + i);
-    const fastingBegin =
-      fastingDates.get(formatterToday.format(tomorrow))!.begin || Date.now();
-    const fastingEnd = fastingDates.get(formatterToday.format(tomorrow))!.end ||
-      Date.now();
-    const longFormatter = new Intl.DateTimeFormat("de-DE", {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    const shortFormatter = new Intl.DateTimeFormat("de-DE", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    const fastingStr = longFormatter.format(fastingBegin) + " Uhr bis " +
-      shortFormatter.format(fastingEnd) + " Uhr";
-    daysAfterFasting.value.push(fastingStr);
-  }
+/**
+ * Mosque image component with caption
+ */
+function MosqueImage() {
+  return (
+    <div className="group flex flex-col gap-3">
+      <img
+        className="rounded-xl shadow-lg transition-all duration-500 ease-in-out transform group-hover:scale-105 group-hover:shadow-2xl max-h-100 lg:max-h-125 object-cover"
+        src="./hamidiye_mosque.jpg"
+        alt="Hamidiye Moschee in Istanbul"
+        loading="lazy"
+        width="600"
+        height="450"
+      />
+      <p className="text-center text-xl md:text-2xl font-bold transition-transform duration-500 ease-in-out group-hover:translate-y-1">
+        Hamidiye Mosque
+      </p>
+    </div>
+  );
+}
+
+// ============================================================================
+// Main Page Component
+// ============================================================================
+
+export default define.page(function FastingPage(_props) {
+  // Load and parse CSV data on the server
+  const fastingData = useMemo(() => {
+    try {
+      const csvContent = Deno.readTextFileSync(CSV_PATH);
+      return parseFastingCSV(csvContent);
+    } catch (error) {
+      console.error("Failed to load fasting data:", error);
+      return { byDate: new Map(), days: [] };
+    }
+  }, []);
+
+  // Get current Berlin time
+  const now = getBerlinNow();
+  const todayKey = formatDateKey(now);
+
+  // Find today's fasting day
+  const todayFasting = fastingData.byDate.get(todayKey) || null;
+
+  // Get remaining days after today
+  const remainingDays = useMemo(() => {
+    if (!todayFasting) return fastingData.days;
+    return fastingData.days.slice(todayFasting.index + 1);
+  }, [todayFasting, fastingData.days]);
 
   return (
-    <div>
-      <nav className="p-4">
-        <div className="flex justify-between items-center">
-          <a
-            href="/"
-            className="text-lg font-bold hover:underline"
-          >
-            ← yurtemre.de
-          </a>
-          <h2 className="font-bold italic text-center">
-            fasting ⚡
-          </h2>
-        </div>
-      </nav>
-      <div className="text-center p-4 items-center justify-center flex-col flex">
-        <div className="min-h-screen flex flex-col md:flex-row justify-center items-center md:space-x-10 md:p-10">
-          <div className="flex-1">
-            <p className="text-4xl font-bold md:my-8 my-2">
-              Heute ist der{" "}
-              {fastingDate!.index + 1}. Tag vom Ramadan in Berlin 🇩🇪
-            </p>
-            {fastingDate!.index + 1 === 26
-              ? (
-                <p className="text-2xl font-bold italic md:my-8 my-2">
-                  Heute ist Laylatul Qadr
+    <div className="min-h-screen">
+      <NavBar />
+
+      <main className="container mx-auto px-4 py-8">
+        {!todayFasting
+          ? (
+            // Before/After Ramadan - Show countdown to Ramadan
+            <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
+              <div className="text-center">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Ramadan 2026 in Berlin 🇩🇪
+                </h2>
+                <p className="text-lg opacity-75 mb-6">
+                  Die Fastenzeiten werden hier angezeigt, sobald der Ramadan
+                  beginnt.
                 </p>
-              )
-              : null}
-            <div className="md:my-8 my-2 text-5xl font-bold flex justify-center items-center">
-              <span>{fastingStrBegin} Uhr</span>
-              <span className="mx-4">-</span>
-              <span>{fastingStrEnd} Uhr</span>
-            </div>
-            <div className=" text-3xl">
-              = {durationHours}h {durationMinutes}m lang
-            </div>
-            <div className="md:my-8 my-2">
-              <FastingCountdown
-                end={fastingDate!.end.getTime() || Date.now()}
-                duration={duration}
+              </div>
+
+              <CountdownClock
+                targetDate={RAMADAN_START_2026.getTime()}
+                label="Ramadan 2026 in Berlin 🇩🇪"
               />
-            </div>
-          </div>
-          <div className="flex-1">
-            <img
-              className="rounded-xl md:transition md:duration-500 md:ease-in-out md:transform md:hover:scale-110 max-h-150"
-              src="./hamidiye_mosque.jpg"
-              alt="Hamidiye Mosque"
-            />
-            <p className="mt-6 text-2xl font-bold">
-              Hamidiye Mosque
-            </p>
-          </div>
-        </div>
-        <div className="mt-10">
-          <div className="text-center">
-            <p className="text-2xl">
-              Die restlichen Tage ({daysAfterFasting.value.length}{" "}
-              Tag{daysAfterFasting.value.length > 1 ? "e" : ""}) vom Ramadan in
-              Berlin 🇩🇪 sind wie folgt:
-            </p>
-          </div>
-          <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 p-6">
-            {daysAfterFasting.value.map(
-              (day: string, i: number) => {
-                if (i + 1 === 26) {
-                  // laylatul qadr
-                  return (
-                    <div
-                      key={i}
-                      className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-green-300"
-                    >
-                      <p className="text-l py-2 font-bold">{day}</p>
-                      <p className="text-sm italic">Laylatul Qadr</p>
-                    </div>
-                  );
-                }
-                return (
-                  <div
-                    key={i}
-                    className="border border-[#E2E8F0] border-opacity-25 rounded-lg p-2 text-center transition duration-300 ease-in-out transform hover:scale-105 hover:border-blue-300"
-                  >
-                    <p className="text-l py-2">{day}</p>
+
+              <MosqueImage />
+
+              {fastingData.days.length > 0 && (
+                <div className="w-full max-w-6xl mt-8">
+                  <p className="text-xl text-center mb-6">
+                    Die Tage ({fastingData.days.length}{" "}
+                    Tage) vom Ramadan in Berlin 🇩🇪 sind wie folgt:
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4">
+                    {fastingData.days.map((day) => (
+                      <FastingDayCard key={day.key} day={day} />
+                    ))}
                   </div>
-                );
-              },
-            )}
-          </div>
-        </div>
-      </div>
+                </div>
+              )}
+            </div>
+          )
+          : (
+            // During Ramadan - Show today's fasting info and progress
+            <div className="w-full">
+              {/* Main content: Row on desktop, column on mobile */}
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+                {/* Left Column: Today's Info + Progress */}
+                <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl">
+                  {/* Today's Info */}
+                  <section
+                    className="text-center w-full"
+                    aria-labelledby="today-heading"
+                  >
+                    <h2 id="today-heading" className="sr-only">
+                      Heutiger Fastentag
+                    </h2>
+                    <p className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                      Heute ist der{" "}
+                      {todayFasting.index + 1}. Tag vom Ramadan in Berlin 🇩🇪
+                    </p>
+                    {todayFasting.isLaylatulQadr && (
+                      <p className="text-3xl md:text-4xl font-bold italic text-green-400 mb-6">
+                        ✨ Heute ist Laylatul Qadr ✨
+                      </p>
+                    )}
+
+                    <div className="text-5xl md:text-6xl lg:text-7xl font-bold flex justify-center items-center gap-4 my-8">
+                      <span>
+                        {new Intl.DateTimeFormat("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }).format(todayFasting.begin)} Uhr
+                      </span>
+                      <span className="opacity-50">-</span>
+                      <span>
+                        {new Intl.DateTimeFormat("de-DE", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }).format(todayFasting.end)} Uhr
+                      </span>
+                    </div>
+                  </section>
+
+                  {/* Progress Section */}
+                  <section className="w-full" aria-label="Fasten-Fortschritt">
+                    <FastingProgress fastingDay={todayFasting} now={now} />
+                  </section>
+                </div>
+
+                {/* Right Column: Image */}
+                <div className="flex-1 flex items-center justify-center w-full">
+                  <section className="my-6 lg:my-8">
+                    <MosqueImage />
+                  </section>
+                </div>
+              </div>
+
+              {/* Remaining Days - Centered Full Width */}
+              {remainingDays.length > 0 && (
+                <section
+                  className="w-full max-w-7xl mx-auto mt-12"
+                  aria-labelledby="remaining-heading"
+                >
+                  <h2
+                    id="remaining-heading"
+                    className="text-2xl md:text-3xl text-center mb-8"
+                  >
+                    Die restlichen Tage ({remainingDays.length}{" "}
+                    {remainingDays.length === 1 ? "Tag" : "Tage"}) vom Ramadan
+                    in Berlin 🇩🇪:
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 justify-items-center">
+                    {remainingDays.map((day) => (
+                      <FastingDayCard key={day.key} day={day} />
+                    ))}
+                  </div>
+                </section>
+              )}
+            </div>
+          )}
+      </main>
     </div>
   );
 });
