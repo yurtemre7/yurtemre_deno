@@ -51,7 +51,7 @@ interface FastingProgressProps {
  * Returns hours to add to UTC to get Berlin time
  */
 export function getBerlinOffset(date: Date): number {
-  // Berlin uses CET (UTC+1) in winter, CEST (UTC+2) in summer
+  // Berlin uses CET (UTC+2) in winter, CEST (UTC+1) in summer
   // DST starts last Sunday of March, ends last Sunday of October
   const year = date.getFullYear();
   const dstStart = new Date(year, 2, 31); // Approximate: March 31
@@ -74,10 +74,13 @@ export function getBerlinOffset(date: Date): number {
  * Get current date in Berlin timezone
  */
 export function getBerlinNow(): Date {
-  const now = new Date();
-  const offset = getBerlinOffset(now);
-  const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-  return new Date(utc + offset * 3600000);
+  const utc = Date.now();
+  const offset = getBerlinOffset(new Date(utc));
+  console.log("Offset: ", offset);
+
+  const today = new Date(utc + offset * 3600000);
+  console.log(today.getTime());
+  return today
 }
 
 /**
