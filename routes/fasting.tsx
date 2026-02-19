@@ -55,10 +55,10 @@ export default define.page(function Fasting() {
 
   const today = new Date();
   // const today = new Date(2026, 1, 20, 12, 0); // for testing
-  let adjustedHours = 1;
+  let adjustedHours = 1; // sommer
   const zeitVerschiebung = new Date(today.getFullYear(), 2, 31);
   if (today > zeitVerschiebung) {
-    adjustedHours = 2;
+    adjustedHours = 2; // winter
     // console.log("adjusted hours");
   }
   today.setHours(today.getHours() + adjustedHours);
