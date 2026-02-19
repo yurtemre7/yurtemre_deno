@@ -76,10 +76,9 @@ export function getBerlinOffset(date: Date): number {
 export function getBerlinNow(): Date {
   const utc = Date.now();
   const offset = getBerlinOffset(new Date(utc));
-  console.log("Offset: ", offset);
-
+  // console.log("Offset: ", offset);
   const today = new Date(utc + offset * 3600000);
-  console.log(today.getTime());
+  // console.log(today.getTime());
   return today
 }
 
