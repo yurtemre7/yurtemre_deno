@@ -345,7 +345,7 @@ export function FastingProgress(
             `${progress.value.remaining.seconds}s`} verbleiben
         </p>
         <div className="text-center mb-4 text-xl md:text-2xl opacity-75 font-semibold">
-          Dauer: {durationHours}h {durationMinutes}m
+          Gesamtdauer: {durationHours}h {durationMinutes}m
         </div>
         <ProgressBar
           progress={progress.value.percentage}
