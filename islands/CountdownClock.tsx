@@ -12,7 +12,7 @@ export default function CountdownClock(
   {
     targetDate,
     label = "Time Left",
-    dark_bg_color = "#141721",
+    dark_bg_color = "#272526",
   }: CountdownClockProps,
 ) {
   const timeRemaining = useSignal(calculateTimeRemaining());

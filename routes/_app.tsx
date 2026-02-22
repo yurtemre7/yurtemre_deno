@@ -9,7 +9,7 @@ export default define.page(function App({ Component, url, state }) {
   return (
     <html
       lang={state.language}
-      className="bg-[#141721] text-white"
+      className="bg-[#272526] text-white"
     >
       <Head>
         {/* Character encoding should be first */}
