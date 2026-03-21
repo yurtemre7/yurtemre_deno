@@ -27,9 +27,8 @@ function getPreferredLanguage(acceptLanguageHeader: string): string {
   return "en";
 }
 
-// Pass a shared value from a middleware
+// Pass the language to the ctx state
 app.use(async (ctx) => {
-  ctx.state.shared = "hello";
   const langParam = ctx.url.searchParams.get("lang")?.toLowerCase();
   const acceptLanguage = ctx.req.headers.get("accept-language") || "";
   if (langParam && SUPPORTED_LANGUAGES.includes(langParam)) {

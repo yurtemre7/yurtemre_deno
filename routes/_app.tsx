@@ -94,7 +94,7 @@ export default define.page(function App({ Component, url, state }) {
               rel="noopener noreferrer"
               className="text-lg transition-colors"
             >
-              Fasten
+              Fasting
             </a>
             <a
               href="https://sevven.yurtemre.de/"
