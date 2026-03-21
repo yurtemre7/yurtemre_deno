@@ -24,7 +24,7 @@ export default {
   countdownLabels: [
     "New Year " + getNextYearValue(),
     "Emre's Birthday",
-    "Ramadan 2026",
+    "Ramadan 2027",
   ],
   programmingItems: [
     "Flutter 5+ years",

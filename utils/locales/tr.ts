@@ -24,7 +24,7 @@ export default {
   countdownLabels: [
     "Yeni Yıl " + getNextYearValue(),
     "Emre'nin Doğum Günü",
-    "Ramazan 2026",
+    "Ramazan 2027",
   ],
   programmingItems: [
     "Flutter 5+ yıl",

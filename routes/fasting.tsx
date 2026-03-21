@@ -1,16 +1,3 @@
-/**
- * Fasting Page - Ramadan 2026 Berlin
- *
- * Optimized with Fresh 2.0 + Preact best practices:
- * - Server-side data loading (no blocking client-side CSV parsing)
- * - Proper TypeScript types for type safety
- * - Memoized computations to prevent unnecessary recalculations
- * - Semantic HTML and accessibility improvements
- * - Clean separation of concerns (data logic vs UI)
- * - Efficient signal usage with proper cleanup
- * - Responsive design with Tailwind CSS
- */
-
 import { useMemo } from "preact/hooks";
 import { define } from "../utils.ts";
 import { FastingProgress, getBerlinNow } from "../islands/FastingProgress.tsx";
@@ -42,13 +29,12 @@ interface FastingData {
   days: FastingDay[];
 }
 
-
 // ============================================================================
 // Constants
 // ============================================================================
 
-const CSV_PATH = "./static/fasting26.csv";
-const RAMADAN_START_2026 = new Date(2026, 1, 19, 0, 0, 0);
+const CSV_PATH = "./static/fasting27.csv";
+const RAMADAN_START_2027 = new Date(2027, 1, 8, 0, 0, 0);
 const LAYLATUL_QADR_INDEX = 25; // 26th day (0-indexed = 25)
 
 // ============================================================================
@@ -236,7 +222,7 @@ export default define.page(function FastingPage(_props) {
             <div className="flex flex-col items-center justify-center min-h-[60vh] gap-8">
               <div className="text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Ramadan 2026 in Berlin 🇩🇪
+                  Ramadan 2027 in Berlin 🇩🇪
                 </h2>
                 <p className="text-lg opacity-75 mb-6">
                   Die Fastenzeiten werden hier angezeigt, sobald der Ramadan
@@ -245,8 +231,8 @@ export default define.page(function FastingPage(_props) {
               </div>
 
               <CountdownClock
-                targetDate={RAMADAN_START_2026.getTime()}
-                label="Ramadan 2026 in Berlin 🇩🇪"
+                targetDate={RAMADAN_START_2027.getTime()}
+                label="Ramadan 2027 in Berlin 🇩🇪"
               />
 
               <MosqueImage />
