@@ -7,13 +7,13 @@ import { useSignal } from "@preact/signals";
 import {
   calculateDurationInYearsAndMonths,
   formatMonthYear,
-  getNextBirthday,
-  getNextNewYears,
+  // getNextBirthday,
+  // getNextNewYears,
 } from "@/utils/dates.ts";
 import translations from "@/utils/locales/translations.ts";
 import dayLine from "@/utils/locales/dayline.ts";
 import SeasonalBackground from "./SeasonalBackground.tsx";
-import CountdownClock from "./CountdownClock.tsx";
+// import CountdownClock from "./CountdownClock.tsx";
 
 interface WorkExperience {
   id: string;
@@ -68,9 +68,9 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
   const expandedExperience = useSignal<string | null>(null);
   const t = translations[language.value];
   // day string produced by utils/locales/dayline.ts
-  const newYear = getNextNewYears();
-  const birthDay = getNextBirthday();
-  const fasting = new Date(2027, 1, 8, 0, 0);
+  // const newYear = getNextNewYears();
+  // const birthDay = getNextBirthday();
+  // const fasting = new Date(2027, 1, 8, 0, 0);
 
   function handleLanguageChange(newLang: string) {
     language.value = newLang;
@@ -380,7 +380,7 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
               ))}
             </div>
             {/* Countdown Timers Section */}
-            <h1 className="text-2xl font-semibold mb-6">
+            {/* <h1 className="text-2xl font-semibold mb-6">
               {t.countdownLabel}
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mx-auto">
@@ -406,7 +406,7 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
                     )}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </section>
       </main>
