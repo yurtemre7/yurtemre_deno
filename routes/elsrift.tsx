@@ -1,4 +1,9 @@
 import { define } from "@/utils.ts";
+import { UTCClock } from "@/islands/UTCClock.tsx";
+
+// ═══════════════════════════════════════════════════
+//  REAL DATA from https://www.elsrift.to/events
+// ═══════════════════════════════════════════════════
 
 interface Evt {
   title: string;
@@ -12,11 +17,11 @@ interface Evt {
 }
 
 interface DayInfo {
-  date: Date;
-  name: string;
-  short: string;
-  num: number;
-  month: string;
+  date: Date; // UTC midnight of this day
+  name: string; // weekday name in UTC
+  short: string; // short weekday in UTC
+  num: number; // day of month in UTC
+  month: string; // month name in UTC
   evt: Evt | null;
   isToday: boolean;
 }
@@ -84,29 +89,52 @@ const EVENTS: Evt[] = [
   },
 ];
 
-function getEvt(d: number): Evt | null {
-  for (const e of EVENTS) if (e.days.includes(d)) return e;
+function getEvt(dayOfMonth: number): Evt | null {
+  for (const e of EVENTS) if (e.days.includes(dayOfMonth)) return e;
   return null;
 }
 
-function buildWeek(): DayInfo[] {
+// ── UTC helpers ────────────────────────────────────
+
+/** Returns a Date set to 00:00:00 UTC for the given UTC date */
+function utcMidnight(year: number, month: number, day: number): Date {
+  return new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
+}
+
+/** Returns the current UTC "today" midnight Date */
+function getUTCToday(): Date {
   const now = new Date();
+  return utcMidnight(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+}
+
+/** Builds the next 7 days starting from UTC today */
+function buildWeek(): DayInfo[] {
+  const utcToday = getUTCToday();
   const out: DayInfo[] = [];
+
   for (let i = 0; i < 7; i++) {
-    const d = new Date(now);
-    d.setDate(now.getDate() + i);
+    const d = new Date(utcToday);
+    d.setUTCDate(utcToday.getUTCDate() + i);
+
     out.push({
       date: d,
-      name: d.toLocaleDateString("en-US", { weekday: "long" }),
-      short: d.toLocaleDateString("en-US", { weekday: "short" }),
-      num: d.getDate(),
-      month: d.toLocaleDateString("en-US", { month: "long" }),
-      evt: getEvt(d.getDate()),
+      name: d.toLocaleDateString("en-US", { weekday: "long", timeZone: "UTC" }),
+      short: d.toLocaleDateString("en-US", {
+        weekday: "short",
+        timeZone: "UTC",
+      }),
+      num: d.getUTCDate(),
+      month: d.toLocaleDateString("en-US", { month: "long", timeZone: "UTC" }),
+      evt: getEvt(d.getUTCDate()),
       isToday: i === 0,
     });
   }
   return out;
 }
+
+// ═══════════════════════════════════════════════════
+//  PAGE
+// ═══════════════════════════════════════════════════
 
 export default define.page(() => {
   const week = buildWeek();
@@ -115,13 +143,32 @@ export default define.page(() => {
 
   return (
     <div class="w-full flex flex-col">
-      {/* ─── MAIN ─── */}
+      {/* Header */}
+      <header class="px-6 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="relative w-2 h-2">
+            <div
+              class="absolute inset-0 rounded-full animate-ping opacity-30"
+              style={te ? `background: ${te.hex}` : "background: #374151"}
+            />
+            <div
+              class="relative w-2 h-2 rounded-full"
+              style={te ? `background: ${te.hex}` : "background: #4b5563"}
+            />
+          </div>
+          <h1 class="font-black tracking-tight">
+            ELRIOS <span style="color: #fbbf24;">RIFT</span>
+          </h1>
+        </div>
+        <UTCClock />
+      </header>
+
+      {/* Main */}
       <main class="flex-1 min-h-0 m-10 grid grid-cols-1">
-        {/* LEFT */}
         <section class="flex flex-col gap-4 min-h-0">
           {/* TODAY */}
           <div
-            class="min-h-0 relative rounded-2xl flex flex-col items-center justify-center text-center p-6"
+            class="relative rounded-2xl flex flex-col items-center justify-center text-center p-8"
             style={`
               border: 1px solid ${te ? te.border : "#1a1a28"};
               ${
@@ -146,7 +193,7 @@ export default define.page(() => {
             <div class="relative">
               {te && (
                 <span
-                  class="inline-flex items-center gap-1.5 p-1 rounded-full font-black uppercase tracking-widest"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-black uppercase tracking-widest mb-5"
                   style={`background: ${te.dim}; border: 1px solid ${te.border}; color: ${te.hex};`}
                 >
                   <span
@@ -158,14 +205,14 @@ export default define.page(() => {
               )}
 
               <div
-                class="text-5xl m-10"
+                class="text-5xl md:text-6xl mb-4"
                 style="filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));"
               >
                 {te?.icon ?? "📅"}
               </div>
 
               <h2
-                class="text-3xl font-black mb-2"
+                class="text-3xl md:text-4xl font-black mb-2"
                 style={`color: ${
                   te?.hex ?? "#6b7280"
                 }; letter-spacing: -0.03em;`}
@@ -173,19 +220,21 @@ export default define.page(() => {
                 {te?.title ?? "No Event"}
               </h2>
 
-              <p class="text-sm max-w-sm mx-auto leading-relaxed">
+              <p class="text-sm max-w-md mx-auto leading-relaxed">
                 {te?.desc ?? "No mini event scheduled for today."}
               </p>
 
-              <p class="m-4 text-gray-700 font-mono">
-                {today.name} · {today.month} {today.num}
+              <p class="mt-4 text-xs font-mono">
+                {today.name}, {today.num}. {today.month}
               </p>
             </div>
           </div>
 
           {/* UPCOMING */}
-          <div class="flex-1 min-h-0 flex flex-col gap-2">
-            <div class="font-bold uppercase tracking-widest">Next Up</div>
+          <div class="flex flex-col gap-2">
+            <div class="font-bold uppercase tracking-widest">
+              Next Up
+            </div>
             <div class="flex flex-col gap-2">
               {week.slice(1, 7).map((c, i) => {
                 const e = c.evt;
@@ -193,21 +242,31 @@ export default define.page(() => {
                 return (
                   <div
                     key={c.num}
-                    class="rounded-xl flex items-center gap-3 px-4 py-2.5"
+                    class="rounded-xl flex items-center gap-3 px-4 py-3"
                     style={`background: ${e.dim}; border: 1px solid ${e.border};`}
                   >
-                    <span class="text-lg">{e.icon}</span>
+                    <span class="text-xl">{e.icon}</span>
                     <div class="flex-1 min-w-0">
                       <div class="flex items-baseline gap-2">
-                        <span class="font-bold" style={`color: ${e.hex};`}>
+                        <span
+                          class="text-sm font-bold"
+                          style={`color: ${e.hex};`}
+                        >
                           {e.title}
                         </span>
-                        <span class="">{c.name} {c.num}. {c.month}</span>
+                        <span class="text-xs">
+                          {c.name}, {c.num}. {c.month}
+                        </span>
                       </div>
-                      <p class="truncate">{e.desc}</p>
+                      <p class="text-xs truncate">
+                        {e.desc}
+                      </p>
                     </div>
                     {i === 0 && (
-                      <span class="font-bold uppercase tracking-wider bg-black/30 px-1.5 py-0.5 rounded">
+                      <span
+                        class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded"
+                        style="background: rgba(0,0,0,0.2);"
+                      >
                         Next
                       </span>
                     )}
@@ -215,11 +274,24 @@ export default define.page(() => {
                 );
               })}
             </div>
-            <span className="flex">
-              Data from:{" "}
-              <a href="https://www.elsrift.to/events">
-                https://www.elsrift.to/events
+          </div>
+
+          {/* Footer */}
+          <div
+            class="flex items-center justify-between pt-4"
+          >
+            <span
+              class="flex items-center gap-1.5 text-xs"
+            >
+              Data from:
+              <a
+                href="https://www.elsrift.to/events"
+              >
+                elsrift.to/events
               </a>
+            </span>
+            <span class="text-[10px] font-mono">
+              Events switch at 00:00 UTC
             </span>
           </div>
         </section>
