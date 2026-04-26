@@ -380,7 +380,8 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
               ))}
             </div>
             {/* Countdown Timers Section */}
-            {/* <h1 className="text-2xl font-semibold mb-6">
+            {
+              /* <h1 className="text-2xl font-semibold mb-6">
               {t.countdownLabel}
             </h1>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mx-auto">
@@ -406,7 +407,8 @@ export default function PortfolioHome(props: PortfolioHomeProps) {
                     )}
                 </div>
               ))}
-            </div> */}
+            </div> */
+            }
           </div>
         </section>
       </main>
