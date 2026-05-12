@@ -96,14 +96,6 @@ export default define.page(function App({ Component, url, state }) {
             >
               Fasting
             </a>
-            <a
-              href="https://sevven.yurtemre.de/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg transition-colors"
-            >
-              sevven
-            </a>
           </div>
           {/* Impressum, Datenschutz, and Copyright */}
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
