@@ -9,6 +9,7 @@ const parenGoogleDownloadURL =
 export default define.page(function Paren() {
   const vacationJapan = new Date(2024, 8, 27, 13, 10);
   const vacationJapan2 = new Date(2025, 8, 10, 15, 50);
+  const vacationJapan3 = new Date(2026, 8, 6, 12, 0);
   return (
     <div>
       <nav className="p-4">
@@ -70,6 +71,12 @@ export default define.page(function Paren() {
         <CountdownClock
           targetDate={vacationJapan2.getTime()}
           label="日本 Urlaub 2025"
+        />
+      </div>
+      <div id="japan-vacaction-3">
+        <CountdownClock
+          targetDate={vacationJapan3.getTime()}
+          label="日本 Urlaub 2026"
         />
       </div>
     </div>
