@@ -277,16 +277,10 @@ export default define.page(() => {
           </div>
 
           {/* Footer */}
-          <div
-            class="flex items-center justify-between pt-4"
-          >
-            <span
-              class="flex items-center gap-1.5 text-xs"
-            >
+          <div class="flex items-center justify-between pt-4">
+            <span class="flex items-center gap-1.5 text-xs">
               Data from:
-              <a
-                href="https://www.elsrift.to/events"
-              >
+              <a href="https://www.elsrift.to/events">
                 elsrift.to/events
               </a>
             </span>
