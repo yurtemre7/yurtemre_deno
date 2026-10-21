@@ -14,10 +14,7 @@
   "[javascript]": {
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
-  "css.customData": [
-    ".vscode/tailwind.json"
-  ],
-  "[css]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }
